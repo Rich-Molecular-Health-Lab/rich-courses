@@ -97,8 +97,55 @@ readings <- list(
       spooner2023 = "The value of zoos for species and society: The need for a new model."
         )
       )
+  ),
+  conbio = list(
+    "2"  = list(
+      "2a"  = list("53:57" = "Biodiversity Concepts and Measurement: Genetic Diversity"),
+       "2b" = list("58:66" = "Biodiversity Concepts and Measurement: Species Diversity")
+      ),
+    "3"  = list(
+      "3a"  = list("67:80" = "Biodiversity Concepts and Measurement: Community and Ecosystem Diversity"),
+      "3b"  = list("141:180" = "Biodiversity and Ecosystem Services")
+    ),
+    "4"  = list(
+      "4a"  = list("215:239" = "Extinction: Global Patterns of Endangerment, Local Changes in Biodiversity"),
+      "4b"  = list("240:248" = "Extinction: Controls of Extinction Risk")
+    ),
+    "6"  = list(
+      "6a"  = list("249:276" = "Habitat Loss and Fragmentation"),
+      "6b"  = list("277:284" = "Habitat Degradation")
+    ),
+    "7"  = list(
+      "7a"  = list("285:292" = "Metapopulations and Landscape Mosaics"),
+      "7b"  = list("293:321" = "Overexploitation")
+    ),
+    "8"  = list(
+      "8a"  = list("322:328" = "Overexploitation"),
+      "8b"  = list("329:368" = "Invasive Alien Species")
+    ),
+    "10"  = list(
+      "10a"  = list("369:373" = "Climate Change"),
+      "10b"  = list("374:402" = "Climate Change")
+    ),
+    "12"  = list(
+      "12a"  = list("405:414" = "Species-Level Conservation: Goals and Challenges"),
+      "12b"  = list("415:444" = "Species-Level Conservation: Statistics and Probability")
+    ),
+    "13"  = list(
+      "13a"  = list("445:476" = "Community and Ecosystem Conservation"),
+      "13b"  = list("477:505" = "Landscape-Scale Conservation: PA Networks")
+    ),
+    "14"  = list(
+      "14a"  = list("506:520" = "Landscape-Scale Conservation: Monitoring and Modeling"),
+      "14b"  = list("521:537" = "Ex Situ Conservation: Facilities")
+    ),
+    "15"  = list(
+      "15a"  = list("538:554" = "Ex Situ Conservation: In Situ Contributions"),
+      "15b"  = list("573:582" = "Sustainable Development: Case Studies")
+    )
   )
 )
+
 
 
 agenda <- list(
@@ -156,7 +203,7 @@ agenda <- list(
        "2a"  = "Institutions and Oversight",
        "2b"  = "Institutions and Oversight",
        "2c"  = "Institutions and Oversight"
-     ),
+                  ),
      "3" = list(
        "3a"  = "Headstarting, Rescue, and Rehabilitation",
        "3b"  = "Headstarting, Rescue, and Rehabilitation",
@@ -200,7 +247,85 @@ agenda <- list(
     ),
   conbio = list(
     exams = list(
+      "5a"  = "Exam 1",
+      "11a" = "Exam 2",
       "17a" = "Final Exam"
+    ),
+    themes = list(
+      "Foundations of Conservation Biology" = list(
+        "Biodiversity Concepts and Measurement: Genetic Diversity",
+        "Biodiversity Concepts and Measurement: Species Diversity",
+        "Biodiversity Concepts and Measurement: Community and Ecosystem Diversity"
+      ),
+      "Importance of Biodiversity" = list(
+        "Biodiversity and Ecosystem Services"
+      ),
+      "Threats to Biodiversity" = list(
+        "Extinction: Global Patterns of Endangerment, Local Changes in Biodiversity",
+        "Extinction: Controls of Extinction Risk",
+        "Habitat Loss and Fragmentation",
+        "Habitat Degradation",
+        "Metapopulations and Landscape Mosaics",
+        "Overexploitation",
+        "Invasive Alien Species",
+        "Climate Change"
+      ),
+      "Approaches to Conservation" = list(
+        "Species-Level Conservation: Goals and Challenges",
+        "Species-Level Conservation: Statistics and Probability",
+        "Community and Ecosystem Conservation",
+        "Landscape-Scale Conservation: PA Networks",
+        "Landscape-Scale Conservation: Monitoring and Modeling",
+        "Ex Situ Conservation: Facilities",
+        "Ex Situ Conservation: In Situ Contributions",
+        "Sustainable Development: Case Studies"
+
+      )
+    ),
+    topics = list(
+      "1" = list(
+        "1b" = "Intro to the Class"),
+      "2"  = list(
+        "2a" = "Biodiversity Concepts and Measurement: Genetic Diversity",
+        "2b" = "Biodiversity Concepts and Measurement: Species Diversity"),
+      "3"  = list(
+        "3a" = "Biodiversity Concepts and Measurement: Community and Ecosystem Diversity",
+        "3b" = "Biodiversity and Ecosystem Services"),
+      "4"  = list(
+        "4a" = "Extinction: Global Patterns of Endangerment, Local Changes in Biodiversity",
+        "4b" = "Extinction: Controls of Extinction Risk"),
+      "5"  = list(
+        "5b" = "Film Day"),
+      "6"  = list(
+        "6a" = "Habitat Loss and Fragmentation",
+        "6b" = "Habitat Degradation"),
+      "7"  = list(
+        "7a" = "Metapopulations and Landscape Mosaics",
+        "7b" = "Overexploitation"),
+      "8"  = list(
+        "8a" = "Overexploitation",
+        "8b" = "Invasive Alien Species"),
+      "10" = list(
+        "10a" = "Climate Change",
+        "10b" = "Climate Change"),
+      "11" = list(
+        "11b" = "Film Day"),
+      "12" = list(
+        "12a" = "Species-Level Conservation: Goals and Challenges",
+        "12b" = "Species-Level Conservation: Statistics and Probability"),
+      "13" = list(
+        "13a" = "Community and Ecosystem Conservation",
+        "13b" = "Landscape-Scale Conservation: PA Networks"),
+      "14" = list(
+        "14a" = "Landscape-Scale Conservation: Monitoring and Modeling",
+        "14b" = "Ex Situ Conservation: Facilities"),
+      "15" = list(
+        "15a" = "Ex Situ Conservation: In Situ Contributions",
+        "15b" = "Sustainable Development: Case Studies"),
+      "16" = list(
+        "16a" = "Film Day",
+        "16b" = "Film Day")
+
     )
   )
   )

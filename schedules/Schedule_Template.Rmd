@@ -11,14 +11,17 @@ output:
     fig_caption: true
 params:
   semester: "spring25"
-  course: "zoobio"
+  course: "conbio"
                      
 ---
 
 
 ```{r, include = FALSE}
-source("../setup/set_paths.R")
+source("./setup/set_paths.R")
+```
 
+
+```{r, include = FALSE}
 source(global$setup)
 source(term$agendas)
 source(templates$build_schedule)
@@ -33,6 +36,8 @@ write.table(schedule,
 gt_calendar 
 
 gtsave(gt_calendar, paste0(course$schedule$html))
+gtsave(gt_calendar, paste0(course$schedule$png))
+
 ```
 
 
