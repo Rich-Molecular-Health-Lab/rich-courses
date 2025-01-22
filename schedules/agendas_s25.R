@@ -1,0 +1,215 @@
+holidays <- list(
+  MLKDay = list(ymd("2025-1-20")),
+  SpringBreak = as.list(seq.Date(from = ymd("2025-3-17"), by = "day", length.out = 5))
+) %>%
+  list_flatten(name_spec = "{outer}")
+
+readings <- list(
+  zoobio = list(
+    "2" = list(
+      "2a" = list(
+        hutchins2003 = "In Defense of Zoos and Aquariums: The Ethical Basis for Keeping Wild Animals in Captivity"),
+      "2c" = list(
+        winders2017 = "Can zoos offer more than entertainment?")
+    ),
+    "3" = list(
+      "3a" = list(
+        gilbert2017 = "The Role of Zoos and Aquariums in Reintroductions and Other Conservation Translocations"),
+      "3c" = list(
+        harding2016 = "Developments in amphibian captive breedingand reintroduction programs")
+    ),
+    "4" = list(
+      "4a" = list(
+        powell2019 = "Collection planning for the next 100 years: What will we commit to save in zoos and aquariums?")
+    ),
+    "5" = list(
+      "5a" = list(
+        checastaldo2021 = "Expected demographic and genetic declines not found in most zoo and aquarium populations"),
+      "5c" = list(
+        speak2024 = "Genomics‐informed captive breeding can reduce inbreeding depression and the genetic load in zoo populations")
+    ),
+    "6" = list(
+      "6a" = list(
+        herrick2019      = "Assisted reproductive technologies for endangered species conservation: developing sophisticated protocols with limited access to animals with unique reproductive mechanisms"
+        ),
+      "6c" = list(
+        agnew2021 = "DESLORELIN (SUPRELORIN®) USE IN NORTH AMERICAN AND EUROPEAN ZOOS AND AQUARIUMS: TAXONOMIC SCOPE, DOSING, AND EFFICACY"
+        )
+    ),
+  "7" = list(
+    "7a" = list(
+      whilde2017 = "Precision wildlife medicine: applications of the human-centred precision medicine revolution to species conservation"
+    ),
+    "7c" = list(
+      murphy2018 = "The Great Ape Heart Project"
+      )
+  ),
+  "8" = list(
+    "8a" = list(
+      beheerder2017 = "Visual body condition scoring in zoo animals – composite, algorithm and overview approaches"
+    ),
+    "8c" = list(
+      ramont2024 = "The Provision of Browse and Its Impacts on the Health and Welfare of Animals at the Zoo: A Review"
+    )
+  ),
+  "11" = list(
+    "11a" = list(
+      veasey2021 = "Differing animal welfare conceptions and what they mean for the future of zoos and aquariums, insights from an animal welfare audit"
+    ),
+    "11c" = list(
+      obrien2023 = "Doing better for understudied species: Evaluation and improvement of a species-general animal welfare assessment tool for zoos"
+    )
+  ),
+  "12" = list(
+    "12a" = list(
+      ramirez2020 = "Choosing the Right Method: Reinforcement vs Punishment"
+    ),
+    "12c" = list(
+      martin2020 = "The Art of ‘Active’ Training"
+    )
+  ),
+  "13" = list(
+    "13a" = list(
+      brereton2023 = "An evaluation of the role of ‘biological evidence’ in zoo and aquarium enrichment practices"
+    ),
+    "13c" = list(
+      podturkin2021 = "In search of the optimal enrichment program for zoo‐housed animals"
+    )
+    ),
+  "14" = list(
+    "14a" = list(
+      howell2019 = "When zoo visitors “connect” with a zoo animal, what does that mean?"
+    ),
+    "14c" = list(
+      moss2015 = "Evaluating the contribution of zoos and aquariums to Aichi Biodiversity Target 1"
+    )
+  ),
+  "15" = list(
+    "15a" = list(
+      lukins2024 = "Access and Inclusion Go to the Zoo"
+    ),
+    "15c" = list(
+      kong2017 = "A community-Based sensory Training Program leads to improved  experience at a local Zoo for children with sensory challenges"
+    )
+  ),
+  "16" = list(
+    "16a" = list(
+      spooner2023 = "The value of zoos for species and society: The need for a new model."
+        )
+      )
+  )
+)
+
+
+agenda <- list(
+  zoobio = list(
+    themes = list(
+      Foundations =
+        list(
+          "Intro to the Course",
+          "Institutions and Oversight"
+        ),
+      Conservation =
+        list(
+          "Headstarting, Rescue, and Rehabilitation",
+          "Assurance Populations"
+        ),
+      Health =
+        list(
+          "Demographics and Genetics",
+          "Reproduction",
+          "Medicine",
+          "Nutrition"
+        ),
+      Other =
+        list(
+          "No Class",
+          "Schedule Buffer",
+          "Exam"
+        ),
+      Behavior =
+        list(
+          "Monitoring and Assessment",
+          "Training and Management",
+          "Environmental Enrichment"
+        ),
+      Society =
+        list(
+          "Community Engagement and Education",
+          "Accessibility and Inclusion",
+          "Public Policy and Advocacy"
+        )
+    ),
+    cancelled = list(
+      ymd("2025-1-21")
+    ),
+    exams = list(
+      "4c"  = "Exam 1",
+      "11c" = "Exam 2",
+      "17c" = "Final Exam"
+    ),
+    topics = list(
+      "1" = list(
+     "1c"  = "Intro to the Course"
+     ),
+     "2"  = list(
+       "2a"  = "Institutions and Oversight",
+       "2b"  = "Institutions and Oversight",
+       "2c"  = "Institutions and Oversight"
+     ),
+     "3" = list(
+       "3a"  = "Headstarting, Rescue, and Rehabilitation",
+       "3b"  = "Headstarting, Rescue, and Rehabilitation",
+       "3c"  = "Assurance Populations"
+     ),
+     "4"  = list("4a"  = "Assurance Populations",
+                 "4b"  = "Assurance Populations"),
+     "5"  = list("5a"  = "Demographics and Genetics",
+                 "5b"  = "Demographics and Genetics",
+                 "5c"  = "Demographics and Genetics"),
+     "6"  = list("6a"  = "Reproduction",
+                 "6b"  = "Reproduction",
+                 "6c"  = "Reproduction"),
+     "7"  = list("7a"  = "Medicine",
+                 "7b"  = "Medicine",
+                 "7c"  = "Medicine"),
+     "8"  = list("8a"  = "Nutrition",
+                 "8b"  = "Nutrition",
+                 "8c"  = "Nutrition"),
+     "10"  = list("10a" = "Schedule Buffer",
+                  "10b" = "Schedule Buffer",
+                  "10c" = "Schedule Buffer"),
+     "11" = list("11a" = "Schedule Buffer",
+                 "11b" = "Schedule Buffer"),
+     "12" = list("12a" = "Monitoring and Assessment",
+                 "12b" = "Monitoring and Assessment",
+                 "12c" = "Monitoring and Assessment"),
+     "13" = list("13a" = "Training and Management",
+                 "13b" = "Training and Management",
+                 "13c" = "Training and Management"),
+     "14" = list("14a" = "Environmental Enrichment",
+                 "14b" = "Environmental Enrichment",
+                 "14c" = "Environmental Enrichment"),
+     "15" = list("15a" = "Community Engagement and Education",
+                 "15b" = "Community Engagement and Education",
+                 "15c" = "Accessibility and Inclusion"),
+     "16" = list("16a" = "Public Policy and Advocacy",
+                 "16b" = "Public Policy and Advocacy",
+                 "16c" = "Public Policy and Advocacy")
+      )
+    ),
+  conbio = list(
+    exams = list(
+      "17a" = "Final Exam"
+    )
+  )
+  )
+
+
+readings  <- readings[[paste0(params$course)]]
+agenda    <- agenda[[paste0(params$course)]]
+exams     <- agenda$exams
+cancelled <-agenda$cancelled
+topics    <- agenda$topics
+themes    <- agenda$themes
+
