@@ -14,18 +14,25 @@ week_text     <- c("#000000")
 
 gt_calendar <- schedule %>%
   mutate(Week = str_glue("Week ", "{Week}")) %>%
-  select(Date, Start, End, Format, Agenda, Reading_Title, file_key, Theme, Week, Day) %>%
+  mutate(Reading_Link = if_else(str_detect(Reading_Title, "None or TBA"), "",
+    paste0("[", course$readings$links, file_key, ".pdf]"))) %>%
+  select(Date, Start, End, Format, Agenda, Reading = Reading_Title, Reading_Link, file_key, Theme, Week, Day) %>%
   gt(groupname_col       = c("Week", "Theme")
   ) %>%
   opt_table_lines(extent = "none") %>%
-  cols_hide(c("Day", "Date", "file_key")) %>%
   fmt_datetime(columns = "Start",
                date_style = "MEd",
                time_style = "hm",
                tz = "American/Central") %>%
-  cols_hide(c("Day", "Date", "End")) %>%
+  fmt_url(columns = "Reading_Link",
+          label = "Download PDF",
+          as_button = TRUE,
+          button_fill = "#AFA099FF",
+          button_width = px(80)) %>%
+  cols_hide(c("Day", "Date", "file_key", "End")) %>%
   cols_label(Start = "Day and Time",
-             Reading_Title = "Assigned Reading") %>%
+             Reading = "Assigned Reading",
+             Reading_Link = "") %>%
   tab_style(style =
               cell_text(weight    = "bold",
                         transform = "uppercase",
@@ -133,8 +140,9 @@ gt_calendar <- schedule %>%
   ) %>%
   cols_width(
     Start ~ px(200),
-    Reading_Title ~ px(400),
-    Agenda ~ px(300)
+    Reading ~ px(400),
+    Reading_Link ~ px(100),
+    Agenda ~ px(250)
   )
 
 
