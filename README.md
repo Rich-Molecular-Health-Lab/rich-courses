@@ -5,11 +5,11 @@ Welcome to the GitHub homepage for **Zoo Biology** and **Conservation Biology**.
 ## Courses
 
 ### Zoo Biology
-- [Schedule](./schedules/Schedule_ZooBioS25.html)
-- [Syllabus](./syllabi/Syllabus_ZooBioS25.html)
+- [Schedule](./schedules/Schedule_ZooBio.html)
+- [Syllabus](./syllabi/Syllabus_ZooBio.html)
 
 ### Conservation Biology
-- [Schedule](./schedules/Schedule_ConsBioS25.html)
+- [Schedule](./schedules/Schedule_ConBio.html)
 - [Syllabus](./syllabi/Syllabus_ConsBioS25.html)
 
 ## How to Use This Repository
