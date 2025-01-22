@@ -1,0 +1,68 @@
+default:
+  setup: "../setup/setup.R"
+  packages: "../setup/packages.R"
+  set_paths: "../setup/set_paths.R"
+  conflicts: "../setup/conflicts.R"
+  functions: "../setup/functions.R"
+  fonts: "../setup/fonts/FA6_Free-Solid-900.otf"
+  inputs: "../setup/inputs.R"
+  graphics: "../graphics/"
+  schedules: "../schedules/"
+  syllabi: "../syllabi/"
+  readings: "../readings/"
+  email: "aliciarich@unomaha.edu"
+  office: "Allwine Hall 413a"
+  lab: "Allwine Hall 501b"
+
+templates:
+  schedule: "../schedules/Schedule_Template.Rmd"
+  syllabus: "../syllabi/Syllabus_Template.Rmd"
+  build_schedule: "../schedules/build_schedule.R"
+  pretty_schedules: "../schedules/pretty_schedules.R"
+
+spring25:
+  agendas: "../schedules/agendas_s25.R"
+  reading_lists: "../schedules/reading_lists.R"
+  officehours: "By appointment Thursdays and Fridays"
+  name: "Spring 2025"
+  start: "2025-1-20"
+  end: "2025-5-9"
+  finals: "2025-5-12"
+
+zoobio:
+  title: "Zoo Biology"
+  readings:
+    links: "https://rich-molecular-health-lab.github.io/rich-courses/readings/zoobio/"
+  days: !expr list(a = "Mon", b = "Tues", c = "Wed")
+  dayid: !expr c("a", "b", "c")
+  agenda: !expr c("Lecture", "Lab", "Exam", "No Class")
+  final: "c"
+  mtgs: !expr c(Lecture = "a", Lecture = "c", Lab = "b")
+  time:
+    start: !expr c("13:00" = "a", "13:00" = "b", "13:00" = "c")
+    end: !expr c("14:15" = "a", "15:50" = "b", "14:15" = "c")
+    final: "12:30"
+  schedule:
+    html: "../schedules/Schedule_ZooBio.html"
+    table: "../schedules/Schedule_ZooBio.tsv"
+  syllabus:
+    html: "../syllabi/Syllabus_ZooBio.html"
+
+conbio:
+  title: "Conservation Biology"
+  topics: "../schedules/topics_conbio.R"
+  readings: "../readings/conbio/"
+  days: !expr list(a = "Mon", b = "Wed")
+  dayid: !expr c("a", "b")
+  agenda: !expr c("Lecture", "Exam", "No Class")
+  final: "a"
+  mtgs: !expr c(Lecture = "a", Lecture = "b")
+  time:
+    start: !expr c("16:00" = "a", "16:00" = "b")
+    end: !expr c("17:15" = "a", "17:15" = "b")
+    final: "17:30"
+  schedule:
+    html: "../schedules/Schedule_ConBio.html"
+    table: "../schedules/Schedule_ConBio.tsv"
+  syllabus:
+    html:  "../syllabi/Syllabus_ConBio.html"

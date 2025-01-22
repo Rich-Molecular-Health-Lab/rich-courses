@@ -1,0 +1,39 @@
+---
+title: "Schedule for `r path$title`"
+author: "Dr. Rich"
+date: "`r term$name`"
+output:
+  html_document:
+    theme:
+      bootswatch: lumen
+    toc: true
+    code_folding: "hide"
+    fig_caption: true
+params:
+  semester: "spring25"
+  course: "zoobio"
+                     
+---
+
+
+```{r, include = FALSE}
+source("../setup/set_paths.R")
+
+source(global$setup)
+source(term$agendas)
+source(templates$build_schedule)
+source(templates$pretty_schedules)
+write.table(schedule, 
+            course$schedule$table, 
+            row.names = F, 
+            sep = "\t")
+```
+
+```{r}
+gt_calendar 
+
+gtsave(gt_calendar, paste0(course$schedule$html))
+```
+
+
+
