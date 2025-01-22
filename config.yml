@@ -24,6 +24,8 @@ templates:
   syllabus: "../syllabi/Syllabus_Template.Rmd"
   build_schedule: "../schedules/build_schedule.R"
   pretty_schedules: "../schedules/pretty_schedules.R"
+  syllabus_tables: "../syllabi/syllabus_tables.R"
+  syllabus_pretty_tables: "../syllabi/syllabus_pretty_tables.R"
   class_culture:
     html: "../graphics/class_culture.html"
     png: "../graphics/class_culture.png"
