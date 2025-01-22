@@ -1,0 +1,569 @@
+---
+title: "Syllabus for Zoo Biology"
+author: "Dr. Rich"
+date: "Spring 2025"
+output:
+  html_document:
+    theme:
+      bootswatch: lumen
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    code_folding: "hide"
+    fig_caption: true
+params:
+  semester: "spring25"
+  course: "zoobio"
+                     
+---
+
+
+```{r, include = FALSE}
+source("../setup/set_paths.R")
+
+source(global$setup)
+source(term$agendas)
+source(templates$build_schedule)
+source(templates$pretty_schedules)
+write.table(schedule, 
+            course$schedule$table, 
+            row.names = F, 
+            sep = "\t")
+```
+
+
+# <span class="hidden-heading">Setup</span>
+
+
+## <span class="hidden-heading">Constructing Tables</span>
+
+```{r learning-outcomes-tbl, message=FALSE, warning=FALSE, include=FALSE}
+learning.outcomes <- tribble(
+  ~Level            ,      ~Outcome           ,
+  "Remember" ,    "Identify and recall key concepts and terminology related to zoo biology, such as taxonomic classifications, animal behavior terms, and basic biological principles." ,
+  "Understand"   ,    "Explain the fundamental theories and principles of zoo biology, including the importance of biodiversity conservation and the role of zoos in wildlife conservation efforts." ,
+  "Apply" , "Apply their knowledge of zoo biology to analyze and solve real-world problems related to animal care, exhibit design, and wildlife conservation strategies within a controlled zoo environment.",
+  "Analyze" , "Evaluate the ethical and practical considerations involved in managing zoo populations, critically assess the impact of human activities on animal habitats, and propose evidence-based solutions for enhancing animal welfare and conservation efforts."
+) %>%
+  gt(rowname_col = "Level") %>%
+  cols_label(Outcome ~ "Students will be able to...") %>%
+  tab_stubhead(label = "Level") %>%
+  opt_table_lines(extent = "none") %>%
+  tab_style(style = list(
+                        cell_fill(color    = "#84697FFF"),
+                        cell_text(size     = "large",
+                                  color    = "#E8EADFFF",
+                                  weight   = "bolder",
+                                  align    = "left"),
+                        cell_borders(sides = c("top", "bottom"))),
+            locations = list(cells_column_labels(), cells_stubhead())) %>%
+  tab_style(style = list(
+                        cell_fill(color    = "#84697F40"),
+                        cell_text(
+                                  weight   = "bold",
+                                  align    = "left")),
+            locations = cells_stub()) %>%
+  tab_style(style = list(
+                        cell_fill(color    = "#84697F40"),
+                        cell_text(
+                                  align    = "left")),
+            locations = cells_body()) %>%
+  tab_header(title = "Learning Objectives") %>%
+  tab_style(style = list(
+                    cell_text(size   = "x-large",
+                              align  = "left",
+                              weight = "bolder")),
+            locations = cells_title()) %>%
+  cols_width(stub()        ~ px(300),
+             Outcome       ~ px(500))
+
+gtsave(learning.outcomes, course$slos$html)
+gtsave(learning.outcomes, course$slos$png)
+```
+
+```{r grade-breakdown-tbl, message=FALSE, warning=FALSE, include=FALSE}
+grade.breakdown <- tribble(
+  ~Format                   ,    ~Points_each     ,   ~Count  , ~N_dropped   ,
+  "Quizzes"                 ,    3                ,   12      ,  2           ,
+  "Exams"                   ,    50               ,   3       ,  0           ,
+  "Interview Prep"          ,    5                ,   12      ,  1           ,
+  "Interview Moderating"    ,    20               ,   1       ,  0           ,
+  "Lab Assignments"         ,    15               ,   10      ,  1           ) %>%
+  mutate(Points_total = (Count - N_dropped) * Points_each) %>%
+  mutate(Percent_total = Points_total/sum(Points_total)) %>%
+  arrange(Percent_total) %>%
+  select(Format, Points_each, Count, N_dropped, Points_total, Percent_total) %>%
+
+gt(rowname_col = "Format") %>%
+  tab_stubhead(label = "Format") %>%
+  cols_label(Points_each   ~ "Points",
+             Count         ~ "Count",
+             N_dropped     ~ "Drops",
+             Points_total  ~ "Total",
+             Percent_total ~ "% Total") %>%
+  fmt_percent(columns  = Percent_total,
+              decimals = 0) %>%
+  opt_table_lines(extent = "none") %>%
+  tab_style(style = list(cell_borders(color   = "#43475BFF",
+                                      sides   = c("top", "bottom"),
+                                      style   = "double"),
+                         cell_text(stretch = "ultra-condensed",
+                                   size    = "small",
+                                   weight  = "bold",
+                                   style   = "oblique",
+                                   align   = "right")),
+            locations = list(cells_stubhead(), cells_column_labels())) %>%
+  tab_style(style = list(cell_fill(color   = "#E8EADFFF"),
+                         cell_borders(sides = "bottom",
+                                      color = "#43475BFF",
+                                      style = "double"),
+                         cell_text(align   = "right",
+                                   weight  = "bold",
+                                   size    = "large")),
+            locations = list(cells_stub(), cells_body(columns = Percent_total))) %>%
+  tab_style(style = list(cell_fill(color   = "#E8EADFFF"),
+                         cell_borders(sides = "bottom",
+                                      color = "#43475BFF",
+                                      style = "double"),
+                         cell_text(align   = "right",
+                                   size    = "large")),
+            locations = cells_body(columns = !Percent_total)) %>%
+  tab_footnote(md(
+"These assignments will focus on specialized skills in Zoo Biology. They will be due at the start of lab on the deadline and submitted through Canvas."
+), locations = cells_stub(rows = Format == "Assignments")) %>%
+  tab_footnote(md(
+"These are short quizzes given at the start of class to assess your preparation for the week's topic."
+), locations = cells_stub(rows = Format == "Quizzes")) %>%
+  tab_footnote(md(
+"Number (if any) of lowest scores that will automatically be dropped from your final grade"
+), locations = cells_column_labels(columns = N_dropped)) %>%
+  tab_footnote(md(
+"You will take three exams (including the final). You will be allowed to use hard copy notes/materials for each, but not electronic resources."
+), locations = cells_stub(rows = Format == "Exams")) %>%
+  tab_style(style     = cell_text(size = "small"),
+            locations = cells_footnotes()) %>%
+  cols_width(stub()        ~ px(120),
+             Points_each   ~ px(85),
+             Count         ~ px(85),
+             N_dropped     ~ px(85),
+             Points_total  ~ px(85),
+             Percent_total ~ px(100))
+gtsave(grade.breakdown, course$grade_breakdown$html)
+gtsave(grade.breakdown, course$grade_breakdown$png)
+```
+
+
+```{r quiz-rubric-tbl, message=FALSE, warning=FALSE, include=FALSE}
+quiz.rubric <- tribble(
+  ~Score,   ~Standard,
+  0     ,   "Nothing submitted." ,
+  1     ,   "Response suggests the student is not familiar with any of the background content." ,
+  2     ,   "Response suggests the student reviewed some of the material but did not fully comprehend or has not thought critically about it." ,
+  3     ,   "Response suggests the student has reviewed the background material and came to class prepared to engage in a thoughtful discussion.") %>%
+  gt(rowname_col = "Score") %>%
+  opt_table_lines("none") %>%
+  tab_header(title = "Quiz Rubric", subtitle = "The assessment system will be broad, so each quiz will only recieve a 0, 1, 2, or 3 as an assessment of the student's basic preparation level for the class.") %>%
+  tab_stubhead("Score") %>%
+  cols_label(Standard ~ "Standard Met by Response") %>%
+  tab_source_note(md("***I will automatically drop every student's lowest 3 scores for these quizzes. So if you do miss 3 quizzes for any reason (e.g., tardiness, absence), your grade will not be penalized.***")) %>%
+  tab_style(style = list(cell_fill(color  = "#CBB593FF"),
+                         cell_borders(sides = c("top", "bottom")),
+                         cell_text(color  = "#43475BFF",
+                                   weight = "bold",
+                                   size   = "large",
+                                   align  = "left",
+                                   stretch = "condensed")),
+            locations = list(cells_column_labels(), cells_stubhead())) %>%
+  tab_style(style = list(
+                      cell_fill(color = "#CBB593FF"),
+                      cell_borders(sides = c("top", "bottom"),
+                                   color = "#43475BFF"),
+                      cell_text(color  = "#43475BFF",
+                                size = "x-large",
+                              align  = "left",
+                              weight = "bolder")),
+            locations = cells_title(groups = "title")) %>%
+  tab_style(style = list(
+                    cell_fill(color = "#CBB59340"),
+                    cell_text(align = "left",
+                              color = "#43475BFF")),
+            locations = list(cells_title(groups = "subtitle"), cells_source_notes())) %>%
+  tab_style(style = list(cell_fill(color = "#CBB59340"),
+                         cell_text(color  = "#43475BFF"),
+                         cell_borders(sides = "bottom",
+                                      color = "#CBB593FF"),
+                         cell_text(align = "left")),
+            locations = cells_body()) %>%
+  tab_style(style = list(cell_fill(color  = "#CBB59340"),
+                         cell_borders(sides = "bottom",
+                                      color = "#CBB593FF"),
+                         cell_text(color  = "#43475BFF",
+                                   align  = "center",
+                                   size   = "large",
+                                   weight = "bold")),
+            locations = cells_stub())
+gtsave(quiz.rubric, course$quiz_rubric$html)
+gtsave(quiz.rubric, course$quiz_rubric$png)
+```
+
+```{r class-culture-tbl, message=FALSE, warning=FALSE, include=FALSE}
+class.culture <- tribble(
+  ~Value           ,  ~Rule                                                                                          , ~Icon         ,
+  "1. Authenticity"   , "Speak up if you are confused or struggling."                                                   , "circle-check",
+  "1. Authenticity"   , "Attempt to manipulate or mislead your instructors or classmates."                              , "ban"         ,
+  "1. Authenticity"   , "Be honest with yourself about your needs & capabilities."                                      , "circle-check",
+  "1. Authenticity"   , "Hide or deny your biases or areas for growth."                                                 , "ban"         , 
+  "1. Authenticity"   , "Use tools like AI and collaboration with integrity."                                           , "circle-check", 
+  "1. Authenticity"   , "Present direct results from AI tools like ChatGPT as your own work."                           , "ban"         ,  
+  "1. Authenticity"   , "Take full personal responsibility for mistakes or missed opportunities."                       , "circle-check", 
+  "1. Authenticity"   , "Deflect blame or redirect responsibilities on your instructor or your classmates."             , "ban"         ,  
+  "2. Curiosity"      , "Use the readings and assignments as a guide."                                                  , "circle-check", 
+  "2. Curiosity"      , "Let the syllabus limit your investigation."                                                    , "ban"         , 
+  "2. Curiosity"      , "Ask thoughtful questions of yourself, your instructor, and your colleagues."                   , "circle-check", 
+  "2. Curiosity"      , "Expect me to fill your brain with facts for you to recall."                                    , "ban"         , 
+  "2. Curiosity"      , "Bring your ideas to my attention."                                                             , "circle-check", 
+  "2. Curiosity"      ,  "Assume I will not be open to changing or expanding your options."                             , "ban"         , 
+  "3. Inclusion"      , "Make space for your colleagues to gain just as much as you."                                   , "circle-check", 
+  "3. Inclusion"      , "Dominate discussions."                                                                         , "ban"         , 
+  "3. Inclusion"      , "Maintain awareness and openness to seeing your bias and privilege."                            , "circle-check", 
+  "3. Inclusion"      , "Assume everyone will share your perspectives or background."                                   , "ban"         , 
+  "3. Inclusion"      , "Bring your barriers to my attention so I can help you navigate them."                          , "circle-check", 
+  "3. Inclusion"      , "Assume only you are navigating barriers or that barriers are insurmountable with cooperation." , "ban"         ) %>%
+  arrange(Value, desc(Icon)) %>%
+  
+  gt(rowname_col = "Icon", groupname_col = "Value") %>%
+  opt_table_lines(extent = "none") %>%
+  tab_header(title = "Classroom Culture", subtitle = "The following three values form the foundation of my classroom culture and expectations:") %>%
+  
+  tab_style(style     = list(cell_text(size   = "x-large",
+                                       align  = "left",
+                                       weight = "bold",
+                                       v_align = "bottom")),
+            locations = cells_title(groups    = "title")) %>%
+  tab_style(style     = list(cell_text(style   = "italic",
+                                       align   = "left",
+                                       v_align = "bottom")),
+            locations = cells_title(groups    = "subtitle")) %>%
+  
+  tab_style(style     = list(
+                        cell_fill(color    = "#C48329FF"),
+                        cell_borders(sides = "top",
+                                     color = "black",
+                                     weight = px(3),
+                                     style = "double"),
+                        cell_text(weight    = "bold",
+                                  color     = "white",
+                                  transform = "uppercase",
+                                  size      = "large",
+                                  stretch   = "expanded",
+                                  style     = "oblique")),
+            locations = cells_row_groups()) %>%
+  
+  tab_style(style = cell_fill(color = "#514A2E40"),
+            locations = cells_body(rows = Icon == "circle-check")) %>%
+  
+  tab_style(style = cell_fill(color = "#8E411540"),
+            locations = cells_body(rows = Icon == "ban")) %>%
+  
+  tab_style(style     = list(cell_text(weight   = "bold"),
+                             cell_borders(sides = "bottom")),
+            locations = cells_column_labels()) %>%
+  
+  cols_align(align = "left") %>%
+  
+  fmt_icon(columns = stub(),
+           rows         = Icon == "circle-check",
+           height       = "1em",
+           fill_color   = "#514A2EFF") %>%
+  fmt_icon(columns = stub(),
+           rows         = Icon == "ban",
+           height       = "1em",
+           fill_color   = "#8E4115FF") %>%
+  
+  tab_style(style = list(cell_fill(color = "#514A2E40"),
+                         cell_text(weight = "bolder")),
+            locations = cells_stub(rows = Icon == "circle-check")) %>%
+  
+  tab_style(style = list(cell_fill(color = "#8E411540"),
+                         cell_text(weight = "bolder")),
+            locations = cells_stub(rows = Icon == "ban")) %>%
+  cols_label(Rule  ~ "")
+
+gtsave(class.culture, templates$class_culture$html)
+gtsave(class.culture, templates$class_culture$png)
+```
+
+```{r resources-tbl, message=FALSE, warning=FALSE, include=FALSE}
+resources <- tribble(
+  ~Name    ,   ~Link      ,                                                                        ~Comment  ,
+  "Journals", github$readings,  "I will post pdf files to this link and canvas.",
+  "Canvas" , "https://unomaha.instructure.com/courses/81170"                               ,  "You must review Canvas regularly. For technical support, please use Canvas Student Support.",
+  "Course Website", github$main, "I maintain a dynamic schedule and other materials through my lab's github site. These materials update automatically to their linked page on canvas." 
+) %>%
+  mutate(Resource = str_glue(fixed("["), "{Name}", fixed("]("), "{Link}", fixed(")"))) %>%
+  mutate(image = case_when(Name == "Journals"       ~ paste0(global$graphics, "journals.jpg"),
+                           Name == "Canvas"         ~ paste0(global$graphics, "logo_canvas.png"),
+                           Name == "Course Website" ~ paste0(global$graphics, "logo_git.png"))) %>%
+  select(image, Resource, Comment, Name)
+
+necessary.resources <- resources %>%
+gt(rowname_col = "image") %>%
+  cols_label(Comment ~ "How to access or get help...",
+             Resource ~ "Resources") %>%
+  fmt_markdown(columns = "Resource") %>%
+  fmt_image(columns = stub()) %>%
+  opt_table_lines(extent = "none") %>%
+  tab_style(style = list(
+                        cell_fill(color    = "#E8EADFFF"),
+                        cell_text(size     = "large",
+                                  color    = "#43475BFF",
+                                  weight   = "bold",
+                                  align    = "left",
+                                  stretch  = "condensed"),
+                        cell_borders(sides = c("top", "bottom"))),
+            locations = cells_column_labels()) %>%
+  tab_style(style = list(
+                        cell_fill(color    = "#E8EADFFF"),
+                        cell_text(size     = "large",
+                                  color    = "#43475BFF",
+                                  weight   = "bold",
+                                  align    = "left"),
+                        cell_borders(sides = c("top", "bottom"))),
+            locations = cells_stubhead()) %>%
+  
+  tab_style(style = list(
+                        cell_fill(color    = "#E8EADF40"),
+                        cell_text(v_align = "middle")),
+            locations = list(cells_body(), cells_stub())) %>%
+  
+  cols_align(align = "right",   columns = stub()) %>%
+  cols_align(align = "left",   columns = Resource) %>%
+  
+  tab_header(title = "Summary of Required Course Materials") %>%
+  
+  tab_style(style = list(
+                    cell_text(size   = "x-large",
+                              align  = "left",
+                              weight = "bolder")),
+            locations = cells_title()) %>%
+  
+  tab_footnote(md(
+  "There is live chat-based support for students [available online](https://cases.canvaslms.com/liveagentchat?chattype=student&sfid=Wu2Pmk3GRxnkttxWmk98UaS5AZZmI4nk4U8x7cCG), or you may call the hotline +1-844-691-2290 instead."), 
+  locations = cells_body(columns = Comment, rows = Name == "Canvas")) %>%
+  cols_hide(columns = Name) %>%
+  cols_width(stub()   ~ px(50),
+             Resource ~ px(100),
+             Comment  ~ px(700))
+
+
+gtsave(necessary.resources, course$resources$html)
+gtsave(necessary.resources, course$resources$png)
+```
+
+# General Information
+
+## This Course Meets:
+
+### Lectures:
+- **Weekly, on Mondays and Wednesdays**
+  - From 1:00 - 2:15 PM in Allwine Hall
+- **Weekly, on Tuesdays**
+  - From 1:00 - 3:50 PM in Allwine Hall
+  
+## Prerequisites
+
+- BIOL 1450, 1750, 2140 and Junior-Senior in biology. Not open to non-degree graduate students.
+
+## Course Description
+
+>Zoo Biology is an engaging and comprehensive undergraduate course designed to explore the fascinating world of wildlife biology and the intricate relationships between animals, their environments, and conservation efforts within zoological settings. This course delves into the core principles of animal biology, behavior, and management, providing students with a strong foundation in the specialized field of zoo science.
+
+## Course Website
+
+You will participate in this course using the UNO Canvas learning management platform. Once on the platform, you can learn how to use Canvas effectively by clicking the “Help” link on the top right of the course page on Canvas.
+
+## Instructor
+
+### Alicia M. Rich, Ph.D., Assistant Professor of Biology
+
+```{r, out.width = "25%"}
+include_graphics(global$headshot)
+```
+
+- *Please call me:* Dr. Rich or Professor Rich (she/her)
+- aliciarich@unomaha.edu
+  - **Please do not use Canvas messages to contact me. I will not monitor those.**
+- *Office:* Allwine Hall Room 413
+- *Office Hours:* By appointment on Thursdays and Fridays
+  - I will return your emails within 48 business hours, but I may not check my email during evenings or weekends. If you are still waiting for a response after three business days, please reach out again.
+  - If you would like to schedule an in-person meeting, please request this at least 48 hours in advance. I do not schedule student meetings outside regular workday hours *(M-F, 9-5)*, so please do not ask me to meet with you in the evenings or on weekends.
+
+# Detailed Information
+
+```{r}
+include_graphics(paste0(global$graphics, "greys-anatomy-miranda-bailey.gif"))
+
+learning.outcomes
+```
+
+## Course Materials
+
+```{r}
+necessary.resources
+```
+
+## Course Schedule
+
+```{r}
+gt_calendar
+```
+
+
+## Assignments
+
+All assignments are listed in the course schedule (above). Most will be assigned reading from academic journals, but you will also complete a series of laboratory exercises over the course of the semester. You will submit the exercise from each week by the start of the following lab.
+
+```{r}
+include_graphics(paste0(global$graphics, "homework-emily-cooper.gif"))
+
+```
+
+### Explanation of Interview Assignments
+
+>Zoo Biology is an applied discipline that encompasses a much broader range of careers and expertise than most realize.
+
+- We will take a tour of some of these careers and interests by interviewing a series of experts from Henry Doorly Zoo and other institutions.
+  - You will be the drivers of these sessions, which means I expect you to do your own critical thinking and preparation before our meeting with a given expert. Each of you will post a set of potential interview questions for each guest, which we will discuss as a class.
+  - One small group of students will be in charge of compiling and revising the question list for every  guest and then moderating our class interview with them.
+
+```{r}
+include_graphics(paste0(global$graphics, "were-knee-deep-in-this-now-johnny.gif"))
+
+```
+
+
+## Readings
+
+All assigned readings will come from journals and other online materials, and they are listed in the schedule below. We will use our class time to work together on some of the most important or challenging concepts, but this will not be a substitute for reading and studying the material on your own.
+  
+  
+***You should be prepared to answer quiz questions on anything from the assigned readings starting on the deadline listed in the schedule.***
+
+
+# Expectations & Assessment
+
+## Attendance
+
+>This is not an online or hybrid course.
+  - I designed the curriculum and objectives specifically with that in mind, so to succeed you must attend and engage with every scheduled meeting. **You will not pass this class if you are unable to attend and take your own notes.**
+  
+Absences may only be truly *excused* if they have been registered through the Accessibility Services Center. Please do not provide me with any personal or medical details to explain your barriers to attendance or assignment completion. While I do care about accommodating these issues when they arise, I also care about your privacy and respect that office's expertise in managing the conditions and complications that are outside of my purview. I do my best to integrate a reasonable and universal degree of flexibility into our schedule and assessment plan to accommodate some work/life balance while also ensuring equity and reasonable progress in your learning. I am happy to recieve requests and recommendations to help me update and improve this approach for everyone, but I will only create personalized accommodations by working directly with the ASC.  
+
+  
+>Please also know that I genuinely appreciate opportunities to work with and around student barriers by collaborating with the ASC. If you know that you are coming into the semester with learning barriers (e.g., neurodivergence, visual/auditory processing differences), I strongly encourage you to register this with their office and then communicate with me about the ways I can work this into my approach from the beginning.
+
+### How to Earn that Grade
+
+```{r}
+include_graphics(paste0(global$graphics, "ready-to-slay-buffy.gif"))
+
+grade.breakdown
+```
+
+### Preparation Quizzes 
+
+**Many of our class meetings will begin with a short assessment of your preparation for that week's materials.**
+
+  - These quizzes will only serve as an incentive to ensure widespread accountability for engaging with our discussions and keeping up with the assigned background material. I will ask 1-2 questions that require you to provide a surface-level reflection on some component of the assigned material in no more than 1-3 sentences.
+  
+Please arrive to each class on time, having completed the assigned background material for that week and brought a writing utencil. If you arrrive after a quiz is over, I will not interrupt the class to give you the quiz, and I will not let you take the quiz after recieving additional information that the others did not access before taking theirs.
+
+```{r}
+quiz.rubric  
+```
+
+### Late Assignments
+
+While I prefer to implement as flexible a deadline policy as possible, I also have to maintain reasonable processing times for assessing every student's submissions and submitting grades.
+  
+>**To incentivize timely submissions, I will deduct 10% from the final grade on any assignment submitted after the deadline.** I will not accept any work from the first half of the semester submitted after our Midterm Exam, and I will not accept any work from the second half of the semester submitted after 5:00 PM on the last Friday of classes (i.e., the Friday before final exams begin). Unless Accessibility Services reaches out to discuss extremely extenuating circumstances with me, I will not make any exceptions to grade your work after the Final Exam.
+  
+If you have arranged formal accommodation requests through Accessibility Services for your assignment deadlines (see Section on University Policies below), then I will be happy to honor those to my full ability. **Please do not hesitate to remind me if that is the case and I inadvertently apply any late penalties to a grade.**
+
+
+### Additional Expectations
+
+```{r}
+include_graphics(paste0(global$graphics, "rory_grades.gif"))
+
+class.culture
+```
+
+### Engagement
+
+>You will only succeed in this class if you take full responsibility for your processing and retention of the content.
+  
+In other words, you need to develop and refine your own process of taking notes and maintaining records to process class content in real-time and retain key points after you leave.
+  
+While I am deeply committed to open science, I believe that open access to teaching materials has deincentized this important facet of classroom engagement (notetaking, that is). As a result, you should not expect to access any and all slides and other teaching materials for this class in any asynchronous format (e.g., posting my slides to canvas or emailing them after class). I will provide some general class Agendas/Outlines to help guide your note-taking early in the semester, and you are more than welcome to take pictures of the slides during class or use other forms of recording to help you later, but you must attend class and pay attention to grasp the key concepts and decide which ideas or concepts are worth noting for later.
+  
+This also means that if you miss class, you should rely on **reciprocal** collaboration with your classmates, if they are willing to share their notes with you. This is also an important skill for learning how to work on teams and collaborate with colleagues for long-term success. ***If you do miss class, please, do not ask me to provide a comprehensive written or oral record of what you missed.*** Work directly with Accessibility Services if legitimate barriers arise, and then I will arrange official make-up options for you.
+
+
+# University Policies
+
+## Accommodations
+The University of Nebraska at Omaha is committed to providing reasonable accommodations for all persons with disabilities. This syllabus is available in alternate formats upon request. Reasonable accommodations are offered to students who are registered with the [Accessibility Services Center (ASC)](https://www.unomaha.edu/student-life/accessibility/index.php), and their requests are made sufficiently in advance. 
+
+>**For more information, contact ASC.**
+>**Location**: 104 H&K  
+>**Phone**: 402.554.2872  
+>**Email**: unoaccessibility@unomaha.edu.  
+
+## Academic Integrity
+**Plagiarism and cheating of any kind on an examination, quiz, or assignment will result at least in an "F" for that assignment** (and may, depending on the severity of the case, lead to an "F" for the entire course) and may be subject to appropriate referral to the Office of Academic and Student Affairs for further action. I will assume that for this course, you will adhere to the University of Nebraska at Omaha policies and maintain the highest academic integrity standards. In other words, don't cheat by giving answers to others or taking them from anyone else. I will also adhere to the highest standards of academic integrity, so please do not ask me to change (or expect me to change) your grade illegitimately or to bend or break the rules for one person that will not apply to everyone.  
+  
+## Title IX Sexual Misconduct
+As your instructor, one of my responsibilities is to help create a safe learning environment on our campus. Title IX and our Sexual Misconduct policy prohibit sexual misconduct.  If you have experienced sexual misconduct or know someone who has, the University can help. I encourage you to [visit the Title IX website to learn more](https://www.unomaha.edu/university-compliance/civil-rights/title-ix-information/index.php).  If you seek help and want to speak to someone confidentially, you can contact the [Counseling and Psychological Services (CAPS)](https://www.unomaha.edu/student-life/wellness/counseling-and-psychological-services/index.php).  
+  
+**It is also crucial that you know that federal regulations and University policy require me to promptly convey any information about potential sexual misconduct known to me to UNO’s Title IX Coordinator.**  In that event, they will work with a few others on campus to ensure appropriate measures are taken, and resources are available to the student who may have been harmed.  Protecting a student’s privacy is of utmost concern, and all involved will only share information with those who need to know to ensure the University can respond and assist.
+
+
+## Office of Student Leadership, Involvement, and Inclusion
+
+>The university's former Gender and Sexuality Resource Center has been reorganized to form a more intersectional program.
+  
+his office is meant as a space for students to learn from each other, build relationships, and foster an environment of understanding and respect. If you are interested in contributing to or benefiting from their work to make UNO a more inclusive environment or you find yourself in need of support and resources, I recommend you start with a visit to their office. You can find them in rooms 112 and 113 of the Milo Bail Student Center or [online.](https://www.unomaha.edu/office-of-student-leadership-involvement-and-inclusion/)
+
+## Code of Student Rights, Responsibilities, and Conduct
+
+Students at the University of Nebraska Omaha are expected to maintain standards of personal integrity per institutional goals for the success of all students. This means students are expected to assume responsibility for their actions, observe national, state, and local laws, follow university policies, and respect the rights and property of all people. For more information, [see Student Conduct and Community Standards.](https://www.unomaha.edu/student-life/student-conduct-and-community-standards/index.php)
+
+## Grading Policies
+
+### Grade Appeal
+
+Individuals who believe that their grade in a particular course does not properly reflect their performance or that the instructor acted arbitrarily or capriciously in determining the grade should first contact the instructor to determine the rationale for the grade or if there was an error in reporting. Consultation with the instructor should occur before formal action regarding a grade appeal.  
+  
+After the instructor has provided the rationale for the grade in question and has indicated that no error in reporting was made, the individual may petition the department/school for reconsideration. In such instances, the student should contact the department chair/school director to obtain information on the procedures to follow in requesting an appeal at the department/school level.  
+
+>The grade appeal process exists to correct inadvertent errors or misunderstandings about your grade, not to extend the term we've been given to work together for this class. ***Please, do not contact me after the final grade deadline to request an opportunity to revise, resubmit, or update work that has already been properly assigned, assessed, and graded unless you have already worked directly with the Accessibility Services Center and reached out to me at their recommendation.*** I will not consider any continued work on your progress in this course or attention to your materials without extremely extenuating circumstances. If you regret your performance in the class or opportunities you have missed and would like a second chance, I encourage you to re-enroll the next time I am teaching this course and follow the same standards and policies as your classmates.
+
+### Dropping a Course  
+
+A class can be dropped from your schedule via MavLINK until the last day to withdraw.  The last day to withdraw can be [found on the Academic Calendar](https://www.unomaha.edu/registrar/academic-calendar.php). You can click the "refund" link next to each class in your schedule if you are enrolled.  You can also contact the Office of the University Registrar to verify the last day to withdraw.  
+  
+Drops can only be completed in your course's 100% refund period. If you drop the course from your schedule during this period, it will not be listed on your academic transcript. Withdraws can be completed until the last day to withdraw for the semester.  **If you withdraw from a course, a grade of "W" is given for that course, which will be listed on your academic transcript.  "W" grades have no impact on your academic GPA.** 
+
+
+## Other Notices
+
+### Right of Revision
+
+*The instructor reserves the right to revise or adjust the course syllabus best to accommodate the pace and needs of the students.*
+  
+
+### Fair Use Policy
+
+*Copying or recording synchronous classes and asynchronous course materials without the express prior approval of Dr. Rich is prohibited. All copies and recordings remain the property of UNO and Dr. Rich. UNO and Dr. Rich reserve the right to retrieve, inspect, or destroy them after their intended use. These policies are not intended to affect the rights of students with disabilities under applicable law or UNO policies.*
