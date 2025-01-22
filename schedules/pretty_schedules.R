@@ -15,7 +15,7 @@ week_text     <- c("#000000")
 gt_calendar <- schedule %>%
   mutate(Week = str_glue("Week ", "{Week}")) %>%
   mutate(Reading_Link = if_else(str_detect(Reading_Title, "None or TBA"), "",
-    paste0("[", course$readings$links, file_key, ".pdf]"))) %>%
+    paste0("[", github$readings, file_key, ".pdf]"))) %>%
   select(Date, Start, End, Format, Agenda, Reading = Reading_Title, Reading_Link, file_key, Theme, Week, Day) %>%
   gt(groupname_col       = c("Week", "Theme")
   ) %>%

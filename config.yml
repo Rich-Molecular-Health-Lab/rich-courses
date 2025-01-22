@@ -13,12 +13,22 @@ default:
   email: "aliciarich@unomaha.edu"
   office: "Allwine Hall 413a"
   lab: "Allwine Hall 501b"
+  headshot: "../graphics/Headshot.png"
+
+github:
+  main: "https://rich-molecular-health-lab.github.io/rich-courses/"
+  readings: "https://rich-molecular-health-lab.github.io/rich-courses/readings/"
 
 templates:
   schedule: "../schedules/Schedule_Template.Rmd"
   syllabus: "../syllabi/Syllabus_Template.Rmd"
   build_schedule: "../schedules/build_schedule.R"
   pretty_schedules: "../schedules/pretty_schedules.R"
+  class_culture:
+    html: "../graphics/class_culture.html"
+    png: "../graphics/class_culture.png"
+  css:
+    syllabus: "../setup/syllabus.css"
 
 spring25:
   agendas: "../schedules/agendas_s25.R"
@@ -31,8 +41,18 @@ spring25:
 
 zoobio:
   title: "Zoo Biology"
-  readings:
-    links: "https://rich-molecular-health-lab.github.io/rich-courses/readings/"
+  grade_breakdown:
+    html: "../graphics/zoobio_gradebreakdown.html"
+    png: "../graphics/zoobio_gradebreakdown.png"
+  slos:
+    html: "../graphics/zoobio_slos.html"
+    png: "../graphics/zoobio_slos.png"
+  quiz_rubric:
+    html: "../graphics/zoobio_quiz_rubric.html"
+    png: "../graphics/zoobio_quiz_rubric.png"
+  resources:
+    html: "../graphics/zoobio_resources.html"
+    png: "../graphics/zoobio_resources.png"
   days: !expr list(a = "Mon", b = "Tues", c = "Wed")
   dayid: !expr c("a", "b", "c")
   agenda: !expr c("Lecture", "Lab", "Exam", "No Class")
