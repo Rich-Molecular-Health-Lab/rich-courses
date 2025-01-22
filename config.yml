@@ -32,7 +32,7 @@ spring25:
 zoobio:
   title: "Zoo Biology"
   readings:
-    links: "https://rich-molecular-health-lab.github.io/rich-courses/readings/zoobio/"
+    links: "https://rich-molecular-health-lab.github.io/rich-courses/readings/"
   days: !expr list(a = "Mon", b = "Tues", c = "Wed")
   dayid: !expr c("a", "b", "c")
   agenda: !expr c("Lecture", "Lab", "Exam", "No Class")
