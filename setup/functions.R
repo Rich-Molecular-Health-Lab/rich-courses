@@ -52,17 +52,3 @@ format_schedule <- function(tibble) {
   return(tbl)
 }
 
-link_reading <- function(file_key) {
-  download_link(
-    link = paste0(course$readings$links, file_key, ".pdf"),
-    button_label = "Download PDF",
-    button_type = "danger",
-    has_icon = TRUE,
-    icon = "fa fa-save",
-    self_contained = FALSE
-  )
-}
-
-
-
-

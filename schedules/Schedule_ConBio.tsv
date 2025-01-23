@@ -1,34 +1,34 @@
-"Theme"	"Week"	"Date"	"Day"	"Format"	"Agenda"	"Start"	"End"	"Reading_Title"	"file_key"
-NA	1	2025-01-20	"1a"	"Lecture"	"No Class"	2025-01-20 16:00:00	2025-01-20 17:15:00	"None or TBA"	"None or TBA"
-NA	1	2025-01-22	"1b"	"Lecture"	"Intro to the Class"	2025-01-22 16:00:00	2025-01-22 17:15:00	"None or TBA"	"None or TBA"
-"Foundations of Conservation Biology"	2	2025-01-27	"2a"	"Lecture"	"Biodiversity Concepts and Measurement: Genetic Diversity"	2025-01-27 16:00:00	2025-01-27 17:15:00	"Biodiversity Concepts and Measurement: Genetic Diversity"	"53:57"
-"Foundations of Conservation Biology"	2	2025-01-29	"2b"	"Lecture"	"Biodiversity Concepts and Measurement: Species Diversity"	2025-01-29 16:00:00	2025-01-29 17:15:00	"Biodiversity Concepts and Measurement: Species Diversity"	"58:66"
-"Foundations of Conservation Biology"	3	2025-02-03	"3a"	"Lecture"	"Biodiversity Concepts and Measurement: Community and Ecosystem Diversity"	2025-02-03 16:00:00	2025-02-03 17:15:00	"Biodiversity Concepts and Measurement: Community and Ecosystem Diversity"	"67:80"
-"Importance of Biodiversity"	3	2025-02-05	"3b"	"Lecture"	"Biodiversity and Ecosystem Services"	2025-02-05 16:00:00	2025-02-05 17:15:00	"Biodiversity and Ecosystem Services"	"141:180"
-"Threats to Biodiversity"	4	2025-02-10	"4a"	"Lecture"	"Extinction: Global Patterns of Endangerment, Local Changes in Biodiversity"	2025-02-10 16:00:00	2025-02-10 17:15:00	"Extinction: Global Patterns of Endangerment, Local Changes in Biodiversity"	"215:239"
-"Threats to Biodiversity"	4	2025-02-12	"4b"	"Lecture"	"Extinction: Controls of Extinction Risk"	2025-02-12 16:00:00	2025-02-12 17:15:00	"Extinction: Controls of Extinction Risk"	"240:248"
-NA	5	2025-02-17	"5a"	"Lecture"	"Exam"	2025-02-17 16:00:00	2025-02-17 17:15:00	"None or TBA"	"None or TBA"
-NA	5	2025-02-19	"5b"	"Lecture"	"Film Day"	2025-02-19 16:00:00	2025-02-19 17:15:00	"None or TBA"	"None or TBA"
-"Threats to Biodiversity"	6	2025-02-24	"6a"	"Lecture"	"Habitat Loss and Fragmentation"	2025-02-24 16:00:00	2025-02-24 17:15:00	"Habitat Loss and Fragmentation"	"249:276"
-"Threats to Biodiversity"	6	2025-02-26	"6b"	"Lecture"	"Habitat Degradation"	2025-02-26 16:00:00	2025-02-26 17:15:00	"Habitat Degradation"	"277:284"
-"Threats to Biodiversity"	7	2025-03-03	"7a"	"Lecture"	"Metapopulations and Landscape Mosaics"	2025-03-03 16:00:00	2025-03-03 17:15:00	"Metapopulations and Landscape Mosaics"	"285:292"
-"Threats to Biodiversity"	7	2025-03-05	"7b"	"Lecture"	"Overexploitation"	2025-03-05 16:00:00	2025-03-05 17:15:00	"Overexploitation"	"293:321"
-"Threats to Biodiversity"	8	2025-03-10	"8a"	"Lecture"	"Overexploitation"	2025-03-10 16:00:00	2025-03-10 17:15:00	"Overexploitation"	"322:328"
-"Threats to Biodiversity"	8	2025-03-12	"8b"	"Lecture"	"Invasive Alien Species"	2025-03-12 16:00:00	2025-03-12 17:15:00	"Invasive Alien Species"	"329:368"
-NA	9	2025-03-17	"9a"	"Lecture"	"No Class"	2025-03-17 16:00:00	2025-03-17 17:15:00	"None or TBA"	"None or TBA"
-NA	9	2025-03-19	"9b"	"Lecture"	"No Class"	2025-03-19 16:00:00	2025-03-19 17:15:00	"None or TBA"	"None or TBA"
-"Threats to Biodiversity"	10	2025-03-24	"10a"	"Lecture"	"Climate Change"	2025-03-24 16:00:00	2025-03-24 17:15:00	"Climate Change"	"369:373"
-"Threats to Biodiversity"	10	2025-03-26	"10b"	"Lecture"	"Climate Change"	2025-03-26 16:00:00	2025-03-26 17:15:00	"Climate Change"	"374:402"
-NA	11	2025-03-31	"11a"	"Lecture"	"Exam"	2025-03-31 16:00:00	2025-03-31 17:15:00	"None or TBA"	"None or TBA"
-NA	11	2025-04-02	"11b"	"Lecture"	"Film Day"	2025-04-02 16:00:00	2025-04-02 17:15:00	"None or TBA"	"None or TBA"
-"Approaches to Conservation"	12	2025-04-07	"12a"	"Lecture"	"Species-Level Conservation: Goals and Challenges"	2025-04-07 16:00:00	2025-04-07 17:15:00	"Species-Level Conservation: Goals and Challenges"	"405:414"
-"Approaches to Conservation"	12	2025-04-09	"12b"	"Lecture"	"Species-Level Conservation: Statistics and Probability"	2025-04-09 16:00:00	2025-04-09 17:15:00	"Species-Level Conservation: Statistics and Probability"	"415:444"
-"Approaches to Conservation"	13	2025-04-14	"13a"	"Lecture"	"Community and Ecosystem Conservation"	2025-04-14 16:00:00	2025-04-14 17:15:00	"Community and Ecosystem Conservation"	"445:476"
-"Approaches to Conservation"	13	2025-04-16	"13b"	"Lecture"	"Landscape-Scale Conservation: PA Networks"	2025-04-16 16:00:00	2025-04-16 17:15:00	"Landscape-Scale Conservation: PA Networks"	"477:505"
-"Approaches to Conservation"	14	2025-04-21	"14a"	"Lecture"	"Landscape-Scale Conservation: Monitoring and Modeling"	2025-04-21 16:00:00	2025-04-21 17:15:00	"Landscape-Scale Conservation: Monitoring and Modeling"	"506:520"
-"Approaches to Conservation"	14	2025-04-23	"14b"	"Lecture"	"Ex Situ Conservation: Facilities"	2025-04-23 16:00:00	2025-04-23 17:15:00	"Ex Situ Conservation: Facilities"	"521:537"
-"Approaches to Conservation"	15	2025-04-28	"15a"	"Lecture"	"Ex Situ Conservation: In Situ Contributions"	2025-04-28 16:00:00	2025-04-28 17:15:00	"Ex Situ Conservation: In Situ Contributions"	"538:554"
-"Approaches to Conservation"	15	2025-04-30	"15b"	"Lecture"	"Sustainable Development: Case Studies"	2025-04-30 16:00:00	2025-04-30 17:15:00	"Sustainable Development: Case Studies"	"573:582"
-NA	16	2025-05-05	"16a"	"Lecture"	"Film Day"	2025-05-05 16:00:00	2025-05-05 17:15:00	"None or TBA"	"None or TBA"
-NA	16	2025-05-07	"16b"	"Lecture"	"Film Day"	2025-05-07 16:00:00	2025-05-07 17:15:00	"None or TBA"	"None or TBA"
-NA	17	2025-05-12	"17a"	"Lecture"	"Exam"	2025-05-12 17:30:00	2025-05-12 19:30:00	"None or TBA"	"None or TBA"
+"Theme"	"Week"	"Date"	"Day"	"Format"	"Agenda"	"Start"	"End"	"Reading_Title"	"key"	"Link"
+"Foundations of Conservation Biology"	"Week 1"	2025-01-20	"1a"	"Lecture"	"No Class"	2025-01-20 16:00:00	2025-01-20 17:15:00	"None or TBA"	NA	NA
+"Foundations of Conservation Biology"	"Week 1"	2025-01-22	"1b"	"Lecture"	"Intro to the Class"	2025-01-22 16:00:00	2025-01-22 17:15:00	"None or TBA"	NA	NA
+"Foundations of Conservation Biology"	"Week 2"	2025-01-27	"2a"	"Lecture"	"Biodiversity Concepts and Measurement: Genetic Diversity"	2025-01-27 16:00:00	2025-01-27 17:15:00	"Biodiversity Concepts and Measurement: Genetic Diversity"	"53 - 57"	NA
+"Foundations of Conservation Biology"	"Week 2"	2025-01-29	"2b"	"Lecture"	"Biodiversity Concepts and Measurement: Species Diversity"	2025-01-29 16:00:00	2025-01-29 17:15:00	"Biodiversity Concepts and Measurement: Species Diversity"	"58 - 66"	NA
+"Foundations of Conservation Biology"	"Week 3"	2025-02-03	"3a"	"Lecture"	"Biodiversity Concepts and Measurement: Community and Ecosystem Diversity"	2025-02-03 16:00:00	2025-02-03 17:15:00	"Biodiversity Concepts and Measurement: Community and Ecosystem Diversity"	"67 - 80"	NA
+"Importance of Biodiversity"	"Week 3"	2025-02-05	"3b"	"Lecture"	"Biodiversity and Ecosystem Services"	2025-02-05 16:00:00	2025-02-05 17:15:00	"Biodiversity and Ecosystem Services"	"141 - 180"	NA
+"Threats to Biodiversity"	"Week 4"	2025-02-10	"4a"	"Lecture"	"Extinction: Global Patterns of Endangerment, Local Changes in Biodiversity"	2025-02-10 16:00:00	2025-02-10 17:15:00	"Extinction: Global Patterns of Endangerment, Local Changes in Biodiversity"	"215 - 239"	NA
+"Threats to Biodiversity"	"Week 4"	2025-02-12	"4b"	"Lecture"	"Extinction: Controls of Extinction Risk"	2025-02-12 16:00:00	2025-02-12 17:15:00	"Extinction: Controls of Extinction Risk"	"240 - 248"	NA
+"Threats to Biodiversity"	"Week 5"	2025-02-17	"5a"	"Lecture"	"Exam"	2025-02-17 16:00:00	2025-02-17 17:15:00	"None or TBA"	NA	NA
+"Threats to Biodiversity"	"Week 5"	2025-02-19	"5b"	"Lecture"	"Film Day"	2025-02-19 16:00:00	2025-02-19 17:15:00	"None or TBA"	NA	NA
+"Threats to Biodiversity"	"Week 6"	2025-02-24	"6a"	"Lecture"	"Habitat Loss and Fragmentation"	2025-02-24 16:00:00	2025-02-24 17:15:00	"Habitat Loss and Fragmentation"	"249 - 276"	NA
+"Threats to Biodiversity"	"Week 6"	2025-02-26	"6b"	"Lecture"	"Habitat Degradation"	2025-02-26 16:00:00	2025-02-26 17:15:00	"Habitat Degradation"	"277 - 284"	NA
+"Threats to Biodiversity"	"Week 7"	2025-03-03	"7a"	"Lecture"	"Metapopulations and Landscape Mosaics"	2025-03-03 16:00:00	2025-03-03 17:15:00	"Metapopulations and Landscape Mosaics"	"285 - 292"	NA
+"Threats to Biodiversity"	"Week 7"	2025-03-05	"7b"	"Lecture"	"Overexploitation"	2025-03-05 16:00:00	2025-03-05 17:15:00	"Overexploitation"	"293 - 321"	NA
+"Threats to Biodiversity"	"Week 8"	2025-03-10	"8a"	"Lecture"	"Overexploitation"	2025-03-10 16:00:00	2025-03-10 17:15:00	"Overexploitation"	"322 - 328"	NA
+"Threats to Biodiversity"	"Week 8"	2025-03-12	"8b"	"Lecture"	"Invasive Alien Species"	2025-03-12 16:00:00	2025-03-12 17:15:00	"Invasive Alien Species"	"329 - 368"	NA
+"Threats to Biodiversity"	"Week 9"	2025-03-17	"9a"	"Lecture"	"No Class"	2025-03-17 16:00:00	2025-03-17 17:15:00	"None or TBA"	NA	NA
+"Threats to Biodiversity"	"Week 9"	2025-03-19	"9b"	"Lecture"	"No Class"	2025-03-19 16:00:00	2025-03-19 17:15:00	"None or TBA"	NA	NA
+"Threats to Biodiversity"	"Week 10"	2025-03-24	"10a"	"Lecture"	"Climate Change"	2025-03-24 16:00:00	2025-03-24 17:15:00	"Climate Change"	"369 - 373"	NA
+"Threats to Biodiversity"	"Week 10"	2025-03-26	"10b"	"Lecture"	"Climate Change"	2025-03-26 16:00:00	2025-03-26 17:15:00	"Climate Change"	"374 - 402"	NA
+"Approaches to Conservation"	"Week 11"	2025-03-31	"11a"	"Lecture"	"Exam"	2025-03-31 16:00:00	2025-03-31 17:15:00	"None or TBA"	NA	NA
+"Approaches to Conservation"	"Week 11"	2025-04-02	"11b"	"Lecture"	"Film Day"	2025-04-02 16:00:00	2025-04-02 17:15:00	"None or TBA"	NA	NA
+"Approaches to Conservation"	"Week 12"	2025-04-07	"12a"	"Lecture"	"Species-Level Conservation: Goals and Challenges"	2025-04-07 16:00:00	2025-04-07 17:15:00	"Species-Level Conservation: Goals and Challenges"	"405 - 414"	NA
+"Approaches to Conservation"	"Week 12"	2025-04-09	"12b"	"Lecture"	"Species-Level Conservation: Statistics and Probability"	2025-04-09 16:00:00	2025-04-09 17:15:00	"Species-Level Conservation: Statistics and Probability"	"415 - 444"	NA
+"Approaches to Conservation"	"Week 13"	2025-04-14	"13a"	"Lecture"	"Community and Ecosystem Conservation"	2025-04-14 16:00:00	2025-04-14 17:15:00	"Community and Ecosystem Conservation"	"445 - 476"	NA
+"Approaches to Conservation"	"Week 13"	2025-04-16	"13b"	"Lecture"	"Landscape-Scale Conservation: PA Networks"	2025-04-16 16:00:00	2025-04-16 17:15:00	"Landscape-Scale Conservation: PA Networks"	"477 - 505"	NA
+"Approaches to Conservation"	"Week 14"	2025-04-21	"14a"	"Lecture"	"Landscape-Scale Conservation: Monitoring and Modeling"	2025-04-21 16:00:00	2025-04-21 17:15:00	"Landscape-Scale Conservation: Monitoring and Modeling"	"506 - 520"	NA
+"Approaches to Conservation"	"Week 14"	2025-04-23	"14b"	"Lecture"	"Ex Situ Conservation: Facilities"	2025-04-23 16:00:00	2025-04-23 17:15:00	"Ex Situ Conservation: Facilities"	"521 - 537"	NA
+"Approaches to Conservation"	"Week 15"	2025-04-28	"15a"	"Lecture"	"Ex Situ Conservation: In Situ Contributions"	2025-04-28 16:00:00	2025-04-28 17:15:00	"Ex Situ Conservation: In Situ Contributions"	"538 - 554"	NA
+"Approaches to Conservation"	"Week 15"	2025-04-30	"15b"	"Lecture"	"Sustainable Development: Case Studies"	2025-04-30 16:00:00	2025-04-30 17:15:00	"Sustainable Development: Case Studies"	"573 - 582"	NA
+"Approaches to Conservation"	"Week 16"	2025-05-05	"16a"	"Lecture"	"Film Day"	2025-05-05 16:00:00	2025-05-05 17:15:00	"None or TBA"	NA	NA
+"Approaches to Conservation"	"Week 16"	2025-05-07	"16b"	"Lecture"	"Film Day"	2025-05-07 16:00:00	2025-05-07 17:15:00	"None or TBA"	NA	NA
+"Approaches to Conservation"	"Week 17"	2025-05-12	"17a"	"Lecture"	"Exam"	2025-05-12 17:30:00	2025-05-12 19:30:00	"None or TBA"	NA	NA

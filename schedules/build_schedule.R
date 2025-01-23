@@ -9,8 +9,8 @@ agenda_themes <- enframe(themes, name = "Theme", value = "Agenda") %>%
                   unnest_longer(Agenda, values_to = "Agenda")
 
 reading_schedule <- enframe_schedule(readings, "Reading") %>%
-  unnest_longer(Reading, values_to = "Reading_Title", indices_to = "file_key")
-
+  unnest_longer(Reading, values_to = "Reading_Title", indices_to = "key") %>%
+  mutate(key = str_replace_all(key, ":", " - "))
 
 schedule <- weeks %>%
   map_depth(1, \(x) discard(x, names(x) %in% names(simplify_nested(agenda_other)))) %>%
@@ -24,10 +24,13 @@ schedule <- weeks %>%
   format_schedule() %>%
   left_join(reading_schedule, by = join_by(Week, Day, Format)) %>%
   select(-day_wk) %>%
-  mutate(Reading_Title = if_else(is.na(Reading_Title), "None or TBA", Reading_Title),
-         file_key      = if_else(is.na(file_key)     , "None or TBA", file_key)) %>%
-  mutate(Theme = case_when(Theme == "Other" & row_number() == 1 ~ "Foundations",
-                           Theme == "Other" & lag(Theme) == "Other" ~ lead(Theme),
-                           Theme == "Other" & row_number() != 1 ~ lag(Theme),
-                           .default = Theme))
+  mutate(Reading_Title = if_else(is.na(Reading_Title), "None or TBA", Reading_Title)) %>%
+  mutate(Theme = if_else(Theme == "Other", NA, Theme)) %>%
+  fill(Theme, .direction = "up") %>%
+  fill(Theme, .direction = "down") %>%
+  mutate(Week = str_glue("Week ", "{Week}"),
+         Link = if_else(
+           str_detect(key, "\\w+\\d{4}"),
+           str_glue(course$readings, "{key}", ".pdf"),
+           NA))
 

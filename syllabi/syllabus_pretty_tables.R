@@ -35,7 +35,7 @@ learning.outcomes <- slos[[paste0(params$course)]] %>%
 gtsave(learning.outcomes, course$slos$html)
 gtsave(learning.outcomes, course$slos$png)
 
-grade.breakdown <- grade_breakdown[[paste0(params$course)]] %>%
+gt_grade_breakdown <- grade_breakdown %>%
   gt(rowname_col = "Format") %>%
   tab_stubhead(label = "Format") %>%
   cols_label(Points_each   ~ "Points",
@@ -71,7 +71,7 @@ grade.breakdown <- grade_breakdown[[paste0(params$course)]] %>%
                                    size    = "large")),
             locations = cells_body(columns = !Percent_total)) %>%
   tab_footnote(md(
-    "These assignments will focus on specialized skills in Zoo Biology. They will be due at the start of lab on the deadline and submitted through Canvas."
+    "These assignments will focus on specialized skills or involve in-class activities. They will be due at the start of class on the deadline and submitted through Canvas."
   ), locations = cells_stub(rows = Format == "Assignments")) %>%
   tab_footnote(md(
     "These are short quizzes given at the start of class to assess your preparation for the week's topic."
@@ -80,7 +80,7 @@ grade.breakdown <- grade_breakdown[[paste0(params$course)]] %>%
     "Number (if any) of lowest scores that will automatically be dropped from your final grade"
   ), locations = cells_column_labels(columns = N_dropped)) %>%
   tab_footnote(md(
-    "You will take three exams (including the final). You will be allowed to use hard copy notes/materials for each, but not electronic resources."
+    "You may use hard copy notes/materials for all exams, but not electronic devices/resources."
   ), locations = cells_stub(rows = Format == "Exams")) %>%
   tab_style(style     = cell_text(size = "small"),
             locations = cells_footnotes()) %>%
@@ -91,8 +91,8 @@ grade.breakdown <- grade_breakdown[[paste0(params$course)]] %>%
              Points_total  ~ px(85),
              Percent_total ~ px(100))
 
-gtsave(grade.breakdown, course$grade_breakdown$html)
-gtsave(grade.breakdown, course$grade_breakdown$png)
+gtsave(gt_grade_breakdown, course$grade_breakdown$html)
+gtsave(gt_grade_breakdown, course$grade_breakdown$png)
 
 quiz.rubric <-  quiz_table %>%
   gt(rowname_col = "Score") %>%
@@ -100,7 +100,6 @@ quiz.rubric <-  quiz_table %>%
   tab_header(title = "Quiz Rubric", subtitle = "The assessment system will be broad, so each quiz will only recieve a 0, 1, 2, or 3 as an assessment of the student's basic preparation level for the class.") %>%
   tab_stubhead("Score") %>%
   cols_label(Standard ~ "Standard Met by Response") %>%
-  tab_source_note(md("***I will automatically drop every student's lowest 3 scores for these quizzes. So if you do miss 3 quizzes for any reason (e.g., tardiness, absence), your grade will not be penalized.***")) %>%
   tab_style(style = list(cell_fill(color  = "#CBB593FF"),
                          cell_borders(sides = c("top", "bottom")),
                          cell_text(color  = "#43475BFF",
@@ -203,38 +202,19 @@ class.culture <- culture_table %>%
 gtsave(class.culture, templates$class_culture$html)
 gtsave(class.culture, templates$class_culture$png)
 
-necessary.resources <- resources[[paste0(params$course)]] %>%
-  gt(rowname_col = "image") %>%
-  cols_label(Comment ~ "How to access or get help...",
-             Resource ~ "Resources") %>%
-  fmt_markdown(columns = "Resource") %>%
+necessary.resources <- resources %>%
+  gt(rowname_col = "Image") %>%
+  tab_options(column_labels.hidden = TRUE) %>%
   fmt_image(columns = stub()) %>%
+  fmt_url(columns = "Link", label = from_column("Resource")) %>%
+  cols_hide("Resource") %>%
   opt_table_lines(extent = "none") %>%
-  tab_style(style = list(
-    cell_fill(color    = "#E8EADFFF"),
-    cell_text(size     = "large",
-              color    = "#43475BFF",
-              weight   = "bold",
-              align    = "left",
-              stretch  = "condensed"),
-    cell_borders(sides = c("top", "bottom"))),
-    locations = cells_column_labels()) %>%
-  tab_style(style = list(
-    cell_fill(color    = "#E8EADFFF"),
-    cell_text(size     = "large",
-              color    = "#43475BFF",
-              weight   = "bold",
-              align    = "left"),
-    cell_borders(sides = c("top", "bottom"))),
-    locations = cells_stubhead()) %>%
 
   tab_style(style = list(
     cell_fill(color    = "#E8EADF40"),
-    cell_text(v_align = "middle")),
+    cell_text(v_align = "middle",
+              align   = "left")),
     locations = list(cells_body(), cells_stub())) %>%
-
-  cols_align(align = "right",   columns = stub()) %>%
-  cols_align(align = "left",   columns = Resource) %>%
 
   tab_header(title = "Summary of Required Course Materials") %>%
 
@@ -243,16 +223,13 @@ necessary.resources <- resources[[paste0(params$course)]] %>%
               align  = "left",
               weight = "bolder")),
     locations = cells_title()) %>%
-
-  tab_footnote(md(
-    "There is live chat-based support for students [available online](https://cases.canvaslms.com/liveagentchat?chattype=student&sfid=Wu2Pmk3GRxnkttxWmk98UaS5AZZmI4nk4U8x7cCG), or you may call the hotline +1-844-691-2290 instead."),
-    locations = cells_body(columns = Comment, rows = Name == "Canvas")) %>%
-  cols_hide(columns = Name) %>%
   cols_width(stub()   ~ px(50),
-             Resource ~ px(100),
-             Comment  ~ px(700))
+             Link     ~ px(300),
+             Comment  ~ px(400))
 
 
 gtsave(necessary.resources, course$resources$html)
 gtsave(necessary.resources, course$resources$png)
+
+source(templates$syllabus_cards)
 

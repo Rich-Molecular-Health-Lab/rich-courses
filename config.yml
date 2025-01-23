@@ -26,6 +26,7 @@ templates:
   pretty_schedules: "./schedules/pretty_schedules.R"
   syllabus_tables: "./syllabi/syllabus_tables.R"
   syllabus_pretty_tables: "./syllabi/syllabus_pretty_tables.R"
+  syllabus_cards: "./syllabi/syllabus_cards.R"
   class_culture:
     html: "./graphics/class_culture.html"
     png: "./graphics/class_culture.png"
@@ -43,6 +44,15 @@ spring25:
 
 zoobio:
   title: "Zoo Biology"
+  canvas: "85615"
+  readings: "https://rich-molecular-health-lab.github.io/rich-courses/readings/zoobio/"
+  text:
+    title: "Peer-reviewed Articles"
+    link: "github$readings"
+    image: "journals.jpg"
+  when: "Lectures on M/W 1:00 - 2:15, Labs on T 1:00 - 3:50"
+  where: "Allwine Hall 309"
+  prereqs: "BIOL 1450, 1750, and Junior-Senior in biology. Not open to non-degree graduate students."
   grade_breakdown:
     html: "./graphics/zoobio_gradebreakdown.html"
     png: "./graphics/zoobio_gradebreakdown.png"
@@ -70,9 +80,23 @@ zoobio:
     table: "./schedules/Schedule_ZooBio.tsv"
   syllabus:
     html: "./syllabi/Syllabus_ZooBio.html"
+  description: "Zoo Biology is an engaging and comprehensive undergraduate course designed to explore the fascinating world of wildlife biology and the intricate relationships between animals, their environments, and conservation efforts within zoological settings. This course delves into the core principles of animal biology, behavior, and management, providing students with a strong foundation in the specialized field of zoo science."
 
 conbio:
   title: "Conservation Biology"
+  canvas: "85615"
+  text:
+    title: "Conservation Biology"
+    link: "https://global.oup.com/ushe/product/conservation-biology-9781605357140?q=Conservation%20Biology&cc=us&lang=en"
+    image: "conbiotext.jpg"
+    authors: "Bradley Cardinale, Richard Primack, and James Murdoch"
+    date: "11 October 2019"
+    ISBN: "9781605357140"
+    pages: 672
+    edition: "1st"
+  when: "M/W 4:00 - 5:15"
+  where: "Allwine Hall 305"
+  prereqs: "BIOL 1450, 1750, 2140 and Junior-Senior in biology. Not open to non-degree graduate students."
   topics: "./schedules/topics_conbio.R"
   readings: "./readings/conbio/"
   grade_breakdown:
@@ -102,3 +126,4 @@ conbio:
     table: "./schedules/Schedule_ConBio.tsv"
   syllabus:
     html:  "./syllabi/Syllabus_ConBio.html"
+  description: "Study of biological diversity at the genetic, species, and ecosystem levels, its values, and the factors that threaten it. We will explore the scientific basis of conservation biology and how it can be applied to maintain biological diversity. (Cross-listed with BIOL 8126)."
