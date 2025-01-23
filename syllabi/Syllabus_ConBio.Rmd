@@ -1,10 +1,11 @@
 ---
-title: "Syllabus - Spring 2025"
+title: "Syllabus for Conservation Biology"
 author: "Dr. Rich"
+date: "Spring 2025"
 output:
   html_document:
     theme:
-      bootswatch: litera
+      bootswatch: lumen
     toc: true
     toc_float:
       collapsed: true
@@ -16,6 +17,7 @@ params:
   course: "conbio"
                      
 ---
+
 
 ```{r, include = FALSE}
 source("./setup/set_paths.R")
@@ -33,22 +35,29 @@ write.table(schedule,
 
 # General Information
 
-```{r}
-logistics
-```
+## This Course Meets:
 
-## Necessary Resources
+### Lectures:
+- **Weekly, on Mondays and Wednesdays**
+  - From 1:00 - 2:15 PM in Allwine Hall
+- **Weekly, on Tuesdays**
+  - From 1:00 - 3:50 PM in Allwine Hall
+  
 
-```{r}
-necessary.resources
-```
+## Course Description
+
+>Zoo Biology is an engaging and comprehensive undergraduate course designed to explore the fascinating world of wildlife biology and the intricate relationships between animals, their environments, and conservation efforts within zoological settings. This course delves into the core principles of animal biology, behavior, and management, providing students with a strong foundation in the specialized field of zoo science.
+
+## Course Website
+
+You will participate in this course using the UNO Canvas learning management platform. Once on the platform, you can learn how to use Canvas effectively by clicking the “Help” link on the top right of the course page on Canvas.
 
 ## Instructor
 
 ### Alicia M. Rich, Ph.D., Assistant Professor of Biology
 
 ```{r, out.width = "25%"}
-include_graphics(paste0(global$headshot))
+include_graphics(global$headshot)
 ```
 
 - *Please call me:* Dr. Rich or Professor Rich (she/her)
@@ -67,42 +76,56 @@ include_graphics(paste0(global$graphics, "greys-anatomy-miranda-bailey.gif"))
 learning.outcomes
 ```
 
+## Course Materials
+
+```{r}
+necessary.resources
+```
+
+## Course Schedule
+
+```{r}
+gt_calendar
+```
+
+
 ## Assignments
 
 ```{r}
 include_graphics(paste0(global$graphics, "homework-emily-cooper.gif"))
 
-cards_assignments
 ```
 
-### Assigned Readings
+### Explanation of Interview Assignments
 
-```{r}
-cards_text
-```
+>Zoo Biology is an applied discipline that encompasses a much broader range of careers and expertise than most realize.
 
-## Schedule
-
-Below is a tentative schedule for the semester. This is subject to change and will be updated on the live Github link and the course Canvas page, so please check back regularly.
-
-```{r}
-gt_calendar 
-```
-
-
-# Expectations & Assessment
+- We will take a tour of some of these careers and interests by interviewing a series of experts from Henry Doorly Zoo and other institutions.
+  - You will be the drivers of these sessions, which means I expect you to do your own critical thinking and preparation before our meeting with a given expert. Each of you will post a set of potential interview questions for each guest, which we will discuss as a class.
+  - One small group of students will be in charge of compiling and revising the question list for every  guest and then moderating our class interview with them.
 
 ```{r}
 include_graphics(paste0(global$graphics, "were-knee-deep-in-this-now-johnny.gif"))
+
 ```
 
+
+## Readings
+
+All assigned readings will come from journals and other online materials, and they are listed in the schedule below. We will use our class time to work together on some of the most important or challenging concepts, but this will not be a substitute for reading and studying the material on your own.
+  
+  
+***You should be prepared to answer quiz questions on anything from the assigned readings starting on the deadline listed in the schedule.***
+
+
+# Expectations & Assessment
 
 ## Attendance
 
 >This is not an online or hybrid course.
   - I designed the curriculum and objectives specifically with that in mind, so to succeed you must attend and engage with every scheduled meeting. **You will not pass this class if you are unable to attend and take your own notes.**
   
-Absences may only be truly *excused* if they have been registered through the Accessibility Services Center. Please do not provide me with any personal or medical details to explain your barriers to attendance or assignment completion. While I do care about accommodating these issues when they arise, I also care about your privacy and respect that office's expertise in managing the conditions and complications that are outside of my purview. I do my best to integrate a reasonable and universal degree of flexibility into our schedule and assessment plan to accommodate some work/life balance while also ensuring equity and reasonable progress in your learning. I am happy to receive requests and recommendations to help me update and improve this approach for everyone, but I will only create personalized accommodations by working directly with the ASC.  
+Absences may only be truly *excused* if they have been registered through the Accessibility Services Center. Please do not provide me with any personal or medical details to explain your barriers to attendance or assignment completion. While I do care about accommodating these issues when they arise, I also care about your privacy and respect that office's expertise in managing the conditions and complications that are outside of my purview. I do my best to integrate a reasonable and universal degree of flexibility into our schedule and assessment plan to accommodate some work/life balance while also ensuring equity and reasonable progress in your learning. I am happy to recieve requests and recommendations to help me update and improve this approach for everyone, but I will only create personalized accommodations by working directly with the ASC.  
 
   
 >Please also know that I genuinely appreciate opportunities to work with and around student barriers by collaborating with the ASC. If you know that you are coming into the semester with learning barriers (e.g., neurodivergence, visual/auditory processing differences), I strongly encourage you to register this with their office and then communicate with me about the ways I can work this into my approach from the beginning.
@@ -112,7 +135,7 @@ Absences may only be truly *excused* if they have been registered through the Ac
 ```{r}
 include_graphics(paste0(global$graphics, "ready-to-slay-buffy.gif"))
 
-gt_grade_breakdown
+grade.breakdown
 ```
 
 ### Preparation Quizzes 
@@ -127,7 +150,7 @@ Please arrive to each class on time, having completed the assigned background ma
 quiz.rubric  
 ```
 
-## Late Assignments
+### Late Assignments
 
 While I prefer to implement as flexible a deadline policy as possible, I also have to maintain reasonable processing times for assessing every student's submissions and submitting grades.
   
@@ -211,4 +234,3 @@ Drops can only be completed in your course's 100% refund period. If you drop the
 ### Fair Use Policy
 
 *Copying or recording synchronous classes and asynchronous course materials without the express prior approval of Dr. Rich is prohibited. All copies and recordings remain the property of UNO and Dr. Rich. UNO and Dr. Rich reserve the right to retrieve, inspect, or destroy them after their intended use. These policies are not intended to affect the rights of students with disabilities under applicable law or UNO policies.*
-

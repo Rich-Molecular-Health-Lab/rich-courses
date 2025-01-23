@@ -15,19 +15,26 @@ slos <- list(
   )
 )
 
-grade_breakdown <- list(
+grade.breakdown <- list(
   zoobio = tribble(
     ~Format                   ,    ~Points_each     ,   ~Count  , ~N_dropped   ,
     "Quizzes"                 ,    3                ,   12      ,  2           ,
     "Exams"                   ,    50               ,   3       ,  0           ,
     "Interview Prep"          ,    5                ,   12      ,  1           ,
     "Interview Moderating"    ,    20               ,   1       ,  0           ,
-    "Lab Assignments"         ,    15               ,   10      ,  1           ) %>%
-    mutate(Points_total = (Count - N_dropped) * Points_each) %>%
-    mutate(Percent_total = Points_total/sum(Points_total)) %>%
-    arrange(Percent_total) %>%
-    select(Format, Points_each, Count, N_dropped, Points_total, Percent_total)
+    "Lab Assignments"         ,    15               ,   10      ,  1           ),
+  conbio = tribble(
+    ~Format                   ,    ~Points_each     ,   ~Count  , ~N_dropped   ,
+    "Quizzes"                 ,    3                ,   16      ,  3           ,
+    "Exams"                   ,    50               ,   3       ,  0           ,
+    "Special Assignments"     ,    20               ,   3       ,  0           )
 )
+
+grade_breakdown <-  grade.breakdown[[paste0(params$course)]] %>%
+  mutate(Points_total = (Count - N_dropped) * Points_each) %>%
+  mutate(Percent_total = Points_total/sum(Points_total)) %>%
+  arrange(Percent_total) %>%
+  select(Format, Points_each, Count, N_dropped, Points_total, Percent_total)
 
 quiz_table <- tribble(
   ~Score,   ~Standard,
@@ -60,16 +67,28 @@ culture_table <- tribble(
   "3. Inclusion"      , "Assume only you are navigating barriers or that barriers are insurmountable with cooperation." , "ban"         ) %>%
   arrange(Value, desc(Icon))
 
-resources <- list(
-  zoobio = tribble(
-    ~Name    ,   ~Link      ,                                                                        ~Comment  ,
-    "Journals", github$readings,  "I will post pdf files to this link and canvas.",
-    "Canvas" , "https://unomaha.instructure.com/courses/81170"                               ,  "You must review Canvas regularly. For technical support, please use Canvas Student Support.",
-    "Course Website", github$main, "I maintain a dynamic schedule and other materials through my lab's github site. These materials update automatically to their linked page on canvas."
-  ) %>%
-    mutate(Resource = str_glue(fixed("["), "{Name}", fixed("]("), "{Link}", fixed(")"))) %>%
-    mutate(image = case_when(Name == "Journals"       ~ paste0(global$graphics, "journals.jpg"),
-                             Name == "Canvas"         ~ paste0(global$graphics, "logo_canvas.png"),
-                             Name == "Course Website" ~ paste0(global$graphics, "logo_git.png"))) %>%
-    select(image, Resource, Comment, Name)
+resources_list <- list(
+  Logistics = list(
+    Name = "Canvas",
+    Link = paste0("https://unomaha.instructure.com/courses/", course$canvas),
+    Comment = "You must review Canvas regularly. For technical support, please use Canvas Student Support.",
+    Image = paste0(global$graphics, "logo_canvas.png")
+  ),
+  Github = list(
+    Name = "Course Website",
+    Link = github$main,
+    Comment = "Any material I keep here will also appear on Canvas",
+    Image = paste0(global$graphics, "github_logo.jpg")
+  ),
+  Text = list(
+    Name = course$text$title,
+    Link = course$text$link,
+    Comment = "Required text for this course.",
+    Image = paste0(global$graphics, course$text$image)
+  )
 )
+
+resources <- enframe(resources_list, name = "Category") %>% unnest_wider("value") %>% select(Image, Link, Resource = Name, Comment)
+
+
+

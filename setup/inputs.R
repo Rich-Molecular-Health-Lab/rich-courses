@@ -33,3 +33,11 @@ abudabi_cols <- c("#715843FF",
                   "#D5CFCAFF",
                   "#A3A4AFFF",
                   "#D2AB6CFF")
+
+current_gt <- c("#4C525EFF",
+                "#A26B3AFF",
+                "#80848EFF",
+                "#BFC8D3FF",
+                "#D8C0B6FF",
+                "#D5CFCAFF",
+                "#A3A4AFFF")

@@ -18,18 +18,18 @@ params:
 
 ```{r, include = FALSE}
 source("./setup/set_paths.R")
+source(global$setup)
 ```
 
 
 ```{r, include = FALSE}
-source(global$setup)
 source(term$agendas)
 source(templates$build_schedule)
-source(templates$pretty_schedules)
 write.table(schedule, 
             course$schedule$table, 
             row.names = F, 
             sep = "\t")
+source(templates$pretty_schedules)
 ```
 
 ```{r}
