@@ -18,6 +18,12 @@ default:
 github:
   main: "https://rich-molecular-health-lab.github.io/rich-courses/"
   readings: "https://rich-molecular-health-lab.github.io/rich-courses/readings/"
+  syllabi:
+    zoobio: "https://rich-molecular-health-lab.github.io/rich-courses/syllabi/Syllabus_ZooBio.html"
+    conbio: "https://rich-molecular-health-lab.github.io/rich-courses/syllabi/Syllabus_ConBio.html"
+  schedules:
+    zoobio: "https://rich-molecular-health-lab.github.io/rich-courses/schedules/Schedule_ZooBio.html"
+    conbio: "https://rich-molecular-health-lab.github.io/rich-courses/schedules/Schedule_ConBio.html"
 
 templates:
   schedule: "./schedules/Schedule_Template.Rmd"
