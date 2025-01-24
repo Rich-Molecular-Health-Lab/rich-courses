@@ -21,6 +21,7 @@ gt_schedule <- schedule  %>%
          End,
          Format,
          Agenda,
+         Event,
          Reading = Reading_Title,
          key,
          Link,
@@ -34,7 +35,12 @@ gt_schedule <- schedule  %>%
                time_style = "hm",
                tz         = "American/Central") %>%
   cols_hide(c("Day", "Date", "End")) %>%
-  cols_label(Start = "Day and Time") %>%
+  cols_label(Start = "Day and Time",
+             Event = "") %>%
+  tab_style(style = cell_text(weight    = "bold",
+                              stretch   = "condensed",
+                              align     = "left"),
+            locations = cells_body(columns = "Event")) %>%
   tab_style(style =
               cell_text(weight    = "bold",
                         transform = "uppercase",
@@ -152,7 +158,7 @@ gt_schedule <- schedule  %>%
   )
 
 schedule_conbio <- gt_schedule %>%
-  cols_hide(c("Reading", "Format", "Link")) %>%
+  cols_hide(c("Reading", "Format", "Link", "Event")) %>%
   sub_missing(columns = "key", missing_text = "-") %>%
   cols_label(key = "Text Pages") %>%
   cols_align("left") %>%
@@ -166,6 +172,7 @@ schedule_conbio <- gt_schedule %>%
 schedule_zoobio <- gt_schedule %>%
   cols_label(Reading = "Reading Title") %>%
   sub_missing(columns = "Link", missing_text = "-") %>%
+  sub_missing(columns = "Event", missing_text = "") %>%
   fmt_url(columns        = "Link",
           rows           = Link != "-",
           label          = from_column("key", na_value = "-"),
@@ -176,8 +183,10 @@ schedule_zoobio <- gt_schedule %>%
   cols_hide("key") %>%
   cols_width(
     Start        ~ px(200),
+    Format       ~ px(150),
+    Agenda       ~ px(200),
+    Event        ~ px(250),
     Reading      ~ px(400),
-    Agenda       ~ px(250),
     Link         ~ px(150)
   ) %>%
   cols_align("left")

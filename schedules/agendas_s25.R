@@ -4,6 +4,17 @@ holidays <- list(
 ) %>%
   list_flatten(name_spec = "{outer}")
 
+specials <- list(
+  zoobio = list(
+    "8" = list(
+      "8a" = "Guest Expert: Dr. Cayla Iske"
+    )
+  ),
+  conbio = list(
+
+  )
+)
+
 readings <- list(
   zoobio = list(
     "2" = list(
@@ -337,4 +348,5 @@ exams     <- agenda$exams
 cancelled <-agenda$cancelled
 topics    <- agenda$topics
 themes    <- agenda$themes
+specials  <- specials[[paste0(params$course)]]
 
