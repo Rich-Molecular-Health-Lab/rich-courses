@@ -6,14 +6,14 @@ default:
   functions: "./setup/functions.R"
   fonts: "./setup/fonts/FA6_Free-Solid-900.otf"
   inputs: "./setup/inputs.R"
-  graphics: "./graphics/"
+  graphics: "https://rich-molecular-health-lab.github.io/rich-courses/graphics/"
   schedules: "./schedules/"
   syllabi: "./syllabi/"
-  readings: "./readings/"
+  readings: "https://rich-molecular-health-lab.github.io/rich-courses/readings/"
   email: "aliciarich@unomaha.edu"
   office: "Allwine Hall 413a"
   lab: "Allwine Hall 501b"
-  headshot: "./graphics/Headshot.png"
+  headshot: "https://rich-molecular-health-lab.github.io/rich-courses/graphics/Headshot.png"
 
 github:
   main: "https://rich-molecular-health-lab.github.io/rich-courses/"

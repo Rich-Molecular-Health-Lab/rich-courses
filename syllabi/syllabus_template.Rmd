@@ -13,7 +13,7 @@ output:
     fig_caption: true
 params:
   semester: "spring25"
-  course: "zoobio"
+  course: "conbio"
                      
 ---
 
