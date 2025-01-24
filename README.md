@@ -5,7 +5,7 @@ Welcome to the GitHub homepage for **Zoo Biology** and **Conservation Biology**.
 ## Courses
 
 ### Zoo Biology
-- [Schedule](https://rich-molecular-health-lab.github.io/rich-courses/schedules/Schedule_ZooBio.htm)
+- [Schedule](https://rich-molecular-health-lab.github.io/rich-courses/schedules/Schedule_ZooBio.html)
 - [Syllabus](https://rich-molecular-health-lab.github.io/rich-courses/syllabi/Syllabus_ZooBio.html)
 
 ### Conservation Biology
