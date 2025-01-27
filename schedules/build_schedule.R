@@ -12,6 +12,9 @@ reading_schedule <- enframe_schedule(readings, "Reading") %>%
   unnest_longer(Reading, values_to = "Reading_Title", indices_to = "key") %>%
   mutate(key = str_replace_all(key, ":", " - "))
 
+slides_schedule <- enframe_schedule(slides, "Slides") %>% select(Day, Slides)
+
+
 special_agenda <- enframe_schedule(specials, "Event")
 
 schedule <- weeks %>%
@@ -27,6 +30,7 @@ schedule <- weeks %>%
   left_join(reading_schedule, by = join_by(Week, Day, Format)) %>%
   left_join(special_agenda, by = join_by(Week, Day, day_wk, Format)) %>%
   select(-day_wk) %>%
+  left_join(slides_schedule, by = join_by(Day)) %>%
   mutate(Reading_Title = if_else(is.na(Reading_Title), "None or TBA", Reading_Title)) %>%
   mutate(Theme = if_else(Theme == "Other", NA, Theme)) %>%
   fill(Theme, .direction = "up") %>%

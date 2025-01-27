@@ -1,7 +1,7 @@
 ---
-title: "Schedule for `r path$title`"
+title: "Schedule"
 author: "Dr. Rich"
-date: "`r term$name`"
+date: "Spring 2025"
 output:
   html_document:
     theme:
@@ -33,8 +33,7 @@ source(templates$pretty_schedules)
 ```
 
 ```{r}
-gt_calendar 
-
+gt_calendar
 gtsave(gt_calendar, paste0(course$schedule$html))
 gtsave(gt_calendar, paste0(course$schedule$png))
 

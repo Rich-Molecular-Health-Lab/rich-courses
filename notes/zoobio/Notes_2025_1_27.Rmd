@@ -1,0 +1,30 @@
+---
+title: "Notes_2025_1_27"
+output: html_document
+---
+
+>It is important to understand that there are 2 different kinds of wildlife facilities in the United States: those that are accredited by the American Zoo and Aquarium Association (AZA) and those that are not. 
+
+- *Is this claim true though?*
+
+# Central Ethical Questions:
+
+- Are accredited zoos and aquariums justifiable? If so, under what conditions are they justifiable? 
+
+# Key Agencies or Organizations:
+
+## Association of Zoos and Aquariums (AZA)
+
+- more than 135 million people visit AZA-accredited institutions annually
+- more than 58,000 people volunteer 
+- more than 5 million hours annually at AZA facilities
+- a 1992 Roper poll identified zoos and aquariums as the third most trusted messenger on wildlife conservation and environmental issues (trailing only National Geographic and Jacques Cousteau)
+- reputable print and electronic media outlets produce numerous positive reports about the conservation, scientific, and educational efforts of AZA institutions.
+
+## USDA’s Animal and Plant Health Inspection Service (APHIS)
+
+- Licensing and oversight of over 2,300 animal exhibitors
+  - less than 10% of those are AZA accredited
+  
+  
+# Animal Rights vs. Animal Welfare

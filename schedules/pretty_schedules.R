@@ -21,6 +21,7 @@ gt_schedule <- schedule  %>%
          End,
          Format,
          Agenda,
+         Slides,
          Event,
          Reading = Reading_Title,
          key,
@@ -35,8 +36,16 @@ gt_schedule <- schedule  %>%
                time_style = "hm",
                tz         = "American/Central") %>%
   cols_hide(c("Day", "Date", "End")) %>%
-  cols_label(Start = "Day and Time",
-             Event = "") %>%
+  cols_label(Start  = "Day and Time",
+             Event  = "",
+             Slides = "") %>%
+  fmt_url(columns        = Slides,
+          rows           = !is.na(Slides),
+          label          = fontawesome::fa(name           = "file-powerpoint",
+                                           height         = "1.5em",
+                                           vertical_align = "0em"),
+          color          = lecture_text) %>%
+  sub_missing(columns = "Slides", missing_text = " ") %>%
   tab_style(style = cell_text(weight    = "bold",
                               stretch   = "condensed",
                               align     = "left"),
@@ -170,7 +179,7 @@ schedule_conbio <- gt_schedule %>%
                locations = cells_column_labels(columns = "key"))
 
 schedule_zoobio <- gt_schedule %>%
-  cols_label(Reading = "Reading Title") %>%
+  cols_label(Reading = "Reading Title", Link = "Reading Link") %>%
   sub_missing(columns = "Link", missing_text = "-") %>%
   sub_missing(columns = "Event", missing_text = "") %>%
   fmt_url(columns        = "Link",

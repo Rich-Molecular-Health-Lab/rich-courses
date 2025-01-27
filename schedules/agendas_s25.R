@@ -341,8 +341,20 @@ agenda <- list(
   )
   )
 
+slides <- list(
+  zoobio = list(
+    "1" = list(
+      "1c" = "https://www.canva.com/design/DAGc5pniAOc/3s5MrUXg4zIqHWXzg6AVsw/view?utm_content=DAGc5pniAOc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h453833c08f"
+    ),
+    "2" = list(
+      "2a" = "https://www.canva.com/design/DAGdaLRumnY/RapvieDDSDFfNeSTj0aIZw/view?utm_content=DAGdaLRumnY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h31c6faffd2"
+    )
+  )
+)
+
 
 readings  <- readings[[paste0(params$course)]]
+slides    <- slides[[paste0(params$course)]]
 agenda    <- agenda[[paste0(params$course)]]
 exams     <- agenda$exams
 cancelled <-agenda$cancelled
