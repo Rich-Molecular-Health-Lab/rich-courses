@@ -228,7 +228,6 @@ necessary.resources <- resources %>%
              Comment  ~ px(400))
 
 
-gtsave(necessary.resources, course$resources$html)
 gtsave(necessary.resources, course$resources$png)
 
 source(templates$syllabus_cards)

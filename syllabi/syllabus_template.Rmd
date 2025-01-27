@@ -13,7 +13,7 @@ output:
     fig_caption: true
 params:
   semester: "spring25"
-  course: "zoobio"
+  course: "conbio"
                      
 ---
 
@@ -25,10 +25,6 @@ source(term$agendas)
 source(templates$build_schedule)
 source(templates$pretty_schedules)
 source(templates$syllabus_pretty_tables)
-write.table(schedule, 
-            course$schedule$table, 
-            row.names = F, 
-            sep = "\t")
 ```
 
 # General Information

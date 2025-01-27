@@ -9,9 +9,6 @@ specials <- list(
     "8" = list(
       "8a" = "Guest Expert: Dr. Cayla Iske"
     )
-  ),
-  conbio = list(
-
   )
 )
 
@@ -348,6 +345,14 @@ slides <- list(
     ),
     "2" = list(
       "2a" = "https://www.canva.com/design/DAGdaLRumnY/RapvieDDSDFfNeSTj0aIZw/view?utm_content=DAGdaLRumnY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h31c6faffd2"
+    )
+  ),
+  conbio = list(
+    "1" = list(
+      "1b" = "https://www.canva.com/design/DAGc5nEJ1zo/CabP4Rhu_vTF8YLd9eLRng/view?utm_content=DAGc5nEJ1zo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h791d6739f5"
+    ),
+    "2" = list(
+      "2a" = "https://www.canva.com/design/DAGdbOMNMfk/JGhADvMqyRMh9XDAI3IwVg/view?utm_content=DAGdbOMNMfk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h1a7e2f2a85"
     )
   )
 )
