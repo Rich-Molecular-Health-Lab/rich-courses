@@ -13,12 +13,12 @@ output:
     fig_caption: true
 params:
   semester: "spring25"
-  course: "conbio"
+  course: "zoobio"
                      
 ---
 
 ```{r, include = FALSE}
-source("./setup/set_paths.R")
+source("../setup/set_paths.R")
 
 source(global$setup)
 source(term$agendas)
