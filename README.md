@@ -2,20 +2,23 @@
 
 >Welcome to Dr. Rich's GitHub homepage for **Zoo Biology** and **Conservation Biology**. Here you will find the schedules, syllabi, and other important resources for both courses. 
 
-# Courses {.tabset}
-
-## Zoo Biology
-
-- [Schedule](https://rich-molecular-health-lab.github.io/rich-courses/schedules/Schedule_ZooBio.html)
-- [Syllabus](https://rich-molecular-health-lab.github.io/rich-courses/syllabi/Syllabus_ZooBio.html)
-
-### Labs
-
-- [Due Feb 4: Institutional Collection Plans](https://rich-molecular-health-lab.github.io/rich-courses/assignments/zoobio/labs/LabW2_ICPs.html)
+# Courses
 
 ## Conservation Biology
 
-- [Schedule](https://rich-molecular-health-lab.github.io/rich-courses/schedules/Schedule_ConBio.html)
-- [Syllabus](https://rich-molecular-health-lab.github.io/rich-courses/syllabi/Syllabus_ConBio.html)
+### [Schedule](https://rich-molecular-health-lab.github.io/rich-courses/schedules/Schedule_ConBio.html)
+ 
+### [Syllabus](https://rich-molecular-health-lab.github.io/rich-courses/syllabi/Syllabus_ConBio.html)
+
+
+## Zoo Biology
+
+### [Schedule](https://rich-molecular-health-lab.github.io/rich-courses/schedules/Schedule_ZooBio.html)
+
+### [Syllabus](https://rich-molecular-health-lab.github.io/rich-courses/syllabi/Syllabus_ZooBio.html)
+
+### Labs
+
+#### [Due Feb 4: Institutional Collection Plans](https://rich-molecular-health-lab.github.io/rich-courses/assignments/zoobio/labs/LabW2_ICPs.html)
 
 ---
