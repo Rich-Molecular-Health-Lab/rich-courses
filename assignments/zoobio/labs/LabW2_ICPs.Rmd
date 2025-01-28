@@ -19,8 +19,17 @@ params:
 ---
 
 ```{r, include = FALSE}
-source("./setup/set_paths.R")
+setwd("../../")
+```
 
+
+```{r, include = FALSE}
+setwd("../../")
+global              <- config::get(config = "default")
+templates           <- config::get(config = "templates")
+term                <- config::get(config = params$semester)
+course              <- config::get(config = params$course)
+github              <- config::get(config = "github")
 source(global$setup)
 source(paste0(course$labs, "MissionStatementExamples.R"))
 ```
@@ -56,8 +65,9 @@ Before beginning your ICP, you should review the two items linked below.  You ma
 
 ### Links
 
-- [AZA Guidelines and Standards](https://rich-molecular-health-lab.github.io/rich-courses/assignments/zoobio/AZAGuidelinesStandards/)
-- [ICP Examples](https://rich-molecular-health-lab.github.io/rich-courses/assignments/zoobio/Examples/)
+- [IUCN Red List of Threatened Species](https://www.iucnredlist.org/)
+- [AZA Guidelines and Standards](https://github.com/Rich-Molecular-Health-Lab/rich-courses/tree/main/assignments/zoobio/AZAGuidelinesStandards)
+- [ICP Examples](https://github.com/Rich-Molecular-Health-Lab/rich-courses/tree/main/assignments/zoobio/Examples)
 
 ### Mission Statements
 
@@ -122,12 +132,13 @@ Design an Institutional Collection Plan for your new area that could be submitte
 
 - Start with a list of 15 potential species relevant to your theme.
   - Use the IUCN Red List and other resources to research species.
+    - *Tip: The IUCN Red List will let you search by themes like geographic region, habitat, or conservation threats. This may help you brainstorm a species list.*
 	
 #### Criteria Development
 
 - Define clear criteria for selecting species.
   - Examples of criteria:
-    - Conservation value (IUCN status, SSP involvement).
+    - Conservation value ([IUCN status](https://www.iucnredlist.org/), SSP involvement).
     - Exhibit value (charisma, educational potential).
     - Resource requirements (space, veterinary expertise).
     - Mission alignment (how the species supports the area’s purpose).
@@ -149,7 +160,7 @@ Design an Institutional Collection Plan for your new area that could be submitte
   - The information included on your standardized profiles should reflect your mission and selection criteria.
   - Here are some possible examples:
     - Scientific name and common name.
-    - Conservation status (IUCN Red List).
+    - Conservation status ([IUCN Red List](https://www.iucnredlist.org/)).
     - Geographic range.
     - Ecological role (e.g., predator, prey, pollinator).
     - Space, care, and husbandry needs.
@@ -190,7 +201,7 @@ Design an Institutional Collection Plan for your new area that could be submitte
 
 ### Grading Criteria
 
-Your draft will be evaluated on:
+- Your draft will be evaluated on:
   - Clarity and alignment of mission statements.
   - Logical and well-defined species selection criteria.
   - Completeness and accuracy of species profiles.
