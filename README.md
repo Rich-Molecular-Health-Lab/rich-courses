@@ -1,9 +1,4 @@
----
-title: "Course Resources"
-author: "Dr. Rich"
-date: "Spring 2025"
-output: github_document
----
+# Course Resources for Spring 2025
 
 >Welcome to Dr. Rich's GitHub homepage for **Zoo Biology** and **Conservation Biology**. Here you will find the schedules, syllabi, and other important resources for both courses. 
 
