@@ -2,10 +2,7 @@
 title: "Course Resources"
 author: "Dr. Rich"
 date: "Spring 2025"
-output:
-  github_document:
-    theme:
-      bootswatch: litera
+output: github_document
 ---
 
 >Welcome to the GitHub homepage for **Zoo Biology** and **Conservation Biology**. Here you will find the schedules, syllabi, and other important resources for both courses. 
