@@ -22,14 +22,76 @@ params:
 source("./setup/set_paths.R")
 
 source(global$setup)
+source(paste0(course$labs, "MissionStatementExamples.R"))
 ```
 
 
-# Overview
+# Introduction
 
-The Institutional Collection Plan (ICP) is a critical document that reflects a zoo’s mission and purpose for its living collection. This assignment will guide you through creating an ICP for a fictional zoo and a specialized area or collection within it. You will draft a first version of the ICP, which we will expand and revise throughout the semester before presenting the final product.
+## Overview
+
+The ideas and materials that you brainstorm and assemble for today's exercise will become your lab group's case study that you return to for other assignments throughout the semester. Many of the technical guidelines and concepts behind this kind of project should still seem unfamiliar and abstract to you at this point in the semester, but that is the point, so do not feel overwhelmed if you are unsure about the structure and technical details of your assignment products right now. My goal is for you to start with something very basic and simple that you are able to improve and deepen as we progress through different lessons and readings from week-to-week. In the end, you should have a much different, more detailed product than the rough draft you develop this week.  
+  
+Most importantly, I want your group to have fun with the topic and ideas you choose to experiment with this semester, so today you should spend time thinking and discussing your shared interests as a group before you start laying out the details of this assignment.  
+
+### Goal
+
+Your group will work together to develop an idea for a special area, department, or program at a fictional zoo. Think about some of the areas at Henry Doorly Zoo like the Orangutan Forest, the Desert Dome, the Asian Highlands, etc. Your group's themed area may scale to just about any physical size, so long as it matches the mission and vision you identify.
+
+#### Mission and Vision Statements
+
+Your goal throughout the semester will be to meet the AZA's guidelines and recommendations to ensure the project you propose will improve your zoo's overall accreditation score at your next 5-year review. The AZA inspectors will first look to your institution's mission and vision statement before then assessing whether you are prioritizing resources in a way that matches your stated goals and vision as an organization.  I have assembled a list of example mission and vision statements published by different AZA-accredited institutions to help you generate some ideas for a statement of your own. This is not an exhaustive list, so I also encourage you to look around at different zoo websites to find more examples of interest.  
+  
+Once you have a mission and vision for your institution, you also need to write a similar mission statement or list of goals for the special area or project you are designing. Anyone reading this statement should immediately recognize how the area you are building will advance your institution's broader mission and vision.  
+
+#### Institional Collection Plans
+
+The Institutional Collection Plan (ICP) is a critical document that reflects a zoo’s mission and purpose for its living collection. In fact, ICPs are also central to any institution in the broader field of Museum and Library Science.  An institution generally has a tiered structure of ICPs that reflect the structure of their organization. Individual departments each organize their ICPs, which are synthesized into a broader ICP for the entire zoo.
+
+Today's lab will guide you through creating an ICP for your zoo's specialized area or collection. Simply deciding on a structure and format for the ICP can be critical and challenging, so do not worry if you find yourself wanting to return to yours later and reorganize the framework again.  
+
+Before beginning your ICP, you should review the two items linked below.  You may also want to refer to the AZA Accreditation Guidelines and other documentation linked here.  Finally, I have provided several examples of real ICPs from AZA-accredited institutions and recommended examples published by the AZA's accreditation committee to help you see the full range of options in format and content for an ICP. Browse through these to get an idea of what you do or do not like in the structure and content you see.  
+
+## Extra Resources {.tabset}
+
+### Links
+
+- [AZA Guidelines and Standards](https://rich-molecular-health-lab.github.io/rich-courses/assignments/zoobio/AZAGuidelinesStandards/)
+- [ICP Examples](https://rich-molecular-health-lab.github.io/rich-courses/assignments/zoobio/Examples/)
+
+### Mission Statements
+
+```{r, include = FALSE}
+render_mission_statements <- function(mission_data) {
+  html <- "<ul>"
+  for (zoo in names(mission_data)) {
+    html <- paste0(html, "<li><strong>", zoo, "</strong>")
+    html <- paste0(html, "<ul><li><em>Mission:</em> ", mission_data[[zoo]]$org_mission, "</li>")
+    exhibits <- mission_data[[zoo]][-1]
+    if (length(exhibits) > 0) {
+      for (exhibit in names(exhibits)) {
+        html <- paste0(html, "<li><strong>Exhibit: ", exhibit, "</strong><ul>")
+        html <- paste0(html, "<li><em>Theme:</em> ", exhibits[[exhibit]]$theme, "</li>")
+        html <- paste0(html, "<li><em>Purpose:</em> ", exhibits[[exhibit]]$purpose, "</li>")
+        html <- paste0(html, "</ul></li>")
+      }
+    }
+    html <- paste0(html, "</ul></li>")
+  }
+  html <- paste0(html, "</ul>")
+  HTML(html)
+}
+```
+
+
+```{r}
+render_mission_statements(mission_statements)
+```
+
 
 # Instructions
+
+>Again, please refer to the examples linked above for more help completing these tasks.
 
 ## Develop a Mission Statement
 
@@ -81,6 +143,8 @@ Design an Institutional Collection Plan for your new area that could be submitte
 
 ### Species Profiles:
 
+>Note: You will only be drafting rough notes for this part of the assignment. Later on you will turn your notes into presentable versions of animal profile pages.
+
 - Design a profile page for each of your 7 selected species. 
   - The information included on your standardized profiles should reflect your mission and selection criteria.
   - Here are some possible examples:
@@ -92,6 +156,8 @@ Design an Institutional Collection Plan for your new area that could be submitte
     
 ### Operational Considerations:
 
+>Note: For this part of these assignment you are only making some very rough, broad thoughts. As the semester progresses you will have a better idea of some of the specific operational considerations for the species you have selected.
+
 - Discuss the logistics of caring for your selected species:
   - Required exhibit designs.
   - Staff expertise needed.
@@ -99,14 +165,15 @@ Design an Institutional Collection Plan for your new area that could be submitte
   
 ### Review Process:
 
-- Propose a plan for regularly reviewing and updating your ICP.
+- Propose a rough plan for regularly reviewing and updating your ICP.
+  - *What metrics would you use to assess whether your ICP is helping you meet your program's mission/goals?*
 - Highlight tasks and timelines for future updates.
 
 ## Submit and Revise
 
 ### Submission:
 
-- Submit your first draft of the ICP by the deadline.
+- Submit your first draft of the ICP by next Tuesday at 1 PM on Canvas.
   - This draft will form the foundation for future assignments.
 
 ### Future Revisions:

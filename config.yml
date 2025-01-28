@@ -52,6 +52,8 @@ zoobio:
   title: "Zoo Biology"
   canvas: "85615"
   readings: "https://rich-molecular-health-lab.github.io/rich-courses/readings/zoobio/"
+  assignments: "./assignments/zoobio/"
+  labs: "./assignments/zoobio/labs/"
   text:
     title: "Peer-reviewed Articles"
     link: "github$readings"
