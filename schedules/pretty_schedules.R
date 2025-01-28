@@ -40,12 +40,19 @@ gt_schedule <- schedule  %>%
              Event  = "",
              Slides = "") %>%
   fmt_url(columns        = Slides,
-          rows           = !is.na(Slides),
+          rows           = !is.na(Slides) & Format != "Lab",
           label          = fontawesome::fa(name           = "file-powerpoint",
                                            height         = "1.5em",
                                            vertical_align = "0em"),
           color          = lecture_text) %>%
-  sub_missing(columns = "Slides", missing_text = " ") %>%
+  fmt_url(columns        = Slides,
+          rows           = !is.na(Slides) & Format == "Lab",
+          label          = fontawesome::fa(name           = "file-pen",
+                                           height         = "1.5em",
+                                           vertical_align = "0em"),
+          color          = lecture_text) %>%
+  sub_missing(columns = "Slides" , missing_text = " ") %>%
+  sub_missing(columns = "Reading", missing_text = "-") %>%
   tab_style(style = cell_text(weight    = "bold",
                               stretch   = "condensed",
                               align     = "left"),

@@ -19,21 +19,29 @@ special_agenda <- enframe_schedule(specials, "Event") %>%
   mutate(Day = as.character(Day)) %>%
   select(Day, Event)
 
+lab_schedule <- enframe(labs, name = "Week", value = "Exercise") %>%
+  unnest_longer(Exercise,
+                values_to  = "lab_link",
+                indices_to = "Exercise") %>%
+  mutate(Day      = str_glue("{Week}", "b")) %>%
+  select(Day, Exercise, lab_link)
+
+
 schedule <- weeks %>%
   map_depth(1, \(x) discard(x, names(x) %in% names(simplify_nested(agenda_other)))) %>%
-  discard_at(17) %>% compact()   %>%
+  discard_at(17) %>% compact() %>%
   enframe_schedule(values_to = "Date") %>%
   full_join(enframe_schedule(topics, values_to = "Topic"), by = join_by(Week, Day, day_wk, Format)) %>%
   mutate(Agenda = as.character(Topic), .keep = "unused") %>%
   bind_rows(enframe_schedule(agenda_other$Exams  , values_to = "Date", agenda = "Exam"),
             enframe_schedule(agenda_other$NoClass, values_to = "Date", agenda = "No Class")) %>%
-  left_join(agenda_themes, by = join_by(Agenda)) %>%
+  left_join(agenda_themes   , by = join_by(Agenda)) %>%
   format_schedule() %>%
   left_join(reading_schedule, by = join_by(Week, Day, Format)) %>%
-  left_join(special_agenda, by = join_by(Day)) %>%
+  left_join(special_agenda  , by = join_by(Day)) %>%
   select(-day_wk) %>%
   left_join(slides_schedule, by = join_by(Day)) %>%
-  mutate(Reading_Title = if_else(is.na(Reading_Title), "None or TBA", Reading_Title)) %>%
+  left_join(lab_schedule   , by = join_by(Day)) %>%
   mutate(Theme = if_else(Theme == "Other", NA, Theme)) %>%
   fill(Theme, .direction = "up") %>%
   fill(Theme, .direction = "down") %>%
@@ -41,5 +49,8 @@ schedule <- weeks %>%
          Link = if_else(
            str_detect(key, "\\w+\\d{4}"),
            str_glue(course$readings, "{key}", ".pdf"),
-           NA))
+           NA)) %>%
+  mutate(Agenda = if_else(Format == "Lab" & Agenda != "No Class", Exercise, Agenda),
+         Slides = if_else(Format == "Lab", lab_link, Slides)) %>%
+  select(-c("Exercise", "lab_link"))
 

@@ -359,122 +359,32 @@ slides <- list(
 
 
 labs <- list(
-  "2b"  = list(
-    "theme"    = "Institutions and Oversight",
-    "exercise" = "Design your own Institutional Collection Plan"
-    ),
-  "3b"  = list(
-    "theme"    = "Headstarting, Rescue, and Rehabilitation",
-    "exercise" = "SAFE Proposals for ICP Taxa"
-    ),
-  "4b"  = list(
-    "theme"    = "Assurance Populations",
-    "exercise" = ""
-    ),
-  "5b"  = list(
-    "theme"    = "Demographics and Genetics",
-    "exercise" = "Population Viability Analysis"
-    ),
-  "6b"  = list(
-    "theme"    = "Reproduction",
-    "exercise" =
-    ),
-  "7b"  = list(
-    "theme"    = "Medicine",
-    "exercise" =
-    ),
-  "8b"  = list(
-    "theme"    = "Nutrition",
-    "exercise" = "Diet Plan?"
-    ),
-  "10b" = list(
-    "theme"    = "Schedule Buffer",
-    "exercise" =
-    ),
-  "11b" = list(
-    "theme"    = "Schedule Buffer",
-    "exercise" =
-    ),
-  "12b" = list(
-    "theme"    = "Monitoring and Assessment",
-    "exercise" = "Quantifying behavior"
-    ),
-  "13b" = list(
-    "theme"    = "Training and Management",
-    "exercise" = "Animal Training Game"
-    ),
-  "14b" = list(
-    "theme"    = "Environmental Enrichment",
-    "exercise" = "Enrichment construction"
-    ),
-  "15b" = list(
-    "theme"    = "Community Engagement and Education",
-    "exercise" =
-    ),
-  "16b" = list(
-    "theme"    = "Public Policy and Advocacy",
-    "exercise" =
-    )
+  zoobio = list(
+  "2"  = list("Institutional Colection Plans" = paste0(course$lab_links, "LabW2_ICPs.html")),
+  "3"  = list("SAFE Proposals"                = NULL),
+  "4"  = list("Breeding and Transfer Plans"   = NULL),
+  "5"  = list("Population Viability Analysis" = NULL),
+  "6"  = list("Genetic Data"                  = NULL),
+  "7"  = list("Behavioral Data"               = NULL),
+  "8"  = list("Diet Plans"                    = NULL),
+  "10" = list("Enrichment Design"             = NULL),
+  "11" = list("Enrichment Workshop"           = NULL),
+  "12" = list("Welfare Assessment Plan"       = NULL),
+  "13" = list("Training Workshop"             = NULL),
+  "14" = list("Enrichment Workshop"           = NULL),
+  "15" = list("Exhibit Signage and Programs"  = NULL),
+  "16" = list("Enrichment Workshop"           = NULL)
+  ),
+  conbio = NULL
 )
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-labs <- list(
-    Foundations =
-      list(
-        "Intro to the Course",
-        "Institutions and Oversight"
-      ),
-    Conservation =
-      list(
-        "Headstarting, Rescue, and Rehabilitation",
-        "Assurance Populations"
-      ),
-    Health =
-      list(
-        "Demographics and Genetics",
-        "Reproduction",
-        "Medicine",
-        "Nutrition"
-      ),
-    Other =
-      list(
-        "No Class",
-        "Schedule Buffer",
-        "Exam"
-      ),
-    Behavior =
-      list(
-        "Monitoring and Assessment",
-        "Training and Management",
-        "Environmental Enrichment"
-      ),
-    Society =
-      list(
-        "Community Engagement and Education",
-        "Accessibility and Inclusion",
-        "Public Policy and Advocacy"
-      )
-  )
-
 readings  <- readings[[paste0(params$course)]]
 slides    <- slides[[paste0(params$course)]]
+labs      <- labs[[paste0(params$course)]]
 agenda    <- agenda[[paste0(params$course)]]
 exams     <- agenda$exams
-cancelled <-agenda$cancelled
+cancelled <- agenda$cancelled
 topics    <- agenda$topics
 themes    <- agenda$themes
 specials  <- specials[[paste0(params$course)]]

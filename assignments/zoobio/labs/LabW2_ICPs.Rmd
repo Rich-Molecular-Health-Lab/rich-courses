@@ -20,11 +20,6 @@ params:
 
 ```{r, include = FALSE}
 setwd("../../")
-```
-
-
-```{r, include = FALSE}
-setwd("../../")
 global              <- config::get(config = "default")
 templates           <- config::get(config = "templates")
 term                <- config::get(config = params$semester)
