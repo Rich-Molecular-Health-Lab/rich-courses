@@ -3,7 +3,7 @@ title: "Course Resources"
 author: "Dr. Rich"
 date: "Spring 2025"
 output:
-  html_document:
+  github_document:
     theme:
       bootswatch: litera
 ---
