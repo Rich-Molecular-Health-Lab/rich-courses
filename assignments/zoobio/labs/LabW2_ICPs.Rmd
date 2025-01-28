@@ -1,0 +1,131 @@
+---
+title: "Lab Assignment: Designing an Institutional Collection Plan (ICP)"
+author: "Zoo Biology with Dr. Rich"
+date: "Jan 28, 2025"
+output:
+  html_document:
+    theme:
+      bootswatch: litera
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    code_folding: "hide"
+    fig_caption: true
+params:
+  semester: "spring25"
+  course: "zoobio"
+                     
+---
+
+```{r, include = FALSE}
+source("./setup/set_paths.R")
+
+source(global$setup)
+```
+
+
+# Overview
+
+The Institutional Collection Plan (ICP) is a critical document that reflects a zoo’s mission and purpose for its living collection. This assignment will guide you through creating an ICP for a fictional zoo and a specialized area or collection within it. You will draft a first version of the ICP, which we will expand and revise throughout the semester before presenting the final product.
+
+# Instructions
+
+## Develop a Mission Statement
+
+### Institutional Mission Statement
+
+- Write a mission statement for your fictional zoo.
+  - The mission should address the zoo’s overall goals for conservation, education, animal welfare, and public engagement.
+
+### Special Area Mission Statement
+	
+- Choose a specific theme for a new area or collection within your zoo (e.g., a biodiversity hotspot, geopolitical region, or biological community).
+  - Write a mission and purpose statement for this special area, explaining:
+    - How the area aligns with the zoo’s broader mission.
+    - Its specific goals for housing a living collection.
+
+## Draft the ICP
+
+Design an Institutional Collection Plan for your new area that could be submitted for AZA accreditation. Your ICP should include the following sections:
+
+### Objectives and Goals
+
+- Outline the objectives for your themed area.
+- Include goals related to conservation, education, and animal welfare.
+
+### Species Selection Process
+	
+####	Initial Species List
+
+- Start with a list of 15 potential species relevant to your theme.
+  - Use the IUCN Red List and other resources to research species.
+	
+#### Criteria Development
+
+- Define clear criteria for selecting species.
+  - Examples of criteria:
+    - Conservation value (IUCN status, SSP involvement).
+    - Exhibit value (charisma, educational potential).
+    - Resource requirements (space, veterinary expertise).
+    - Mission alignment (how the species supports the area’s purpose).
+    
+#### Scoring System
+
+- Create a scoring system to evaluate your criteria. 
+  - Decide if some criteria (e.g., conservation value) will carry more weight.
+  
+#### Final Selection
+
+- Narrow your list of 15 species to 7 selected species based on your scoring system.
+
+### Species Profiles:
+
+- Design a profile page for each of your 7 selected species. 
+  - The information included on your standardized profiles should reflect your mission and selection criteria.
+  - Here are some possible examples:
+    - Scientific name and common name.
+    - Conservation status (IUCN Red List).
+    - Geographic range.
+    - Ecological role (e.g., predator, prey, pollinator).
+    - Space, care, and husbandry needs.
+    
+### Operational Considerations:
+
+- Discuss the logistics of caring for your selected species:
+  - Required exhibit designs.
+  - Staff expertise needed.
+  - Long-term sustainability (e.g., SSP participation).
+  
+### Review Process:
+
+- Propose a plan for regularly reviewing and updating your ICP.
+- Highlight tasks and timelines for future updates.
+
+## Submit and Revise
+
+### Submission:
+
+- Submit your first draft of the ICP by the deadline.
+  - This draft will form the foundation for future assignments.
+
+### Future Revisions:
+
+- Throughout the semester, you will expand this document to include data analysis (e.g., studbooks), deeper research, and final reflections.
+- You will present your completed ICP to the class at the end of the semester.
+
+### Deliverables for Next Week
+
+1.  Zoo and Special Area Mission Statements.
+2.  Initial List of 15 Species with Selection Criteria and Scoring System.
+3.  Draft Profiles for 7 Selected Species.
+4.  ICP Objectives, Goals, and Operational Considerations.
+
+### Grading Criteria
+
+Your draft will be evaluated on:
+  - Clarity and alignment of mission statements.
+  - Logical and well-defined species selection criteria.
+  - Completeness and accuracy of species profiles.
+  - Thoughtfulness in considering operational needs and review processes.
+  - Creativity and connection to the zoo’s overall mission.

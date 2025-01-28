@@ -358,6 +358,118 @@ slides <- list(
 )
 
 
+labs <- list(
+  "2b"  = list(
+    "theme"    = "Institutions and Oversight",
+    "exercise" = "Design your own Institutional Collection Plan"
+    ),
+  "3b"  = list(
+    "theme"    = "Headstarting, Rescue, and Rehabilitation",
+    "exercise" = "SAFE Proposals for ICP Taxa"
+    ),
+  "4b"  = list(
+    "theme"    = "Assurance Populations",
+    "exercise" = ""
+    ),
+  "5b"  = list(
+    "theme"    = "Demographics and Genetics",
+    "exercise" = "Population Viability Analysis"
+    ),
+  "6b"  = list(
+    "theme"    = "Reproduction",
+    "exercise" =
+    ),
+  "7b"  = list(
+    "theme"    = "Medicine",
+    "exercise" =
+    ),
+  "8b"  = list(
+    "theme"    = "Nutrition",
+    "exercise" = "Diet Plan?"
+    ),
+  "10b" = list(
+    "theme"    = "Schedule Buffer",
+    "exercise" =
+    ),
+  "11b" = list(
+    "theme"    = "Schedule Buffer",
+    "exercise" =
+    ),
+  "12b" = list(
+    "theme"    = "Monitoring and Assessment",
+    "exercise" = "Quantifying behavior"
+    ),
+  "13b" = list(
+    "theme"    = "Training and Management",
+    "exercise" = "Animal Training Game"
+    ),
+  "14b" = list(
+    "theme"    = "Environmental Enrichment",
+    "exercise" = "Enrichment construction"
+    ),
+  "15b" = list(
+    "theme"    = "Community Engagement and Education",
+    "exercise" =
+    ),
+  "16b" = list(
+    "theme"    = "Public Policy and Advocacy",
+    "exercise" =
+    )
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+labs <- list(
+    Foundations =
+      list(
+        "Intro to the Course",
+        "Institutions and Oversight"
+      ),
+    Conservation =
+      list(
+        "Headstarting, Rescue, and Rehabilitation",
+        "Assurance Populations"
+      ),
+    Health =
+      list(
+        "Demographics and Genetics",
+        "Reproduction",
+        "Medicine",
+        "Nutrition"
+      ),
+    Other =
+      list(
+        "No Class",
+        "Schedule Buffer",
+        "Exam"
+      ),
+    Behavior =
+      list(
+        "Monitoring and Assessment",
+        "Training and Management",
+        "Environmental Enrichment"
+      ),
+    Society =
+      list(
+        "Community Engagement and Education",
+        "Accessibility and Inclusion",
+        "Public Policy and Advocacy"
+      )
+  )
+
 readings  <- readings[[paste0(params$course)]]
 slides    <- slides[[paste0(params$course)]]
 agenda    <- agenda[[paste0(params$course)]]
