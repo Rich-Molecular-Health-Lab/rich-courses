@@ -17,12 +17,9 @@ params:
 
 
 ```{r, include = FALSE}
+setwd("schedules")
 source("../setup/set_paths.R")
 source(global$setup)
-```
-
-
-```{r, include = FALSE}
 source(term$agendas)
 source(templates$build_schedule)
 write.table(schedule, 
@@ -30,9 +27,6 @@ write.table(schedule,
             row.names = F, 
             sep = "\t")
 source(templates$pretty_schedules)
-```
-
-```{r}
 gt_calendar
 gtsave(gt_calendar, paste0(course$schedule$html))
 gtsave(gt_calendar, paste0(course$schedule$png))

@@ -344,7 +344,8 @@ slides <- list(
       "1c" = "https://www.canva.com/design/DAGc5pniAOc/3s5MrUXg4zIqHWXzg6AVsw/view?utm_content=DAGc5pniAOc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h453833c08f"
     ),
     "2" = list(
-      "2a" = "https://www.canva.com/design/DAGdaLRumnY/RapvieDDSDFfNeSTj0aIZw/view?utm_content=DAGdaLRumnY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h31c6faffd2"
+      "2a" = "https://www.canva.com/design/DAGdaLRumnY/RapvieDDSDFfNeSTj0aIZw/view?utm_content=DAGdaLRumnY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h31c6faffd2",
+      "2c" = "https://www.canva.com/design/DAGdmPPRV18/gyat2tLVE1bICS3mZKZNpA/view?utm_content=DAGdmPPRV18&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=ha0c459a64d"
     )
   ),
   conbio = list(
