@@ -23,7 +23,8 @@ lab_schedule <- enframe(labs, name = "Week", value = "Exercise") %>%
   unnest_longer(Exercise,
                 values_to  = "lab_link",
                 indices_to = "Exercise") %>%
-  mutate(Day      = str_glue("{Week}", "b")) %>%
+  mutate(Day      = as.character(str_glue("{Week}", "b")),
+         Exercise = as.character(Exercise), lab_link = as.character(lab_link)) %>%
   select(Day, Exercise, lab_link)
 
 

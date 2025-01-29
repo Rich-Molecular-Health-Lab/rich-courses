@@ -353,7 +353,8 @@ slides <- list(
       "1b" = "https://www.canva.com/design/DAGc5nEJ1zo/CabP4Rhu_vTF8YLd9eLRng/view?utm_content=DAGc5nEJ1zo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h791d6739f5"
     ),
     "2" = list(
-      "2a" = "https://www.canva.com/design/DAGdbOMNMfk/JGhADvMqyRMh9XDAI3IwVg/view?utm_content=DAGdbOMNMfk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h1a7e2f2a85"
+      "2a" = "https://www.canva.com/design/DAGdbOMNMfk/JGhADvMqyRMh9XDAI3IwVg/view?utm_content=DAGdbOMNMfk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h1a7e2f2a85",
+      "2b" = "https://www.canva.com/design/DAGdhksrZMQ/zBHC6EoXETBavgjaqJh3sw/view?utm_content=DAGdhksrZMQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h7e50a2c3c8"
     )
   )
 )
@@ -377,6 +378,12 @@ labs <- list(
   "16" = list("Enrichment Workshop"           = NULL)
   ),
   conbio = NULL
+)
+
+graded_work <- list(
+  zoobio = list(
+    "2a" = ""
+  )
 )
 
 
