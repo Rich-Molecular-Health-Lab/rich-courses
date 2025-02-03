@@ -23,3 +23,4 @@ conflicts_prefer(lubridate::update)
 conflicts_prefer(base::as.data.frame)
 conflicts_prefer(htmltools::p)
 conflicts_prefer(purrr::discard)
+
