@@ -1,7 +1,9 @@
-source(global$packages)
-source(global$conflicts)
-source(global$functions)
-source(global$inputs)
+here::i_am("setup/setup.R")
+
+source(here::here(global$packages))
+source(here::here(global$conflicts))
+source(here::here(global$functions))
+source(here::here(global$inputs))
 
 opts_chunk$set(message = FALSE,
                warning = FALSE,

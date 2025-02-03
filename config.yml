@@ -1,14 +1,14 @@
 default:
-  setup: "../setup/setup.R"
-  packages: "../setup/packages.R"
-  set_paths: "../setup/set_paths.R"
-  conflicts: "../setup/conflicts.R"
-  functions: "../setup/functions.R"
-  fonts: "../setup/fonts/FA6_Free-Solid-900.otf"
-  inputs: "../setup/inputs.R"
+  setup: "setup/setup.R"
+  packages: "setup/packages.R"
+  set_paths: "setup/set_paths.R"
+  conflicts: "setup/conflicts.R"
+  functions: "setup/functions.R"
+  fonts: "setup/fonts/FA6_Free-Solid-900.otf"
+  inputs: "setup/inputs.R"
   graphics: "https://rich-molecular-health-lab.github.io/rich-courses/graphics/"
-  schedules: "../schedules/"
-  syllabi: "../syllabi/"
+  schedules: "schedules/"
+  syllabi: "syllabi/"
   readings: "https://rich-molecular-health-lab.github.io/rich-courses/readings/"
   email: "aliciarich@unomaha.edu"
   office: "Allwine Hall 413a"
@@ -28,22 +28,22 @@ github:
     zoobio: "https://rich-molecular-health-lab.github.io/rich-courses/assignments/zoobio/labs/"
 
 templates:
-  schedule: "../schedules/Schedule_Template.Rmd"
-  syllabus: "../syllabi/Syllabus_Template.Rmd"
-  build_schedule: "../schedules/build_schedule.R"
-  pretty_schedules: "../schedules/pretty_schedules.R"
-  syllabus_tables: "../syllabi/syllabus_tables.R"
-  syllabus_pretty_tables: "../syllabi/syllabus_pretty_tables.R"
-  syllabus_cards: "../syllabi/syllabus_cards.R"
+  schedule: "schedules/Schedule_Template.Rmd"
+  syllabus: "syllabi/Syllabus_Template.Rmd"
+  build_schedule: "schedules/build_schedule.R"
+  pretty_schedules: "schedules/pretty_schedules.R"
+  syllabus_tables: "syllabi/syllabus_tables.R"
+  syllabus_pretty_tables: "syllabi/syllabus_pretty_tables.R"
+  syllabus_cards: "syllabi/syllabus_cards.R"
   class_culture:
-    html: "../graphics/class_culture.html"
-    png: "../graphics/class_culture.png"
+    html: "graphics/class_culture.html"
+    png: "graphics/class_culture.png"
   css:
-    syllabus: "../setup/syllabus.css"
+    syllabus: "setup/syllabus.css"
 
 spring25:
-  agendas: "../schedules/agendas_s25.R"
-  reading_lists: "../schedules/reading_lists.R"
+  agendas: "schedules/agendas_s25.R"
+  reading_lists: "schedules/reading_lists.R"
   officehours: "By appointment Thursdays and Fridays"
   name: "Spring 2025"
   start: "2025-1-20"
@@ -54,8 +54,8 @@ zoobio:
   title: "Zoo Biology"
   canvas: "85615"
   readings: "https://rich-molecular-health-lab.github.io/rich-courses/readings/zoobio/"
-  assignments: "../assignments/zoobio/"
-  labs: "../assignments/zoobio/labs/"
+  assignments: "assignments/zoobio/"
+  labs: "assignments/zoobio/labs/"
   lab_links: "https://rich-molecular-health-lab.github.io/rich-courses/assignments/zoobio/labs/"
   text:
     title: "Peer-reviewed Articles"
@@ -65,17 +65,17 @@ zoobio:
   where: "Allwine Hall 309"
   prereqs: "BIOL 1450, 1750, and Junior-Senior in biology. Not open to non-degree graduate students."
   grade_breakdown:
-    html: "../graphics/zoobio_gradebreakdown.html"
-    png: "../graphics/zoobio_gradebreakdown.png"
+    html: "graphics/zoobio_gradebreakdown.html"
+    png: "graphics/zoobio_gradebreakdown.png"
   slos:
-    html: "../graphics/zoobio_slos.html"
-    png: "../graphics/zoobio_slos.png"
+    html: "graphics/zoobio_slos.html"
+    png: "graphics/zoobio_slos.png"
   quiz_rubric:
-    html: "../graphics/zoobio_quiz_rubric.html"
-    png: "../graphics/zoobio_quiz_rubric.png"
+    html: "graphics/zoobio_quiz_rubric.html"
+    png: "graphics/zoobio_quiz_rubric.png"
   resources:
-    html: "../graphics/zoobio_resources.html"
-    png: "../graphics/zoobio_resources.png"
+    html: "graphics/zoobio_resources.html"
+    png: "graphics/zoobio_resources.png"
   days: !expr list(a = "Mon", b = "Tues", c = "Wed")
   dayid: !expr c("a", "b", "c")
   agenda: !expr c("Lecture", "Lab", "Exam", "No Class")
@@ -86,11 +86,11 @@ zoobio:
     end: !expr c("14:15" = "a", "15:50" = "b", "14:15" = "c")
     final: "12:30"
   schedule:
-    html: "../schedules/Schedule_ZooBio.html"
-    png: "../schedules/Schedule_ZooBio.png"
-    table: "../schedules/Schedule_ZooBio.tsv"
+    html: "schedules/Schedule_ZooBio.html"
+    png: "schedules/Schedule_ZooBio.png"
+    table: "schedules/Schedule_ZooBio.tsv"
   syllabus:
-    html: "../syllabi/Syllabus_ZooBio.html"
+    html: "syllabi/Syllabus_ZooBio.html"
   description: "Zoo Biology is an engaging and comprehensive undergraduate course designed to explore the fascinating world of wildlife biology and the intricate relationships between animals, their environments, and conservation efforts within zoological settings. This course delves into the core principles of animal biology, behavior, and management, providing students with a strong foundation in the specialized field of zoo science."
 
 conbio:
@@ -108,20 +108,20 @@ conbio:
   when: "M/W 4:00 - 5:15"
   where: "Allwine Hall 305"
   prereqs: "BIOL 1450, 1750, 2140 and Junior-Senior in biology. Not open to non-degree graduate students."
-  topics: "../schedules/topics_conbio.R"
-  readings: "../readings/conbio/"
+  topics: "schedules/topics_conbio.R"
+  readings: "readings/conbio/"
   grade_breakdown:
-    html: "../graphics/conbio_gradebreakdown.html"
-    png: "../graphics/conbio_gradebreakdown.png"
+    html: "graphics/conbio_gradebreakdown.html"
+    png: "graphics/conbio_gradebreakdown.png"
   slos:
-    html: "../graphics/conbio_slos.html"
-    png: "../graphics/conbio_slos.png"
+    html: "graphics/conbio_slos.html"
+    png: "graphics/conbio_slos.png"
   quiz_rubric:
-    html: "../graphics/conbio_quiz_rubric.html"
-    png: "../graphics/conbio_quiz_rubric.png"
+    html: "graphics/conbio_quiz_rubric.html"
+    png: "graphics/conbio_quiz_rubric.png"
   resources:
-    html: "../graphics/conbio_resources.html"
-    png: "../graphics/conbio_resources.png"
+    html: "graphics/conbio_resources.html"
+    png: "graphics/conbio_resources.png"
   days: !expr list(a = "Mon", b = "Wed")
   dayid: !expr c("a", "b")
   agenda: !expr c("Lecture", "Exam", "No Class")
@@ -132,9 +132,9 @@ conbio:
     end: !expr c("17:15" = "a", "17:15" = "b")
     final: "17:30"
   schedule:
-    html: "../schedules/Schedule_ConBio.html"
-    png: "../schedules/Schedule_ConBio.png"
-    table: "../schedules/Schedule_ConBio.tsv"
+    html: "schedules/Schedule_ConBio.html"
+    png: "schedules/Schedule_ConBio.png"
+    table: "schedules/Schedule_ConBio.tsv"
   syllabus:
-    html:  "../syllabi/Syllabus_ConBio.html"
+    html:  "syllabi/Syllabus_ConBio.html"
   description: "Study of biological diversity at the genetic, species, and ecosystem levels, its values, and the factors that threaten it. We will explore the scientific basis of conservation biology and how it can be applied to maintain biological diversity. (Cross-listed with BIOL 8126)."

@@ -11,25 +11,25 @@ output:
     fig_caption: true
 params:
   semester: "spring25"
-  course: "conbio"
+  course: "zoobio"
                      
 ---
 
 
 ```{r, include = FALSE}
-setwd("schedules")
-source("../setup/set_paths.R")
-source(global$setup)
-source(term$agendas)
-source(templates$build_schedule)
+here::i_am("schedules/Schedule_Template.Rmd")
+source(here::here("setup/set_paths.R"))
+source(here::here(global$setup))
+source(here(term$agendas))
+source(here(templates$build_schedule))
 write.table(schedule, 
-            course$schedule$table, 
+            here(course$schedule$table), 
             row.names = F, 
             sep = "\t")
-source(templates$pretty_schedules)
+source(here(templates$pretty_schedules))
 gt_calendar
-gtsave(gt_calendar, paste0(course$schedule$html))
-gtsave(gt_calendar, paste0(course$schedule$png))
+gtsave(gt_calendar, here(course$schedule$html))
+gtsave(gt_calendar, here(course$schedule$png))
 
 ```
 
