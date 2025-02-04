@@ -18,13 +18,14 @@ params:
 ---
 
 ```{r, include = FALSE}
-source("../setup/set_paths.R")
+here::i_am("syllabi/syllabus_template.Rmd")
+source(here::here("setup/set_paths.R"))
 
-source(global$setup)
-source(term$agendas)
-source(templates$build_schedule)
-source(templates$pretty_schedules)
-source(templates$syllabus_pretty_tables)
+source(here::here(global$setup))
+source(here::here(term$agendas))
+source(here::here(templates$build_schedule))
+source(here::here(templates$pretty_schedules))
+source(here(templates$syllabus_pretty_tables))
 ```
 
 # General Information

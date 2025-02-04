@@ -1,4 +1,5 @@
-source(templates$syllabus_tables)
+i_am("syllabi/syllabus_pretty_tables.R")
+source(here(templates$syllabus_tables))
 
 learning.outcomes <- slos[[paste0(params$course)]] %>%
   gt(rowname_col = "Level") %>%
@@ -228,7 +229,7 @@ necessary.resources <- resources %>%
              Comment  ~ px(400))
 
 
-gtsave(necessary.resources, course$resources$png)
+gtsave(necessary.resources, here(course$resources$png))
 
-source(templates$syllabus_cards)
+source(here(templates$syllabus_cards))
 
