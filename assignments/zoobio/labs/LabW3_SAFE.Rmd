@@ -51,9 +51,9 @@ You should write your answers to these prompts in a word document that you submi
 ## Species Status
 
 1. Level of conservation threat and designating group/organization (indicate all that apply):
-  - **IUCN**:   EW, CR, EN, VU, or NT  
-  - **CITES**:	I or II 
-  - **USFWS**:	Endangered, Threatened, or Candidate
+  - [**IUCN**:   EW, CR, EN, VU, or NT](https://www.iucnredlist.org/)
+  - [**CITES**:	I or II ](https://cites.org/eng/app/index.php)
+  - [**USFWS**:	Endangered, Threatened, or Candidate](https://www.fws.gov/species/search)
   - **State**: 	Species of Concern 
   - If none of the above categories is applicable, provide science–based evidence that the species/population is under extreme distress and has not yet been listed under recognized threat levels. (LIMIT: 1500 characters with spaces)
 
