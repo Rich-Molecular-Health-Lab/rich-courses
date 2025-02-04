@@ -1,0 +1,80 @@
+---
+title: "Summaries of Conservation and Research Projects for Animal Programs"
+author: "Zoo Biology with Dr. Rich"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme:
+      bootswatch: litera
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    code_folding: "hide"
+    fig_caption: true
+params:
+  semester: "spring25"
+  course: "zoobio"
+                     
+---
+
+# Field Conservation | Desert Tortoise Headstarting Program
+
+## Description
+
+Smaller desert tortoises are more vulnerable to predation and are unable to carry the weight of radio-transmitter trackers that have sufficient longevity. To increase the body size of head-started desert tortoises, we plan to use indoor rearing as a method to raise juvenile tortoises more quickly to larger body sizes. This project, led by the Living Desert, working closely with San Diego Zoo Wildlife Alliance (SDZWA), plans to head-start juvenile tortoises in indoor facilities. Laying of eggs by females and hatching of eggs will take place at the Edwards Air Force Base (EAFB) outdoor head-start pens in late summer/early fall of 2022 and 2023. Within approximately 1-4 weeks of hatching, hatchlings would be transported to TLD and would be reared indoors for approximately 6 months by TLD staff. In the spring of 2023 and 2024 tortoises would be transported back to the EAFB outdoor pens prior to release into the wild. Our goal is to rear tortoises to approximately the size of a two-year-old, outdoor-reared tortoise.
+
+## Result Summary
+
+We have reared several cohorts of hatchlings that are then subsequently desert hardened and released back into the wild.
+
+## Year Began 
+
+2022
+
+## Submitting Institution
+
+The Living Desert Zoo and Gardens
+
+## Biome/Habitat: 
+
+Desert
+
+## Project Type: 
+
+Both
+
+## Participation Status: 
+
+Ongoing
+
+
+# Field Conservation | Desert Tortoise Conservancy Inc.
+
+Description: 
+
+The mission of The Desert Tortoise Conservancy is to ensure that the species Gopherus agassizii does not become extinct and that sustainable populations survive in the wild. Their strategy is focused on building awareness by children, particularly in California, of the many actions that they and their parents can take to help achieve this mission. The Desert Tortoise Conservancy Inc. is developing educational programs which will then be presented to groups throughout the state.
+
+Result Summary: 
+
+The Desert Tortoise Conservancy, Inc. made progress in its quest to educate and inform the public on the plight of the Desert Tortoise and ways in which communities can reverse the decline in tortoise populations in the deserts of California. They accomplished this primarily through making formal presentations.
+
+Year Began: 
+
+2023
+
+Year Completed: 
+
+2024
+
+Submitting Institution: 
+
+CuriOdyssey
+
+Biome/Habitat: Desert
+
+Project Type: In situ
+
+Website: https://www.deserttortoiseconservancy.org
+
+Participation Status: Completed
