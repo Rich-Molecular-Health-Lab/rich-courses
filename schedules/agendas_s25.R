@@ -369,7 +369,7 @@ slides <- list(
 labs <- list(
   zoobio = list(
   "2"  = list("Institutional Colection Plans" = paste0(course$lab_links, "LabW2_ICPs.html")),
-  "3"  = list("SAFE Proposals"                = NULL),
+  "3"  = list("SAFE Proposals"                = paste0(course$lab_links, "LabW3_SAFE.html")),
   "4"  = list("Breeding and Transfer Plans"   = NULL),
   "5"  = list("Population Viability Analysis" = NULL),
   "6"  = list("Genetic Data"                  = NULL),

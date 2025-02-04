@@ -1,0 +1,130 @@
+---
+title: "Lab Assignment: Proposing a SAFE Program"
+author: "Zoo Biology with Dr. Rich"
+date: "Feb 4, 2025"
+output:
+  html_document:
+    theme:
+      bootswatch: litera
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    code_folding: "hide"
+    fig_caption: true
+params:
+  semester: "spring25"
+  course: "zoobio"
+                     
+---
+
+```{r, include = FALSE}
+here::i_am("assignments/zoobio/labs/LabW3_SAFE.Rmd")
+global              <- config::get(config = "default")
+templates           <- config::get(config = "templates")
+term                <- config::get(config = params$semester)
+course              <- config::get(config = params$course)
+github              <- config::get(config = "github")
+source(here::here(global$setup))
+```
+
+
+
+# SAFE Species Program Proposal
+
+## Overview
+
+Today you will build on last week's lab exercise by choosing one species from your institutional collection plan to propose as a new AZA SAFE Species program. Below you will find a modified version of the AZA's official proposal form that any expert proposing a new program is required to fill out and submit. You will use this as a guide to write your own proposal, with some modifications that I have identified. For example, where I thought the prompts would provide useful context or information to you but would not be useful to complete for this exercise, I have added a ~~strikethrough~~ annotation like ~~this~~. Anywhere you see that, you do not need to include any information in your submission.  
+
+You should write your answers to these prompts in a word document that you submit via the assignment link on Canvas before the start of next week's lab. You should also keep in mind that the information you compile for this will help you eventually build your species profile for the finalized ICP, so I recommend you keep your own directory or file to drop helpful images, links, and text about the species you are featuring. I will also link some AZA guidelines and other documentation with the assignment on Canvas that you can reference or skim only if it is helpful.
+
+## Basic Information
+
+1. Program name (should be descriptive and include species, scope, and region).
+
+2. Submitter (if different than Program Leader)
+
+3. Scientific name of the species or taxa being applied for
+
+4. Common name(s) of the species or taxa being applied for
+
+## Species Status
+
+1. Level of conservation threat and designating group/organization (indicate all that apply):
+  - **IUCN**:   EW, CR, EN, VU, or NT  
+  - **CITES**:	I or II 
+  - **USFWS**:	Endangered, Threatened, or Candidate
+  - **State**: 	Species of Concern 
+  - If none of the above categories is applicable, provide science–based evidence that the species/population is under extreme distress and has not yet been listed under recognized threat levels. (LIMIT: 1500 characters with spaces)
+
+2. Provide the full citation for current, established conservation plan(s) (e.g., recovery plan, biodiversity management plan, PHVA action plan) in place for this species/taxa: 
+
+
+## Institutional Affiliates
+
+1. Names of AZA-accredited Zoos and/or Aquariums and Certified Related Facilities (Program Partners) applying for the species/taxa to become a SAFE species. *For this prompt, I just want you to select one or more zoo collaborators at random and list the fictional name of your fictional institution. Normally you would also have to submit a statement of institutional commitment for each, but you do not need to have that here.* List the following for each institution:
+  - Name of Institution
+  - ~~Address of Institution~~
+  - ~~Contact name, email, telephone~~
+
+2. Has each of the Program Partners listed above been involved in an established and active conservation program for the species/taxa for more than two years? *Answer Yes or No.*
+  - ~~If a Program Partner has not been involved for more than two years, explain their interest in being a Program Partner (LIMIT 1500 characters with spaces for all appropriate Program Partners):~~
+  - ~~If a Program Partner has been involved in this species/taxa’s conservation for more than two years, please summarize their involvement. (LIMIT 1500 characters with spaces for each Program Partner)~~
+
+3. ~~Have field-based program partnerships been established?~~
+
+## AZA Animal Programs
+
+1. Name of the related AZA TAG and SSP (if applicable):
+  - Name of TAG 
+  - Name of TAG Chair
+  - ~~TAG Chair email~~ 
+  - ~~TAG Chair telephone~~ 
+  - Name of SSP 
+  - Name of SSP Coordinator
+  - ~~SSP Coordinator email~~
+  - ~~SSP Coordinator telephone~~ 
+
+2. ~~Do the related AZA Program Leaders support this proposal?~~
+  - ~~Please explain (LIMIT: 750 characters with spaces).~~
+       
+## Justification and Narrative
+       
+1.  Will the SAFE species program relate to existing, written AZA Animal Program conservation plans or priorities (e.g., within Animal Care Manuals, Regional Collection Plans). (*Answer Yes or No*)
+  - If ***yes***, please describe (LIMIT: 750 characters with spaces)
+  - If ***no***, the SAFE species program will be new / different than current Animal Program conservation efforts. Please describe (LIMIT: 750 characters with spaces)
+
+2. Briefly relate the importance of this species to AZA institutions. Please include history, field work, threats, and how the project will benefit the conservation status of this species, etc. (LIMIT: 3000 characters with spaces)
+
+3. Briefly describe your plan to increase involvement of AZA members and partners, as appropriate. (LIMIT: 750 characters with spaces)
+
+
+## ~~Agreement to Terms.~~
+
+~~*Checking the boxes below indicates that all Program Partners identified above agree to the terms identified:*~~
+  - ~~All Program Partners agree to adhere to AZA’s Code of Professional Ethics and all relevant Animal Care and Welfare Standards.~~
+  - ~~All Program Partners agree to develop a 3-year plan within six months of approval as a SAFE species for AZA SAFE activities that will include measureable field conservation and public engagement objectives to advance the established conservation plan.~~
+
+# Proposal Review
+
+>After submitting this assignment we will go through a peer review process where another group will answer the questions below. I am including them now so that you can keep this in mind as you compile your information.
+
+## Checklist for WCC reviewer: 
+
+1.  Questions 1-13 are answered fully.
+
+2.  The species/taxa being applied for meets the eligibility criteria for a SAFE species.
+
+3.  The established conservation plan for the species/taxa was attached and includes field conservation objectives. 
+
+4.  Each of the Program Partners listed has been involved in an established and active conservation program for the species/taxa for more than two years, or describes their commitment to the SAFE species program.
+
+5.  Each of the Program Partners listed is a current AZA-accredited zoo or aquarium or Certified Related Facility and has submitted a Statement of Institutional Commitment.
+
+6.  ~~The CV or resume of the Program Leader of a SAFE species program, along with their completed Statements of Individual Commitment and Institutional Support, were attached.~~
+
+7.  ~~The support of the proposal by the related TAG and/or SSP Program Leader(s) is clear.~~
+
+8.  The species’ importance to AZA institutions was fully explained.
+
+9.  ~~All ‘Agreement to Terms’ checkboxes are checked.~~
