@@ -22,4 +22,7 @@
 #### [Due Feb 4: Institutional Collection Plans](https://rich-molecular-health-lab.github.io/rich-courses/assignments/zoobio/labs/LabW2_ICPs.html)
 
 #### [Due Feb 11: SAFE Proposals](https://rich-molecular-health-lab.github.io/rich-courses/assignments/zoobio/labs/LabW3_SAFE.html)
+
+#### [Due Feb 18: Studbook Management](https://rich-molecular-health-lab.github.io/rich-courses/assignments/zoobio/labs/LabW4_Studbooks.html)
+
 ---
