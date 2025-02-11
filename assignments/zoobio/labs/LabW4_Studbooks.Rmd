@@ -1,0 +1,127 @@
+---
+title: "Lab Assignment: Performing a PVA and Designing a BTP"
+author: "Zoo Biology with Dr. Rich"
+date: "Feb 11, 2025"
+output:
+  html_document:
+    theme:
+      bootswatch: litera
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    code_folding: "hide"
+    fig_caption: true
+params:
+  semester: "spring25"
+  course: "zoobio"
+                     
+---
+
+```{r, include = FALSE}
+here::i_am("assignments/zoobio/labs/LabW4_Studbooks.Rmd")
+global              <- config::get(config = "default")
+templates           <- config::get(config = "templates")
+term                <- config::get(config = params$semester)
+course              <- config::get(config = params$course)
+github              <- config::get(config = "github")
+```
+
+
+```{r, include = FALSE}
+source(here::here(global$setup))
+```
+
+
+# Introduction
+
+This week, you will begin compiling data for a **Population Management Analysis** by manually reviewing **studbooks** and **Breeding and Transfer Plan (BTP) PDFs**. The goal is to develop your **own system** for organizing data in an Excel spreadsheet and to establish **criteria** for recommending breeding and transfers.
+
+## Learning Objectives
+
+- Understand how studbooks and BTPs are structured.
+- Develop a personalized method for organizing data in Excel.
+- Define criteria for selecting individuals for breeding and transfer.
+- Prepare for next week's quantitative analysis using a custom Shiny app.
+
+---
+
+# Step 1: Review Your Assigned Studbook and BTP
+
+Each group has been assigned a **studbook and corresponding BTP PDF** for a managed species. Your first task is to **carefully examine these documents** and take notes on:
+
+1. **Data Fields**: What information is recorded in the studbook?
+   - Individual ID
+   - Birth Date
+   - Sex
+   - Parentage (Sire & Dam)
+   - Location history
+   - Reproductive status
+   - Genetic information (if available)
+   
+2. **Breeding Recommendations in the BTP**:
+   - Which individuals are recommended for breeding?
+   - What criteria seem to be used for these recommendations?
+   - How do demographic and genetic factors influence decisions?
+
+---
+
+# Step 2: Design Your Data Storage System
+
+Before entering data, discuss **how you will structure your Excel spreadsheet**. Your system should:
+- Allow for **easy sorting and filtering** of key traits (age, sex, location, kinship, etc.).
+- Clearly show which individuals are **eligible for breeding** and **transfer recommendations**.
+- Be flexible enough to incorporate **future quantitative analysis** in next week's assignment.
+
+### Things to Consider:
+
+- Will you use separate sheets for different categories (e.g., current population vs. breeding pairs)?
+- What color-coding or formatting might help visualize relationships?
+- How will you label individuals with incomplete data?
+
+By the end of this step, **your group should have a preliminary spreadsheet layout**.
+
+---
+
+# Step 3: Establish Your Selection Criteria
+
+Using what you've learned from the studbook and BTP, determine **your own criteria** for selecting:
+- **Breeding Pairs**: What genetic or demographic factors will you prioritize?
+- **Individuals for Transfer**: Who should move to another facility, and why?
+
+### Examples of Criteria to Consider:
+
+✅ Age and reproductive history  
+✅ Genetic diversity and mean kinship  
+✅ Institutional space availability  
+✅ Health and behavioral considerations  
+
+Your selection **does not need to match the BTP exactly**—instead, you should develop **your own justification** based on the data you organize.
+
+---
+
+# Step 4: Submission Instructions
+
+Each group will submit:
+1. **Your rough draft spreadsheet** (.xlsx or .csv format).
+2. **A written outline (1-2 pages)** explaining:
+   - How you structured your spreadsheet.
+   - The criteria you used to select breeding pairs and transfers.
+   - Any challenges you encountered in organizing the data.
+
+### Due Date: `r Sys.Date() + 7`  
+### Submission Format:** Upload your spreadsheet and outline to canvas (one per group).
+
+---
+
+# Next Week: Quantitative Analysis in Shiny
+
+Next week, you will:
+- Upload your finalized data into a **custom Shiny app**.
+- Perform **kinship and genetic calculations**.
+- Generate **optimized breeding and transfer recommendations**.
+
+The work you do this week will directly inform your **final breeding recommendations**—so take time to structure your data in a way that makes sense for analysis!
+
+Good luck, and enjoy the process of **thinking like a population manager!** 🦁🐧🐢
+

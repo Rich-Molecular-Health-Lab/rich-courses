@@ -57,6 +57,8 @@ zoobio:
   assignments: "assignments/zoobio/"
   labs: "assignments/zoobio/labs/"
   lab_links: "https://rich-molecular-health-lab.github.io/rich-courses/assignments/zoobio/labs/"
+  downloads:
+    sample_studbook: "assignments/zoobio/labs/PVA/example_studbook.xlsx"
   text:
     title: "Peer-reviewed Articles"
     link: "github$readings"

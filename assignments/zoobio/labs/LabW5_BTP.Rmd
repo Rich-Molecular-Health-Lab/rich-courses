@@ -1,0 +1,167 @@
+---
+title: "Lab Assignment: Performing a PVA and Designing a BTP"
+author: "Zoo Biology with Dr. Rich"
+date: "Feb 11, 2025"
+output:
+  html_document:
+    theme:
+      bootswatch: litera
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    code_folding: "hide"
+    fig_caption: true
+params:
+  semester: "spring25"
+  course: "zoobio"
+                     
+---
+
+```{r, include = FALSE}
+here::i_am("assignments/zoobio/labs/LabW4_BTP.Rmd")
+global              <- config::get(config = "default")
+templates           <- config::get(config = "templates")
+term                <- config::get(config = params$semester)
+course              <- config::get(config = params$course)
+github              <- config::get(config = "github")
+```
+
+
+```{r, include = FALSE}
+source(here::here(global$setup))
+```
+
+```{r, include = FALSE}
+source(here("assignments/zoobio/labs/PVA/ui.R"))
+source(here("assignments/zoobio/labs/PVA/server.R"))
+
+# Run the application
+shinyApp(ui = ui, server = server)
+```
+
+# Introduction
+
+>Population Viability Analysis (PVA) is a key tool in zoo biology and conservation planning. It helps predict the future of a population by considering demographic trends, environmental conditions, and genetic factors. Today you will use real AZA studbook data for one species from your fictional zoo to conduct a PVA (Population Viability Analysis) and then design a BTP (Breeding and Transfer Plan) that matches SSP breeding pair(s) for your new facility to house.
+
+In this assignment, you will:
+
+- Convert a real **Species Survival Plan (SSP) studbook** (PDF) into an **Excel spreadsheet**.
+- Upload your **studbook data** into a **Shiny app** to analyze **population viability**.
+- Interpret **kinship matrices** and **genetic diversity metrics**.
+- Select **individuals for transfer** to your group's new facility.
+- Generate **breeding recommendations** based on kinship and genetic diversity.
+
+---
+
+# Assignment Instructions
+
+## Step 1: Prepare your Studbook Spreadsheet and Select Candidate Individuals
+
+```{r}
+download_file(course$downloads$sample_studbook,
+              "sample_studbook.xlsx",
+              button_label   = "Download Studbook Template",
+              button_type    = "info",
+              self_contained = TRUE)
+```
+
+
+1. Download a **PDF studbook** assigned to your group.
+2. Extract key data fields into an **Excel file** using the provided template (see above):
+   - **Studbook ID**
+   - **Current Location**
+   - **House Name**
+   - **Current Local ID**
+   - **Sex Type** (M/F)
+   - **Birth Date** (YYYY-MM-DD)
+   - **Sire** (Father ID, if known)
+   - **Dam** (Mother ID, if known)
+3. Save your file as **Group_Studbook.xlsx**.
+4. Look through your spreadsheet and deside on at least two individuals to propose as a candidate breeding pair for your facility.
+
+---
+
+## Step 2: Create a Pedigree for your Candidate Pair
+
+1.	Open the QuickPed Shiny app: QuickPed.
+2.	Manually enter pedigree data (IDs, sires, dams, sex).
+3.	Download the pedigree file as a CSV.
+
+
+## Step 3: Upload the Pedigree to the Shiny App
+	
+1.	Open the custom Shiny app (link provided by the instructor).
+2.	Click Upload CSV and select your formatted pedigree file.
+3.	Click Process Pedigree Data to:
+  - Create the pedigree structure using pedtools.
+  - Calculate kinship matrices.
+  - Prepare for breeding recommendations.
+
+## Step 2: Upload and Process Data in the Shiny App
+1. Open the **PVA Shiny App** (click button below).
+2. Click **Upload Studbook** and select your **Group_Studbook.xlsx** file.
+3. Click **Process Studbook Data** to extract population parameters.
+4. Review:
+   - **Population size**
+   - **Birth and death rates**
+   - **Kinship matrix and genetic diversity**
+
+---
+
+## **Step 3: Run a Population Viability Analysis (PVA)**
+1. Adjust **birth and death rates** based on your data.
+2. Set a **carrying capacity** for the zoo facility.
+3. Click **Run Simulation** to visualize **population trends**.
+4. Take a screenshot of your **PVA graph** for your report.
+
+---
+
+## **Step 4: Select Individuals for Transfer**
+1. Click **Show Kinship Matrix** to review genetic relationships.
+2. Select **at least 3 individuals** with low mean kinship values.
+3. Click **Confirm Transfer** for each selected individual.
+4. Justify your selection in your report.
+
+---
+
+## **Step 5: Generate Breeding Recommendations**
+1. Click **Generate Breeding Pairs**.
+2. Download the **breeding recommendations report** (CSV/Excel).
+3. Discuss:
+   - Why were certain pairs selected?
+   - How do these pairings help maintain genetic diversity?
+
+---
+
+# **Report Submission**
+Your report should include:
+- **Introduction** (What is PVA? Why is it important in Zoo Management?)
+- **Methods** (How did you prepare and analyze the data?)
+- **Results**
+  - PVA simulation graph and interpretation
+  - Kinship matrix and selected individuals
+  - Breeding recommendations
+- **Discussion**
+  - What challenges did you encounter?
+  - How could zoos improve population management?
+    - Describe at least one metric or technique you would add or change to current population management protocols to improve the longterm viability and wellbeing of zoo populations.
+
+**Submission Deadline:** `r Sys.Date() + 7`  
+**Format:** PDF (submit one report per group on Canvas)  
+
+---
+
+# **Grading Criteria**
+| Section                  | Points |
+|--------------------------|--------|
+| Introduction             | 2      |
+| Data Preparation         | 3      |
+| PVA Analysis & Graph     | 5      |
+| Kinship & Transfer Plan  | 6      |
+| Breeding Recommendations | 6      |
+| Discussion & Insights    | 8      |
+| **Total**                | **30**|
+
+Good luck, and have fun analyzing zoo population sustainability! 🦁🐧🐍
+
