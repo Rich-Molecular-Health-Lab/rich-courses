@@ -371,7 +371,7 @@ labs <- list(
   "2"  = list("Institutional Colection Plans" = paste0(course$lab_links, "LabW2_ICPs.html")),
   "3"  = list("SAFE Proposals"                = paste0(course$lab_links, "LabW3_SAFE.html")),
   "4"  = list("Studbook Data Management"      = paste0(course$lab_links, "LabW4_Studbooks.html")),
-  "5"  = list("PVA + BPT" = NULL),
+  "5"  = list("PVA + BTP" = NULL),
   "6"  = list("Genetic Data"                  = NULL),
   "7"  = list("Behavioral Data"               = NULL),
   "8"  = list("Diet Plans"                    = NULL),
