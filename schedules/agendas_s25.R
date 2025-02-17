@@ -112,12 +112,13 @@ readings <- list(
        "2b" = list("58:66" = "Biodiversity Concepts and Measurement: Species Diversity")
       ),
     "3"  = list(
-      "3a"  = list("67:80" = "Biodiversity Concepts and Measurement: Community and Ecosystem Diversity"),
-      "3b"  = list("141:180" = "Biodiversity and Ecosystem Services")
+      "3a"  = list("67:80" = "Biodiversity Concepts and Measurement: Community and Ecosystem Diversity")
     ),
-    "4"  = list(
-      "4a"  = list("215:239" = "Extinction: Global Patterns of Endangerment, Local Changes in Biodiversity"),
-      "4b"  = list("240:248" = "Extinction: Controls of Extinction Risk")
+    "4" = list(
+      "4a" = list("141:180" = "Biodiversity and Ecosystem Services")
+    ),
+    "5"  = list(
+      "5a"  = list("215:248" = "Extinction")
     ),
     "6"  = list(
       "6a"  = list("249:276" = "Habitat Loss and Fragmentation"),
@@ -255,7 +256,7 @@ agenda <- list(
     ),
   conbio = list(
     exams = list(
-      "5a"  = "Exam 1",
+      "5b"  = "Exam 1",
       "11a" = "Exam 2",
       "17a" = "Final Exam"
     ),
@@ -300,21 +301,23 @@ agenda <- list(
         "3a" = "Biodiversity Concepts and Measurement: Community and Ecosystem Diversity",
         "3b" = "Biodiversity and Ecosystem Services"),
       "4"  = list(
-        "4a" = "Extinction: Global Patterns of Endangerment, Local Changes in Biodiversity",
-        "4b" = "Extinction: Controls of Extinction Risk"),
+        "4a" = "Biodiversity and Ecosystem Services",
+        "4b" = "Snow Day - Study for Exam"),
       "5"  = list(
-        "5b" = "Film Day"),
+        "5a" = "Snow Day - Asynchronous Extinction Lecture"
+        ),
       "6"  = list(
-        "6a" = "Habitat Loss and Fragmentation",
-        "6b" = "Habitat Degradation"),
+        "6a" = "Film Day",
+        "6b" = "Habitat Loss and Fragmentation"
+      ),
       "7"  = list(
-        "7a" = "Metapopulations and Landscape Mosaics",
-        "7b" = "Overexploitation"),
+        "7a" = "Habitat Degradation",
+        "7b" = "Metapopulations and Landscape Mosaics"),
       "8"  = list(
         "8a" = "Overexploitation",
-        "8b" = "Invasive Alien Species"),
-      "10" = list(
-        "10a" = "Climate Change",
+        "8b" = "Overexploitation"),
+      "10"  = list(
+        "10a" = "Invasive Alien Species",
         "10b" = "Climate Change"),
       "11" = list(
         "11b" = "Film Day"),
@@ -361,6 +364,9 @@ slides <- list(
     ),
     "3" = list(
       "3a" = "https://www.canva.com/design/DAGeFEwP32Q/reLA5LbMMlsm1lJWTKAB9A/view?utm_content=DAGeFEwP32Q&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0efd2fa19e"
+    ),
+    "4" = list(
+      "4a" = "https://www.canva.com/design/DAGevDT0uIo/CJnMd6vyjqAYc7xn8eHY0Q/view?utm_content=DAGevDT0uIo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hf2103e872f"
     )
   )
 )
