@@ -112,13 +112,11 @@ readings <- list(
        "2b" = list("58:66" = "Biodiversity Concepts and Measurement: Species Diversity")
       ),
     "3"  = list(
-      "3a"  = list("67:80" = "Biodiversity Concepts and Measurement: Community and Ecosystem Diversity")
+      "3a"  = list("67:80" = "Biodiversity Concepts and Measurement: Community and Ecosystem Diversity"),
+      "3b"  = list("141:180" = "Biodiversity and Ecosystem Services")
     ),
     "4" = list(
-      "4a" = list("141:180" = "Biodiversity and Ecosystem Services")
-    ),
-    "5"  = list(
-      "5a"  = list("215:248" = "Extinction")
+      "4a" = list("215:248" = "Extinction")
     ),
     "6"  = list(
       "6a"  = list("249:276" = "Habitat Loss and Fragmentation"),
@@ -270,8 +268,7 @@ agenda <- list(
         "Biodiversity and Ecosystem Services"
       ),
       "Threats to Biodiversity" = list(
-        "Extinction: Global Patterns of Endangerment, Local Changes in Biodiversity",
-        "Extinction: Controls of Extinction Risk",
+        "Extinction",
         "Habitat Loss and Fragmentation",
         "Habitat Degradation",
         "Metapopulations and Landscape Mosaics",
@@ -304,7 +301,7 @@ agenda <- list(
         "4a" = "Biodiversity and Ecosystem Services",
         "4b" = "Snow Day - Study for Exam"),
       "5"  = list(
-        "5a" = "Snow Day - Asynchronous Extinction Lecture"
+        "5a" = "Extinction"
         ),
       "6"  = list(
         "6a" = "Film Day",
@@ -366,7 +363,7 @@ slides <- list(
       "3a" = "https://www.canva.com/design/DAGeFEwP32Q/reLA5LbMMlsm1lJWTKAB9A/view?utm_content=DAGeFEwP32Q&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0efd2fa19e"
     ),
     "4" = list(
-      "4a" = "https://www.canva.com/design/DAGevDT0uIo/CJnMd6vyjqAYc7xn8eHY0Q/view?utm_content=DAGevDT0uIo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hf2103e872f"
+      "4a" = "https://www.canva.com/design/DAGeRJOojJ8/L7goJvCIf3O469iFVrhXmQ/view?utm_content=DAGeRJOojJ8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hdfc75537fc"
     )
   )
 )
