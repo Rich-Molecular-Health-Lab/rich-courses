@@ -166,11 +166,11 @@ agenda <- list(
       Conservation =
         list(
           "Headstarting, Rescue, and Rehabilitation",
-          "Assurance Populations"
+          "Assurance Populations",
+          "Demography and Genetics"
         ),
       Health =
         list(
-          "Demographics and Genetics",
           "Reproduction",
           "Medicine",
           "Nutrition"
@@ -201,7 +201,6 @@ agenda <- list(
       ymd("2025-2-17")
     ),
     exams = list(
-      "4b"  = "Exam 1",
       "11c" = "Exam 2",
       "17c" = "Final Exam"
     ),
@@ -221,9 +220,9 @@ agenda <- list(
      ),
      "4"  = list("4a"  = "Assurance Populations"),
      "5"  = list("5c"  = "Film Day"),
-     "6"  = list("6a"  = "Demographics and Genetics",
-                 "6b"  = "Demographics and Genetics",
-                 "6c"  = "Demographics and Genetics"),
+     "6"  = list("6a"  = "Demography and Genetics",
+                 "6b"  = "Demography and Genetics",
+                 "6c"  = "Demography and Genetics"),
      "7"  = list("7a"  = "Reproduction",
                  "7b"  = "Reproduction",
                  "7c"  = "Reproduction"),
@@ -254,6 +253,7 @@ agenda <- list(
     ),
   conbio = list(
     exams = list(
+      "5b"  = "Exam 1",
       "11a" = "Exam 2",
       "17a" = "Final Exam"
     ),
