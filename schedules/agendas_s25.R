@@ -30,35 +30,35 @@ readings <- list(
       "4a" = list(
         powell2019 = "Collection planning for the next 100 years: What will we commit to save in zoos and aquariums?")
     ),
-    "5" = list(
-      "5a" = list(
-        checastaldo2021 = "Expected demographic and genetic declines not found in most zoo and aquarium populations"),
-      "5c" = list(
-        speak2024 = "Genomics‐informed captive breeding can reduce inbreeding depression and the genetic load in zoo populations")
-    ),
     "6" = list(
       "6a" = list(
+        checastaldo2021 = "Expected demographic and genetic declines not found in most zoo and aquarium populations"),
+      "6c" = list(
+        speak2024 = "Genomics‐informed captive breeding can reduce inbreeding depression and the genetic load in zoo populations")
+    ),
+    "7" = list(
+      "7a" = list(
         herrick2019      = "Assisted reproductive technologies for endangered species conservation: developing sophisticated protocols with limited access to animals with unique reproductive mechanisms"
         ),
-      "6c" = list(
-        agnew2021 = "DESLORELIN (SUPRELORIN®) USE IN NORTH AMERICAN AND EUROPEAN ZOOS AND AQUARIUMS: TAXONOMIC SCOPE, DOSING, AND EFFICACY"
+      "7c" = list(
+        asa2016 = "Weighing the Options for Limiting Surplus Animals"
         )
     ),
-  "7" = list(
-    "7a" = list(
+    "8" = list(
+      "8a" = list(
+        beheerder2017 = "Visual body condition scoring in zoo animals – composite, algorithm and overview approaches"
+      ),
+      "8c" = list(
+        ramont2024 = "The Provision of Browse and Its Impacts on the Health and Welfare of Animals at the Zoo: A Review"
+      )
+    ),
+  "10" = list(
+    "10a" = list(
       whilde2017 = "Precision wildlife medicine: applications of the human-centred precision medicine revolution to species conservation"
     ),
-    "7c" = list(
+    "10c" = list(
       murphy2018 = "The Great Ape Heart Project"
       )
-  ),
-  "8" = list(
-    "8a" = list(
-      beheerder2017 = "Visual body condition scoring in zoo animals – composite, algorithm and overview approaches"
-    ),
-    "8c" = list(
-      ramont2024 = "The Provision of Browse and Its Impacts on the Health and Welfare of Animals at the Zoo: A Review"
-    )
   ),
   "11" = list(
     "11a" = list(
@@ -178,6 +178,7 @@ agenda <- list(
       Other =
         list(
           "No Class",
+          "Film Day",
           "Schedule Buffer",
           "Exam"
         ),
@@ -195,10 +196,12 @@ agenda <- list(
         )
     ),
     cancelled = list(
-      ymd("2025-1-21")
+      ymd("2025-1-21"),
+      ymd("2025-2-12"),
+      ymd("2025-2-17")
     ),
     exams = list(
-      "4c"  = "Exam 1",
+      "4b"  = "Exam 1",
       "11c" = "Exam 2",
       "17c" = "Final Exam"
     ),
@@ -216,23 +219,20 @@ agenda <- list(
        "3b"  = "Headstarting, Rescue, and Rehabilitation",
        "3c"  = "Assurance Populations"
      ),
-     "4"  = list("4a"  = "Assurance Populations",
-                 "4b"  = "Assurance Populations"),
-     "5"  = list("5a"  = "Demographics and Genetics",
-                 "5b"  = "Demographics and Genetics",
-                 "5c"  = "Demographics and Genetics"),
-     "6"  = list("6a"  = "Reproduction",
-                 "6b"  = "Reproduction",
-                 "6c"  = "Reproduction"),
-     "7"  = list("7a"  = "Medicine",
-                 "7b"  = "Medicine",
-                 "7c"  = "Medicine"),
+     "4"  = list("4a"  = "Assurance Populations"),
+     "5"  = list("5c"  = "Film Day"),
+     "6"  = list("6a"  = "Demographics and Genetics",
+                 "6b"  = "Demographics and Genetics",
+                 "6c"  = "Demographics and Genetics"),
+     "7"  = list("7a"  = "Reproduction",
+                 "7b"  = "Reproduction",
+                 "7c"  = "Reproduction"),
      "8"  = list("8a"  = "Nutrition",
                  "8b"  = "Nutrition",
                  "8c"  = "Nutrition"),
-     "10"  = list("10a" = "Schedule Buffer",
-                  "10b" = "Schedule Buffer",
-                  "10c" = "Schedule Buffer"),
+     "10"  = list("10a" = "Medicine",
+                  "10b" = "Medicine",
+                  "10c" = "Medicine"),
      "11" = list("11a" = "Schedule Buffer",
                  "11b" = "Schedule Buffer"),
      "12" = list("12a" = "Monitoring and Assessment",
@@ -254,7 +254,6 @@ agenda <- list(
     ),
   conbio = list(
     exams = list(
-      "5b"  = "Exam 1",
       "11a" = "Exam 2",
       "17a" = "Final Exam"
     ),
@@ -349,6 +348,9 @@ slides <- list(
     ),
     "3" = list(
       "3a" = "https://www.canva.com/design/DAGeEG2-Ob0/rXRuDs5QKEEUxkLD5N40xQ/view?utm_content=DAGeEG2-Ob0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h205bd7b45a"
+    ),
+    "5" = list(
+      "5c" = "https://www.pbs.org/wnet/nature/the-loneliest-animals-introduction/4898/"
     )
   ),
   conbio = list(
@@ -374,7 +376,7 @@ labs <- list(
   "2"  = list("Institutional Colection Plans" = paste0(course$lab_links, "LabW2_ICPs.html")),
   "3"  = list("SAFE Proposals"                = paste0(course$lab_links, "LabW3_SAFE.html")),
   "4"  = list("Studbook Data Management"      = paste0(course$lab_links, "LabW4_Studbooks.html")),
-  "5"  = list("PVA + BTP" = NULL),
+  "5"  = list("Exam 1 (make-up due to snow day)"),
   "6"  = list("Genetic Data"                  = NULL),
   "7"  = list("Behavioral Data"               = NULL),
   "8"  = list("Diet Plans"                    = NULL),
