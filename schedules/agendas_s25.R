@@ -366,6 +366,10 @@ slides <- list(
     ),
     "4" = list(
       "4a" = "https://www.canva.com/design/DAGeRJOojJ8/L7goJvCIf3O469iFVrhXmQ/view?utm_content=DAGeRJOojJ8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hdfc75537fc"
+    ),
+    "6" = list(
+      "6a" = "https://www.pbs.org/video/top-predator-lv0cff",
+      "6b" = "https://www.canva.com/design/DAGgDC21tSE/UfVsK1y_fXRk8qg-HAp9OQ/view?utm_content=DAGgDC21tSE&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h8cd8acc0d7"
     )
   )
 )
