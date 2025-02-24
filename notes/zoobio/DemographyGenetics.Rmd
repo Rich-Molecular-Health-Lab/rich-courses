@@ -1,0 +1,103 @@
+---
+title: "DemographyGenetics"
+output: html_document
+---
+
+# Discussion Questions
+
+>Identify the presumptive goal of population management behind the indicators and predictions these authors are testing. Would you make any changes or additions to their goal?
+
+>Are the metrics that they use sufficient to reliably support or refute their hypothesis? Why or why not? What metrics would you add or change?
+>>What type of data would you need to quantify those metrics?
+
+>What kind of effect might an evolutionary lens have on the precision of these metrics accross such a broad taxonomic scale?
+
+>Does this study reflect a One Plan approach? If yes, then how so, and if not, then what would bring it more in line with that paradigm?
+
+# Intro
+
+Mean kinship
+
+Small population management theory
+
+determining target population sizes
+- goal: maximize genetic diversity, minimize inbreeding and adaptation to captivity
+
+
+# PMCTrack
+
+- built in 2008 to compile BTP recommendations, outcomes, and the demographic/genetic characteristics of each population
+- Use of PMCTrack surveys is now required as of 2023 for SSP Program management. 
+
+## Quantitative approach
+
+- leverages all existing data through **partial pooling**
+
+## Che-Castaldo et al 2021
+
+- Che-Castaldo et a. used PMCTrack to evaluate change in demographic and genetic status over time.
+- Earliest record for each population was the starting point for comparison
+- data compiled through 2017
+
+### Data Compiled
+
+#### Demographic and genetic metrics
+
+- Pedigree analyses of studbook data
+  - ***Not* molecular data**
+- Gene diversity (GD) estimated relative to that of a hypothetical founding population *in which all founders were prsumed to be unrelated and maximally genetically diverse*
+  - **Founder Genome Equivalents:** *a genetic metric used to describe ex situ populations*
+    - represents the number of these hypothetical, unrelated individuals that would be needed to produce the current level of GD.
+
+- Target population sizes
+
+- Biological and programmatic variables that could explain potential differences in Program metrics and their trends over time (14 *Predictors*)
+
+
+### Results
+
+#### Population Sizes
+
+- Only 13% of programs had >200 individuals
+
+#### Genetics
+
+- Most retained 90% of their founded GD
+  - higher for birds and reptiles than mammals
+- Mean inbreeding (*F*) was 0.05, just below the expected kinship of offspring from mating between first cousins.
+- Most populations were descended from 27 founders
+  - gene diversity equivalent to that of 9 unrelated individuals
+  
+#### Change over time
+
+- Most programs with longitudinal data did not change over time
+- Models of trends in population size and distance from target size identified ***taxon*** and ***IUCN category*** as important predictors.
+
+# Key Terms mentioned in discussion
+
+- **Demographic Stochasticity**
+- **Genetic drift**
+- **Inbreeding depression**
+
+- *Convention on Biological Diversity Aichi Biodiversity Target 5* is mentioned
+
+
+# PMCTrack Case Study: Pygmy Loris
+
+## Summary Recommendations:  
+
+1. The SSP recommends 13 females to breed at 11 facilities.  
+  a. Breeding facilities are excepted to hold offspring for at least two years when needed.
+  
+2. The SSP recommends four transfers to establish new pairs and meet facility requests.  
+
+3. Please consult with the AZA Reproductive Management Center (See Appendix I) for questions related to limiting or promoting fertility as well as reproductive health. Direct inquiries to contraception@stlzoo.org   
+
+4. The SSP requests that breeding facilities closely monitor breeding and contact the SSP Coordinator to discuss ideas to aid in successful pregnancies and births. Please report all occurrences of stillbirths and/or miscarriage to the SSP Coordinator.  
+
+  a. No recorded female has bred for the first time after the age of 10. Any females approaching that age that have not yet bred should be a focus for that facility.   
+  
+5. Sex determination can be challenging for this species, and sex should be confirmed for any individuals in pairs that have not yet been successful. A new method to determine sex is included in Appendix J.  
+
+6. The SSP recommends that diet and weight be closely tracked. The recommended weight range for pygmy slow lorises in captivity is 300 – 500g (Appendix K; The Little Fireface Project, www.nocturama.org). In the temperature-controlled environments in which these individuals live, there is no reason they should exceed 500g.  
+
