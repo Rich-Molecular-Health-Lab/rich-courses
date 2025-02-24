@@ -115,24 +115,20 @@ readings <- list(
       "3a"  = list("67:80" = "Biodiversity Concepts and Measurement: Community and Ecosystem Diversity"),
       "3b"  = list("141:180" = "Biodiversity and Ecosystem Services")
     ),
-    "4" = list(
-      "4a" = list("215:248" = "Extinction")
-    ),
-    "6"  = list(
-      "6a"  = list("249:276" = "Habitat Loss and Fragmentation"),
-      "6b"  = list("277:284" = "Habitat Degradation")
+    "6" = list(
+      "6b" = list("215:248" = "Extinction")
     ),
     "7"  = list(
-      "7a"  = list("285:292" = "Metapopulations and Landscape Mosaics"),
-      "7b"  = list("293:321" = "Overexploitation")
+      "7a"  = list("249:276" = "Habitat Loss and Fragmentation"),
+      "7b"  = list("277:284" = "Habitat Degradation")
     ),
     "8"  = list(
-      "8a"  = list("322:328" = "Overexploitation"),
-      "8b"  = list("329:368" = "Invasive Alien Species")
+      "8a"  = list("285:292" = "Metapopulations and Landscape Mosaics"),
+      "8b"  = list("293:328" = "Overexploitation")
     ),
     "10"  = list(
-      "10a"  = list("369:373" = "Climate Change"),
-      "10b"  = list("374:402" = "Climate Change")
+      "10a"  = list("329:368" = "Invasive Alien Species"),
+      "8b"  = list("369:402" = "Climate Change")
     ),
     "12"  = list(
       "12a"  = list("405:414" = "Species-Level Conservation: Goals and Challenges"),
@@ -300,17 +296,17 @@ agenda <- list(
         "4a" = "Biodiversity and Ecosystem Services",
         "4b" = "Snow Day - Study for Exam"),
       "5"  = list(
-        "5a" = "Extinction"
+        "5a" = "Snow Day - Study for Exam"
         ),
       "6"  = list(
         "6a" = "Film Day",
-        "6b" = "Habitat Loss and Fragmentation"
+        "6b" = "Extinction"
       ),
       "7"  = list(
-        "7a" = "Habitat Degradation",
-        "7b" = "Metapopulations and Landscape Mosaics"),
+        "7a" = "Habitat Loss and Fragmentation",
+        "7b" = "Habitat Degradation"),
       "8"  = list(
-        "8a" = "Overexploitation",
+        "8a" = "Metapopulations and Landscape Mosaics",
         "8b" = "Overexploitation"),
       "10"  = list(
         "10a" = "Invasive Alien Species",
