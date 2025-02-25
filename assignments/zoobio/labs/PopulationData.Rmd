@@ -29,156 +29,128 @@ thematic_on(accent = "#8785B2FF", fg = "black")
 
 ```
 
-
 ```{r}
-psl.historic <- read.csv(here(
-  paste0(course$assignments, "/testing/StudbookPSL2021Historic.csv")
-  ), header = T) %>%
+read_studbook_current <- function(file) {
+  read.csv(file, header = T) %>%
   mutate(across(where(is.character), ~ na_if(., "")),
          across(where(is.character), ~ str_trim(.)),
+         across(where(is.character), ~ str_remove_all(., "\n")),
          Sex = if_else(Sex == "Female" | Sex == "Male", Sex, "Undetermined"),
-         Location = str_remove_all(Location, "[^\\w]"))  %>%
-       fill(ID,
-            Current_Location,
-            Current_Local_ID,
-            Sex             ,
-            Birth_Date      ,
-            Sire            ,
-            Dam             ,
-            Birth_Type)  %>%
-     select(ID,
-            Current_Location,
-            Sex             ,
-            Sire            ,
-            Dam             ,
-            Birth_Type      ,
-            Event_Type      ,
-            Date            ,
-            Event_Location = Location        ) %>%
-  mutate(Event_Date   = dmy(str_extract(Date      , "\\d+/\\w+/\\d+")),
+         Event_Location = str_remove_all(Location, "[^\\w]"),
+         Event_Date   = dmy(str_extract(Event_Date, "\\d+/\\w+/\\d+"))) %>%
+    mutate(
          Sire = as.integer(Sire),
          Dam  = as.integer(Dam),
-         ID   = as.integer(ID),
-         .keep = "unused")
-
-
-psl.2021 <- read.csv(here(
-  paste0(course$assignments, "/testing/StudbookPSL2021Living.csv")
-  ), header = T) %>%
-  mutate(across(where(is.character), ~ na_if(., "")),
-         across(where(is.character), ~ str_trim(.)),
-         Sex = if_else(Sex == "Female" | Sex == "Male", Sex, "Undetermined"),
-         Location = str_remove_all(Location, "[^\\w]"))  %>%
-       fill(ID,
-            Current_Location,
-            ID_Local,
-            Sex             ,
-            Birth_Date      ,
-            Status          ,
-            Sire            ,
-            Dam             ,
-            Birth_Type      ,
-            Event_Type      ,
-            Event_Date      ,
-            Location) %>%
-     select(ID,
-            Current_Location,
-            Sex             ,
-            Status          ,
-            Sire            ,
-            Dam             ,
-            Birth_Type      ,
-            Event_Type      ,
-            Event_Date      ,
-            Event_Location = Location)  %>%
-  mutate(Event_Date   = dmy(str_extract(Event_Date, "\\d+/\\w+/\\d+")),
-         Sire = as.integer(Sire),
-         Dam  = as.integer(Dam),
-         ID   = as.integer(ID),
-         .keep = "unused")
-
-psl.2024 <- read.csv(here(
-  paste0(course$assignments, "/testing/StudbookPSL2024Living.csv")
-  ), header = T) %>%
-  mutate(across(where(is.character), ~ na_if(., "")),
-         Sex = if_else(Sex == "Female" | Sex == "Male", Sex, "Undetermined"))  %>%
-       fill(ID,
-            Current_Location,
-            ID_Local,
-            Sex             ,
-            Status          ,
-            Sire            ,
-            Dam             ,
-            Birth_Type      ,
-            Event_Type      ,
-            Event_Date      ,
-            Location) %>%
-  select(ID,
-         Current_Location,
-         Sex             ,
-         Status          ,
-         Sire            ,
-         Dam             ,
-         Birth_Type      ,
-         Event_Type      ,
-         Event_Date      ,
-         Event_Location = Location
-  ) %>%
-  mutate(Event_Date   = dmy(str_extract(Event_Date, "\\d+/\\w+/\\d+")),
-         Sire = as.integer(Sire),
-         Dam  = as.integer(Dam),
-         ID   = as.integer(ID),
-         .keep = "unused")
-
-
-```
-
-```{r}
-psl <- psl.2024 %>% 
-  left_join(psl.2021) %>%
-  left_join(psl.historic)
-```
-
-```{r}
-psl.living <- psl.2024 %>% 
-  left_join(psl.2021) %>%
-  group_by(ID) %>% 
+         ID   = as.integer(ID))  %>%
   mutate(Birth_Date     = if_else(str_detect(Event_Type, "Birth"), Event_Date, NA),
          Birth_Location = if_else(str_detect(Event_Type, "Birth"), Event_Location, NA)) %>%
-  fill(Birth_Date, Birth_Location) %>%
-  arrange(ID, Event_Date) %>%
-  mutate(Event_Order = row_number()) %>%
-  slice(max(Event_Order)) %>%
-  ungroup() %>%
-  select(ID,
-         Current_Location,
-         Sex,
-         Sire,
-         Dam,
-         Birth_Type,
-         Birth_Date,
-         Birth_Location)
-```
+    fill(ID) %>%
+    group_by(ID) %>%
+       fill(Current_Location,
+            ID_Local,
+            Sex             ,
+            Status          ,
+            Sire            ,
+            Dam             ,
+            Birth_Type      ,
+            Birth_Date      ,
+            Event_Type      ,
+            Event_Date      ,
+            Event_Location  ,
+            Birth_Location) %>%
+    ungroup()  %>%
+    select(
+      ID           ,
+      Current_Location,
+      Sex       ,
+      Birth_Date   ,
+      Sire   ,
+      Dam,
+      Birth_Type     ,
+      Event_Type     ,
+      Event_Location ,
+      Event_Date ,
+      Birth_Location
+    )
+}
 
-
-
-```{r}
-psl.studbook <- psl.historic %>%
+read_studbook_historic <- function(file) {
+  read.csv(file, header = T) %>%
+  mutate(across(where(is.character), ~ na_if(., "")),
+         across(where(is.character), ~ str_trim(.)),
+         across(where(is.character), ~ str_remove_all(., "\n")),
+         Sex      = if_else(Sex == "Female" | Sex == "Male", Sex, "Undetermined"),
+         Event_Location = str_remove_all(Location, "[^\\w]"), 
+         Event_Date   = dmy(str_extract(Date, "\\d+/\\w+/\\d+")))  %>%
+    mutate(
+         Sire = as.integer(Sire),
+         Dam  = as.integer(Dam),
+         ID   = as.integer(ID))  %>%
   mutate(Death_Date     = if_else(str_detect(Event_Type, "Death"), Event_Date, NA),
          Death_Location = if_else(str_detect(Event_Type, "Death"), Event_Location, NA),
          Birth_Location = if_else(str_detect(Event_Type, "Birth"), Event_Location, NA),
          Birth_Date     = if_else(str_detect(Event_Type, "Birth"), Event_Date, NA),
          Capture_Date   = if_else(str_detect(Event_Type, "Capture"), Event_Date, NA)) %>%
-  fill(Death_Date,    
-       Death_Location,
-       Birth_Location,
-       Birth_Date    ,
-       Capture_Date  ) %>%
-  group_by(ID)  %>%
+    fill(ID) %>%
+    group_by(ID) %>%
+       fill(Current_Location,
+            Sex             ,
+            Sire            ,
+            Dam             ,
+            Birth_Type,
+            Death_Date,    
+            Death_Location,
+            Birth_Location,
+            Birth_Date    ,
+            Capture_Date  )  %>%
+    ungroup() %>%
+    select(
+      ID           ,
+      Current_Location,
+      Sex       ,
+      Birth_Date   ,
+      Sire   ,
+      Dam,
+      Birth_Type     ,
+      Event_Type     ,
+      Event_Location ,
+      Event_Date ,
+      Death_Date,
+      Death_Location,
+      Birth_Location,
+      Capture_Date
+    )
+}
+```
+
+
+```{r}
+
+```
+
+
+```{r}
+psl.2021     <- read_studbook_current(here(paste0(course$assignments, "/testing/StudbookPSL2021Living.csv")))
+psl.2024     <- read_studbook_current(here(paste0(course$assignments, "/testing/StudbookPSL2024Living.csv")))
+psl.historic <- read_studbook_historic(here(paste0(course$assignments, "/testing/StudbookPSL2021Historic.csv")))
+```
+
+
+```{r}
+psl.studbook <- psl.historic %>%
+  full_join(psl.2024) %>%
+  full_join(psl.2021)   %>%
+  filter(!is.na(Event_Date)) %>%
   arrange(ID, Event_Date) %>%
+  group_by(ID) %>%
   mutate(Event_Order = row_number()) %>%
   slice(max(Event_Order)) %>%
   ungroup() %>%
+  mutate(Sex = case_when(
+    Sex == "Male"   ~ 1,
+    Sex == "Female" ~ 2,
+    .default = 3
+  )) %>%
   select(ID,
          Current_Location,
          Sex,
@@ -189,16 +161,74 @@ psl.studbook <- psl.historic %>%
          Birth_Location,
          Death_Date,    
          Death_Location,
-       Capture_Date  ) %>%
-  full_join(psl.living) %>%
-  arrange(ID) %>%
-  mutate(Sex = case_when(
-    Sex == "Male"   ~ 1,
-    Sex == "Female" ~ 2,
-    .default = 3
-  )) %>% distinct()
-  
+         Capture_Date  ) %>%
+  arrange(desc(ID)) %>%
+  filter(!(str_detect(Birth_Type, "Captive") & (is.na(Sire) | is.na(Dam))))
+
+# Identify missing parent IDs
+missing_sires   <- setdiff(unique(psl.studbook$Sire), psl.studbook$ID)
+missing_dams    <- setdiff(unique(psl.studbook$Dam),  psl.studbook$ID)
+missing_parents <- union(missing_sires, missing_dams)
+
+# Create dummy rows for the missing parents
+dummy_sires <- tibble(
+  ID               = missing_sires,
+  Current_Location = NA_character_,
+  Sex              = 1,
+  Sire             = NA_integer_,
+  Dam              = NA_integer_,
+  Birth_Type       = "Undetermined",
+  Birth_Date       = as.Date(NA),
+  Birth_Location   = "Undetermined",
+  Death_Date       = as.Date(NA),
+  Death_Location   = NA_character_,
+  Capture_Date     = as.Date(NA)
+)
+dummy_dams <- tibble(
+  ID               = missing_sires,
+  Current_Location = NA_character_,
+  Sex              = 2,
+  Sire             = NA_integer_,
+  Dam              = NA_integer_,
+  Birth_Type       = "Undetermined",
+  Birth_Date       = as.Date(NA),
+  Birth_Location   = "Undetermined",
+  Death_Date       = as.Date(NA),
+  Death_Location   = NA_character_,
+  Capture_Date     = as.Date(NA)
+)
+
+
+# Combine with the original studbook
+psl.studbook_full <- bind_rows(psl.studbook, dummy_sires, dummy_dams) %>% filter(!is.na(ID))
 ```
+
+
+```{r}
+duplicate.rows <- psl.studbook %>% arrange(ID) %>%
+  group_by(ID) %>%
+  filter(n() > 1) %>%
+  ungroup()
+```
+
+Create a Pedigree Object
+
+With pedtools, we can create a pedigree object by specifying:
+	•	id:  vector of individual IDs
+	•	fid: father IDs (sire)
+	•	mid: mother IDs (dam)
+	•	sex: each individual’s sex
+	
+```{r}
+ped <- pedigree(
+  id       = psl.studbook_full$ID,
+  dadid    = psl.studbook_full$Sire,
+  momid    = psl.studbook_full$Dam,
+  sex      = psl.studbook_full$Sex
+)
+```
+
+
 
 
 
@@ -248,23 +278,6 @@ df_births <- df_births %>%
       TRUE ~ "unknown"
     )
   )
-```
-
-Create a Pedigree Object
-
-With pedtools, we can create a pedigree object by specifying:
-	•	id:  vector of individual IDs
-	•	fid: father IDs (sire)
-	•	mid: mother IDs (dam)
-	•	sex: each individual’s sex
-	
-```{r}
-ped <- pedigree(
-  id     = psl.studbook$ID,
-  dadid    = psl.studbook$Sire,
-  momid    = psl.studbook$Dam,
-  sex    = psl.studbook$Sex
-)
 ```
 
 

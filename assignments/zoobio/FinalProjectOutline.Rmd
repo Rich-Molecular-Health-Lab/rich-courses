@@ -1,0 +1,97 @@
+---
+title: "Final Project Outline"
+author: "Alicia Rich"
+output:
+  html_document:
+    theme:
+      bootswatch: litera
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    code_folding: "show"
+    fig_caption: true
+    df_print: paged
+params:
+  course: "zoobio"
+  semester: "spring25"
+                     
+---
+
+```{r, include = FALSE}
+global             <- config::get(config = "default")
+here::i_am("assignments/zoobio/FinalProjectOutline.Rmd")
+source(here::here(global$setup))
+
+theme_set(theme_classic())
+thematic_rmd()
+thematic_on(accent = "#8785B2FF", fg = "black")
+
+```
+
+
+# Overview
+
+Throughout this course, you have begin to assemble the elements of your fictional zoo project. For your final assignment, you will create an online portfolio that brings together all aspects of your work into a cohesive and professional website. You will use a no-code platform—Google Sites is recommended—to design a site that clearly presents your ideas, plans, and data.
+
+## Instructions
+
+### Platform
+
+[**Google Sites**](https://sites.google.com/): Chosen for its ease of use, integration with Google tools, and accessibility. (If you prefer another platform, get approval from the instructor first.)
+
+### Your online portfolio must include the following pages:
+
+1.	**Institutional Mission/Vision and Collection Plan**
+  - Clearly state your institution’s mission and vision.
+  - Present your collection plan, outlining the guiding principles and strategies for building your zoo’s collection.
+  
+2.	**Species Profiles**
+  - List each species in your ICP and provide some basic information about conservation status and taxonomy
+  - Provide a feature profile for your proposed SAFE species in the form of an educational graphic
+  
+3.	**Pedigree and Kinship Data**
+  - Provide pedigree information and kinship data for one species.
+  - Include charts, diagrams, or tables that help visualize the genetic relationships and management strategies.
+  
+4.	**Animal Welfare Assessment and Enrichment Plan**
+  - Describe your approach to evaluating animal welfare.
+  - Outline an enrichment plan that details how you would enhance the physical and psychological well-being of your animals.
+  
+5.	**Nutrition Plan**
+  - Detail the nutritional management strategies for your animals.
+  - Include dietary plans, feeding schedules, and nutritional requirements relevant to your species.
+  
+6.	**Animal Health Page**
+  - Present your strategies for animal health management, including preventive care, regular health assessments, and emergency protocols.
+
+### Structure and Navigation
+
+#### Home Page:
+
+Introduce your zoo project, its overarching goals, and a brief overview of what visitors can expect to find.
+
+#### Navigation Menu:
+
+Ensure your site has a clear, intuitive navigation menu that links to each required page.
+
+#### Design Elements:
+
+Use consistent headings, fonts, and color schemes.  
+  
+Integrate multimedia elements (photos, videos, charts) where they enhance your content.
+
+## Submission and Timeline
+
+- Begin working on the structure of your portfolio this week, and you will be given additional class time to refine it as we move through the rest of the semester.
+- Final Submission (End of Semester):
+- Ensure all six pages are complete and the site is publicly accessible (or shared with the instructor as required).
+- Submit the final website link via canvas.
+
+## Evaluation Criteria
+
+- **Completeness**: All six required pages are included and fully developed.
+- **Organization**: Logical structure and intuitive navigation.
+- **Design**: A visually appealing, professional look that enhances content clarity.
+- **Content Quality**: Clear, well-researched, and thoughtfully presented information.
+- **Creativity and Reflection**: Evidence of creative problem solving and a brief reflection on your design and research process.
