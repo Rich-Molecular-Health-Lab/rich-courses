@@ -22,4 +22,4 @@ conflicts_prefer(lubridate::day)
 conflicts_prefer(base::as.data.frame)
 conflicts_prefer(htmltools::p)
 conflicts_prefer(purrr::discard)
-
+conflicts_prefer(kinship2::kinship)
