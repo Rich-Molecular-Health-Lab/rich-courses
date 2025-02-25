@@ -125,11 +125,6 @@ read_studbook_historic <- function(file) {
 
 
 ```{r}
-
-```
-
-
-```{r}
 psl.2021     <- read_studbook_current(here(paste0(course$assignments, "/testing/StudbookPSL2021Living.csv")))
 psl.2024     <- read_studbook_current(here(paste0(course$assignments, "/testing/StudbookPSL2024Living.csv")))
 psl.historic <- read_studbook_historic(here(paste0(course$assignments, "/testing/StudbookPSL2021Historic.csv")))
@@ -163,44 +158,50 @@ psl.studbook <- psl.historic %>%
          Death_Location,
          Capture_Date  ) %>%
   arrange(desc(ID)) %>%
-  filter(!(str_detect(Birth_Type, "Captive") & (is.na(Sire) | is.na(Dam))))
+  filter(!(str_detect(Birth_Type, "Captive") & (is.na(Sire) | is.na(Dam)))) %>%
+  filter(!is.na(ID))
+```
 
+
+```{r}
 # Identify missing parent IDs
-missing_sires   <- setdiff(unique(psl.studbook$Sire), psl.studbook$ID)
-missing_dams    <- setdiff(unique(psl.studbook$Dam),  psl.studbook$ID)
-missing_parents <- union(missing_sires, missing_dams)
-
-# Create dummy rows for the missing parents
-dummy_sires <- tibble(
-  ID               = missing_sires,
-  Current_Location = NA_character_,
-  Sex              = 1,
-  Sire             = NA_integer_,
-  Dam              = NA_integer_,
-  Birth_Type       = "Undetermined",
-  Birth_Date       = as.Date(NA),
-  Birth_Location   = "Undetermined",
-  Death_Date       = as.Date(NA),
-  Death_Location   = NA_character_,
-  Capture_Date     = as.Date(NA)
-)
-dummy_dams <- tibble(
-  ID               = missing_sires,
-  Current_Location = NA_character_,
-  Sex              = 2,
-  Sire             = NA_integer_,
-  Dam              = NA_integer_,
-  Birth_Type       = "Undetermined",
-  Birth_Date       = as.Date(NA),
-  Birth_Location   = "Undetermined",
-  Death_Date       = as.Date(NA),
-  Death_Location   = NA_character_,
-  Capture_Date     = as.Date(NA)
-)
+missing_sires   <- tibble(ID               = c(setdiff(unique(psl.studbook$Sire), psl.studbook$ID)),
+                          Current_Location = NA_character_,
+                          Sex              = 1,
+                          Sire             = NA_integer_,
+                          Dam              = NA_integer_,
+                          Birth_Type       = "Undetermined",
+                          Birth_Date       = as.Date(NA),
+                          Birth_Location   = "Undetermined",
+                          Death_Date       = as.Date(NA),
+                          Death_Location   = "Undetermined",
+                          Capture_Date     = as.Date(NA)
+                                                  ) %>%
+  filter(!is.na(ID))
+```
 
 
+```{r}
+missing_dams    <- tibble(ID               = c(setdiff(unique(psl.studbook$Dam), psl.studbook$ID)),
+                          Current_Location = NA_character_,
+                          Sex              = 2,
+                          Sire             = NA_integer_,
+                          Dam              = NA_integer_,
+                          Birth_Type       = "Undetermined",
+                          Birth_Date       = as.Date(NA),
+                          Birth_Location   = "Undetermined",
+                          Death_Date       = as.Date(NA),
+                          Death_Location   = "Undetermined",
+                          Capture_Date     = as.Date(NA)
+                                                  ) %>%
+  filter(!is.na(ID))
+```
+
+
+```{r}
 # Combine with the original studbook
-psl.studbook_full <- bind_rows(psl.studbook, dummy_sires, dummy_dams) %>% filter(!is.na(ID))
+psl.studbook <- bind_rows(psl.studbook, missing_sires, missing_dams)  %>%
+  filter(!is.na(ID))
 ```
 
 
@@ -221,10 +222,10 @@ With pedtools, we can create a pedigree object by specifying:
 	
 ```{r}
 ped <- pedigree(
-  id       = psl.studbook_full$ID,
-  dadid    = psl.studbook_full$Sire,
-  momid    = psl.studbook_full$Dam,
-  sex      = psl.studbook_full$Sex
+  id       = psl.studbook$ID,
+  dadid    = psl.studbook$Sire,
+  momid    = psl.studbook$Dam,
+  sex      = psl.studbook$Sex
 )
 ```
 
