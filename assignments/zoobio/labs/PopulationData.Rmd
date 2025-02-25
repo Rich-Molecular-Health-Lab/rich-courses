@@ -1,0 +1,380 @@
+---
+title: "Population Data Management"
+author: "Alicia Rich"
+output:
+  html_document:
+    theme:
+      bootswatch: litera
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    code_folding: "show"
+    fig_caption: true
+    df_print: paged
+params:
+  course: "zoobio"
+  semester: "spring25"
+                     
+---
+
+```{r, include = FALSE}
+global             <- config::get(config = "default")
+here::i_am("assignments/zoobio/labs/PopulationData.Rmd")
+source(here::here(global$setup))
+
+theme_set(theme_classic())
+thematic_rmd()
+thematic_on(accent = "#8785B2FF", fg = "black")
+
+```
+
+
+```{r}
+psl.historic <- read.csv(here(
+  paste0(course$assignments, "/testing/StudbookPSL2021Historic.csv")
+  ), header = T) %>%
+  mutate(across(where(is.character), ~ na_if(., "")),
+         across(where(is.character), ~ str_trim(.)),
+         Sex = if_else(Sex == "Female" | Sex == "Male", Sex, "Undetermined"),
+         Location = str_remove_all(Location, "[^\\w]"))  %>%
+       fill(ID,
+            Current_Location,
+            Current_Local_ID,
+            Sex             ,
+            Birth_Date      ,
+            Sire            ,
+            Dam             ,
+            Birth_Type)  %>%
+     select(ID,
+            Current_Location,
+            Sex             ,
+            Sire            ,
+            Dam             ,
+            Birth_Type      ,
+            Event_Type      ,
+            Date            ,
+            Event_Location = Location        ) %>%
+  mutate(Event_Date   = dmy(str_extract(Date      , "\\d+/\\w+/\\d+")),
+         Sire = as.integer(Sire),
+         Dam  = as.integer(Dam),
+         ID   = as.integer(ID),
+         .keep = "unused")
+
+
+psl.2021 <- read.csv(here(
+  paste0(course$assignments, "/testing/StudbookPSL2021Living.csv")
+  ), header = T) %>%
+  mutate(across(where(is.character), ~ na_if(., "")),
+         across(where(is.character), ~ str_trim(.)),
+         Sex = if_else(Sex == "Female" | Sex == "Male", Sex, "Undetermined"),
+         Location = str_remove_all(Location, "[^\\w]"))  %>%
+       fill(ID,
+            Current_Location,
+            ID_Local,
+            Sex             ,
+            Birth_Date      ,
+            Status          ,
+            Sire            ,
+            Dam             ,
+            Birth_Type      ,
+            Event_Type      ,
+            Event_Date      ,
+            Location) %>%
+     select(ID,
+            Current_Location,
+            Sex             ,
+            Status          ,
+            Sire            ,
+            Dam             ,
+            Birth_Type      ,
+            Event_Type      ,
+            Event_Date      ,
+            Event_Location = Location)  %>%
+  mutate(Event_Date   = dmy(str_extract(Event_Date, "\\d+/\\w+/\\d+")),
+         Sire = as.integer(Sire),
+         Dam  = as.integer(Dam),
+         ID   = as.integer(ID),
+         .keep = "unused")
+
+psl.2024 <- read.csv(here(
+  paste0(course$assignments, "/testing/StudbookPSL2024Living.csv")
+  ), header = T) %>%
+  mutate(across(where(is.character), ~ na_if(., "")),
+         Sex = if_else(Sex == "Female" | Sex == "Male", Sex, "Undetermined"))  %>%
+       fill(ID,
+            Current_Location,
+            ID_Local,
+            Sex             ,
+            Status          ,
+            Sire            ,
+            Dam             ,
+            Birth_Type      ,
+            Event_Type      ,
+            Event_Date      ,
+            Location) %>%
+  select(ID,
+         Current_Location,
+         Sex             ,
+         Status          ,
+         Sire            ,
+         Dam             ,
+         Birth_Type      ,
+         Event_Type      ,
+         Event_Date      ,
+         Event_Location = Location
+  ) %>%
+  mutate(Event_Date   = dmy(str_extract(Event_Date, "\\d+/\\w+/\\d+")),
+         Sire = as.integer(Sire),
+         Dam  = as.integer(Dam),
+         ID   = as.integer(ID),
+         .keep = "unused")
+
+
+```
+
+```{r}
+psl <- psl.2024 %>% 
+  left_join(psl.2021) %>%
+  left_join(psl.historic)
+```
+
+```{r}
+psl.living <- psl.2024 %>% 
+  left_join(psl.2021) %>%
+  group_by(ID) %>% 
+  mutate(Birth_Date     = if_else(str_detect(Event_Type, "Birth"), Event_Date, NA),
+         Birth_Location = if_else(str_detect(Event_Type, "Birth"), Event_Location, NA)) %>%
+  fill(Birth_Date, Birth_Location) %>%
+  arrange(ID, Event_Date) %>%
+  mutate(Event_Order = row_number()) %>%
+  slice(max(Event_Order)) %>%
+  ungroup() %>%
+  select(ID,
+         Current_Location,
+         Sex,
+         Sire,
+         Dam,
+         Birth_Type,
+         Birth_Date,
+         Birth_Location)
+```
+
+
+
+```{r}
+psl.studbook <- psl.historic %>%
+  mutate(Death_Date     = if_else(str_detect(Event_Type, "Death"), Event_Date, NA),
+         Death_Location = if_else(str_detect(Event_Type, "Death"), Event_Location, NA),
+         Birth_Location = if_else(str_detect(Event_Type, "Birth"), Event_Location, NA),
+         Birth_Date     = if_else(str_detect(Event_Type, "Birth"), Event_Date, NA),
+         Capture_Date   = if_else(str_detect(Event_Type, "Capture"), Event_Date, NA)) %>%
+  fill(Death_Date,    
+       Death_Location,
+       Birth_Location,
+       Birth_Date    ,
+       Capture_Date  ) %>%
+  group_by(ID)  %>%
+  arrange(ID, Event_Date) %>%
+  mutate(Event_Order = row_number()) %>%
+  slice(max(Event_Order)) %>%
+  ungroup() %>%
+  select(ID,
+         Current_Location,
+         Sex,
+         Sire,
+         Dam,
+         Birth_Type,
+         Birth_Date,
+         Birth_Location,
+         Death_Date,    
+         Death_Location,
+       Capture_Date  ) %>%
+  full_join(psl.living) %>%
+  arrange(ID) %>%
+  mutate(Sex = case_when(
+    Sex == "Male"   ~ 1,
+    Sex == "Female" ~ 2,
+    .default = 3
+  )) %>% distinct()
+  
+```
+
+
+
+Introduction
+
+In this tutorial, we will use a small example of studbook-style data to learn how to:
+	1.	Import & clean demographic and genealogical data.
+	2.	Create a pedigree object in R.
+	3.	Visualize a pedigree.
+	4.	Calculate basic population genetics metrics such as inbreeding coefficients and mean kinship.
+
+Although real studbooks may contain thousands of rows with complex life-history, transfer, and breeding records, the methods demonstrated here scale to larger datasets.
+
+Import and Inspect Data
+
+Clean and Filter Data
+
+Studbooks typically contain multiple rows per individual (transfer events, births, deaths, etc.). For pedigree creation, we usually just need:
+	•	A single row per individual (often the “Birth/Hatch” row).
+	•	The ID, sire, dam, and sex.
+	•	(Optionally) a living/deceased flag if focusing on current living population metrics.
+
+Below, we’ll select only Birth/Hatch rows and ensure we have one row per unique ID.
+
+```{r}
+df_births <- df_raw %>%
+  # Filter to rows describing the actual birth/hatch event
+  filter(Event_Type == "Birth/Hatch") %>%
+  # If an individual has multiple "Birth/Hatch" lines for some reason, keep one
+  distinct(ID, .keep_all = TRUE)
+
+df_births
+```
+
+Next, let’s ensure the sex variable is in a format acceptable for pedtools. According to pedtools documentation, sex can be specified as:
+	•	"male", "female", or "unknown"
+	•	or numeric codes 1 (male), 2 (female), 3 (unknown).
+
+We’ll do a simple recoding:
+
+```{r}
+df_births <- df_births %>%
+  mutate(
+    Sex = case_when(
+      Sex == "Male" ~ "male",
+      Sex == "Female" ~ "female",
+      TRUE ~ "unknown"
+    )
+  )
+```
+
+Create a Pedigree Object
+
+With pedtools, we can create a pedigree object by specifying:
+	•	id:  vector of individual IDs
+	•	fid: father IDs (sire)
+	•	mid: mother IDs (dam)
+	•	sex: each individual’s sex
+	
+```{r}
+ped <- pedigree(
+  id     = psl.studbook$ID,
+  dadid    = psl.studbook$Sire,
+  momid    = psl.studbook$Dam,
+  sex    = psl.studbook$Sex
+)
+```
+
+
+```{r}
+# Check the pedigree
+ped
+```
+
+Note: If you have any unknown sires/dams coded as NA or 0, pedtools will treat these as founders.
+
+Visualize the Pedigree
+
+To visualize the pedigree, you can use the built-in plot() method from pedtools. For larger pedigrees, you might want more advanced layout options, but for a small dataset, a simple plot can help illustrate relationships.
+
+```{r}
+plot(ped, id = ped$id)  # label individuals by their ID
+```
+
+Calculate Basic Genetic Metrics
+
+Inbreeding Coefficients
+
+The inbreeding coefficient (F) of an individual measures how likely it is that the two alleles at a locus in that individual are identical by descent. We can use inbreeding() from pedtools.
+
+```{r}
+# Calculate inbreeding for all individuals
+inb <- inbreeding(ped)
+inb
+```
+
+Pairwise Kinship Matrix
+
+The kinship coefficient between two individuals is the probability that a random allele from each individual is identical by descent. We can calculate the full pairwise kinship matrix with:
+
+```{r}
+K <- kinship(ped)
+K
+```
+
+	•	K[i, i] is half of the inbreeding coefficient for individual i.
+	•	K[i, j] for i != j indicates the degree of relatedness.
+
+Mean Kinship (MK)
+
+Mean kinship for an individual is the average kinship that individual has with all living members of the population (including itself). A simple way to calculate mean kinship for each individual is:
+
+```{r}
+# We'll define "living" as individuals with Living == "Y" in df_births
+living_ids <- df_births %>%
+  filter(Living == "Y") %>%
+  pull(ID)
+
+# Subset the kinship matrix to only living individuals
+K_living <- K[living_ids, living_ids, drop = FALSE]
+
+# For each living individual, compute mean kinship across all living individuals
+mk_values <- rowMeans(K_living)
+
+# Turn it into a dataframe for clarity
+mk_df <- data.frame(
+  ID = living_ids,
+  MeanKinship = mk_values
+)
+
+mk_df
+```
+
+Gene Diversity / Expected Heterozygosity
+
+If you assume founders are unrelated and non-inbred, you can approximate gene diversity or expected heterozygosity as:
+
+[
+GD = 1 - \bar{F}
+]
+
+where (\bar{F}) is the average inbreeding coefficient of the living population. A quick example:
+
+```{r}
+# Average inbreeding among the living population:
+avg_inb_living <- mean(inb[living_ids])
+
+# Gene diversity:
+GD <- 1 - avg_inb_living
+
+GD
+```
+
+(Real-world SSP calculations often incorporate more complex assumptions about founder relationships, incomplete pedigrees, etc., so this is a simplified demonstration.)
+
+Interpreting Results
+
+	•	Pedigree Plot
+The plotted pedigree provides a quick visual check for errors, unusual loops, missing parent data, etc.
+	•	Inbreeding
+A result of F = 0 indicates no inbreeding known in the pedigree, while higher values suggest some level of relatedness between the parents.
+	•	Mean Kinship
+Individuals with low mean kinship are considered genetically valuable for breeding (less related to the rest of the population).
+	•	Gene Diversity
+A summary statistic reflecting the population’s overall diversity as inferred from the pedigree.
+
+Extensions
+
+	•	Handling Unknown Founders: If your data has 0 or NA for unknown parents, those individuals become “founders” in the pedigree. Real founder relationships might not be truly random, so advanced models can incorporate partial knowledge or assumptions.
+	•	Breeding Recommendations: In a real SSP, these metrics feed into management software (e.g., PMx or ZIMS). While R packages can replicate some calculations, official software remains the standard for final breeding recommendations.
+	•	Larger Pedigrees: For a few thousand individuals, pedtools is usually quite fast. For very large pedigrees, you may need more memory-efficient methods or specialized tools.
+	
+	
+Conclusion
+	You now have a basic framework in R and R Markdown for:
+	1.	Importing studbook data
+	2.	Converting it to a pedigree object
+	3.	Plotting family relationships
+	4.	Calculating common metrics (inbreeding, kinship, mean kinship, and approximate gene diversity)

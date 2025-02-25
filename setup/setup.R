@@ -4,6 +4,7 @@ source(here::here(global$packages))
 source(here::here(global$conflicts))
 source(here::here(global$functions))
 source(here::here(global$inputs))
+source(here::here(global$set_paths))
 
 opts_chunk$set(message = FALSE,
                warning = FALSE,
