@@ -34,174 +34,8 @@ opts_chunk$set(message = FALSE,
                eval    = TRUE,
                comment = "")
 
-```
-
-```{r}
-read_studbook_current <- function(file) {
-  read.csv(file, header = T) %>%
-  mutate(across(where(is.character), ~ na_if(., "")),
-         across(where(is.character), ~ str_trim(.)),
-         across(where(is.character), ~ str_remove_all(., "\n")),
-         Sex = if_else(Sex == "Female" | Sex == "Male", Sex, "Undetermined"),
-         Event_Location = str_remove_all(Location, "[^\\w]"),
-         Event_Date   = dmy(str_extract(Event_Date, "\\d+/\\w+/\\d+"))) %>%
-    mutate(
-         Sire = as.integer(Sire),
-         Dam  = as.integer(Dam),
-         ID   = as.integer(ID))  %>%
-  mutate(Birth_Date     = if_else(str_detect(Event_Type, "Birth"), Event_Date, NA),
-         Birth_Location = if_else(str_detect(Event_Type, "Birth"), Event_Location, NA),
-         status         = "alive") %>%
-    fill(ID) %>%
-    group_by(ID) %>%
-       fill(Current_Location,
-            ID_Local,
-            Sex             ,
-            status          ,
-            Sire            ,
-            Dam             ,
-            Birth_Type      ,
-            Birth_Date      ,
-            Event_Type      ,
-            Event_Date      ,
-            Event_Location  ,
-            Birth_Location) %>%
-    ungroup()  %>%
-    select(
-      ID           ,
-      Current_Location,
-      Sex       ,
-      status     ,
-      Birth_Date   ,
-      Sire   ,
-      Dam,
-      Birth_Type     ,
-      Event_Type     ,
-      Event_Location ,
-      Event_Date ,
-      Birth_Location
-    )
-}
-
-read_studbook_historic <- function(file) {
-  read.csv(file, header = T) %>%
-  mutate(across(where(is.character), ~ na_if(., "")),
-         across(where(is.character), ~ str_trim(.)),
-         across(where(is.character), ~ str_remove_all(., "\n")),
-         Sex      = if_else(Sex == "Female" | Sex == "Male", Sex, "Undetermined"),
-         Event_Location = str_remove_all(Location, "[^\\w]"), 
-         Event_Date   = dmy(str_extract(Date, "\\d+/\\w+/\\d+")),
-         status         = "deceased")  %>%
-    mutate(
-         Sire = as.integer(Sire),
-         Dam  = as.integer(Dam),
-         ID   = as.integer(ID))  %>%
-  mutate(Death_Date     = if_else(str_detect(Event_Type, "Death"), Event_Date, NA),
-         Death_Location = if_else(str_detect(Event_Type, "Death"), Event_Location, NA),
-         Birth_Location = if_else(str_detect(Event_Type, "Birth"), Event_Location, NA),
-         Birth_Date     = if_else(str_detect(Event_Type, "Birth"), Event_Date, NA),
-         Capture_Date   = if_else(str_detect(Event_Type, "Capture"), Event_Date, NA)) %>%
-    fill(ID) %>%
-    group_by(ID) %>%
-       fill(Current_Location,
-            Sex             ,
-            Sire            ,
-            Dam             ,
-            Birth_Type,
-            Death_Date,    
-            Death_Location,
-            Birth_Location,
-            Birth_Date    ,
-            Capture_Date  )  %>%
-    ungroup() %>%
-    select(
-      ID           ,
-      Current_Location,
-      Sex       ,
-      status       ,
-      Birth_Date   ,
-      Sire   ,
-      Dam,
-      Birth_Type     ,
-      Event_Type     ,
-      Event_Location ,
-      Event_Date ,
-      Death_Date,
-      Death_Location,
-      Birth_Location,
-      Capture_Date
-    )
-}
-
-sub_missing_parents <- function(df) {
-  df %>%
-  bind_rows(tibble(ID               = c(setdiff(unique(df$Sire), df$ID)),
-                          Current_Location = NA_character_,
-                          Sex              = 1,
-                          status           = "Undetermined",
-                          Sire             = NA_integer_,
-                          Dam              = NA_integer_,
-                          Birth_Type       = "Undetermined",
-                          Birth_Date       = as.Date(NA),
-                          Birth_Location   = "Undetermined",
-                          Death_Date       = as.Date(NA),
-                          Death_Location   = "Undetermined",
-                          Capture_Date     = as.Date(NA)
-                                                  ), 
-            tibble(ID               = c(setdiff(unique(df$Dam), df$ID)),
-                          Current_Location = NA_character_,
-                          Sex              = 2,
-                          status           = "Undetermined",
-                          Sire             = NA_integer_,
-                          Dam              = NA_integer_,
-                          Birth_Type       = "Undetermined",
-                          Birth_Date       = as.Date(NA),
-                          Birth_Location   = "Undetermined",
-                          Death_Date       = as.Date(NA),
-                          Death_Location   = "Undetermined",
-                          Capture_Date     = as.Date(NA)
-                                                  )
-            )  %>%
-  filter(!is.na(ID))
-}
-
-```
-
-
-```{r}
-format_studbook <- function(df, sex_unknown) {
-  df   %>%
-  filter(!is.na(Event_Date)) %>%
-  arrange(ID, Event_Date) %>%
-  group_by(ID) %>%
-  mutate(Event_Order = row_number()) %>%
-  slice(max(Event_Order)) %>%
-  ungroup() %>%
-  mutate(Sex = case_when(
-    Sex == "Male"   ~ 1,
-    Sex == "Female" ~ 2,
-    .default = sex_unknown
-  )) %>%
-  select(ID,
-         Current_Location,
-         status,
-         Sex,
-         Sire,
-         Dam,
-         Birth_Type,
-         Birth_Date,
-         Birth_Location,
-         Death_Date,    
-         Death_Location,
-         Capture_Date  ) %>%
-  arrange(ID) %>%
-  filter(!(str_detect(Birth_Type, "Captive") & (is.na(Sire) | is.na(Dam)))) %>%
-  filter(!is.na(ID)) %>%
-  mutate(Age = case_when(status == "alive"                         ~ year(today())    - year(Birth_Date), 
-                         status == "deceased" & !is.na(Birth_Date) ~ year(Death_Date) - year(Birth_Date),
-                         status == "deceased" & is.na(Birth_Date) & !is.na(Capture_Date) ~ year(Death_Date) - year(Capture_Date),
-         .default = 0))
-}
+source(here(paste0(course$labs, "ImportStudbooks.R")))
+source(here(paste0(course$labs, "PedigreeFunctions.R")))
 ```
 
 ```{r, warning = FALSE}
@@ -215,9 +49,22 @@ studbook <- read_studbook_historic(here(paste0(course$assignments, "/testing/Stu
 
 
 ```{r}
-living   <- studbook %>% filter(status == "alive")    %>% distinct(ID) %>% map(\(x) as.list(x)) %>% list_flatten(name_spec = "")
+living      <- studbook %>% filter(status == "alive")    %>% list_ids()
+deceased    <- studbook %>% filter(status != "alive")    %>% list_ids()
+sex.unknown <- studbook %>% filter(Sex == 0)             %>% list_ids()
 
-deceased <- studbook %>% filter(status == "deceased") %>% distinct(ID) %>% map(\(x) as.list(x)) %>% list_flatten(name_spec = "")
+studbook_colored <- studbook %>%
+  mutate(fill = case_when(
+    status == "deceased" | status == "Undetermined"  ~ "#A5AA99FF",
+    status == "alive" & Sex == 0                     ~ "#99C945FF",
+    status == "alive" & Sex == 1                     ~ "#2F8AC4FF",
+    status == "alive" & Sex == 2                     ~ "#CC3A8EFF"
+  ))
+```
+
+
+```{r}
+fill_key <- select(studbook_colored, name = ID, value = fill) %>% deframe() %>% as.list()
 ```
 
 
@@ -227,13 +74,12 @@ pedig <- ped(
   fid    = studbook$Sire,
   mid    = studbook$Dam,
   sex    = studbook$Sex
-)
+) %>% parentsBeforeChildren() %>% foundersFirst()
 ```
 
 ```{r}
-singletons <- keep(pedig, \(x) pedsize(x) <= 1) %>% map_depth(., 1, \(x) as.list(x[["ID"]])) %>% list_flatten(name_spec = "")
-
-families   <- keep(pedig, \(x) pedsize(x) > 1)  %>% map_depth(., 1, \(x) as.list(x[["ID"]])) %>% list_flatten(name_spec = "")
+singletons <- list_singletons(pedig)
+families   <- related_ids(pedig)
 ```
 
 ```{r}
@@ -243,21 +89,41 @@ studbook.annotate <- studbook %>% mutate(
 )
 ```
 
-
-
-
 ```{r}
-psl.plot <- plot(psl.ped[["_comp3"]], labs = NULL)
+pedigree_set <- keep(pedig, \(x) pedsize(x) > 1)  %>% imap(., \(x, idx) as.list(idx)) %>% list_flatten(name_spec = "")
 ```
 
 ```{r}
-psl.plot <- plotPedList(psl.ped, labs = NULL)
+plot1 <- draw_pedigree(ped1)
 ```
 
 
 ```{r}
-pedsize(psl.ped)
+ped1 <- pedig[["_comp1"]]
+ped2 <- pedig[["_comp10"]]
+ped3 <- pedig[["_comp13"]]
+ped4 <- pedig[["_comp25"]]
+
+plot1 <- draw_pedigree(ped1)
+plot2 <- draw_pedigree(ped2)
+plot3 <- draw_pedigree(ped3)
+plot4 <- draw_pedigree(ped4)
+
+plot <- plotPedList(
+            list(plot1,
+                 plot2,
+                 plot3,
+                 plot4),
+            framed = FALSE,
+            
+            )
 ```
+
+```{r}
+ped.living <- subset(pedig, living)
+```
+
+
 
 ```{r}
 generations(psl.ped)
@@ -270,14 +136,6 @@ hasSelfing(psl.ped)
 inbred  <- enframe(inbreeding(psl.ped))
 ```
 
-```{r}
-psl <- ped(
-  id     = psl.studbook$ID,
-  fid    = psl.studbook$Sire,
-  mid    = psl.studbook$Dam,
-  sex    = psl.studbook$Sex
-)
-```
 
 
 ```{r}
