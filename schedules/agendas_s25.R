@@ -36,68 +36,57 @@ readings <- list(
       "6c" = list(
         speak2024 = "Genomics‐informed captive breeding can reduce inbreeding depression and the genetic load in zoo populations")
     ),
-    "7" = list(
-      "7a" = list(
-        herrick2019      = "Assisted reproductive technologies for endangered species conservation: developing sophisticated protocols with limited access to animals with unique reproductive mechanisms"
+    "8" = list(
+      "8a" = list(
+        herrick2019 = "Assisted reproductive technologies for endangered species conservation: developing sophisticated protocols with limited access to animals with unique reproductive mechanisms"
         ),
-      "7c" = list(
+      "8c" = list(
         asa2016 = "Weighing the Options for Limiting Surplus Animals"
         )
     ),
-    "8" = list(
-      "8a" = list(
+    "10" = list(
+      "10a" = list(
         beheerder2017 = "Visual body condition scoring in zoo animals – composite, algorithm and overview approaches"
       ),
-      "8c" = list(
+      "10c" = list(
         ramont2024 = "The Provision of Browse and Its Impacts on the Health and Welfare of Animals at the Zoo: A Review"
       )
     ),
-  "10" = list(
-    "10a" = list(
-      whilde2017 = "Precision wildlife medicine: applications of the human-centred precision medicine revolution to species conservation"
-    ),
-    "10c" = list(
-      murphy2018 = "The Great Ape Heart Project"
-      )
-  ),
   "11" = list(
     "11a" = list(
-      veasey2021 = "Differing animal welfare conceptions and what they mean for the future of zoos and aquariums, insights from an animal welfare audit"
-    ),
-    "11c" = list(
-      obrien2023 = "Doing better for understudied species: Evaluation and improvement of a species-general animal welfare assessment tool for zoos"
+      whilde2017 = "Precision wildlife medicine: applications of the human-centred precision medicine revolution to species conservation"
     )
   ),
   "12" = list(
     "12a" = list(
-      ramirez2020 = "Choosing the Right Method: Reinforcement vs Punishment"
+      veasey2021 = "Differing animal welfare conceptions and what they mean for the future of zoos and aquariums, insights from an animal welfare audit"
     ),
     "12c" = list(
-      martin2020 = "The Art of ‘Active’ Training"
+      obrien2023 = "Doing better for understudied species: Evaluation and improvement of a species-general animal welfare assessment tool for zoos"
     )
   ),
   "13" = list(
     "13a" = list(
-      brereton2023 = "An evaluation of the role of ‘biological evidence’ in zoo and aquarium enrichment practices"
+      ramirez2020 = "Choosing the Right Method: Reinforcement vs Punishment"
     ),
     "13c" = list(
+      martin2020 = "The Art of ‘Active’ Training"
+    )
+  ),
+  "14" = list(
+    "14a" = list(
+      brereton2023 = "An evaluation of the role of ‘biological evidence’ in zoo and aquarium enrichment practices"
+    ),
+    "14c" = list(
       podturkin2021 = "In search of the optimal enrichment program for zoo‐housed animals"
     )
     ),
-  "14" = list(
-    "14a" = list(
-      howell2019 = "When zoo visitors “connect” with a zoo animal, what does that mean?"
-    ),
-    "14c" = list(
-      moss2015 = "Evaluating the contribution of zoos and aquariums to Aichi Biodiversity Target 1"
-    )
-  ),
   "15" = list(
     "15a" = list(
-      lukins2024 = "Access and Inclusion Go to the Zoo"
+      howell2019 = "When zoo visitors “connect” with a zoo animal, what does that mean?"
     ),
     "15c" = list(
-      kong2017 = "A community-Based sensory Training Program leads to improved  experience at a local Zoo for children with sensory challenges"
+      lukins2024 = "Access and Inclusion Go to the Zoo"
     )
   ),
   "16" = list(
@@ -219,17 +208,17 @@ agenda <- list(
      "6"  = list("6a"  = "Demography and Genetics",
                  "6b"  = "Demography and Genetics",
                  "6c"  = "Demography and Genetics"),
-     "7"  = list("7a"  = "Reproduction",
-                 "7b"  = "Reproduction",
-                 "7c"  = "Reproduction"),
-     "8"  = list("8a"  = "Nutrition",
-                 "8b"  = "Nutrition",
-                 "8c"  = "Nutrition"),
-     "10"  = list("10a" = "Medicine",
-                  "10b" = "Medicine",
-                  "10c" = "Medicine"),
-     "11" = list("11a" = "Schedule Buffer",
-                 "11b" = "Schedule Buffer"),
+     "7"  = list("7a"  = "Demography and Genetics",
+                 "7b"  = "Demography and Genetics",
+                 "7c"  = "Demography and Genetics"),
+     "8"  = list("8a"  = "Reproduction",
+                 "8b"  = "Reproduction",
+                 "8c"  = "Reproduction"),
+     "10"  = list("10a" = "Nutrition",
+                  "10b" = "Nutrition",
+                  "10c" = "Nutrition"),
+     "11" = list("11a" = "Medicine",
+                 "11b" = "Medicine"),
      "12" = list("12a" = "Monitoring and Assessment",
                  "12b" = "Monitoring and Assessment",
                  "12c" = "Monitoring and Assessment"),
@@ -347,6 +336,10 @@ slides <- list(
     ),
     "5" = list(
       "5c" = "https://www.pbs.org/wnet/nature/the-loneliest-animals-introduction/4898/"
+    ),
+    "6" = list(
+      "6a" = "https://www.canva.com/design/DAGgCJiox1M/Z7_zU4n_OdQ1Bvvwegledw/view?utm_content=DAGgCJiox1M&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hcd1a0c76e4",
+      "6c" = "https://www.canva.com/design/DAGgOeZ3JSI/wPpzQX4cNhECskSsjpdPqg/view?utm_content=DAGgOeZ3JSI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h154cce3cdf"
     )
   ),
   conbio = list(
