@@ -215,20 +215,9 @@ studbook <- read_studbook_historic(here(paste0(course$assignments, "/testing/Stu
 
 
 ```{r}
-duplicated_ids <- studbook %>%
-  group_by(ID) %>%
-  filter(n() > 1) %>%
-  ungroup()
-```
+living   <- studbook %>% filter(status == "alive")    %>% distinct(ID) %>% map(\(x) as.list(x)) %>% list_flatten(name_spec = "")
 
-```{r}
-living   <- studbook %>% filter(status == "alive")    %>% distinct(ID) %>% deframe()
-deceased <- studbook %>% filter(status == "deceased") %>% distinct(ID) %>% deframe()
-```
-
-```{r}
-current_locations <- living %>%
-  distinct(Current_Location) %>% deframe() %>% as.list()
+deceased <- studbook %>% filter(status == "deceased") %>% distinct(ID) %>% map(\(x) as.list(x)) %>% list_flatten(name_spec = "")
 ```
 
 
@@ -242,9 +231,19 @@ pedig <- ped(
 ```
 
 ```{r}
-singletons <- keep(pedig, \(x) pedsize(x) <= 1)
-families   <- keep(pedig, \(x) pedsize(x) > 1)
+singletons <- keep(pedig, \(x) pedsize(x) <= 1) %>% map_depth(., 1, \(x) as.list(x[["ID"]])) %>% list_flatten(name_spec = "")
+
+families   <- keep(pedig, \(x) pedsize(x) > 1)  %>% map_depth(., 1, \(x) as.list(x[["ID"]])) %>% list_flatten(name_spec = "")
 ```
+
+```{r}
+studbook.annotate <- studbook %>% mutate(
+  lineage = case_when(ID %in% singletons ~ "singleton",
+                      ID %in% families   ~ "family")
+)
+```
+
+
 
 
 ```{r}
@@ -266,6 +265,7 @@ hasUnbrokenLoops(psl.ped)
 hasInbredFounders(psl.ped)
 hasSelfing(psl.ped)
 ```
+
 ```{r}
 inbred  <- enframe(inbreeding(psl.ped))
 ```
