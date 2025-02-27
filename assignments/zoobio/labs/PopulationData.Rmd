@@ -47,27 +47,6 @@ studbook <- read_studbook_historic(here(paste0(course$assignments, "/testing/Stu
   mutate(across(where(is.numeric), ~ replace_na(., 0)))
 ```
 
-
-```{r}
-living      <- studbook %>% filter(status == "alive")    %>% list_ids()
-deceased    <- studbook %>% filter(status != "alive")    %>% list_ids()
-sex.unknown <- studbook %>% filter(Sex == 0)             %>% list_ids()
-
-studbook_colored <- studbook %>%
-  mutate(fill = case_when(
-    status == "deceased" | status == "Undetermined"  ~ "#A5AA99FF",
-    status == "alive" & Sex == 0                     ~ "#99C945FF",
-    status == "alive" & Sex == 1                     ~ "#2F8AC4FF",
-    status == "alive" & Sex == 2                     ~ "#CC3A8EFF"
-  ))
-```
-
-
-```{r}
-fill_key <- select(studbook_colored, name = ID, value = fill) %>% deframe() %>% as.list()
-```
-
-
 ```{r}
 pedig <- ped(
   id     = studbook$ID,
@@ -78,173 +57,107 @@ pedig <- ped(
 ```
 
 ```{r}
-singletons <- list_singletons(pedig)
-families   <- related_ids(pedig)
-```
+founders    <- founders(pedig)
+nonfounders <- nonfounders(pedig)
 
-```{r}
-studbook.annotate <- studbook %>% mutate(
-  lineage = case_when(ID %in% singletons ~ "singleton",
-                      ID %in% families   ~ "family")
+deceased    <- filter(studbook, status != "alive") %>% 
+  select(ID) %>% 
+  deframe() %>%
+  setdiff(founders)
+
+female      <- filter(studbook, status == "alive") %>% 
+  select(ID) %>% 
+  deframe() %>%
+  intersect(nonfounders(pedig)) %>% 
+  intersect(females(pedig))
+
+male      <- filter(studbook, status == "alive") %>% 
+  select(ID) %>% 
+  deframe() %>%
+  intersect(nonfounders(pedig)) %>% 
+  intersect(males(pedig))
+
+undet <- nonfounders(pedig) %>% 
+  setdiff(females(pedig)) %>% 
+  setdiff(males(pedig)) %>% 
+  setdiff(deceased)
+
+fills         <- list(
+  "#A5AA99FF" = c(deceased),
+  "#DAA51BFF" = c(founders),
+  "#CC61B0FF" = c(female),
+  "#2F8AC4FF" = c(male),
+  "#99C945FF" = c(undet)
 )
 ```
 
 ```{r}
-pedigree_set <- keep(pedig, \(x) pedsize(x) > 1)  %>% imap(., \(x, idx) as.list(idx)) %>% list_flatten(name_spec = "")
-```
+pedig.max   <- get_biggest_ped(pedig)
+pedig.minor <- get_minor_peds(pedig)
 
-```{r}
-plot1 <- draw_pedigree(ped1)
-```
-
-
-```{r}
-ped1 <- pedig[["_comp1"]]
-ped2 <- pedig[["_comp10"]]
-ped3 <- pedig[["_comp13"]]
-ped4 <- pedig[["_comp25"]]
-
-plot1 <- draw_pedigree(ped1)
-plot2 <- draw_pedigree(ped2)
-plot3 <- draw_pedigree(ped3)
-plot4 <- draw_pedigree(ped4)
-
-plot <- plotPedList(
-            list(plot1,
-                 plot2,
-                 plot3,
-                 plot4),
-            framed = FALSE,
-            
-            )
-```
-
-```{r}
-ped.living <- subset(pedig, living)
-```
-
-
-
-```{r}
-generations(psl.ped)
-hasUnbrokenLoops(psl.ped)
-hasInbredFounders(psl.ped)
-hasSelfing(psl.ped)
-```
-
-```{r}
-inbred  <- enframe(inbreeding(psl.ped))
-```
-
-
-
-```{r}
-kappaIBD <- kappaIBD(psl.ped)
-
-```
-```{r}
-showInTriangle(kappaIBD)
+twins.include <- subset_twins(studbook, pedig.max)
+twins.list    <- twins_vector(twins.include)
 ```
 
 
 ```{r}
-writePed(psl.ped, paste0(course$assignments, "/testing/PSLpedigree"))
+  plot(pedig.max,
+       cex      = 0.5,
+       labs     = NULL,
+       deceased = deceased,
+       fill     = fills,
+       col      = "black",
+       twins    = twins.include)
 ```
 
 
+Calculating a kinship matrix across all pairs of individuals
 
-Calculate Basic Genetic Metrics
-
-Inbreeding Coefficients
-
-The inbreeding coefficient (F) of an individual measures how likely it is that the two alleles at a locus in that individual are identical by descent. We can use inbreeding() from pedtools.
+First we need to convert to kinship2 pedigree format
 
 ```{r}
-# Calculate inbreeding for all individuals
-inb <- inbreeding(ped)
-inb
+all.twins <- subset_twins(studbook, pedig)
 ```
 
-Pairwise Kinship Matrix
-
-The kinship coefficient between two individuals is the probability that a random allele from each individual is identical by descent. We can calculate the full pairwise kinship matrix with:
-
 ```{r}
-K <- kinship(ped)
-K
+studbook.kin <- studbook %>%
+  mutate(status = if_else(status != "alive", 1, 0),
+         Sex    = if_else(Sex == 0, 3, Sex))
 ```
 
-	•	K[i, i] is half of the inbreeding coefficient for individual i.
-	•	K[i, j] for i != j indicates the degree of relatedness.
-
-Mean Kinship (MK)
-
-Mean kinship for an individual is the average kinship that individual has with all living members of the population (including itself). A simple way to calculate mean kinship for each individual is:
 
 ```{r}
-# We'll define "living" as individuals with Living == "Y" in df_births
-living_ids <- df_births %>%
-  filter(Living == "Y") %>%
-  pull(ID)
-
-# Subset the kinship matrix to only living individuals
-K_living <- K[living_ids, living_ids, drop = FALSE]
-
-# For each living individual, compute mean kinship across all living individuals
-mk_values <- rowMeans(K_living)
-
-# Turn it into a dataframe for clarity
-mk_df <- data.frame(
-  ID = living_ids,
-  MeanKinship = mk_values
+pedig.kin <- pedigree(
+  id       = studbook.kin$ID,
+  dadid    = studbook.kin$Sire,
+  momid    = studbook.kin$Dam,
+  sex      = studbook.kin$Sex,
+  status   = studbook.kin$status,
+  relation = as.matrix(all.twins)
 )
-
-mk_df
 ```
-
-Gene Diversity / Expected Heterozygosity
-
-If you assume founders are unrelated and non-inbred, you can approximate gene diversity or expected heterozygosity as:
-
-[
-GD = 1 - \bar{F}
-]
-
-where (\bar{F}) is the average inbreeding coefficient of the living population. A quick example:
 
 ```{r}
-# Average inbreeding among the living population:
-avg_inb_living <- mean(inb[living_ids])
-
-# Gene diversity:
-GD <- 1 - avg_inb_living
-
-GD
+kinship_all <- kinship(pedig.kin)
 ```
 
-(Real-world SSP calculations often incorporate more complex assumptions about founder relationships, incomplete pedigrees, etc., so this is a simplified demonstration.)
+Now let's subset that for only the living individuals
 
-Interpreting Results
+```{r}
+living         <- filter(studbook, status == "alive") %>% select(ID) %>% deframe()
+living.kin     <- intersect(living, rownames(kinship_all))
 
-	•	Pedigree Plot
-The plotted pedigree provides a quick visual check for errors, unusual loops, missing parent data, etc.
-	•	Inbreeding
-A result of F = 0 indicates no inbreeding known in the pedigree, while higher values suggest some level of relatedness between the parents.
-	•	Mean Kinship
-Individuals with low mean kinship are considered genetically valuable for breeding (less related to the rest of the population).
-	•	Gene Diversity
-A summary statistic reflecting the population’s overall diversity as inferred from the pedigree.
+kinship_living <- kinship_all[living.kin, living.kin]
+```
 
-Extensions
+KappaIBD requires that we use the original pedtools format of pedigree.
 
-	•	Handling Unknown Founders: If your data has 0 or NA for unknown parents, those individuals become “founders” in the pedigree. Real founder relationships might not be truly random, so advanced models can incorporate partial knowledge or assumptions.
-	•	Breeding Recommendations: In a real SSP, these metrics feed into management software (e.g., PMx or ZIMS). While R packages can replicate some calculations, official software remains the standard for final breeding recommendations.
-	•	Larger Pedigrees: For a few thousand individuals, pedtools is usually quite fast. For very large pedigrees, you may need more memory-efficient methods or specialized tools.
-	
-	
-Conclusion
-	You now have a basic framework in R and R Markdown for:
-	1.	Importing studbook data
-	2.	Converting it to a pedigree object
-	3.	Plotting family relationships
-	4.	Calculating common metrics (inbreeding, kinship, mean kinship, and approximate gene diversity)
+```{r}
+kappa_all <- kappaIBD(pedig)
+```
+
+```{r}
+kappa_living <- filter(kappa_all, id1 %in% living.kin & id2 %in% living.kin)
+```
+
+

@@ -1,30 +1,32 @@
-list_ids <- function(studbook) {
-  studbook %>% distinct(ID) %>% map(\(x) as.list(x)) %>% list_flatten(name_spec = "")
+subset_twins <- function(studbook, pedigree) {
+  studbook %>%
+    filter(Sire > 0 & Dam > 0) %>%
+    group_by(Sire, Dam, Birth_Date) %>%
+    filter(n() == 2) %>%
+    summarise(
+      id1 = first(ID),
+      id2 = last(ID),
+      .groups = "drop"
+    ) %>%
+    mutate(code = 2) %>%
+    select(id1, id2, code) %>%
+    filter(
+        id1 %in% founders(pedigree) |
+        id1 %in% nonfounders(pedigree) |
+        id2 %in% founders(pedigree) |
+        id2 %in% nonfounders(pedigree)
+    )
 }
 
-list_singletons <- function(pedigree) {
-  keep(pedigree, \(x) pedsize(x) <= 1) %>% map_depth(., 1, \(x) as.list(x[["ID"]])) %>% list_flatten(name_spec = "")
+twins_vector <- function(df) {
+  c(df$id1, df$id2) %>%
+    unique()
 }
 
-related_ids <- function(pedigree) {
-  keep(pedigree, \(x) pedsize(x) > 1)  %>% map_depth(., 1, \(x) as.list(x[["ID"]])) %>% list_flatten(name_spec = "")
+get_biggest_ped <- function(pedigree) {
+  keep(pedigree, \(x) pedsize(x) == max(pedsize(pedigree)))
 }
 
-list_families <- function(pedigree) {
-  keep(pedigree, \(x) pedsize(x) > 1)  %>% map_depth(., 1, \(x) as.list(x[["ID"]])) %>% list_flatten(name_spec = "")
-}
-
-fills_sex <- list(
-  "#6699CCFF" = males,
-  "#AA4499FF" = females,
-  "#117733FF" = sex.unknown
-)
-
-draw_pedigree <- function(pedigree) {
-  list(pedigree,
-       cex      = 0.5,
-       labs     = NULL,
-       deceased = deceased,
-       fill     = fills_sex,
-       col      = "black")
+get_minor_peds <- function(pedigree) {
+  discard(pedigree, \(x) pedsize(x) == max(pedsize(pedigree)))
 }
