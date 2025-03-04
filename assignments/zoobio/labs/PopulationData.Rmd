@@ -43,6 +43,18 @@ source(here(paste0(course$labs, "PedigreeFunctions.R")))
 
 First, we need to read in our studbook data and clean it up to create a *tidy* format of one master table.
 
+1.  Open the file `Studbook_Living.csv` and make sure it has the following columns with the exact names listed.
+```
+ID  Sex    Sire    Dam   Location    Event_Date    Event_Type
+```
+  - It is fine if you have extra columns, and all the columns may be in any order, but your spreadsheet must include at least these columns with the exact name syntax.
+  - Rename any columns as necessary, re-save as a `.csv`, and proceed.
+
+2.  Repeat the same for the file `Studbook_Historic.csv` using the following list of columns.
+```
+ID  Sex    Sire    Dam   Current_Location   Date    Location    Event_Type
+```
+
 ```{r, warning = FALSE}
 studbook <- read_studbook_historic(here(paste0(course$assignments, "/testing/StudbookPSL2021Historic.csv"))) %>%
   full_join(read_studbook_current(here(paste0(course$assignments , "/testing/StudbookPSL2024Living.csv")))) %>%
