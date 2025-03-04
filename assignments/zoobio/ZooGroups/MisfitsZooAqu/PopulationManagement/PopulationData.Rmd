@@ -15,13 +15,78 @@ output:
 params:
   course: "zoobio"
   semester: "spring25"
+  studbook_current: "StudbookPSL2024Living.csv"
+  studbook_historic: "StudbookPSL2021Historic.csv"
                      
 ---
 
 ```{r, include = FALSE}
-global             <- config::get(config = "default")
-here::i_am("assignments/zoobio/labs/PopulationData.Rmd")
-source(here::here(global$setup))
+library(devtools)
+library(knitr)
+library(conflicted)
+library(downloadthis)
+library(DT)
+library(fontawesome)
+library(glue)
+library(ggplot2)
+library(ggtext)
+library(heatmaply)
+library(here)
+library(htmltools)
+library(kableExtra)
+library(kinship2)
+library(paletteer)
+library(pedigree)
+library(pedtools)
+library(pedsuite)
+library(plotly)
+library(png)
+library(rcompanion)
+library(reactable)
+library(reactablefmtr)
+library(rmarkdown)
+library(scales)
+library(shiny)
+library(shinyjs)
+library(shinyMatrix)
+library(showtext)
+library(thematic)
+library(tidyverse)
+library(tippy)
+library(webshot2)
+library(usethis)
+
+conflicts_prefer(dplyr::filter)
+conflicts_prefer(dplyr::select)
+conflicts_prefer(dplyr::left_join)
+conflicts_prefer(dplyr::inner_join)
+conflicts_prefer(dplyr::full_join)
+conflicts_prefer(dplyr::semi_join)
+conflicts_prefer(dplyr::rename)
+conflicts_prefer(ggplot2::margin)
+conflicts_prefer(ggplot2::theme_classic)
+conflicts_prefer(ggplot2::ggplot)
+conflicts_prefer(ggplot2::theme_minimal)
+conflicts_prefer(ggplot2::aes)
+conflicts_prefer(dplyr::lag)
+conflicts_prefer(RefManageR::cite)
+conflicts_prefer(purrr::set_names)
+conflicts_prefer(purrr::flatten)
+conflicts_prefer(purrr::discard_at)
+conflicts_prefer(base::which.max)
+conflicts_prefer(lubridate::month)
+conflicts_prefer(lubridate::year)
+conflicts_prefer(lubridate::day)
+conflicts_prefer(base::as.data.frame)
+conflicts_prefer(htmltools::p)
+conflicts_prefer(purrr::discard)
+conflicts_prefer(kinship2::kinship)
+```
+
+
+```{r, include = FALSE}
+here::i_am("PopulationData.Rmd")
+
 
 theme_set(theme_classic())
 thematic_rmd()
@@ -29,13 +94,13 @@ thematic_on(accent = "#8785B2FF", fg = "black")
 
 opts_chunk$set(message = FALSE,
                warning = FALSE,
-               echo    = FALSE,
+               echo    = TRUE,
                include = TRUE,
                eval    = TRUE,
                comment = "")
 
-source(here(paste0(course$labs, "ImportStudbooks.R")))
-source(here(paste0(course$labs, "PedigreeFunctions.R")))
+source(here("ImportStudbooks.R"))
+source(here("PedigreeFunctions.R"))
 ```
 
 
@@ -44,9 +109,8 @@ source(here(paste0(course$labs, "PedigreeFunctions.R")))
 First, we need to read in our studbook data and clean it up to create a *tidy* format of one master table.
 
 ```{r, warning = FALSE}
-studbook <- read_studbook_historic(here(paste0(course$assignments, "/testing/StudbookPSL2021Historic.csv"))) %>%
-  full_join(read_studbook_current(here(paste0(course$assignments , "/testing/StudbookPSL2024Living.csv")))) %>%
-  full_join(read_studbook_current(here(paste0(course$assignments , "/testing/StudbookPSL2021Living.csv"))))   %>%
+studbook <- read_studbook_historic(here(\params$studbook_historic)) %>%
+  full_join(read_studbook_current(here(params$studbook_current)))   %>%
   format_studbook(sex_unknown = 0) %>%
   sub_missing_parents()  %>%
   mutate(across(where(is.numeric), ~ replace_na(., 0)))
