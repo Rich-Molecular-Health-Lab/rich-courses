@@ -15,8 +15,8 @@ output:
 params:
   course: "zoobio"
   semester: "spring25"
-  studbook_current: "StudbookPSL2024Living.csv"
-  studbook_historic: "StudbookPSL2021Historic.csv"
+  studbook_current: "Studbook_Living.csv"
+  studbook_historic: "Studbook_Historic.csv"
                      
 ---
 
@@ -106,7 +106,7 @@ source(here("PedigreeFunctions.R"))
 
 # Format Studbook Data
 
-First, we need to read in our studbook data and clean it up to create a *tidy* format of one master table.
+First, we need to read in our studbook data and clean it up to create a *tidy* format of one master table. You have one file named `Studbook_Living.xlsx` and one named `Studbook_Historic.xlsx`. Open each of those and the two example files ending in `.csv` and make sure that your column headings match those in my files. Save each spreadsheet as a `csv` file in the same location and then proceed.
 
 ```{r, warning = FALSE}
 studbook <- read_studbook_historic(here(\params$studbook_historic)) %>%
