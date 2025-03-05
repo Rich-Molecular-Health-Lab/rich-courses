@@ -1,0 +1,2243 @@
+﻿ID,Birth_Date,Current_Location,Sire,Dam,Sex,Event_Type,Date,Location,
+1,"01/01/1913
++/- 3 year","MILWAUKE
+E",UND,UND,Female,Birth/Hatch,"01/01/1913
++/- 3 year","Undetermin
+ed",
+,,,,,,Transfer,22/02/1914,UNDETER MI,
+,,,,,,Transfer,23/02/1914,"MILWAUKE
+E",
+,,,,,,GO LTF,23/02/1914,MILWAUKE E,
+2,"01/01/1972
++/- 3 year",NATAVPGH,WILD,WILD,Female,Birth/Hatch,"01/01/1972
++/- 3 year",Bolivia / ~,
+,,,,,,Wild Capture,"01/01/1972
++/- 3 year",Bolivia / ~,
+,,,,,,Transfer,"01/01/1972
++/- 3 year",UNKNOWN,
+,,,,,,GO LTF,"01/01/1972
++/- 3 year","BOLIVIA:
+Invalid use of GeoRef",
+,,,,,,Return from LTF,"01/06/1972
++/- 3 year","BOLIVIA:
+Invalid use of GeoRef",
+,,,,,,Transfer,Undetermin ed,BLU RIDGE,
+,,,,,,GO LTF,"Undetermin
+ed",BLU RIDGE,
+,,,,,,Return from LTF,06/10/1976,BLU RIDGE,
+,,,,,,Transfer,06/10/1976,NY BRONX,
+,,,,,,Transfer,20/05/1977,STCATHER N,
+,,,,,,Transfer,28/06/1984,"OKLAHOM
+A",
+,,,,,,Transfer,25/09/1996,NATAVPGH,
+,,,,,,Death,14/08/2005,NATAVPGH,
+3,"01/01/1972
++/- 1 year","ST
+AUGUST",WILD,WILD,Male,Birth/Hatch,"01/01/1972
++/- 1 year",Bolivia / ~,
+,,,,,,Wild Capture,01/01/1972,Bolivia / ~,
+,,,,,,Transfer,14/03/1977,"STCATHER
+N",
+,,,,,,Transfer,19/02/1981,NY BRONX,
+,,,,,,Transfer,18/11/1981,"STCATHER
+N",
+,,,,,,Transfer,16/11/2001,ST AUGUST,
+,,,,,,Death,29/04/2007,"ST
+AUGUST",
+4,"01/01/1977
++/- 1 year",HEMKER GF,UND,UND,Male,Birth/Hatch,"01/01/1977
++/- 1 year",Undetermin ed,
+,,,,,,Transfer,"~>01/01/19
+77",UNKN0WN,
+,,,,,,GO LTF,"01/01/1977
++/- 1 year",UNDETER MI,
+,,,,,,Return from LTF,20/07/1982,UNDETER MI,
+,,,,,,Transfer,20/07/1982,OMAHA,
+,,,,,,Transfer,27/06/1989,DES MOINE,
+,,,,,,Transfer,25/07/1993,OMAHA,
+,,,,,,Transfer,20/09/2016,HEMKER GF,
+,,,,,,GO LTF,20/09/2016,"HEMKER
+GF",
+5,"01/01/1979
++/- 1 year",BUSCH TAM,UND,UND,Male,Birth/Hatch,"01/01/1979
++/- 1 year",Undetermin ed,
+,,,,,,Transfer,"01/01/1979
++/- 1 year",UNKN0WN,
+,,,,,,Transfer,16/12/1981,CYPRESS,
+,,,,,,Transfer,12/06/1991,BUSCH TAM,
+,,,,,,Transfer,13/11/1996,"SEAWLD
+TX",
+,,,,,,Transfer,01/11/2003,BUSCH TAM,
+7,"01/01/1978
++/- 2 year",PET FARM,UND,UND,Female,Birth/Hatch,"01/01/1978
++/- 2 year","Undetermin
+ed",
+,,,,,,Transfer,~>01/01/19 78,UNKN0WN,
+,,,,,,GO LTF,"01/01/1978
++/- 2 year","UNDETER
+MI",
+,,,,,,Return from LTF,17/11/1979,UNDETER MI,
+,,,,,,Transfer,17/11/1979,"BUSCH
+TAM",
+,,,,,,Transfer,18/11/1979,PET FARM,
+,,,,,,GO LTF,18/11/1979,PET FARM,
+,,,,,,"Return from
+LTF",18/03/1983,PET FARM,
+,,,,,,Death,18/03/1983,PET FARM,
+8,"01/01/1979
++/- 2 year",CHATF FLA,UND,UND,Male,Birth/Hatch,"01/01/1979
++/- 2 year",CHATF FLA,
+,,,,,,GO LTF,"01/01/1979
++/- 2 year",CHATF FLA,
+,,,,,,"Return from
+LTF","01/01/1979
++/- 2 year",CHATF FLA,
+,,,,,,Transfer,01/01/1979,BUSCH TAM,
+,,,,,,Transfer,10/12/1981,CHATF FLA,
+,,,,,,GO LTF,10/12/1981,CHATF FLA,
+,,,,,,Return from LTF,06/11/1993,CHATF FLA,
+,,,,,,Death,06/11/1993,CHATF FLA,
+9,"07/01/1979
++/- 2 year",BAKER JIM,UND,UND,Female,Birth/Hatch,"07/01/1979
++/- 2 year",CHATF FLA,
+,,,,,,Transfer,"07/01/1980
++/- 1 year",BUSCH TAM,
+,,,,,,Transfer,10/12/1981,CHATF FLA,
+,,,,,,GO LTF,10/12/1981,CHATF FLA,
+,,,,,,Return from LTF,05/09/1994,CHATF FLA,
+,,,,,,Transfer,05/09/1994,BAKER JIM,
+,,,,,,GO LTF,05/09/1994,BAKER JIM,
+10,"01/01/1980
++/- 1 year",SEDGWICK,WILD,WILD,Female,Birth/Hatch,"01/01/1980
++/- 1 year",Bolivia / ~,
+,,,,,,Wild Capture,"01/01/1980
++/- 1 year",Bolivia / ~,
+,,,,,,Transfer,"01/01/1980
++/- 1 year",UNKN0WN,
+,,,,,,"Return from
+LTF","01/01/1983
++/- 3 year",ED JONES,
+,,,,,,Transfer,23/05/1985,SEDGWICK,
+,,,,,,Transfer,15/10/1985,HAL PRES,
+,,,,,,GO LTF,15/10/1985,HAL PRES,
+,,,,,,Return from LTF,"01/01/1990
++/- 6 year",HAL PRES,
+,,,,,,Transfer,"01/01/1990
++/- 6 year",SEDGWICK,
+,,,,,,Death,30/12/1996,SEDGWICK,
+11,"01/01/1980
++/- 1 year",SAN ANTON,WILD,WILD,Male,Birth/Hatch,"01/01/1980
++/- 1 year",TANAMAR A,
+,,,,,,"Wild
+Capture","01/01/1981
++/- 1 year","TANAMAR
+A",
+,,,,,,Transfer,19/10/1984,SAN ANTON,
+,,,,,,Death,04/10/1996,"SAN
+ANTON",
+12,"01/01/1980
++/- 1 year",WILD WRLD,WILD,WILD,Male,Birth/Hatch,"01/01/1980
++/- 1 year",Bolivia / ~,
+,,,,,,"Wild
+Capture","01/01/1980
++/- 1 year",Bolivia / ~,
+,,,,,,Transfer,"01/01/1980
++/- 1 year",UNKN0WN,
+,,,,,,GO LTF,01/01/1980,UNDETER MI,
+,,,,,,Return from LTF,11/08/1988,GALE N,
+,,,,,,Transfer,"01/01/1990
++/- 3 year",WILD WRLD,
+,,,,,,Death,06/05/1992,WILD WRLD,
+13,"01/01/1980
++/- 1 year","WILD
+WRLD",WILD,WILD,Female,Birth/Hatch,"01/01/1980
++/- 1 year",Bolivia / ~,
+,,,,,,Wild Capture,"01/01/1980
++/- 1 year",Bolivia / ~,
+,,,,,,Transfer,"~>01/01/19
+80",UNKNOWN,
+,,,,,,GO LTF,"01/01/1980
++/- 1 year",UNDETER MI,
+,,,,,,"Return from
+LTF","01/01/1984
++/- 4 year","UNDETER
+MI",
+,,,,,,Transfer,"01/01/1984
++/- 4 year",GALE N,
+,,,,,,GO LTF,"01/01/1984
++/- 4 year",GALE N,
+,,,,,,Return from LTF,08/11/1988,GALE N,
+,,,,,,Transfer,08/11/1988,WILD WRLD,
+,,,,,,Death,11/02/1992,WILD WRLD,
+14,"01/01/1981
++/- 1 year",FLSTMUS,UND,UND,Male,Birth/Hatch,"01/01/1981
++/- 1 year","Undetermin
+ed",
+,,,,,,Transfer,~>01/01/19 81,UNKN0WN,
+,,,,,,GO LTF,"01/01/1982
++/- 2 year","UNDETER
+MI",
+,,,,,,Return from LTF,18/05/1983,FLSTMUS,
+,,,,,,Transfer,19/05/1983,GAINSVLL,
+,,,,,,Transfer,05/09/1985,FLSTMUS,
+,,,,,,GO LTF,05/09/1985,FLSTMUS,
+15,"01/01/1981
++/- 1 year",HAWLEY J,WILD,WILD,Female,Birth/Hatch,"01/01/1981
++/- 1 year",Bolivia / ~,
+,,,,,,Wild Capture,"01/01/1981
++/- 1 year",Bolivia / ~,
+,,,,,,Transfer,~>01/01/19 81,UNKNOWN,
+,,,,,,GO LTF,"01/01/1983
++/- 3 year",UNDETER MI,
+,,,,,,"Return from
+LTF",09/01/1986,GLENDALE,
+,,,,,,Transfer,09/01/1986,WILD WRLD,
+,,,,,,Transfer,24/11/1992,HAWLEY J,
+,,,,,,GO LTF,24/11/1992,HAWLEY J,
+16,"01/01/1981
++/- 1 year",R&L BIRDS,UND,UND,Female,Birth/Hatch,"01/01/1981
++/- 1 year",Undetermin ed,
+,,,,,,Transfer,"01/01/1981
++/- 1 year",UNKN0WN,
+,,,,,,GO LTF,"01/01/1981
++/- 1 year",UNDETER MI,
+,,,,,,"Return from
+LTF",04/06/1983,R&L BIRDS,
+,,,,,,Transfer,04/06/1983,GAINSVLL,
+,,,,,,Transfer,13/07/1985,R&L BIRDS,
+,,,,,,GO LTF,13/07/1985,R&L BIRDS,
+17,Undetermin ed,PARROTTR U,WILD,WILD,Female,Birth/Hatch,Undetermin ed,Bolivia / ~,
+,,,,,,"Wild
+Capture","Undetermin
+ed",Bolivia / ~,
+,,,,,,Transfer,Undetermin ed,TANAMAR A,
+,,,,,,GO LTF,"Undetermin
+ed","TANAMAR
+A",
+,,,,,,Return from LTF,19/10/1984,TANAMAR A,
+,,,,,,Transfer,19/10/1984,"SAN
+ANTON",
+,,,,,,Transfer,23/09/1999,PARROTTR U,
+,,,,,,GO LTF,23/09/1999,"PARROTTR
+U",
+18,"01/01/1982
++/- 1 year",UNDETER MI,WILD,WILD,Female,Birth/Hatch,"01/01/1982
++/- 1 year",Bolivia / ~,
+,,,,,,Wild Capture,"01/01/1982
++/- 1 year",Bolivia / ~,
+,,,,,,Transfer,"01/01/1982
++/- 1 year",UNKNOWN,
+,,,,,,GO LTF,"01/01/1982
++/- 1 year","UNDETER
+MI",
+,,,,,,Return from LTF,30/09/1983,UNDETER MI,
+,,,,,,Transfer,30/09/1983,"SAN
+ANTON",
+,,,,,,Transfer,19/01/1988,UNDETER MI,
+,,,,,,GO LTF,19/01/1988,"UNDETER
+MI",
+19,"01/01/1982
++/- 1 year","UNDETER
+MI",WILD,WILD,Male,Birth/Hatch,"01/01/1982
++/- 1 year",Bolivia / ~,
+,,,,,,Wild Capture,"01/01/1982
++/- 1 year",Bolivia / ~,
+,,,,,,Transfer,30/09/1983,"SAN
+ANTON",
+,,,,,,Transfer,19/01/1988,UNDETER MI,
+,,,,,,GO LTF,19/01/1988,UNDETER MI,
+20,"01/06/1982
++/- 1 year",HOLIDAY,WILD,WILD,Male,Birth/Hatch,"01/06/1982
++/- 1 year",Bolivia / ~,
+,,,,,,"Wild
+Capture","01/06/1982
++/- 1 year",Bolivia / ~,
+,,,,,,Transfer,~>01/06/19 82,UNKN0WN,
+,,,,,,GO LTF,"01/09/1982
++/- 4 month","UNDETER
+MI",
+,,,,,,Return from LTF,"01/09/1982
++/- 4 month",CHASE B,
+,,,,,,Transfer,22/12/1982,"BATONRO
+UG",
+,,,,,,Transfer,01/03/1994,HOLIDAY,
+,,,,,,GO LTF,01/03/1994,HOLIDAY,
+21,"01/06/1982
++/- 1 year","BATONRO
+UG",WILD,WILD,Female,Birth/Hatch,"01/06/1982
++/- 1 year",Bolivia / ~,
+,,,,,,Wild Capture,"01/06/1982
++/- 1 year",Bolivia / ~,
+,,,,,,Transfer,"01/06/1982
++/- 1 year",UNKN0WN,
+,,,,,,GO LTF,"01/06/1982
++/- 1 year",UNDETER MI,
+,,,,,,Return from LTF,22/12/1982,CHASE B,
+,,,,,,Transfer,22/12/1982,BATONRO UG,
+,,,,,,Death,03/09/2016,BATONRO UG,
+22,"20/06/1983
++/- 3 year",BUSCH TAM,UND,UND,Female,Birth/Hatch,"20/06/1983
++/- 3 year",DAVIS R,
+,,,,,,Transfer,20/06/1983,"BUSCH
+TAM",
+,,,,,,GO LTF,13/04/2007,UNKN0WN,
+,,,,,,"Return from
+LTF",14/11/2011,"BUSCH
+TAM",
+,,,,,,Death,14/11/2011,BUSCH TAM,
+23,"01/01/1985
++/- 1 year",OMAHA,UND,UND,Male,Birth/Hatch,"01/01/1985
++/- 1 year","Undetermin
+ed",
+,,,,,,Transfer,"01/01/1985
++/- 1 year",UNKNOWN,
+,,,,,,GO LTF,"01/03/1985
++/- 3 month","UNDETER
+MI",
+,,,,,,Return from LTF,"20/06/1985
++/- 3 month",USMARSH AL,
+,,,,,,Transfer,20/06/1985,DES MOINE,
+,,,,,,Transfer,28/07/1993,OMAHA,
+,,,,,,Death,08/09/1995,OMAHA,
+24,"01/01/1985
++/- 1 year",OMAHA,UND,UND,Female,Birth/Hatch,"01/01/1985
++/- 1 year","Undetermin
+ed",
+,,,,,,Transfer,~>01/01/19 85,UNKNOWN,
+,,,,,,GO LTF,"01/06/1985
++/- 3 month","UNDETER
+MI",
+,,,,,,Return from LTF,20/06/1985,USMARSH AL,
+,,,,,,Transfer,20/06/1985,DES MOINE,
+,,,,,,Transfer,28/07/1993,OMAHA,
+,,,,,,Death,13/02/2002,OMAHA,
+25,18/07/1985,"JERRY CRAWFOR
+D",UND,UND,Undetermin ed,Birth/Hatch,18/07/1985,BUSCH TAM,
+,,,,,,Transfer,31/07/1985,"JERRY CRAWFOR
+D",
+,,,,,,GO LTF,31/07/1985,"JERRY CRAWFOR
+D",
+26,18/07/1985,"BUSCH
+TAM",UND,UND,"Undetermin
+ed",Birth/Hatch,18/07/1985,"BUSCH
+TAM",
+,,,,,,Death,17/08/1985,BUSCH TAM,
+27,23/04/1986,FERNDALE,172,2,"Undetermin
+ed",Birth/Hatch,23/04/1986,"OKLAHOM
+A",
+,,,,,,Transfer,07/04/1987,FERNDALE,
+,,,,,,Death,27/09/1992,FERNDALE,
+28,26/04/1986,FERNDALE,172,2,Female,Birth/Hatch,26/04/1986,"OKLAHOM
+A",
+,,,,,,Transfer,07/04/1987,FERNDALE,
+,,,,,,Death,10/05/1997,FERNDALE,
+29,17/05/1986,"WILD
+WRLD",168,425,"Undetermin
+ed",Birth/Hatch,17/05/1986,"WILD
+WRLD",
+,,,,,,Death,17/07/1986,WILD WRLD,
+30,14/05/1986,"WILD
+WRLD",UND,UND,Male,Birth/Hatch,14/05/1986,"WILD
+WRLD",
+,,,,,,Death,22/04/2012,WILD WRLD,
+31,31/05/1986,"BUSCH
+TAM",3,175,Male,Birth/Hatch,31/05/1986,"STCATHER
+N",
+,,,,,,Transfer,24/03/1988,SACRAMN TO,
+,,,,,,Transfer,05/12/2000,RING L,
+,,,,,,Transfer,26/03/2005,SACRAMN TO,
+,,,,,,Transfer,07/09/2005,"BUSCH
+TAM",
+,,,,,,Death,01/01/2020,BUSCH TAM,
+33,01/06/1986,BRZY RIDG,UND,UND,Male,Birth/Hatch,01/06/1986,"SANDIEGO
+Z",
+,,,,,,Transfer,26/05/2005,BRZY RIDG,
+,,,,,,GO LTF,26/05/2005,BRZY RIDG,
+34,04/06/1986,"JERRY CRAWFOR
+D",UND,UND,Undetermin ed,Birth/Hatch,04/06/1986,BUSCH TAM,
+,,,,,,Transfer,13/07/1986,"JERRY CRAWFOR
+D",
+,,,,,,GO LTF,13/07/1986,"JERRY CRAWFOR
+D",
+35,04/06/1986,TERRY HOOD,UND,UND,Undetermin ed,Birth/Hatch,04/06/1986,BUSCH TAM,
+,,,,,,Transfer,19/06/1986,TERRY HOOD,
+,,,,,,GO LTF,19/06/1986,"TERRY
+HOOD",
+36,04/06/1986,JERRY HOOD,UND,UND,Undetermin ed,Birth/Hatch,04/06/1986,BUSCH TAM,
+,,,,,,Transfer,13/07/1986,"JERRY CRAWFOR
+D",
+,,,,,,GO LTF,13/07/1986,"JERRY
+HOOD",
+37,05/07/1986,HAWLEY J,UND,UND,Male,Birth/Hatch,05/07/1986,STCATHER N,
+,,,,,,Transfer,25/03/1988,WILD WRLD,
+,,,,,,Transfer,24/11/1992,HAWLEY J,
+,,,,,,GO LTF,24/11/1992,HAWLEY J,
+38,"01/01/1987
++/- 1 year","UNDETER
+MI",UND,UND,Female,Birth/Hatch,"01/01/1987
++/- 1 year",NEW AGE,
+,,,,,,Transfer,22/12/1990,LUBEE,
+,,,,,,Transfer,28/04/1992,"UNDETER
+MI",
+,,,,,,GO LTF,28/04/1992,UNDETER MI,
+39,"01/01/1987
++/- 1 year","UNDETER
+MI",UND,UND,Male,Birth/Hatch,"01/01/1987
++/- 1 year",NEW AGE,
+,,,,,,Transfer,22/12/1990,LUBEE,
+,,,,,,Transfer,28/04/1992,UNDETER MI,
+,,,,,,GO LTF,28/04/1992,UNDETER MI,
+40,"01/01/1987
++/- 1 year",UNDETER MI,UND,UND,Female,Birth/Hatch,"01/01/1987
++/- 1 year",NEW AGE,
+,,,,,,Transfer,22/12/1990,LUBEE,
+,,,,,,Transfer,28/04/1992,UNDETER MI,
+,,,,,,GO LTF,28/04/1992,"UNDETER
+MI",
+41,"01/01/1987
++/- 1 year",UNDETER MI,UND,UND,Male,Birth/Hatch,"01/01/1987
++/- 1 year",NEW AGE,
+,,,,,,Transfer,22/12/1990,LUBEE,
+,,,,,,Transfer,28/04/1992,"UNDETER
+MI",
+,,,,,,GO LTF,28/04/1992,UNDETER MI,
+42,23/03/1987,"OKLAHOM
+A",172,2,"Undetermin
+ed",Birth/Hatch,23/03/1987,"OKLAHOM
+A",
+,,,,,,Death,02/10/1987,OKLAHOM A,
+43,26/03/1987,VOKATY H,172,2,Undetermin ed,Birth/Hatch,26/03/1987,OKLAHOM A,
+,,,,,,Transfer,13/10/1987,VOKATY H,
+,,,,,,GO LTF,13/10/1987,VOKATY H,
+44,"01/06/1987
++/- 1 month","PARROTTR
+U",UND,UND,Female,Birth/Hatch,"01/06/1987
++/- 1 month","Undetermin
+ed",
+,,,,,,GO LTF,"01/06/1987
++/- 1 month",UNDETER MI,
+,,,,,,Return from LTF,31/03/1988,CHATFIEL D,
+,,,,,,Transfer,31/03/1988,SAN ANTON,
+,,,,,,Transfer,21/11/2002,PARROTTR U,
+,,,,,,GO LTF,21/11/2002,PARROTTR U,
+45,"01/06/1987
++/- 1 month","TANAMAR
+A",UND,UND,Male,Birth/Hatch,"01/06/1987
++/- 1 month","Undetermin
+ed",
+,,,,,,GO LTF,"01/06/1987
++/- 1 month",UNDETER MI,
+,,,,,,"Return from
+LTF",02/02/1988,"UNDETER
+MI",
+,,,,,,Transfer,02/02/1988,SAN ANTON,
+,,,,,,Transfer,14/10/1998,"TANAMAR
+A",
+,,,,,,GO LTF,14/10/1998,TANAMAR A,
+46,12/07/1987,"BUSCH
+TAM",173,177,Female,Birth/Hatch,12/07/1987,"STCATHER
+N",
+,,,,,,Transfer,24/03/1988,SACRAMN TO,
+,,,,,,Transfer,05/12/2000,RING L,
+,,,,,,GO LTF,05/12/2000,RING L,
+,,,,,,Return from LTF,26/02/2004,RING L,
+,,,,,,Transfer,26/02/2004,"SACRAMN
+TO",
+,,,,,,Transfer,07/09/2005,BUSCH TAM,
+,,,,,,Death,23/04/2012,BUSCH TAM,
+47,19/07/1987,WILD WRLD,3,175,Female,Birth/Hatch,19/07/1987,STCATHER N,
+,,,,,,Transfer,25/03/1988,"WILD
+WRLD",
+,,,,,,Death,16/01/2005,WILD WRLD,
+48,01/05/1988,"METROZO
+O",UND,UND,"Undetermin
+ed",Birth/Hatch,01/05/1988,IRELAND T,
+,,,,,,GO LTF,01/05/1988,IRELAND T,
+,,,,,,Return from LTF,12/08/1988,IRELAND T,
+,,,,,,Transfer,12/08/1988,METROZO O,
+,,,,,,GO LTF,09/11/1988,"METROZO
+O",
+49,13/05/1988,JEFF GUS,UND,UND,Undetermin ed,Birth/Hatch,13/05/1988,BUSCH TAM,
+,,,,,,Transfer,02/06/1988,JEFF GUS,
+,,,,,,GO LTF,02/06/1988,JEFF GUS,
+50,15/05/1988,LIN DECO,UND,UND,Undetermin ed,Birth/Hatch,15/05/1988,BUSCH TAM,
+,,,,,,Transfer,23/06/1988,LIN DECO,
+,,,,,,GO LTF,23/06/1988,LIN DECO,
+51,17/06/1988,PRIVATE,UND,UND,Undetermin ed,Birth/Hatch,17/06/1988,BUSCH TAM,
+,,,,,,Transfer,02/07/1992,SWF,
+,,,,,,GO LTF,02/07/1992,SWF,
+,,,,,,Return from LTF,16/03/2020,SWF,
+,,,,,,Transfer,17/03/2020,PRIVATE,
+52,20/06/1988,BUSCH TAM,UND,UND,Undetermin ed,Birth/Hatch,20/06/1988,BUSCH TAM,
+,,,,,,Death,07/07/1988,BUSCH TAM,
+53,08/08/1988,"LOXAHATC
+H",172,2,"Undetermin
+ed",Birth/Hatch,08/08/1988,"OKLAHOM
+A",
+,,,,,,Transfer,14/12/1988,LOXAHATC H,
+,,,,,,GO LTF,14/12/1988,"LOXAHATC
+H",
+55,18/04/1989,G SCHEIBY,UND,UND,Undetermin ed,Birth/Hatch,18/04/1989,BUSCH TAM,
+,,,,,,Transfer,24/05/1989,G SCHEIBY,
+,,,,,,GO LTF,24/05/1989,G SCHEIBY,
+56,20/04/1989,G SCHEIBY,UND,UND,Undetermin ed,Birth/Hatch,20/04/1989,BUSCH TAM,
+,,,,,,Transfer,24/05/1989,G SCHEIBY,
+,,,,,,GO LTF,24/05/1989,G SCHEIBY,
+57,23/04/1989,G SCHEIBY,UND,UND,Undetermin ed,Birth/Hatch,23/04/1989,BUSCH TAM,
+,,,,,,Transfer,24/05/1989,G SCHEIBY,
+,,,,,,GO LTF,24/05/1989,G SCHEIBY,
+58,27/05/1989,BRZY RIDG,184,176,Male,Birth/Hatch,27/05/1989,STCATHER N,
+,,,,,,Transfer,11/10/1990,TUCSON,
+,,,,,,Transfer,19/03/2003,BRZY RIDG,
+,,,,,,GO LTF,19/03/2003,BRZY RIDG,
+59,14/07/1989,"OKLAHOM
+A",172,2,"Undetermin
+ed",Birth/Hatch,14/07/1989,"OKLAHOM
+A",
+,,,,,,Death,24/07/1989,OKLAHOM A,
+60,02/08/1989,BRZY RIDG,UND,UND,Female,Birth/Hatch,02/08/1989,"OKLAHOM
+A",
+,,,,,,Transfer,26/05/2005,BRZY RIDG,
+,,,,,,GO LTF,26/05/2005,BRZY RIDG,
+63,22/08/1989,SEDGWICK,172,2,Male,Birth/Hatch,22/08/1989,"OKLAHOM
+A",
+,,,,,,Transfer,20/11/1990,TUCSON,
+,,,,,,Transfer,25/10/2011,OKLAHOM A,
+,,,,,,Transfer,26/05/2020,SEDGWICK,
+,,,,,,Death,05/02/2022,SEDGWICK,
+64,23/06/1989,"SAN
+ANTON",11,17,"Undetermin
+ed",Birth/Hatch,23/06/1989,"SAN
+ANTON",
+,,,,,,Death,01/07/1989,SAN ANTON,
+65,24/06/1989,SAN ANTON,11,17,Undetermin ed,Birth/Hatch,24/06/1989,SAN ANTON,
+,,,,,,Death,08/07/1989,SAN ANTON,
+66,30/06/1989,"SAN
+ANTON",11,17,"Undetermin
+ed",Birth/Hatch,30/06/1989,"SAN
+ANTON",
+,,,,,,Death,30/06/1989,SAN ANTON,
+67,22/08/1989,WARD SUE,11,17,Female,Birth/Hatch,22/08/1989,"SAN
+ANTON",
+,,,,,,Transfer,22/05/1990,COLO SPRG,
+,,,,,,Transfer,30/07/1993,MONROE,
+,,,,,,Transfer,21/12/1995,WARD SUE,
+,,,,,,Transfer,29/09/2001,WARD SUE,
+,,,,,,GO LTF,29/09/2001,WARD SUE,
+69,22/08/1989,ISSAQUAH,11,17,Male,Birth/Hatch,22/08/1989,"SAN
+ANTON",
+,,,,,,Transfer,16/03/1992,ISSAQUAH,
+,,,,,,Transfer,29/07/2008,ST AUGUST,
+,,,,,,Transfer,05/05/2010,SEDGWICK,
+,,,,,,Death,15/07/2021,ISSAQUAH,
+70,30/06/1989,SAN ANTON,11,17,Undetermin ed,Birth/Hatch,30/06/1989,SAN ANTON,
+,,,,,,Death,08/07/1989,"SAN
+ANTON",
+71,17/07/1989,FAUNALIN K,172,2,Male,Birth/Hatch,17/07/1989,OKLAHOM A,
+,,,,,,Transfer,18/10/1990,"STCATHER
+N",
+,,,,,,Transfer,10/04/1996,FAUNALIN K,
+,,,,,,Transfer,17/04/2003,FAUNALIN K,
+,,,,,,GO LTF,17/04/2003,FAUNALIN K,
+72,30/08/1989,"UNDETER
+MI",11,17,Female,Birth/Hatch,30/08/1989,"SAN
+ANTON",
+,,,,,,Transfer,17/07/1990,YULEE,
+,,,,,,Transfer,24/03/2000,STCATHER N,
+,,,,,,Transfer,20/11/2003,UNDETER MI,
+,,,,,,GO LTF,20/11/2003,"UNDETER
+MI",
+73,02/09/1989,BELLBIRD,172,2,Female,Birth/Hatch,02/09/1989,OKLAHOM A,
+,,,,,,Transfer,22/05/1990,BELLBIRD,
+,,,,,,GO LTF,22/05/1990,BELLBIRD,
+76,02/08/1989,BRZY RIDG,172,2,Female,Birth/Hatch,02/08/1989,OKLAHOM A,
+,,,,,,Transfer,26/04/1990,SANDIEGO Z,
+,,,,,,Transfer,03/10/2001,SD-WAP,
+,,,,,,Transfer,26/05/2005,BRZY RIDG,
+,,,,,,GO LTF,26/05/2005,BRZY RIDG,
+78,02/09/1989,WARD SUE,172,2,Male,Birth/Hatch,02/09/1989,OKLAHOM A,
+,,,,,,Transfer,22/05/1990,COLO SPRG,
+,,,,,,Transfer,28/07/1993,MONROE,
+,,,,,,Transfer,21/12/1995,WARD SUE,
+,,,,,,GO LTF,29/09/2001,WARD SUE,
+79,"01/01/1990
++/- 1 year","BATONRO
+UG",UND,UND,Male,Birth/Hatch,"01/01/1990
++/- 1 year","Undetermin
+ed",
+,,,,,,Transfer,~>01/01/19 90,UNKN0WN,
+,,,,,,GO LTF,"01/01/1990
++/- 1 year","UNDETER
+MI",
+,,,,,,Return from LTF,16/11/1992,P.WHITTER,
+,,,,,,Transfer,16/11/1992,BATONRO UG,
+,,,,,,Death,10/09/2016,BATONRO UG,
+80,28/02/1990,"DES
+MOINE",4,24,"Undetermin
+ed",Birth/Hatch,28/02/1990,"DES
+MOINE",
+,,,,,,Death,19/05/1990,DES MOINE,
+81,28/02/1990,"DES
+MOINE",4,24,"Undetermin
+ed",Birth/Hatch,28/02/1990,"DES
+MOINE",
+,,,,,,Death,19/05/1990,DES MOINE,
+82,23/04/1990,"AMAZON
+JUNGLE",UND,UND,"Undetermin
+ed",Birth/Hatch,23/04/1990,"BUSCH
+TAM",
+,,,,,,Transfer,06/04/1992,AMAZON JUNGLE,
+,,,,,,GO LTF,06/04/1992,AMAZON JUNGLE,
+83,23/04/1990,AMAZON JUNGLE,UND,UND,Undetermin ed,Birth/Hatch,23/04/1990,BUSCH TAM,
+,,,,,,Transfer,10/05/1990,AMAZON JUNGLE,
+,,,,,,GO LTF,10/05/1990,AMAZON JUNGLE,
+85,27/04/1990,SWT,UND,UND,Female,Birth/Hatch,27/04/1990,"BUSCH
+TAM",
+,,,,,,Transfer,13/11/1996,SEAWLD TX,
+,,,,,,Transfer,02/11/2003,SWT,
+,,,,,,GO LTF,02/11/2003,SWT,
+86,01/05/1990,SAN ANTON,11,17,Male,Birth/Hatch,01/05/1990,SAN ANTON,
+,,,,,,Death,10/09/1992,"SAN
+ANTON",
+87,03/05/1990,SAN ANTON,11,17,Male,Birth/Hatch,03/05/1990,SAN ANTON,
+,,,,,,Death,19/09/1992,"SAN
+ANTON",
+88,10/05/1991,BOB TAMMONE,UND,UND,Undetermin ed,Birth/Hatch,10/05/1991,BUSCH TAM,
+,,,,,,Transfer,23/06/1993,BOB TAMMONE,
+,,,,,,GO LTF,23/06/1993,BOB TAMMONE,
+89,06/05/1990,ISSAQUAH,11,17,Female,Birth/Hatch,06/05/1990,"SAN
+ANTON",
+,,,,,,Transfer,16/03/1992,ISSAQUAH,
+,,,,,,Death,21/04/2000,ISSAQUAH,
+90,01/01/1991,ST AUGUST,UND,UND,Female,Birth/Hatch,01/01/1991,Undetermin ed,
+,,,,,,GO LTF,01/01/1991,UNDETER MI,
+,,,,,,"Return from
+LTF",01/03/2000,"UNDETER
+MI",
+,,,,,,Transfer,01/03/2000,ST AUGUST,
+,,,,,,Death,15/01/2008,"ST
+AUGUST",
+91,30/01/1991,SAN ANTON,11,17,Undetermin ed,Birth/Hatch,30/01/1991,SAN ANTON,
+,,,,,,Death,21/11/1996,"SAN
+ANTON",
+92,02/02/1991,SAN ANTON,11,17,Male,Birth/Hatch,02/02/1991,SAN ANTON,
+,,,,,,Death,10/09/1992,SAN ANTON,
+93,24/02/1991,SAN ANTON,11,17,Male,Birth/Hatch,24/02/1991,SAN ANTON,
+,,,,,,Death,29/05/2003,SAN ANTON,
+94,12/03/1991,CROWE BOB,173,2,Male,Birth/Hatch,12/03/1991,OKLAHOM A,
+,,,,,,Transfer,22/12/1991,"CROWE
+BOB",
+,,,,,,GO LTF,22/12/1992,CROWE BOB,
+95,12/03/1991,"CROWE
+BOB",173,2,Male,Birth/Hatch,12/03/1991,"OKLAHOM
+A",
+,,,,,,Transfer,22/12/1992,CROWE BOB,
+,,,,,,GO LTF,22/12/1992,CROWE BOB,
+96,11/05/1991,BOB TAMMONE,UND,UND,Undetermin ed,Birth/Hatch,11/05/1991,BUSCH TAM,
+,,,,,,Transfer,23/06/1993,"BOB
+TAMMONE",
+,,,,,,GO LTF,23/06/1993,BOB TAMMONE,
+97,12/05/1991,R. SAUVE,UND,UND,"Undetermin
+ed",Birth/Hatch,12/05/1991,"BUSCH
+TAM",
+,,,,,,Transfer,29/06/1992,R. SAUVE,
+,,,,,,GO LTF,29/06/1992,R. SAUVE,
+98,15/05/1992,R. SAUVE,UND,UND,"Undetermin
+ed",Birth/Hatch,15/05/1992,"BUSCH
+TAM",
+,,,,,,Transfer,04/06/1992,R. SAUVE,
+,,,,,,GO LTF,04/06/1992,R. SAUVE,
+99,15/05/1992,BOB TAMMONE,UND,UND,Undetermin ed,Birth/Hatch,15/05/1992,BUSCH TAM,
+,,,,,,Transfer,23/06/1993,BOB TAMMONE,
+,,,,,,GO LTF,23/06/1993,BOB TAMMONE,
+100,17/05/1992,BUSCH TAM,UND,UND,Undetermin ed,Birth/Hatch,17/05/1992,BUSCH TAM,
+,,,,,,Death,22/05/1992,"BUSCH
+TAM",
+101,29/05/1993,R. SAUVE,294,22,Female,Birth/Hatch,29/05/1993,BUSCH TAM,
+,,,,,,Transfer,01/09/1993,R. SAUVE,
+,,,,,,GO LTF,01/09/1993,R. SAUVE,
+102,20/05/1993,BAKER JIM,294,22,Male,Birth/Hatch,20/05/1993,BUSCH TAM,
+,,,,,,Transfer,05/09/1994,BAKER JIM,
+,,,,,,GO LTF,05/09/1994,BAKER JIM,
+103,30/06/1991,UNDETER MI,41,40,Undetermin ed,Birth/Hatch,30/06/1991,LUBEE,
+,,,,,,Transfer,28/04/1992,"UNDETER
+MI",
+,,,,,,GO LTF,28/04/1992,UNDETER MI,
+104,06/08/1991,OMAHA,4,24,Male,Birth/Hatch,06/08/1991,"DES
+MOINE",
+,,,,,,Transfer,28/07/1993,OMAHA,
+,,,,,,Death,20/01/2009,OMAHA,
+105,06/08/1991,"DES
+MOINE",4,24,"Undetermin
+ed",Birth/Hatch,06/08/1991,"DES
+MOINE",
+,,,,,,Death,03/11/1991,DES MOINE,
+107,02/09/1993,"UNDETER
+MI",UND,UND,Female,Birth/Hatch,02/09/1993,"BUSCH
+TAM",
+,,,,,,Transfer,16/03/2004,J.HOLCOM B,
+,,,,,,GO LTF,16/03/2004,"J.HOLCOM
+B",
+,,,,,,Return from LTF,30/11/2005,UNDETER MI,
+,,,,,,Death,30/11/2005,UNDETER MI,
+108,26/12/1991,CROWE BOB,173,2,Male,Birth/Hatch,26/12/1991,OKLAHOM A,
+,,,,,,GO LTF,26/12/1991,UNDETER MI,
+,,,,,,Return from LTF,19/05/1992,OKLAHOM A,
+,,,,,,Transfer,22/12/1992,"CROWE
+BOB",
+,,,,,,GO LTF,22/12/1992,CROWE BOB,
+109,26/12/1991,"CROWE
+BOB",173,2,Male,Birth/Hatch,26/12/1991,"OKLAHOM
+A",
+,,,,,,Transfer,22/12/1992,CROWE BOB,
+,,,,,,GO LTF,22/12/1992,"CROWE
+BOB",
+110,"01/01/1993
++/- 1 year",OLLSON C,UND,UND,Female,Birth/Hatch,"01/01/1993
++/- 1 year",Undetermin ed,
+,,,,,,Transfer,"01/01/1993
++/- 1 year",UNKNOWN,
+,,,,,,GO LTF,"01/01/1993
++/- 1 year",UNDETER MI,
+,,,,,,Return from LTF,16/11/1995,TOWILL R,
+,,,,,,Transfer,16/11/1995,WILD WRLD,
+,,,,,,Transfer,27/10/2003,OLLSON C,
+,,,,,,GO LTF,27/10/2003,OLLSON C,
+111,28/06/1993,WORLDBIR D,11,17,Female,Birth/Hatch,28/06/1993,SAN ANTON,
+,,,,,,Transfer,04/03/1994,WORLDBIR D,
+,,,,,,GO LTF,04/03/1994,WORLDBIR D,
+112,01/07/1993,PRIVATE,11,17,Male,Birth/Hatch,01/07/1993,"SAN
+ANTON",
+,,,,,,Transfer,04/03/1994,WORLDBIR D,
+,,,,,,Transfer,01/07/1997,PRIVATE,
+113,07/07/1993,Undetermin ed,11,17,Undetermin ed,Birth/Hatch,07/07/1993,SAN ANTON,
+,,,,,,GO LTF,10/08/1993,"Undetermin
+ed",
+114,07/07/1993,PRIVATE,11,17,Female,Birth/Hatch,07/07/1993,SAN ANTON,
+,,,,,,Transfer,04/03/1994,WORLDBIR D,
+,,,,,,Transfer,01/07/1997,PRIVATE,
+,,,,,,GO LTF,01/07/1997,PRIVATE,
+115,16/03/1994,"OKLAHOM
+A",173,2,"Undetermin
+ed",Birth/Hatch,16/03/1994,"OKLAHOM
+A",
+,,,,,,Death,20/03/1994,OKLAHOM A,
+116,29/06/1994,"OKLAHOM
+A",173,2,Male,Birth/Hatch,29/06/1994,"OKLAHOM
+A",
+,,,,,,Death,15/12/1995,OKLAHOM A,
+118,18/04/1995,"BUSCH
+TAM",294,22,"Undetermin
+ed",Birth/Hatch,18/04/1995,"BUSCH
+TAM",
+,,,,,,Death,01/05/1995,BUSCH TAM,
+119,18/04/1995,BAKER JIM,294,22,Undetermin ed,Birth/Hatch,18/04/1995,BUSCH TAM,
+,,,,,,Transfer,07/08/1995,BAKER JIM,
+,,,,,,GO LTF,07/08/1995,BAKER JIM,
+120,18/04/1995,BAKER JIM,294,22,"Undetermin
+ed",Birth/Hatch,18/04/1995,"BUSCH
+TAM",
+,,,,,,Transfer,07/08/1995,BAKER JIM,
+,,,,,,GO LTF,07/08/1995,BAKER JIM,
+121,"01/10/1995
++/- 2 year",HAL PRES,UND,UND,Female,Birth/Hatch,"01/10/1995
++/- 2 year",HAL PRES,
+,,,,,,GO LTF,"01/10/1995
++/- 2 year",HAL PRES,
+,,,,,,"Return from
+LTF",26/03/1997,HAL PRES,
+,,,,,,Transfer,26/03/1997,HAL PRES,
+,,,,,,GO LTF,26/03/1997,HAL PRES,
+122,03/07/1996,"PARROTTR
+U",45,17,Male,Birth/Hatch,03/07/1996,"SAN
+ANTON",
+,,,,,,Transfer,21/11/2002,PARROTTR U,
+,,,,,,GO LTF,21/11/2002,"PARROTTR
+U",
+123,24/05/1996,BUSCH TAM,294,22,Undetermin ed,Birth/Hatch,24/05/1996,BUSCH TAM,
+,,,,,,Death,06/06/1996,BUSCH TAM,
+124,14/05/1997,ROBIN HAYDEN,294,22,Undetermin ed,Birth/Hatch,14/05/1997,BUSCH TAM,
+,,,,,,Transfer,12/05/2000,ROBIN HAYDEN,
+,,,,,,GO LTF,12/05/2000,ROBIN HAYDEN,
+125,22/07/1996,SEDGWICK,UND,UND,Female,Birth/Hatch,22/07/1996,HAL PRES,
+,,,,,,GO LTF,22/07/1996,HAL PRES,
+,,,,,,Return from LTF,26/03/1997,HAL PRES,
+,,,,,,Transfer,26/03/1997,SEDGWICK,
+,,,,,,Death,24/06/2016,SEDGWICK,
+126,03/06/1996,TULSA,UND,UND,Male,Birth/Hatch,03/06/1996,FAUNALIN K,
+,,,,,,GO LTF,03/06/1996,FAUNALIN K,
+,,,,,,Return from LTF,19/05/2004,FAUNALIN K,
+,,,,,,Transfer,19/05/2004,TULSA,
+128,03/01/1997,BATONRO UG,79,21,Male,Birth/Hatch,03/01/1997,BATONRO UG,
+129,09/02/1997,BATONRO UG,79,21,Undetermin ed,Birth/Hatch,09/02/1997,BATONRO UG,
+,,,,,,Death,06/04/1997,BATONRO UG,
+130,27/02/1997,"WORLDBIR
+D",79,21,Female,Birth/Hatch,27/02/1997,"BATONRO
+UG",
+,,,,,,Transfer,14/08/1997,WORLDBIR D,
+131,23/03/1997,"WORLDBIR
+D",79,21,Female,Birth/Hatch,23/03/1997,"BATONRO
+UG",
+,,,,,,Transfer,14/08/1997,WORLDBIR D,
+132,17/05/1997,"BUSCH
+TAM",294,22,"Undetermin
+ed",Birth/Hatch,17/05/1997,"BUSCH
+TAM",
+,,,,,,Death,"01/01/2010
++/- 1 year",BUSCH TAM,
+133,12/06/1997,TULSA,3,277,Female,Birth/Hatch,12/06/1997,"STCATHER
+N",
+,,,,,,Transfer,15/12/1998,TULSA,
+,,,,,,Death,18/05/2020,TULSA,
+134,15/06/1997,"ATASCADE
+R",3,277,Male,Birth/Hatch,15/06/1997,"STCATHER
+N",
+,,,,,,Transfer,15/12/1998,TULSA,
+,,,,,,Transfer,14/05/2018,ATASCADE R,
+135,26/06/1997,"PARROTTR
+U",45,17,Female,Birth/Hatch,26/06/1997,"SAN
+ANTON",
+,,,,,,Transfer,23/09/1999,PARROTTR U,
+,,,,,,GO LTF,23/09/1999,"PARROTTR
+U",
+137,26/06/1997,FALLBROO K,45,17,Female,Birth/Hatch,26/06/1997,SAN ANTON,
+,,,,,,Transfer,28/01/1999,FALLBROO K,
+,,,,,,GO LTF,28/01/1999,FALLBROO K,
+138,26/06/1997,SEDGWICK,45,17,Female,Birth/Hatch,26/06/1997,"SAN
+ANTON",
+,,,,,,Transfer,02/03/2000,TULSA,
+,,,,,,Transfer,02/06/2016,SEDGWICK,
+139,"01/01/1998
++/- 2 year",FORTWOR TH,UND,UND,Male,Birth/Hatch,"01/01/1998
++/- 2 year",Undetermin ed,
+,,,,,,Transfer,~>01/01/19 98,UNKN0WN,
+,,,,,,GO LTF,"01/01/1998
++/- 2 year","UNDETER
+MI",
+,,,,,,Return from LTF,11/05/2005,Undetermin ed,
+,,,,,,Transfer,12/05/2005,"BLOOMING
+T",
+,,,,,,Transfer,04/09/2020,FORTWOR TH,
+140,"01/01/1998
++/- 2 year","BLOOMING
+T",UND,UND,Female,Birth/Hatch,"01/01/1998
++/- 2 year","Undetermin
+ed",
+,,,,,,Transfer,~>01/01/19 98,UNKN0WN,
+,,,,,,GO LTF,"01/01/1998
++/- 2 year",UNDETER MI,
+,,,,,,Return from LTF,12/05/2007,UNDETER MI,
+,,,,,,Transfer,12/05/2007,BLOOMING T,
+,,,,,,Death,14/05/2008,BLOOMING T,
+141,05/02/1999,"BATONRO
+UG",79,21,"Undetermin
+ed",Birth/Hatch,05/02/1999,"BATONRO
+UG",
+,,,,,,Death,07/02/1999,BATONRO UG,
+142,08/02/1999,"BATONRO
+UG",79,21,Female,Birth/Hatch,08/02/1999,"BATONRO
+UG",
+143,"07/04/1999
++/- 1 month",SEDGWICK,332,2,Male,Birth/Hatch,"07/04/1999
++/- 1 month",NATAVPGH,
+,,,,,,Transfer,17/03/2000,SEDGWICK,
+,,,,,,Death,29/01/2015,SEDGWICK,
+144,18/04/1999,BATONRO UG,79,21,Male,Birth/Hatch,18/04/1999,BATONRO UG,
+145,06/07/1999,TULSA,332,2,Male,Birth/Hatch,06/07/1999,NATAVPGH,
+,,,,,,Transfer,30/03/2000,TULSA,
+,,,,,,Transfer,30/05/2000,TULSA,
+,,,,,,Death,26/11/2002,TULSA,
+146,27/02/1997,BATONRO UG,79,21,Male,Birth/Hatch,27/02/1997,BATONRO UG,
+147,20/04/1993,OKLAHOM A,173,2,Undetermin ed,Birth/Hatch,20/04/1993,OKLAHOM A,
+,,,,,,Death,24/06/1993,OKLAHOM A,
+148,26/12/1991,CROWE BOB,173,2,Male,Birth/Hatch,26/12/1991,OKLAHOM A,
+,,,,,,Transfer,22/12/1992,"CROWE
+BOB",
+,,,,,,GO LTF,22/12/1992,CROWE BOB,
+149,22/02/1991,"SAN
+ANTON",11,17,Female,Birth/Hatch,22/02/1991,"SAN
+ANTON",
+,,,,,,Death,01/07/1992,SAN ANTON,
+150,20/04/1990,TUCSON,184,176,Male,Birth/Hatch,20/04/1990,STCATHER N,
+,,,,,,Transfer,11/10/1990,TUCSON,
+,,,,,,Death,29/01/2000,TUCSON,
+151,20/04/1990,TUCSON,184,176,"Undetermin
+ed",Birth/Hatch,20/04/1990,"STCATHER
+N",
+,,,,,,Transfer,11/10/1990,TUCSON,
+,,,,,,Death,03/02/2011,TUCSON,
+152,03/07/1990,TUCSON,185,186,Female,Birth/Hatch,03/07/1990,SANFORD,
+,,,,,,Transfer,20/11/1990,TUCSON,
+,,,,,,Death,01/04/2000,TUCSON,
+153,03/07/1990,BRZY RIDG,185,186,Female,Birth/Hatch,03/07/1990,SANFORD,
+,,,,,,Transfer,20/11/1990,TUCSON,
+,,,,,,Transfer,19/03/2003,BRZY RIDG,
+,,,,,,GO LTF,19/03/2003,BRZY RIDG,
+154,28/06/1993,WORLDBIR D,11,17,Female,Birth/Hatch,28/06/1993,SAN ANTON,
+,,,,,,Transfer,04/03/1994,WORLDBIR D,
+,,,,,,Transfer,"01/01/1995
++/- 2 year","WORLDBIR
+D",
+,,,,,,GO LTF,"01/01/1995
++/- 2 year",WORLDBIR D,
+,,,,,,"Return from
+LTF",11/03/1996,"WORLDBIR
+D",
+,,,,,,Transfer,11/03/1996,TUCSON,
+,,,,,,Transfer,03/06/1996,TUCSON,
+,,,,,,Transfer,10/04/2002,"WORLDBIR
+D",
+,,,,,,GO LTF,10/04/2002,WORLDBIR D,
+,,,,,,"Return from
+LTF",18/04/2002,"WORLDBIR
+D",
+,,,,,,Death,19/04/2002,WORLDBIR D,
+155,24/02/2000,"PARROTTR
+U",79,21,"Undetermin
+ed",Birth/Hatch,24/02/2000,"BATONRO
+UG",
+,,,,,,Transfer,28/11/2001,PARROTTR U,
+,,,,,,GO LTF,28/11/2001,"PARROTTR
+U",
+156,27/01/2001,BATONRO UG,79,21,Undetermin ed,Birth/Hatch,27/01/2001,BATONRO UG,
+,,,,,,Death,27/02/2001,"BATONRO
+UG",
+157,24/01/2001,BATONRO UG,79,21,Female,Birth/Hatch,24/01/2001,BATONRO UG,
+,,,,,,Death,06/03/2001,"BATONRO
+UG",
+158,24/01/2001,BATONRO UG,79,21,Undetermin ed,Birth/Hatch,24/01/2001,BATONRO UG,
+,,,,,,Death,06/03/2001,"BATONRO
+UG",
+159,"01/01/2002
++/- 1 year",WILD WRLD,UND,UND,Male,Birth/Hatch,"01/01/2002
++/- 1 year",Undetermin ed,
+,,,,,,GO LTF,"01/01/2002
++/- 1 year",UNDETER MI,
+,,,,,,Return from LTF,30/01/2006,HARDY,
+,,,,,,Transfer,30/01/2006,"WILD
+WRLD",
+,,,,,,GO LTF,30/01/2006,WILD WRLD,
+160,12/03/2002,"BATONRO
+UG",79,21,Male,Birth/Hatch,12/03/2002,"BATONRO
+UG",
+161,12/03/2002,BATONRO UG,79,21,Male,Birth/Hatch,12/03/2002,BATONRO UG,
+162,"01/01/2003
++/- 2 year",GLENDALE,UND,UND,Female,Birth/Hatch,"01/01/2003
++/- 2 year","Undetermin
+ed",
+,,,,,,GO LTF,"01/01/2003
++/- 2 year",UNDETER MI,
+,,,,,,Return from LTF,"09/02/2005
++/- 2 year",UNDETER MI,
+,,,,,,Transfer,"09/02/2005
++/- 2 year",PRITCHET T-MILLIE,
+,,,,,,Transfer,09/02/2007,WILD WRLD,
+,,,,,,Transfer,20/02/2007,GLENDALE,
+,,,,,,GO LTF,20/02/2007,GLENDALE,
+163,12/04/2005,BATONRO UG,79,21,Undetermin ed,Birth/Hatch,12/04/2005,BATONRO UG,
+,,,,,,Death,02/06/2005,BATONRO UG,
+164,12/04/2005,BATONRO UG,79,21,Male,Birth/Hatch,12/04/2005,BATONRO UG,
+,,,,,,Death,16/03/2019,BATONRO UG,
+165,09/02/2005,"BATONRO
+UG",79,21,Female,Birth/Hatch,09/02/2005,"BATONRO
+UG",
+166,28/06/2007,WORLDBIR D,185,186,Female,Birth/Hatch,28/06/2007,SANFORD,
+,,,,,,Transfer,17/07/2007,"WORLDBIR
+D",
+167,01/07/2007,WORLDBIR D,185,186,Female,Birth/Hatch,01/07/2007,SANFORD,
+,,,,,,Transfer,17/07/2007,WORLDBIR D,
+,,,,,,GO LTF,17/07/2007,WORLDBIR D,
+,,,,,,"Return from
+LTF",12/11/2010,"WORLDBIR
+D",
+,,,,,,Death,12/12/2010,WORLDBIR D,
+168,"01/01/1984
++/- 2 year","WILD
+WRLD",UND,UND,Male,Birth/Hatch,"01/01/1984
++/- 2 year","Undetermin
+ed",
+,,,,,,Transfer,"01/01/1985
++/- 1 year",GLENDALE,
+,,,,,,Transfer,09/01/1986,"WILD
+WRLD",
+,,,,,,Death,13/12/1986,WILD WRLD,
+169,"01/01/1993
++/- 2 year",GHASSEMI,UND,UND,Female,Birth/Hatch,"01/01/1993
++/- 2 year","HAWAII:
+Invalid use of GeoRef",
+,,,,,,GO LTF,"01/01/1993
++/- 2 year",UNDETER MI,
+,,,,,,Return from LTF,"17/11/1993
++/- 2 year",UNDETER MI,
+,,,,,,Transfer,"17/11/1993
++/- 2 year",TOWILL R,
+,,,,,,Transfer,17/11/1995,WILD WRLD,
+,,,,,,Transfer,07/08/1996,GHASSEMI,
+,,,,,,GO LTF,07/08/1996,GHASSEMI,
+170,"17/11/1993
++/- 2 year",WILD WRLD,UND,UND,Female,Birth/Hatch,"17/11/1993
++/- 2 year","HAWAII:
+Invalid use of GeoRef",
+,,,,,,Transfer,"17/11/1993
++/- 2 year",TOWILL R,
+,,,,,,GO LTF,"17/11/1993
++/- 2 year",TOWILL R,
+,,,,,,"Return from
+LTF",17/11/1995,TOWILL R,
+,,,,,,Transfer,17/11/1995,WILD WRLD,
+,,,,,,GO LTF,17/11/1995,WILD WRLD,
+,,,,,,Return from LTF,01/06/2010,WILD WRLD,
+,,,,,,GO LTF,01/08/2010,"WILD
+WRLD",
+171,"16/11/1993
++/- 2 year",OLLSON C,UND,UND,Male,Birth/Hatch,"16/11/1993
++/- 2 year",Undetermin ed,
+,,,,,,Transfer,"16/11/1993
++/- 2 year",UNKNOWN,
+,,,,,,GO LTF,"16/11/1995
++/- 2 year",UNDETER MI,
+,,,,,,"Return from
+LTF",16/11/1995,"UNDETER
+MI",
+,,,,,,Transfer,16/11/1995,TOWILL R,
+,,,,,,Transfer,16/11/1995,"WILD
+WRLD",
+,,,,,,Transfer,27/10/2003,OLLSON C,
+,,,,,,GO LTF,27/10/2003,OLLSON C,
+172,"01/01/1974
++/- 2 year",OKLAHOM A,WILD,WILD,Male,Birth/Hatch,"01/01/1974
++/- 2 year",Bolivia / ~,
+,,,,,,Wild Capture,"01/01/1974
++/- 2 year",Bolivia / ~,
+,,,,,,Transfer,"01/01/1974
++/- 2 year",UNKNOWN,
+,,,,,,GO LTF,"01/01/1974
++/- 2 year","BOLIVIA:
+Invalid use of GeoRef",
+,,,,,,Return from LTF,"01/01/1974
++/- 2 year",BLU RIDGE,
+,,,,,,Transfer,"06/10/1976
++/- 2 year",NY BRONX,
+,,,,,,Transfer,20/05/1977,"STCATHER
+N",
+,,,,,,Transfer,28/06/1984,OKLAHOM A,
+,,,,,,Death,16/06/1990,"OKLAHOM
+A",
+173,"01/01/1971
++/- 2 year",NATAVPGH,WILD,WILD,Male,Birth/Hatch,"01/01/1971
++/- 2 year",Bolivia / ~,
+,,,,,,Wild Capture,Undetermin ed,Bolivia / ~,
+,,,,,,Transfer,Undetermin ed,BLU RIDGE,
+,,,,,,GO LTF,"Undetermin
+ed",BLU RIDGE,
+,,,,,,Return from LTF,06/10/1976,UNDETER MI,
+,,,,,,Transfer,06/10/1976,NY BRONX,
+,,,,,,Transfer,14/03/1977,STCATHER N,
+,,,,,,Transfer,11/10/1990,"OKLAHOM
+A",
+,,,,,,Transfer,25/09/1996,NATAVPGH,
+,,,,,,Death,26/02/1998,NATAVPGH,
+174,"04/10/1974
++/- 2 year",YANIK AV,WILD,WILD,Female,Birth/Hatch,"04/10/1974
++/- 2 year",Bolivia / ~,
+,,,,,,Wild Capture,"04/10/1974
++/- 2 year",Bolivia / ~,
+,,,,,,Transfer,"04/10/1974
++/- 2 year",UNKN0WN,
+,,,,,,GO LTF,"04/10/1974
++/- 2 year",UNDETER MI,
+,,,,,,"Return from
+LTF","04/10/1974
++/- 2 year","UNDETER
+MI",
+,,,,,,Transfer,"04/10/1974
++/- 2 year",EL CAJON,
+,,,,,,Transfer,04/10/1976,"OKLAHOM
+A",
+,,,,,,Transfer,21/08/1985,YANIK AV,
+,,,,,,GO LTF,21/08/1985,YANIK AV,
+175,"04/10/1974
++/- 2 year","STCATHER
+N",WILD,WILD,Female,Birth/Hatch,"04/10/1974
++/- 2 year",Bolivia / ~,
+,,,,,,Wild Capture,"04/10/1974
++/- 2 year",Bolivia / ~,
+,,,,,,Transfer,"04/10/1974
++/- 2 year",EL CAJON,
+,,,,,,Transfer,04/10/1976,OKLAHOM A,
+,,,,,,Transfer,03/03/1981,NY BRONX,
+,,,,,,Transfer,17/03/1981,STCATHER N,
+,,,,,,Death,01/08/1989,"STCATHER
+N",
+176,"23/09/1974
++/- 2 year",FAUNALIN K,WILD,WILD,Female,Birth/Hatch,"23/09/1974
++/- 2 year",Bolivia / ~,
+,,,,,,Wild Capture,"23/09/1974
++/- 2 year",Bolivia / ~,
+,,,,,,Transfer,"23/09/1976
++/- 2 year",EL CAJON,
+,,,,,,Transfer,23/09/1976,"OKLAHOM
+A",
+,,,,,,Transfer,22/11/1976,NY BRONX,
+,,,,,,Transfer,03/03/1981,NY BRONX,
+,,,,,,Transfer,17/03/1981,"STCATHER
+N",
+,,,,,,GO LTF,26/01/1995,FAUNALIN K,
+177,"23/09/1974
++/- 2 year",STCATHER N,WILD,WILD,Female,Birth/Hatch,"23/09/1974
++/- 2 year",Bolivia / ~,
+,,,,,,Wild Capture,"23/09/1974
++/- 2 year",Bolivia / ~,
+,,,,,,Transfer,"23/09/1974
++/- 2 year",EL CAJON,
+,,,,,,Transfer,23/09/1976,OKLAHOM A,
+,,,,,,Transfer,03/03/1981,NY BRONX,
+,,,,,,Transfer,17/03/1981,"STCATHER
+N",
+,,,,,,Death,12/07/1990,STCATHER N,
+178,"25/10/1979
++/- 2 year",BACKTALK,UND,UND,Male,Birth/Hatch,"25/10/1979
++/- 2 year","Undetermin
+ed",
+,,,,,,Transfer,"25/10/1979
++/- 2 year",HOUSTON,
+,,,,,,Transfer,28/04/1980,HOUSTON,
+,,,,,,Transfer,25/10/1981,OKLAHOM A,
+,,,,,,Transfer,09/01/1985,HOUSTON,
+,,,,,,Transfer,27/01/1987,BACKTALK,
+,,,,,,GO LTF,27/01/1987,BACKTALK,
+179,"01/01/1995
++/- 2 year",WILD WRLD,UND,UND,Male,Birth/Hatch,"01/01/1995
++/- 2 year",Undetermin ed,
+,,,,,,GO LTF,"01/01/1995
++/- 2 year","UNDETER
+MI",
+,,,,,,Return from LTF,03/10/1996,GHASSEMI,
+,,,,,,Transfer,03/10/1996,"WILD
+WRLD",
+,,,,,,GO LTF,03/10/1996,WILD WRLD,
+,,,,,,"Return from
+LTF",01/06/2010,"WILD
+WRLD",
+,,,,,,GO LTF,01/08/2010,WILD WRLD,
+180,"07/05/1995
++/- 2 year",SAN ANTON,UND,UND,Male,Birth/Hatch,"07/05/1995
++/- 2 year",Undetermin ed,
+,,,,,,Transfer,"07/05/1995
++/- 2 year",UNKNOWN,
+,,,,,,GO LTF,"07/05/1995
++/- 2 year",UNDETER MI,
+,,,,,,Return from LTF,"07/05/1995
++/- 2 year",UNDETER MI,
+,,,,,,Transfer,"07/05/1995
++/- 2 year","PARROTTR
+U",
+,,,,,,Transfer,07/05/1997,SAN ANTON,
+,,,,,,Death,17/06/1997,"SAN
+ANTON",
+181,"01/06/1996
++/- 2 year",WILD WRLD,UND,UND,Male,Birth/Hatch,"01/06/1996
++/- 2 year",Undetermin ed,
+,,,,,,GO LTF,"01/06/1996
++/- 2 year","UNDETER
+MI",
+,,,,,,Return from LTF,06/06/2006,CONTE,
+,,,,,,Transfer,06/06/2006,"WILD
+WRLD",
+,,,,,,GO LTF,06/06/2006,WILD WRLD,
+184,"01/01/1974
++/- 2 year",FAUNALIN K,WILD,WILD,Male,Birth/Hatch,"01/01/1974
++/- 2 year",Bolivia / ~,
+,,,,,,Wild Capture,"01/01/1974
++/- 2 year",Bolivia / ~,
+,,,,,,Transfer,"~>01/01/19
+74",UNKNOWN,
+,,,,,,GO LTF,"01/01/1974
++/- 2 year",UNDETER MI,
+,,,,,,"Return from
+LTF","01/01/1974
++/- 2 year",BLU RIDGE,
+,,,,,,Transfer,22/11/1976,NY BRONX,
+,,,,,,Transfer,14/03/1977,"STCATHER
+N",
+,,,,,,Transfer,26/01/1995,FAUNALIN K,
+,,,,,,GO LTF,26/01/1995,"FAUNALIN
+K",
+185,"01/01/1980
++/- 2 year",SANFORD,WILD,WILD,Male,Birth/Hatch,"01/01/1980
++/- 2 year",Bolivia / ~,
+,,,,,,"Wild
+Capture","01/01/1980
++/- 2 year",Bolivia / ~,
+,,,,,,Transfer,"01/01/1980
++/- 2 year",UNKN0WN,
+,,,,,,GO LTF,"01/01/1980
++/- 2 year","UNDETER
+MI",
+,,,,,,Return from LTF,02/12/1982,EXOTICS R,
+,,,,,,Transfer,02/12/1982,SANFORD,
+,,,,,,Death,01/04/2017,SANFORD,
+186,"01/01/1980
++/- 2 year",SANFORD,WILD,WILD,Female,Birth/Hatch,"01/01/1980
++/- 2 year",Bolivia / ~,
+,,,,,,"Wild
+Capture","01/01/1980
++/- 2 year",Bolivia / ~,
+,,,,,,Transfer,02/12/1982,SANFORD,
+,,,,,,Death,24/02/2010,SANFORD,
+187,"01/01/1990
++/- 6 month",SEDGWICK,UND,UND,Female,Birth/Hatch,"01/01/1990
++/- 6 month",Undetermin ed,
+,,,,,,GO LTF,"01/01/1990
++/- 6 month","UNDETER
+MI",
+,,,,,,Return from LTF,"01/01/1991
++/- 1 year",UNDETER MI,
+,,,,,,Transfer,"01/01/1991
++/- 6 month",ISSAQUAH,
+,,,,,,Transfer,15/03/1993,ISSAQUAH,
+,,,,,,Transfer,29/07/2008,"ST
+AUGUST",
+,,,,,,Transfer,05/05/2010,SEDGWICK,
+,,,,,,Transfer,19/06/2010,SEDGWICK,
+,,,,,,Death,29/10/2012,SEDGWICK,
+188,"01/01/1974
++/- 1 year",STCATHER N,WILD,WILD,Male,Birth/Hatch,"01/01/1974
++/- 1 year",Bolivia / ~,
+,,,,,,Wild Capture,"01/01/1975
++/- 1 year",Bolivia / ~,
+,,,,,,Transfer,~>01/01/19 75,UNKN0WN,
+,,,,,,GO LTF,"01/01/1975
++/- 1 year",UNDETER MI,
+,,,,,,"Return from
+LTF",06/10/1976,"UNDETER
+MI",
+,,,,,,Transfer,06/10/1976,BLU RIDGE,
+,,,,,,Transfer,14/03/1977,NY BRONX,
+,,,,,,Transfer,14/03/1977,STCATHER N,
+,,,,,,Death,04/02/1981,STCATHER N,
+189,"01/01/1976
++/- 1 year",PRIVATE,WILD,WILD,Female,Birth/Hatch,"01/01/1976
++/- 1 year",Bolivia / ~,
+,,,,,,Wild Capture,"01/01/1976
++/- 1 year",Bolivia / ~,
+,,,,,,Transfer,"01/01/1976
++/- 1 year",UNKNOWN,
+,,,,,,GO LTF,"01/01/1976
++/- 1 year",UNDETER MI,
+,,,,,,"Return from
+LTF","01/01/1979
++/- 3 year","UNDETER
+MI",
+,,,,,,Transfer,"01/01/1979
++/- 3 year",CHATFIEL D,
+,,,,,,Transfer,19/11/1981,"STCATHER
+N",
+,,,,,,Transfer,16/12/1984,PRIVATE,
+,,,,,,GO LTF,16/12/1984,PRIVATE,
+190,"01/01/1981
++/- 3 year","UNDETER
+MI",WILD,WILD,Female,Birth/Hatch,"01/01/1981
++/- 3 year",Bolivia / ~,
+,,,,,,Wild Capture,"01/01/1981
++/- 3 year",Bolivia / ~,
+,,,,,,Transfer,"01/01/1981
++/- 3 year",UNKN0WN,
+,,,,,,GO LTF,"01/01/1981
++/- 3 year",UNDETER MI,
+,,,,,,Return from LTF,09/11/1983,UNDETER MI,
+,,,,,,Transfer,09/11/1983,STCATHER N,
+,,,,,,Transfer,21/12/1984,"CHATFIEL
+D",
+,,,,,,GO LTF,21/12/1984,UNDETER MI,
+191,"01/01/1976
++/- 6 year",PRIVATE,WILD,WILD,Male,Birth/Hatch,"01/01/1976
++/- 6 year",Bolivia / ~,
+,,,,,,Wild Capture,"01/01/1976
++/- 6 year",Bolivia / ~,
+,,,,,,Transfer,"01/01/1976
++/- 6 year","CHATFIEL
+D",
+,,,,,,Transfer,19/11/1981,STCATHER N,
+,,,,,,Transfer,16/12/1984,PRIVATE,
+,,,,,,GO LTF,16/12/1984,PRIVATE,
+192,20/07/1983,CHATFIEL D,3,175,Male,Birth/Hatch,20/07/1983,STCATHER N,
+,,,,,,Transfer,21/12/1984,"CHATFIEL
+D",
+,,,,,,GO LTF,21/12/1984,CHATFIEL D,
+193,11/06/1984,PRIVATE,184,176,"Undetermin
+ed",Birth/Hatch,11/06/1984,"STCATHER
+N",
+,,,,,,Transfer,16/12/1984,PRIVATE,
+,,,,,,GO LTF,16/12/1984,PRIVATE,
+194,13/06/1984,PRIVATE,184,176,"Undetermin
+ed",Birth/Hatch,13/06/1984,"STCATHER
+N",
+,,,,,,Transfer,16/12/1984,PRIVATE,
+,,,,,,GO LTF,16/12/1984,PRIVATE,
+195,26/06/1984,STCATHER N,3,175,Undetermin ed,Birth/Hatch,26/06/1984,STCATHER N,
+,,,,,,Death,30/06/1984,STCATHER N,
+196,28/06/1984,PRIVATE,3,175,"Undetermin
+ed",Birth/Hatch,28/06/1984,"STCATHER
+N",
+,,,,,,Transfer,16/12/1984,PRIVATE,
+,,,,,,GO LTF,16/12/1984,PRIVATE,
+197,09/07/1984,PRIVATE,173,177,Undetermin ed,Birth/Hatch,09/07/1984,STCATHER N,
+,,,,,,Transfer,16/12/1984,PRIVATE,
+,,,,,,GO LTF,16/12/1984,PRIVATE,
+198,11/07/1984,"STCATHER
+N",184,176,"Undetermin
+ed",Birth/Hatch,11/07/1984,"STCATHER
+N",
+,,,,,,Death,15/07/2010,STCATHER N,
+199,15/07/1984,PRIVATE,184,176,Undetermin ed,Birth/Hatch,15/07/1984,STCATHER N,
+,,,,,,Transfer,16/12/1984,PRIVATE,
+,,,,,,GO LTF,16/12/1984,PRIVATE,
+200,"01/01/1982
++/- 2 year",PRIVATE,WILD,WILD,Male,Birth/Hatch,"01/01/1982
++/- 2 year",Bolivia / ~,
+,,,,,,Wild Capture,"01/01/1982
++/- 2 year",Bolivia / ~,
+,,,,,,Transfer,~>01/01/19 82,UNKNOWN,
+,,,,,,GO LTF,"01/01/1982
++/- 2 year",UNDETER MI,
+,,,,,,Return from LTF,19/07/1984,UNDETER MI,
+,,,,,,Transfer,19/07/1984,STCATHER N,
+,,,,,,Transfer,16/12/1984,PRIVATE,
+,,,,,,GO LTF,16/12/1984,PRIVATE,
+201,"01/01/1982
++/- 2 year",PRIVATE,WILD,WILD,Female,Birth/Hatch,"01/01/1982
++/- 2 year",Undetermin ed,
+,,,,,,"Wild
+Capture","01/01/1982
++/- 2 year","Undetermin
+ed",
+,,,,,,Transfer,"01/01/1982
++/- 2 year",UNKNOWN,
+,,,,,,GO LTF,"01/01/1982
++/- 2 year","UNDETER
+MI",
+,,,,,,Return from LTF,19/07/1984,UNDETER MI,
+,,,,,,Transfer,19/07/1984,"STCATHER
+N",
+,,,,,,Transfer,16/12/1984,PRIVATE,
+,,,,,,GO LTF,16/12/1984,PRIVATE,
+202,17/05/1985,EDWARDS,184,176,Female,Birth/Hatch,17/05/1985,"STCATHER
+N",
+,,,,,,Transfer,20/06/1985,NY BRONX,
+,,,,,,Transfer,04/10/1985,"STCATHER
+N",
+,,,,,,Transfer,11/11/1985,EDWARDS,
+,,,,,,GO LTF,11/11/1985,EDWARDS,
+203,18/05/1985,EDWARDS,184,176,Male,Birth/Hatch,18/05/1985,"STCATHER
+N",
+,,,,,,Transfer,20/06/1985,NY BRONX,
+,,,,,,Transfer,04/10/1985,STCATHER N,
+,,,,,,Transfer,08/12/1985,EDWARDS,
+,,,,,,GO LTF,08/12/1985,EDWARDS,
+204,19/05/1985,UNDETER MI,184,176,Undetermin ed,Birth/Hatch,19/05/1985,STCATHER N,
+,,,,,,Transfer,20/06/1985,NY BRONX,
+,,,,,,Transfer,03/10/1985,UNDETER MI,
+,,,,,,GO LTF,03/10/1985,"UNDETER
+MI",
+205,21/05/1985,PRIVATE,184,176,Female,Birth/Hatch,21/05/1985,STCATHER N,
+,,,,,,Transfer,20/06/1985,NY BRONX,
+,,,,,,Transfer,04/10/1985,"STCATHER
+N",
+,,,,,,Transfer,17/07/1986,PRIVATE,
+,,,,,,GO LTF,17/07/1986,PRIVATE,
+206,18/05/1985,TRULI FRM,173,177,Male,Birth/Hatch,18/05/1985,"STCATHER
+N",
+,,,,,,Transfer,20/06/1985,NY BRONX,
+,,,,,,Transfer,04/10/1985,STCATHER N,
+,,,,,,Transfer,23/11/1985,TRULI FRM,
+,,,,,,GO LTF,23/11/1985,TRULI FRM,
+207,19/05/1985,EDWARDS,173,177,Male,Birth/Hatch,19/05/1985,"STCATHER
+N",
+,,,,,,Transfer,20/06/1985,NY BRONX,
+,,,,,,Transfer,04/10/1985,STCATHER N,
+,,,,,,Transfer,11/11/1985,EDWARDS,
+,,,,,,GO LTF,11/11/1985,EDWARDS,
+208,22/05/1985,UNDETER MI,173,177,Undetermin ed,Birth/Hatch,22/05/1985,STCATHER N,
+,,,,,,Transfer,20/06/1985,NY BRONX,
+,,,,,,Transfer,03/10/1985,UNDETER MI,
+,,,,,,GO LTF,03/10/1985,"UNDETER
+MI",
+209,25/05/1985,PRIVATE,173,177,Female,Birth/Hatch,25/05/1985,STCATHER N,
+,,,,,,Transfer,11/12/1985,PRIVATE,
+,,,,,,GO LTF,11/12/1985,PRIVATE,
+210,26/05/1985,TRULI FRM,173,177,Female,Birth/Hatch,26/05/1985,STCATHER N,
+,,,,,,Transfer,23/11/1985,TRULI FRM,
+,,,,,,GO LTF,23/11/1985,TRULI FRM,
+211,13/06/1985,EDWARDS,3,175,Female,Birth/Hatch,13/06/1985,STCATHER N,
+,,,,,,Transfer,08/12/1985,EDWARDS,
+,,,,,,GO LTF,08/12/1985,EDWARDS,
+212,13/06/1985,TRULI FRM,3,175,Female,Birth/Hatch,13/06/1985,STCATHER N,
+,,,,,,Transfer,24/12/1985,TRULI FRM,
+,,,,,,GO LTF,24/12/1985,TRULI FRM,
+213,17/06/1985,STCATHER N,3,175,Undetermin ed,Birth/Hatch,17/06/1985,STCATHER N,
+,,,,,,Death,09/07/1985,"STCATHER
+N",
+214,17/06/1985,PRIVATE,184,177,Male,Birth/Hatch,17/06/1985,STCATHER N,
+,,,,,,Transfer,11/12/1985,PRIVATE,
+,,,,,,GO LTF,11/12/1985,PRIVATE,
+215,17/06/1985,STCATHER N,184,176,Undetermin ed,Birth/Hatch,17/06/1985,STCATHER N,
+,,,,,,Death,24/06/1985,"STCATHER
+N",
+216,17/06/1985,PRIVATE,184,176,Male,Birth/Hatch,17/06/1985,STCATHER N,
+,,,,,,Transfer,11/12/1985,PRIVATE,
+,,,,,,GO LTF,11/12/1985,PRIVATE,
+217,20/06/1985,PRIVATE,184,176,Female,Birth/Hatch,20/06/1985,STCATHER N,
+,,,,,,Transfer,11/12/1985,PRIVATE,
+,,,,,,GO LTF,11/12/1985,PRIVATE,
+218,23/05/1986,PRIVATE,173,177,Undetermin ed,Birth/Hatch,23/05/1986,STCATHER N,
+,,,,,,Transfer,13/09/1986,PRIVATE,
+,,,,,,GO LTF,13/09/1986,PRIVATE,
+219,24/05/1986,PRIVATE,184,176,Undetermin ed,Birth/Hatch,24/05/1986,STCATHER N,
+,,,,,,Transfer,13/09/1986,PRIVATE,
+,,,,,,GO LTF,13/09/1986,PRIVATE,
+220,25/05/1986,NORTHLAN D,173,177,Male,Birth/Hatch,25/05/1986,STCATHER N,
+,,,,,,Transfer,24/05/1988,"NORTHLAN
+D",
+,,,,,,GO LTF,24/05/1988,NORTHLAN D,
+221,27/05/1986,"STCATHER
+N",184,176,"Undetermin
+ed",Birth/Hatch,27/05/1986,"STCATHER
+N",
+,,,,,,Death,15/06/1986,STCATHER N,
+222,27/05/1986,"STCATHER
+N",173,177,"Undetermin
+ed",Birth/Hatch,27/05/1986,"STCATHER
+N",
+,,,,,,Death,05/06/1986,STCATHER N,
+223,29/05/1986,"STCATHER
+N",184,176,"Undetermin
+ed",Birth/Hatch,29/05/1986,"STCATHER
+N",
+,,,,,,Death,04/06/1986,STCATHER N,
+224,30/05/1986,PRIVATE,3,175,Male,Birth/Hatch,30/05/1986,STCATHER N,
+,,,,,,Transfer,24/03/1988,PRIVATE,
+,,,,,,GO LTF,24/03/1988,PRIVATE,
+225,21/06/1986,"WALSROD
+E",184,176,Male,Birth/Hatch,21/06/1986,"STCATHER
+N",
+,,,,,,Transfer,13/11/1987,NY BRONX,
+,,,,,,Transfer,23/11/1987,"WALSROD
+E",
+,,,,,,GO LTF,23/11/1987,WALSROD E,
+226,25/06/1986,NY BRONX,184,176,Male,Birth/Hatch,25/06/1986,"STCATHER
+N",
+,,,,,,Transfer,13/05/1988,NY BRONX,
+,,,,,,GO LTF,13/05/1988,NY BRONX,
+227,28/06/1986,"STCATHER
+N",184,176,"Undetermin
+ed",Birth/Hatch,28/06/1986,"STCATHER
+N",
+,,,,,,Death,04/07/1986,STCATHER N,
+228,29/06/1986,"WALSROD
+E",173,177,Male,Birth/Hatch,29/06/1986,"STCATHER
+N",
+,,,,,,Transfer,13/11/1987,NY BRONX,
+,,,,,,Transfer,23/11/1987,WALSROD E,
+,,,,,,GO LTF,23/11/1987,WALSROD E,
+,,,,,,Return from LTF,31/12/2017,WALSROD E,
+,,,,,,Death,01/01/2018,WALSROD E,
+229,"01/01/1986
++/- 2 year",TRULI FRM,UND,UND,Male,Birth/Hatch,"01/01/1986
++/- 2 year",Undetermin ed,
+,,,,,,Transfer,17/07/1986,"STCATHER
+N",
+,,,,,,Transfer,17/07/1986,TRULI FRM,
+,,,,,,GO LTF,17/07/1986,TRULI FRM,
+230,09/06/1987,PRIVATE,184,176,Male,Birth/Hatch,09/06/1987,"STCATHER
+N",
+,,,,,,Transfer,24/03/1988,PRIVATE,
+,,,,,,GO LTF,24/03/1988,PRIVATE,
+231,11/06/1987,PRIVATE,184,176,Female,Birth/Hatch,11/06/1987,STCATHER N,
+,,,,,,Transfer,24/03/1988,PRIVATE,
+,,,,,,GO LTF,24/03/1988,PRIVATE,
+232,13/06/1987,PRIVATE,184,176,Male,Birth/Hatch,13/06/1987,STCATHER N,
+,,,,,,Transfer,24/03/1988,PRIVATE,
+,,,,,,GO LTF,24/03/1988,PRIVATE,
+233,15/06/1987,PRIVATE,184,176,Male,Birth/Hatch,15/06/1987,"STCATHER
+N",
+,,,,,,Transfer,24/03/1988,PRIVATE,
+,,,,,,GO LTF,24/03/1988,PRIVATE,
+234,08/07/1987,STCATHER N,173,177,Undetermin ed,Birth/Hatch,08/07/1987,STCATHER N,
+,,,,,,Death,10/01/1988,STCATHER N,
+235,09/07/1987,PRIVATE,173,177,Male,Birth/Hatch,09/07/1987,"STCATHER
+N",
+,,,,,,Transfer,24/03/1988,PRIVATE,
+,,,,,,GO LTF,24/03/1988,PRIVATE,
+236,18/07/1987,PRIVATE,3,175,Male,Birth/Hatch,18/07/1987,STCATHER N,
+,,,,,,Transfer,24/03/1988,PRIVATE,
+,,,,,,GO LTF,24/03/1988,PRIVATE,
+237,07/06/1988,PRIVATE,3,175,Female,Birth/Hatch,07/06/1988,STCATHER N,
+,,,,,,Transfer,29/03/1989,PRIVATE,
+,,,,,,GO LTF,29/03/1989,PRIVATE,
+238,07/06/1988,"HARRING
+K",3,175,Male,Birth/Hatch,07/06/1988,"STCATHER
+N",
+,,,,,,Transfer,29/03/1989,"HARRING
+K",
+,,,,,,GO LTF,29/03/1989,HARRING K,
+239,10/06/1988,"HARRING
+K",3,175,Female,Birth/Hatch,10/06/1988,"STCATHER
+N",
+,,,,,,Transfer,29/03/1989,HARRING K,
+,,,,,,GO LTF,29/03/1989,HARRING K,
+240,14/06/1988,PRIVATE,184,176,Male,Birth/Hatch,14/06/1988,STCATHER N,
+,,,,,,Transfer,29/03/1989,PRIVATE,
+,,,,,,GO LTF,29/03/1989,PRIVATE,
+241,14/06/1988,HARRING K,184,176,Female,Birth/Hatch,14/06/1988,STCATHER N,
+,,,,,,Transfer,29/03/1989,HARRING K,
+,,,,,,GO LTF,29/03/1989,HARRING K,
+242,16/06/1988,PRIVATE,184,176,Male,Birth/Hatch,16/06/1988,"STCATHER
+N",
+,,,,,,Transfer,29/03/1989,PRIVATE,
+,,,,,,GO LTF,29/03/1989,PRIVATE,
+243,18/06/1988,PRIVATE,173,177,Male,Birth/Hatch,18/06/1988,STCATHER N,
+,,,,,,Transfer,29/03/1989,PRIVATE,
+,,,,,,GO LTF,29/03/1989,PRIVATE,
+244,25/06/1988,PRIVATE,173,177,Male,Birth/Hatch,25/06/1988,"STCATHER
+N",
+,,,,,,Transfer,29/03/1989,PRIVATE,
+,,,,,,GO LTF,29/03/1989,PRIVATE,
+245,01/07/1988,PRIVATE,173,177,Female,Birth/Hatch,01/07/1988,"STCATHER
+N",
+,,,,,,Transfer,29/03/1989,PRIVATE,
+,,,,,,GO LTF,29/03/1989,PRIVATE,
+246,23/05/1989,V.D.BRINK,173,177,Female,Birth/Hatch,23/05/1989,STCATHER N,
+,,,,,,Transfer,01/02/1990,NY BRONX,
+,,,,,,Transfer,09/02/1990,V.D.BRINK,
+,,,,,,GO LTF,09/02/1990,V.D.BRINK,
+247,24/05/1989,PRIVATE,173,177,Male,Birth/Hatch,24/05/1989,STCATHER N,
+,,,,,,Transfer,25/07/1990,YULEE,
+,,,,,,Transfer,24/03/2000,"STCATHER
+N",
+,,,,,,Transfer,20/11/2003,PRIVATE,
+,,,,,,GO LTF,20/11/2003,PRIVATE,
+248,24/05/1989,V.D.BRINK,184,176,Male,Birth/Hatch,24/05/1989,STCATHER N,
+,,,,,,Transfer,01/02/1990,NY BRONX,
+,,,,,,Transfer,09/02/1990,V.D.BRINK,
+,,,,,,GO LTF,09/02/1990,V.D.BRINK,
+249,27/05/1989,STOCKHOL M,173,177,Female,Birth/Hatch,27/05/1989,STCATHER N,
+,,,,,,Transfer,18/12/1990,"STOCKHOL
+M",
+,,,,,,GO LTF,18/12/1990,STOCKHOL M,
+250,29/05/1989,"STOCKHOL
+M",3,175,Male,Birth/Hatch,29/05/1989,"STCATHER
+N",
+,,,,,,Transfer,18/12/1990,STOCKHOL M,
+,,,,,,GO LTF,18/12/1990,"STOCKHOL
+M",
+251,29/05/1989,STOCKHOL M,3,175,Female,Birth/Hatch,29/05/1989,STCATHER N,
+,,,,,,Transfer,18/12/1990,STOCKHOL M,
+,,,,,,GO LTF,18/12/1990,STOCKHOL M,
+252,30/05/1989,"STOCKHOL
+M",184,176,Male,Birth/Hatch,30/05/1989,"STCATHER
+N",
+,,,,,,Transfer,18/12/1990,STOCKHOL M,
+,,,,,,GO LTF,18/12/1990,"STOCKHOL
+M",
+253,01/06/1989,STCATHER N,3,175,Undetermin ed,Birth/Hatch,01/06/1989,STCATHER N,
+,,,,,,Death,01/08/1989,"STCATHER
+N",
+254,06/06/1989,FAUNALIN K,173,177,Undetermin ed,Birth/Hatch,06/06/1989,STCATHER N,
+,,,,,,GO LTF,01/08/1989,"FAUNALIN
+K",
+255,05/05/1990,STCATHER N,173,177,Undetermin ed,Birth/Hatch,05/05/1990,STCATHER N,
+,,,,,,Death,12/07/1990,STCATHER N,
+256,07/05/1990,STCATHER N,173,177,Undetermin ed,Birth/Hatch,07/05/1990,STCATHER N,
+,,,,,,Death,12/07/1990,"STCATHER
+N",
+257,09/05/1990,STCATHER N,173,177,Undetermin ed,Birth/Hatch,09/05/1990,STCATHER N,
+,,,,,,Death,12/07/1990,"STCATHER
+N",
+258,18/06/1991,KALENAK,184,176,Undetermin ed,Birth/Hatch,18/06/1991,STCATHER N,
+,,,,,,Transfer,14/08/1991,KALENAK,
+,,,,,,GO LTF,14/08/1991,KALENAK,
+259,18/06/1991,KALENAK,184,176,Undetermin ed,Birth/Hatch,18/06/1991,STCATHER N,
+,,,,,,Transfer,14/08/1991,KALENAK,
+,,,,,,GO LTF,14/08/1991,KALENAK,
+260,21/06/1991,KALENAK,184,176,Undetermin ed,Birth/Hatch,21/06/1991,STCATHER N,
+,,,,,,Transfer,14/08/1991,KALENAK,
+,,,,,,GO LTF,14/08/1991,KALENAK,
+261,25/06/1991,KALENAK,184,176,Undetermin ed,Birth/Hatch,25/06/1991,STCATHER N,
+,,,,,,Transfer,14/08/1991,KALENAK,
+,,,,,,GO LTF,14/08/1991,KALENAK,
+262,13/07/1991,KALENAK,184,176,Undetermin ed,Birth/Hatch,13/07/1991,STCATHER N,
+,,,,,,Transfer,14/08/1991,KALENAK,
+,,,,,,GO LTF,14/08/1991,KALENAK,
+263,16/07/1991,KALENAK,184,176,Undetermin ed,Birth/Hatch,16/07/1991,STCATHER N,
+,,,,,,Transfer,14/08/1991,KALENAK,
+,,,,,,GO LTF,14/08/1991,KALENAK,
+264,19/07/1991,KALENAK,184,176,Undetermin ed,Birth/Hatch,19/07/1991,STCATHER N,
+,,,,,,Transfer,14/08/1991,KALENAK,
+,,,,,,GO LTF,14/08/1991,KALENAK,
+265,30/05/1993,KALENAK,184,176,Undetermin ed,Birth/Hatch,30/05/1993,STCATHER N,
+,,,,,,Transfer,17/08/1993,KALENAK,
+,,,,,,GO LTF,17/08/1993,KALENAK,
+266,02/07/1993,STCATHER N,184,176,Undetermin ed,Birth/Hatch,02/07/1993,STCATHER N,
+,,,,,,Death,06/07/1993,STCATHER N,
+267,09/07/1993,KALENAK,184,176,Undetermin ed,Birth/Hatch,09/07/1993,STCATHER N,
+,,,,,,Transfer,17/08/1993,KALENAK,
+,,,,,,GO LTF,17/08/1993,KALENAK,
+268,22/05/1994,FAUNALIN K,184,176,Undetermin ed,Birth/Hatch,22/05/1994,STCATHER N,
+,,,,,,Transfer,05/11/1994,"FAUNALIN
+K",
+,,,,,,GO LTF,05/11/1994,FAUNALIN K,
+269,26/05/1994,FAUNALIN K,184,176,Undetermin ed,Birth/Hatch,26/05/1994,STCATHER N,
+,,,,,,Transfer,05/11/1994,FAUNALIN K,
+,,,,,,GO LTF,05/11/1994,FAUNALIN K,
+270,07/07/1994,POWER R,184,176,Undetermin ed,Birth/Hatch,07/07/1994,STCATHER N,
+,,,,,,Transfer,27/09/1994,POWER R,
+,,,,,,GO LTF,27/09/1994,POWER R,
+271,09/07/1994,POWER R,184,176,Undetermin ed,Birth/Hatch,09/07/1994,STCATHER N,
+,,,,,,Transfer,27/09/1994,POWER R,
+,,,,,,GO LTF,27/09/1994,POWER R,
+272,21/08/1994,FAUNALIN K,184,176,Female,Birth/Hatch,21/08/1994,STCATHER N,
+,,,,,,Transfer,10/03/1995,"FAUNALIN
+K",
+,,,,,,GO LTF,10/03/1995,FAUNALIN K,
+273,21/08/1994,"FAUNALIN
+K",184,176,Male,Birth/Hatch,21/08/1994,"STCATHER
+N",
+,,,,,,Transfer,10/03/1995,FAUNALIN K,
+,,,,,,GO LTF,10/03/1995,FAUNALIN K,
+274,23/08/1994,FAUNALIN K,184,176,Male,Birth/Hatch,23/08/1994,STCATHER N,
+,,,,,,Transfer,10/03/1995,"FAUNALIN
+K",
+,,,,,,GO LTF,10/03/1995,FAUNALIN K,
+275,06/06/1998,"STCATHER
+N",3,277,"Undetermin
+ed",Birth/Hatch,06/06/1998,"STCATHER
+N",
+,,,,,,Death,11/07/1998,STCATHER N,
+276,07/06/1998,"STCATHER
+N",3,277,"Undetermin
+ed",Birth/Hatch,07/06/1998,"STCATHER
+N",
+,,,,,,Death,28/08/1998,STCATHER N,
+277,"01/01/1970
++/- 2 year",STCATHER N,WILD,WILD,Female,Birth/Hatch,"01/01/1970
++/- 2 year",Undetermin ed,
+,,,,,,Wild Capture,"01/01/1970
++/- 2 year",Undetermin ed,
+,,,,,,Transfer,"01/01/1980
++/- 9 year",UNDETER MI,
+,,,,,,GO LTF,"01/01/1980
++/- 9 year",UNDETER MI,
+,,,,,,"Return from
+LTF",21/11/1989,SOLANO C,
+,,,,,,Transfer,21/11/1989,STCATHER N,
+,,,,,,Death,11/07/1998,"STCATHER
+N",
+278,"01/01/1985
++/- 5 year",V.D.BRINK,UND,UND,Male,Birth/Hatch,"01/01/1985
++/- 5 year",Undetermin ed,
+,,,,,,GO LTF,"01/01/1985
++/- 5 year","UNDETER
+MI",
+,,,,,,Return from LTF,06/05/1989,IRELAND T,
+,,,,,,Transfer,06/05/1989,NY BRONX,
+,,,,,,Transfer,09/02/1990,V.D.BRINK,
+,,,,,,GO LTF,09/02/1990,V.D.BRINK,
+279,"01/01/1976
++/- 5 year",HOUSTON,UND,UND,Male,Birth/Hatch,"01/01/1976
++/- 5 year",Undetermin ed,
+,,,,,,Transfer,28/04/1980,CHATFIEL D,
+,,,,,,Transfer,28/04/1980,HOUSTON,
+,,,,,,Transfer,15/05/1990,"BERRY
+BOB",
+,,,,,,Transfer,01/10/1991,HOUSTON,
+,,,,,,Transfer,31/12/1994,LGL ECOL,
+,,,,,,Transfer,16/01/2001,BIRD ENDO,
+,,,,,,Transfer,07/06/2002,HOUSTON,
+,,,,,,Death,12/08/2009,HOUSTON,
+280,"01/01/1976
++/- 5 year",HOUSTON,UND,UND,Female,Birth/Hatch,"01/01/1976
++/- 5 year","Undetermin
+ed",
+,,,,,,Transfer,17/07/1980,CHATFIEL D,
+,,,,,,Transfer,17/07/1980,HOUSTON,
+,,,,,,Transfer,15/05/1990,BERRY BOB,
+,,,,,,Transfer,01/10/1991,HOUSTON,
+,,,,,,Transfer,31/12/1994,LGL ECOL,
+,,,,,,Transfer,15/01/2001,HOUSTON,
+,,,,,,Transfer,16/01/2001,BIRD ENDO,
+,,,,,,Transfer,07/03/2002,HOUSTON,
+,,,,,,Death,22/06/2009,HOUSTON,
+281,"01/09/1998
++/- 1 month",LOSANGEL E,279,280,Male,Birth/Hatch,"01/09/1998
++/- 1 month",HOUSTON,
+,,,,,,Transfer,13/01/2001,GALLOWA YB,
+,,,,,,GO LTF,13/01/2001,"GALLOWA
+YB",
+,,,,,,Return from LTF,01/01/2002,GALLOWA YB,
+,,,,,,Transfer,14/09/2016,"HEMKER
+GF",
+,,,,,,Return from LTF,13/06/2017,HEMKER GF,
+,,,,,,Transfer,13/06/2017,LOSANGEL E,
+282,"01/01/1996
++/- 1 year",HEMKER GF,279,280,Male,Birth/Hatch,"01/01/1996
++/- 1 year",HOUSTON,
+,,,,,,Transfer,13/01/2001,HOUSTON,
+,,,,,,Transfer,14/09/2016,HEMKER GF,
+283,"01/01/1999
++/- 1 year",HEMKER GF,279,280,Male,Birth/Hatch,"01/01/1999
++/- 1 year",HOUSTON,
+,,,,,,Transfer,13/01/2001,HOUSTON,
+,,,,,,Transfer,04/09/2016,HEMKER GF,
+,,,,,,Death,"13/09/2019
++/- 1 month","HEMKER
+GF",
+284,"01/01/1998
++/- 1 year",ISSAQUAH,279,280,Male,Birth/Hatch,"01/01/1998
++/- 1 year",HOUSTON,
+,,,,,,Transfer,13/01/2001,HOUSTON,
+,,,,,,Transfer,01/12/2011,ISSAQUAH,
+285,11/02/2006,CRAWFRD W,185,186,Undetermin ed,Birth/Hatch,11/02/2006,SANFORD,
+,,,,,,Transfer,14/04/2006,DREHER PA,
+,,,,,,Transfer,17/11/2021,CRAWFRD W,
+286,11/02/2006,"LOSANGEL
+E",185,186,Female,Birth/Hatch,11/02/2006,SANFORD,
+,,,,,,Transfer,14/04/2006,DREHER PA,
+,,,,,,Transfer,27/07/2017,"LOSANGEL
+E",
+,,,,,,Death,21/11/2020,LOSANGEL E,
+287,23/02/2006,"DREHER
+PA",185,186,Male,Birth/Hatch,23/02/2006,SANFORD,
+,,,,,,Transfer,14/04/2006,DREHER PA,
+288,26/06/2007,TRACY AV,UND,UND,Female,Birth/Hatch,26/06/2007,"FALLBROO
+K",
+,,,,,,GO LTF,26/06/2007,FALLBROO K,
+,,,,,,Return from LTF,21/03/2008,FALLBROO K,
+,,,,,,Transfer,21/03/2008,TRACY AV,
+,,,,,,Death,09/09/2011,TRACY AV,
+289,29/05/1991,ISSAQUAH,279,280,Female,Birth/Hatch,29/05/1991,"BERRY
+BOB",
+,,,,,,GO LTF,29/05/1991,BERRY BOB,
+,,,,,,Return from LTF,01/10/1991,BERRY BOB,
+,,,,,,Transfer,01/10/1991,HOUSTON,
+,,,,,,Transfer,05/02/2009,ISSAQUAH,
+,,,,,,Death,28/11/2013,ISSAQUAH,
+290,27/06/2005,SAN FRAN,185,186,Male,Birth/Hatch,27/06/2005,SANFORD,
+,,,,,,Transfer,16/03/2006,DISNEY AK,
+,,,,,,Transfer,01/06/2016,SEDGWICK,
+,,,,,,Transfer,17/06/2021,ATASCADE R,
+,,,,,,Transfer,07/10/2021,SAN FRAN,
+292,28/05/2000,"FORTWOR
+TH",UND,UND,Female,Birth/Hatch,28/05/2000,"Undetermin
+ed",
+,,,,,,GO LTF,28/05/2000,UNDETER MI,
+,,,,,,"Return from
+LTF",12/05/2009,"UNDETER
+MI",
+,,,,,,Transfer,23/12/2009,FORTWOR TH,
+,,,,,,Transfer,23/12/2009,"FORTWOR
+TH",
+294,"18/11/1979
++/- 3 year",BUSCH TAM,UND,UND,Male,Birth/Hatch,"18/11/1979
++/- 3 year",PET FARM,
+,,,,,,Transfer,18/11/1979,"BUSCH
+TAM",
+,,,,,,Death,16/12/2017,BUSCH TAM,
+295,08/03/2005,"BLOOMING
+T",UND,UND,Female,Birth/Hatch,08/03/2005,"Undetermin
+ed",
+,,,,,,Transfer,12/05/2005,BLOOMING T,
+,,,,,,Transfer,15/12/2006,ADVENTUR E,
+,,,,,,Death,14/05/2008,BLOOMING T,
+296,"01/01/2004
++/- 3 year",VICTOR TX,UND,UND,Male,Birth/Hatch,"01/01/2004
++/- 3 year","Undetermin
+ed",
+,,,,,,Transfer,01/01/2006,VICTOR TX,
+,,,,,,GO LTF,01/01/2006,VICTOR TX,
+297,28/06/2000,SANFORD,185,186,Male,Birth/Hatch,28/06/2000,SANFORD,
+298,"01/01/2006
++/- 1 year",PRIVATE,UND,UND,Female,Birth/Hatch,"01/01/2006
++/- 1 year",Undetermin ed,
+,,,,,,Transfer,12/04/2010,"BUSCH
+TAM",
+,,,,,,GO LTF,14/08/2021,PRIVATE,
+299,29/06/2005,"BUSCH
+TAM",185,186,Female,Birth/Hatch,29/06/2005,SANFORD,
+,,,,,,Transfer,16/03/2006,DISNEY AK,
+,,,,,,Transfer,28/04/2016,BUSCH TAM,
+300,07/07/2011,OKLAHOM A,126,133,Male,Birth/Hatch,07/07/2011,TULSA,
+,,,,,,Transfer,18/04/2013,OKLAHOM A,
+,,,,,,Death,15/02/2017,"OKLAHOM
+A",
+301,22/03/2011,BATONRO UG,79,21,Female,Birth/Hatch,22/03/2011,BATONRO UG,
+302,23/06/2010,DALLAS,UND,UND,Male,Birth/Hatch,23/06/2010,"Undetermin
+ed",
+,,,,,,Transfer,03/11/2010,WORLDBIR D,
+,,,,,,Transfer,21/03/2011,DALLAS,
+,,,,,,Transfer,09/11/2011,WORLDBIR D,
+,,,,,,Transfer,13/02/2012,DALLAS,
+,,,,,,Transfer,12/09/2017,SD-WAP,
+,,,,,,Transfer,21/02/2019,DALLAS,
+303,25/06/2010,DALLAS,UND,UND,Male,Birth/Hatch,25/06/2010,PRIVATE,
+,,,,,,Transfer,03/11/2010,"WORLDBIR
+D",
+,,,,,,Transfer,21/03/2011,DALLAS,
+,,,,,,Transfer,09/11/2011,WORLDBIR D,
+,,,,,,Transfer,13/02/2012,DALLAS,
+,,,,,,Transfer,12/09/2017,SD-WAP,
+,,,,,,Transfer,21/02/2019,DALLAS,
+304,01/06/2010,DALLAS,UND,UND,Male,Birth/Hatch,01/06/2010,PRIVATE,
+,,,,,,Transfer,22/07/2010,WORLDBIR D,
+,,,,,,Transfer,21/03/2011,DALLAS,
+,,,,,,Transfer,09/11/2011,"WORLDBIR
+D",
+,,,,,,Transfer,13/02/2012,DALLAS,
+305,14/06/2010,DALLAS,UND,UND,Male,Birth/Hatch,14/06/2010,PRIVATE,
+,,,,,,Transfer,22/07/2010,"WORLDBIR
+D",
+,,,,,,Transfer,21/03/2011,DALLAS,
+,,,,,,Transfer,09/11/2011,WORLDBIR D,
+,,,,,,Transfer,13/02/2012,DALLAS,
+,,,,,,Transfer,03/11/2012,DALLAS,
+306,"01/07/1979
++/- 5 year",ISSAQUAH,UND,UND,Male,Birth/Hatch,"01/07/1979
++/- 5 year",Undetermin ed,
+,,,,,,Transfer,23/08/2014,ISSAQUAH,
+,,,,,,Death,08/12/2021,ISSAQUAH,
+308,"01/04/2004
++/- 1 year",ISSAQUAH,UND,UND,Female,Birth/Hatch,"01/04/2004
++/- 1 year",Undetermin ed,
+,,,,,,Transfer,07/02/2014,ISSAQUAH,
+309,"01/06/1979
++/- 3 year",ISSAQUAH,UND,UND,Female,Birth/Hatch,"01/06/1979
++/- 3 year",Undetermin ed,
+,,,,,,Transfer,23/08/2014,ISSAQUAH,
+,,,,,,Death,12/12/2021,ISSAQUAH,
+310,22/06/2003,ISSAQUAH,UND,UND,Female,Birth/Hatch,22/06/2003,Undetermin ed,
+,,,,,,Transfer,23/08/2014,ISSAQUAH,
+311,"11/05/2012
++/- 1 year",COLUMBU S,UND,UND,Male,Birth/Hatch,"11/05/2012
++/- 1 year",Undetermin ed,
+,,,,,,Transfer,11/05/2012,COLUMBU S,
+312,"09/04/2012
++/- 1 year",COLUMBU S,UND,UND,Female,Birth/Hatch,"09/04/2012
++/- 1 year",Undetermin ed,
+,,,,,,Transfer,09/04/2012,"COLUMBU
+S",
+313,"09/04/2012
++/- 1 year",COLUMBU S,UND,UND,Female,Birth/Hatch,"09/04/2012
++/- 1 year",Undetermin ed,
+,,,,,,Transfer,09/04/2012,"COLUMBU
+S",
+314,28/06/2010,WORLDBIR D,UND,UND,Male,Birth/Hatch,28/06/2010,Undetermin ed,
+,,,,,,Transfer,03/11/2010,"WORLDBIR
+D",
+315,01/07/2010,WORLDBIR D,UND,UND,Male,Birth/Hatch,01/07/2010,Undetermin ed,
+,,,,,,Transfer,03/11/2010,"WORLDBIR
+D",
+316,17/06/2010,WORLDBIR D,UND,UND,Female,Birth/Hatch,17/06/2010,Undetermin ed,
+,,,,,,Transfer,22/07/2010,WORLDBIR D,
+317,02/06/2010,WORLDBIR D,UND,UND,Female,Birth/Hatch,02/06/2010,Undetermin ed,
+,,,,,,Transfer,22/07/2010,"WORLDBIR
+D",
+318,19/06/2015,BUSCH TAM,31,298,Male,Birth/Hatch,19/06/2015,BUSCH TAM,
+319,06/07/2015,"OKLAHOM
+A",126,133,Male,Birth/Hatch,06/07/2015,TULSA,
+,,,,,,Transfer,29/12/2017,OKLAHOM A,
+320,"06/07/2015
++/- 1 month","ATASCADE
+R",126,133,"Undetermin
+ed",Birth/Hatch,"06/07/2015
++/- 1 month",TULSA,
+,,,,,,Transfer,12/05/2018,"ATASCADE
+R",
+321,19/06/2017,TULSA,126,133,Female,Birth/Hatch,19/06/2017,TULSA,
+,,,,,,Death,02/08/2017,TULSA,
+322,29/06/2017,"OKLAHOM
+A",126,133,Male,Birth/Hatch,29/06/2017,TULSA,
+,,,,,,Transfer,21/01/2020,OKLAHOM A,
+323,01/09/2015,"Birds N Beasts Inc/BIRDSN
+BEA",UND,UND,Female,Birth/Hatch,01/09/2015,Undetermin ed,
+,,,,,,GO LTF,01/09/2015,UNDETER MI,
+,,,,,,Return from LTF,Undetermin ed,UNDETER MI,
+,,,,,,Transfer,Undetermin ed,"Birds N Beasts Inc/BIRDSN
+BEA",
+,,,,,,Return from LTF,18/05/2016,"Birds N Beasts Inc/BIRDSN
+BEA",
+,,,,,,Transfer,19/05/2016,LOUISVILL,
+,,,,,,Transfer,19/09/2016,"Birds N Beasts Inc/BIRDSN
+BEA",
+,,,,,,Transfer,11/05/2017,LOUISVILL,
+,,,,,,Transfer,05/09/2017,Birds N Beasts Inc/BIRDSN BEA,
+324,"19/05/2015
++/- 6 month",Birds N Beasts Inc/BIRDSN BEA,UND,UND,Female,Birth/Hatch,"19/05/2015
++/- 6 month",Undetermin ed,
+,,,,,,GO LTF,"19/05/2015
++/- 6 month",UNDETER MI,
+Studbook ID,Hatch Date,Current Location,Sire,Dam,Sex Type,Event Type,Date,Location,
+,,,,,,"Return from
+LTF","Undetermin
+ed","UNDETER
+MI",
+,,,,,,Transfer,Undetermin ed,Birds N Beasts Inc/BIRDSN BEA,
+,,,,,,Return from LTF,19/05/2016,"Birds N Beasts Inc/BIRDSN
+BEA",
+,,,,,,Transfer,19/05/2016,LOUISVILL,
+,,,,,,Transfer,19/09/2016,"Birds N Beasts Inc/BIRDSN
+BEA",
+,,,,,,GO LTF,19/09/2016,"Birds N Beasts Inc/BIRDSN
+BEA",
+325,12/04/2016,OMAHA,UND,UND,Male,Birth/Hatch,12/04/2016,"Undetermin
+ed",
+,,,,,,Transfer,17/04/2017,OMAHA,
+326,18/07/2016,OMAHA,UND,UND,Undetermin ed,Birth/Hatch,18/07/2016,Undetermin ed,
+,,,,,,Transfer,17/04/2017,OMAHA,
+327,16/07/2016,OKLAHOM A,126,133,Male,Birth/Hatch,16/07/2016,TULSA,
+,,,,,,Transfer,21/01/2020,"OKLAHOM
+A",
+328,Undetermin ed,WORLDBIR D,UND,UND,Male,Birth/Hatch,Undetermin ed,Undetermin ed,
+,,,,,,Transfer,"01/01/1999
++/- 6 month","David and Mary Flom/DFLO
+M",
+,,,,,,Transfer,22/05/2000,WORLDBIR D,
+329,04/02/2012,BATONRO UG,79,21,Male,Birth/Hatch,04/02/2012,BATONRO UG,
+330,Undetermin ed,LANDRYSA Q,UND,UND,Male,Birth/Hatch,Undetermin ed,Undetermin ed,
+,,,,,,Transfer,Undetermin ed,"Rainforest Cafe -
+Galveston/R CAFEGALV",
+,,,,,,Transfer,"01/09/2005
++/- 15 day",LANDRYSA Q,
+331,01/01/1981,CHATFIEL D,WILD,WILD,Male,Birth/Hatch,01/01/1981,Bolivia / ~,
+,,,,,,Wild Capture,Undetermin ed,Bolivia / ~,
+,,,,,,Transfer,"Undetermin
+ed",LAGES ALB,
+,,,,,,Return from LTF,29/08/1984,LAGES ALB,
+,,,,,,Transfer,29/08/1984,NATAVPGH,
+,,,,,,Transfer,08/03/1985,CHATFIEL D,
+,,,,,,Death,20/12/1987,"CHATFIEL
+D",
+332,"12/07/1988
++/- 15 day",BRZY RIDG,UND,UND,Male,Birth/Hatch,"12/07/1988
++/- 15 day",CHATFIEL D,
+,,,,,,Transfer,11/11/1988,"LAKEBUEN
+A",
+,,,,,,Transfer,07/10/1998,NATAVPGH,
+,,,,,,Transfer,06/09/2005,BRZY RIDG,
+,,,,,,GO LTF,06/09/2005,BRZY RIDG,
+333,28/06/1999,STAFF,332,2,Female,Birth/Hatch,28/06/1999,NATAVPGH,
+,,,,,,Transfer,25/08/2021,STAFF,
+334,27/08/2000,PARROTTR U,332,2,Male,Birth/Hatch,27/08/2000,NATAVPGH,
+,,,,,,Transfer,29/05/2001,PARROTTR U,
+,,,,,,GO LTF,29/05/2001,PARROTTR U,
+335,29/08/2000,PARROTTR U,332,2,Female,Birth/Hatch,29/08/2000,NATAVPGH,
+,,,,,,Transfer,29/05/2001,PARROTTR U,
+,,,,,,GO LTF,29/05/2001,PARROTTR U,
+336,26/04/2002,BRZY RIDG,332,2,Male,Birth/Hatch,26/04/2002,NATAVPGH,
+,,,,,,Transfer,09/02/2005,BRZY RIDG,
+,,,,,,GO LTF,09/02/2005,BRZY RIDG,
+337,22/06/2002,NATAVPGH,332,2,"Undetermin
+ed",Birth/Hatch,22/06/2002,NATAVPGH,
+,,,,,,Death,29/06/2002,NATAVPGH,
+338,02/07/2002,BRZY RIDG,332,2,Male,Birth/Hatch,02/07/2002,NATAVPGH,
+,,,,,,Transfer,09/02/2005,BRZY RIDG,
+,,,,,,GO LTF,09/02/2005,BRZY RIDG,
+339,07/05/2003,NATAVPGH,332,2,Female,Birth/Hatch,07/05/2003,NATAVPGH,
+,,,,,,Death,02/03/2008,NATAVPGH,
+340,01/09/2007,"WILD
+WRLD",UND,UND,Female,Birth/Hatch,01/09/2007,OLLSON C,
+,,,,,,Transfer,15/10/2007,WILD WRLD,
+,,,,,,GO LTF,15/10/2007,WILD WRLD,
+341,08/07/2010,WILD WRLD,179,170,Female,Birth/Hatch,08/07/2010,WILD WRLD,
+,,,,,,GO LTF,08/07/2010,"WILD
+WRLD",
+342,Undetermin ed,TEMAIKEN,UND,UND,Female,Birth/Hatch,Undetermin ed,Undetermin ed,
+,,,,,,Transfer,22/03/2002,TEMAIKEN,
+343,"Undetermin
+ed",TEMAIKEN,UND,UND,Male,Birth/Hatch,"Undetermin
+ed","Undetermin
+ed",
+,,,,,,Transfer,04/01/2009,TEMAIKEN,
+344,02/01/2004,TEMAIKEN,UND,342,Male,Birth/Hatch,02/01/2004,TEMAIKEN,
+345,19/10/2012,TEMAIKEN,UND,UND,Undetermin ed,Birth/Hatch,19/10/2012,TEMAIKEN,
+346,29/11/2013,TEMAIKEN,UND,UND,Undetermin ed,Birth/Hatch,29/11/2013,TEMAIKEN,
+,,,,,,Death,05/06/2021,TEMAIKEN,
+347,26/11/2014,TEMAIKEN,UND,UND,Undetermin ed,Birth/Hatch,26/11/2014,TEMAIKEN,
+,,,,,,Death,30/06/2022,TEMAIKEN,
+348,06/06/2018,TULSA,126,133,Undetermin ed,Birth/Hatch,06/06/2018,TULSA,
+,,,,,,Death,20/06/2018,TULSA,
+349,06/06/2018,TULSA,126,133,"Undetermin
+ed",Birth/Hatch,06/06/2018,TULSA,
+,,,,,,Death,20/06/2018,TULSA,
+350,17/06/2009,"OKLAHOM
+A",31,46,Female,Birth/Hatch,17/06/2009,"BUSCH
+TAM",
+,,,,,,Transfer,28/03/2010,SEA WORLD,
+,,,,,,Transfer,23/10/2015,"SEAWLD
+TX",
+,,,,,,Transfer,30/05/2019,BUSCH TAM,
+,,,,,,Transfer,03/03/2022,"OKLAHOM
+A",
+351,Undetermin ed,OKLAHOM A,UND,UND,Male,Birth/Hatch,Undetermin ed,FALLBROO K,
+,,,,,,Transfer,16/03/2010,SEA WORLD,
+,,,,,,Transfer,23/10/2015,SEAWLD TX,
+,,,,,,Transfer,30/05/2019,"BUSCH
+TAM",
+,,,,,,Transfer,03/03/2022,OKLAHOM A,
+352,07/07/2018,LINCOLN C,UND,UND,Male,Birth/Hatch,07/07/2018,"Undetermin
+ed",
+,,,,,,GO LTF,"08/08/2018
++/- 1 month",UNDETER MI,
+,,,,,,"Return from
+LTF",15/04/2019,"UNDETER
+MI",
+,,,,,,Transfer,15/04/2019,LINCOLN C,
+353,Undetermin ed,ISSAQUAH,UND,UND,Female,Birth/Hatch,Undetermin ed,Undetermin ed,
+,,,,,,GO LTF,Undetermin ed,UNDETER MI,
+,,,,,,Return from LTF,Undetermin ed,UNDETER MI,
+,,,,,,Transfer,Undetermin ed,PRIVATE,
+,,,,,,Transfer,02/05/2019,ISSAQUAH,
+354,"Undetermin
+ed",ISSAQUAH,UND,UND,Male,Birth/Hatch,"Undetermin
+ed","Undetermin
+ed",
+,,,,,,GO LTF,"Undetermin
+ed","UNDETER
+MI",
+,,,,,,Return from LTF,Undetermin ed,UNDETER MI,
+,,,,,,Transfer,"Undetermin
+ed",PRIVATE,
+,,,,,,Transfer,05/02/2019,ISSAQUAH,
+355,"~<01/06/20
+18",SEDGWICK,UND,UND,Male,Birth/Hatch,"~<01/06/20
+18","Indetermina
+te",
+,,,,,,Transfer,09/03/2022,SEDGWICK,
+356,28/06/2012,TULSA,126,133,Male,Birth/Hatch,28/06/2012,TULSA,
+,,,,,,Death,06/04/2013,TULSA,
+357,10/07/2011,TULSA,126,133,"Undetermin
+ed",Birth/Hatch,10/07/2011,TULSA,
+,,,,,,Death,10/07/2011,TULSA,
+358,22/07/2003,SANFORD,185,186,Undetermin ed,Birth/Hatch,22/07/2003,SANFORD,
+,,,,,,Death,30/07/2003,SANFORD,
+359,19/07/2003,SANFORD,185,186,Undetermin ed,Birth/Hatch,19/07/2003,SANFORD,
+,,,,,,Death,30/07/2003,SANFORD,
+360,06/07/2000,SANFORD,185,186,Undetermin ed,Birth/Hatch,06/07/2000,SANFORD,
+,,,,,,Death,08/07/2000,SANFORD,
+361,17/07/1998,SANFORD,185,186,Undetermin ed,Birth/Hatch,17/07/1998,SANFORD,
+,,,,,,Death,20/07/1998,SANFORD,
+362,15/07/1998,SANFORD,185,186,"Undetermin
+ed",Birth/Hatch,15/07/1998,SANFORD,
+,,,,,,Death,21/07/1998,SANFORD,
+363,10/07/2018,EL PASO,UND,UND,Female,Birth/Hatch,10/07/2018,Undetermin ed,
+,,,,,,Transfer,12/09/2018,WCEB,
+,,,,,,Transfer,15/03/2019,EL PASO,
+364,10/07/2018,EL PASO,UND,UND,Female,Birth/Hatch,10/07/2018,Undetermin ed,
+,,,,,,Transfer,12/09/2018,WCEB,
+,,,,,,Transfer,15/03/2019,EL PASO,
+365,20/07/2004,MENG T,185,186,"Undetermin
+ed",Birth/Hatch,20/07/2004,SANFORD,
+,,,,,,Transfer,22/09/2004,MENG T,
+366,"~ from 01/01/2000
+to 01/01/2004",PRIVATE,UND,UND,Undetermin ed,Birth/Hatch,"~ from 01/01/2000
+to 01/01/2004",Undetermin ed,
+,,,,,,Transfer,07/06/2020,WILMINGT N,
+,,,,,,Transfer,04/09/2020,PRIVATE,
+367,"~ from 31/07/1999
+to 30/09/1999",HOUSTON,279,280,Male,Birth/Hatch,"~ from 31/07/1999
+to 30/09/1999",GALLOWA YB,
+,,,,,,Transfer,13/01/2001,HOUSTON,
+,,,,,,Death,01/05/2007,HOUSTON,
+368,"~ from 31/07/2000
+to 30/09/2000",BRZY RIDG,279,280,Female,Birth/Hatch,"~ from 31/07/2000
+to 30/09/2000",GALLOWA YB,
+,,,,,,Transfer,13/01/2001,HOUSTON,
+,,,,,,Transfer,14/03/2006,BRZY RIDG,
+369,"~ from 31/07/1997
+to 30/09/1997",BRZY RIDG,279,280,Female,Birth/Hatch,"~ from 31/07/1997
+to 30/09/1997",GALLOWA YB,
+,,,,,,Transfer,13/01/2001,HOUSTON,
+,,,,,,Transfer,14/03/2006,BRZY RIDG,
+370,27/02/1994,Undetermin ed,279,280,Undetermin ed,Birth/Hatch,27/02/1994,HOUSTON,
+,,,,,,Transfer,14/07/1994,LGL ECOL,
+,,,,,,GO LTF,31/12/2008,"Undetermin
+ed",
+371,04/07/1992,HOUSTON,279,280,Undetermin ed,Birth/Hatch,04/07/1992,HOUSTON,
+,,,,,,Death,22/07/1992,HOUSTON,
+372,09/07/1987,CHATFIEL D,279,280,Undetermin ed,Birth/Hatch,09/07/1987,HOUSTON,
+,,,,,,Transfer,27/10/1988,"CHATFIEL
+D",
+373,06/10/1987,CHATFIEL D,279,280,Male,Birth/Hatch,06/10/1987,HOUSTON,
+,,,,,,Transfer,05/06/1988,"CHATFIEL
+D",
+374,"~ from 31/07/2000
+to
+30/09/2000",BRZY RIDG,279,280,Male,Birth/Hatch,"~ from 31/07/2000
+to
+30/09/2000",GALLOWA YB,
+,,,,,,Transfer,13/01/2001,HOUSTON,
+,,,,,,Transfer,14/03/2006,BRZY RIDG,
+375,"~ from 31/07/1998
+to 30/09/1998",BRZY RIDG,279,280,Female,Birth/Hatch,"~ from 31/07/1998
+to 30/09/1998",GALLOWA YB,
+,,,,,,Transfer,13/01/2001,HOUSTON,
+,,,,,,Transfer,14/03/2006,BRZY RIDG,
+376,30/06/1992,HOUSTON,279,280,Undetermin ed,Birth/Hatch,30/06/1992,HOUSTON,
+,,,,,,Death,22/07/1992,HOUSTON,
+377,30/06/1992,HOUSTON,279,280,Undetermin ed,Birth/Hatch,30/06/1992,HOUSTON,
+,,,,,,Death,30/07/1992,HOUSTON,
+378,"~ from 31/07/1995
+to 30/09/1995",HOUSTON,279,280,Female,Birth/Hatch,"~ from 31/07/1995
+to 30/09/1995",GALLOWA YB,
+,,,,,,Transfer,13/01/2001,HOUSTON,
+,,,,,,Death,29/06/2001,HOUSTON,
+379,18/07/2004,MENG T,185,186,"Undetermin
+ed",Birth/Hatch,18/07/2004,SANFORD,
+,,,,,,Transfer,22/09/2004,MENG T,
+380,15/07/2001,MENG T,185,186,"Undetermin
+ed",Birth/Hatch,15/07/2001,SANFORD,
+,,,,,,Transfer,02/08/2001,MENG T,
+381,13/07/2001,MENG T,185,186,"Undetermin
+ed",Birth/Hatch,13/07/2001,SANFORD,
+,,,,,,Transfer,02/08/2001,MENG T,
+382,11/07/2001,MENG T,185,186,"Undetermin
+ed",Birth/Hatch,11/07/2001,SANFORD,
+,,,,,,Transfer,02/08/2001,MENG T,
+383,27/06/2002,MENG T,185,186,"Undetermin
+ed",Birth/Hatch,27/06/2002,SANFORD,
+,,,,,,Transfer,18/09/2002,MENG T,
+384,15/06/1999,PRIVATE,185,186,Undetermin ed,Birth/Hatch,15/06/1999,SANFORD,
+,,,,,,Transfer,08/07/1999,PRIVATE,
+385,18/06/1999,SANFORD,185,186,Undetermin ed,Birth/Hatch,18/06/1999,SANFORD,
+,,,,,,Death,22/06/1999,SANFORD,
+386,28/06/2002,SANFORD,185,186,Undetermin ed,Birth/Hatch,28/06/2002,SANFORD,
+,,,,,,Death,08/07/2002,SANFORD,
+387,07/07/1998,MENG T,185,186,"Undetermin
+ed",Birth/Hatch,07/07/1998,SANFORD,
+,,,,,,Transfer,01/10/1998,MENG T,
+388,22/06/1991,ALENTADO,185,186,"Undetermin
+ed",Birth/Hatch,22/06/1991,SANFORD,
+,,,,,,Transfer,28/10/1991,ALENTADO,
+389,11/05/1998,MENG T,185,186,Undetermin ed,Birth/Hatch,11/05/1998,SANFORD,
+,,,,,,Transfer,20/12/1998,MENG T,
+390,24/02/1994,Undetermin ed,279,280,Undetermin ed,Birth/Hatch,24/02/1994,HOUSTON,
+,,,,,,Transfer,14/07/1994,LGL ECOL,
+,,,,,,GO LTF,31/12/2008,"Undetermin
+ed",
+391,05/08/1992,PRIVATE,185,186,Male,Birth/Hatch,05/08/1992,SANFORD,
+,,,,,,Transfer,04/06/1993,PRIVATE,
+392,07/08/1992,PRIVATE,185,186,Female,Birth/Hatch,07/08/1992,SANFORD,
+,,,,,,Transfer,04/06/1993,PRIVATE,
+393,26/06/2000,PRIVATE,185,186,Undetermin ed,Birth/Hatch,26/06/2000,SANFORD,
+,,,,,,Transfer,20/07/2000,PRIVATE,
+394,31/05/1991,KALENAK,279,280,Female,Birth/Hatch,31/05/1991,BERRY BOB,
+,,,,,,Transfer,01/10/1991,HOUSTON,
+,,,,,,Transfer,17/03/1992,KALENAK,
+,,,,,,GO LTF,17/03/1992,KALENAK,
+395,12/06/1999,PRIVATE,UND,186,Undetermin ed,Birth/Hatch,12/06/1999,SANFORD,
+,,,,,,Transfer,08/07/1999,PRIVATE,
+396,09/06/1999,PRIVATE,185,186,Undetermin ed,Birth/Hatch,09/06/1999,SANFORD,
+,,,,,,Transfer,08/07/1999,PRIVATE,
+397,13/05/1998,PRIVATE,185,186,Undetermin ed,Birth/Hatch,13/05/1998,SANFORD,
+,,,,,,Transfer,25/02/1999,PRIVATE,
+398,07/05/1998,MENG T,185,186,Undetermin ed,Birth/Hatch,07/05/1998,SANFORD,
+,,,,,,Transfer,20/12/1998,MENG T,
+399,28/07/1997,PRIVATE,185,186,Undetermin ed,Birth/Hatch,28/07/1997,SANFORD,
+,,,,,,Transfer,07/08/1997,PRIVATE,
+400,26/07/1997,PRIVATE,185,186,Undetermin ed,Birth/Hatch,26/07/1997,SANFORD,
+,,,,,,Transfer,07/08/1997,PRIVATE,
+401,13/07/1996,MANN J,185,186,"Undetermin
+ed",Birth/Hatch,13/07/1996,SANFORD,
+,,,,,,Transfer,14/08/1996,MANN J,
+402,10/07/1996,MANN J,185,186,"Undetermin
+ed",Birth/Hatch,10/07/1996,SANFORD,
+,,,,,,Transfer,14/08/1996,MANN J,
+403,22/02/1994,Undetermin ed,279,280,Undetermin ed,Birth/Hatch,22/02/1994,HOUSTON,
+,,,,,,Transfer,14/07/1994,LGL ECOL,
+,,,,,,GO LTF,31/12/2008,Undetermin ed,
+404,20/02/1994,"Undetermin
+ed",279,280,"Undetermin
+ed",Birth/Hatch,20/02/1994,HOUSTON,
+,,,,,,Transfer,14/07/1994,LGL ECOL,
+,,,,,,GO LTF,31/12/2008,Undetermin ed,
+405,01/10/1995,PRIVATE,UND,10,Female,Birth/Hatch,01/10/1995,PRIVATE,
+406,04/07/1996,MANN J,185,186,Undetermin ed,Birth/Hatch,04/07/1996,SANFORD,
+,,,,,,Transfer,14/08/1996,MANN J,
+407,19/07/1995,MANN J,185,186,Undetermin ed,Birth/Hatch,19/07/1995,SANFORD,
+,,,,,,Transfer,04/08/1995,MANN J,
+408,17/07/1995,MANN J,185,186,Undetermin ed,Birth/Hatch,17/07/1995,SANFORD,
+,,,,,,Transfer,04/08/1995,MANN J,
+409,15/07/1995,MANN J,185,186,Undetermin ed,Birth/Hatch,15/07/1995,SANFORD,
+,,,,,,Transfer,04/08/1995,MANN J,
+410,21/06/1994,MANN J,185,186,Undetermin ed,Birth/Hatch,21/06/1994,SANFORD,
+,,,,,,Transfer,07/07/1994,MANN J,
+411,20/06/1994,MANN J,185,186,Undetermin ed,Birth/Hatch,20/06/1994,SANFORD,
+,,,,,,Transfer,07/07/1994,MANN J,
+412,19/06/1994,MANN J,185,186,Undetermin ed,Birth/Hatch,19/06/1994,SANFORD,
+,,,,,,Transfer,07/07/1994,MANN J,
+413,30/06/1991,UNKN0WN,41,40,"Undetermin
+ed",Birth/Hatch,30/06/1991,LUBEE,
+,,,,,,Transfer,28/04/1992,UNKNOWN,
+,,,,,,GO LTF,28/04/1992,UNKN0WN,
+414,26/06/1991,ALENTADO,185,186,Undetermin ed,Birth/Hatch,26/06/1991,SANFORD,
+,,,,,,Transfer,28/10/1991,ALENTADO,
+415,24/06/1991,ALENTADO,185,186,Undetermin ed,Birth/Hatch,24/06/1991,SANFORD,
+,,,,,,Transfer,28/10/1991,ALENTADO,
+416,27/05/1991,UNKNOWN,39,38,Undetermin ed,Birth/Hatch,27/05/1991,LUBEE,
+,,,,,,Transfer,28/04/1992,UNKNOWN,
+,,,,,,GO LTF,28/04/1992,UNKNOWN,
+417,25/05/1991,Undetermin ed,39,38,Undetermin ed,Birth/Hatch,25/05/1991,LUBEE,
+,,,,,,Transfer,28/04/1992,UNKNOWN,
+,,,,,,GO LTF,28/04/1992,Undetermin ed,
+418,24/05/1991,"Undetermin
+ed",39,38,"Undetermin
+ed",Birth/Hatch,24/05/1991,LUBEE,
+,,,,,,Transfer,28/04/1992,UNKNOWN,
+,,,,,,GO LTF,28/04/1992,Undetermin ed,
+419,06/10/1987,VELDHOVE N,279,280,Female,Birth/Hatch,06/10/1987,HOUSTON,
+,,,,,,Transfer,10/04/1989,V.D.BRINK,
+,,,,,,Transfer,11/11/1998,"VELDHOVE
+N",
+420,Undetermin ed,CHATFIEL D,279,280,Undetermin ed,Birth/Hatch,Undetermin ed,HOUSTON,
+,,,,,,Transfer,22/07/1987,CHATFIEL D,
+421,Undetermin ed,CHATFIEL D,279,280,Undetermin ed,Birth/Hatch,Undetermin ed,HOUSTON,
+,,,,,,Transfer,22/07/1987,"CHATFIEL
+D",
+422,Undetermin ed,CHATFIEL D,279,280,Undetermin ed,Birth/Hatch,Undetermin ed,HOUSTON,
+,,,,,,Transfer,22/07/1987,"CHATFIEL
+D",
+423,Undetermin ed,WORLDBIR D,UND,UND,Undetermin ed,Birth/Hatch,Undetermin ed,UNKNOWN,
+,,,,,,Transfer,11/05/2008,BRIDGEPR T,
+,,,,,,Transfer,03/09/2008,WORLDBIR D,
+424,08/03/2005,"ADVENTUR
+E",UND,UND,Male,Birth/Hatch,08/03/2005,PRIVATE,
+,,,,,,Transfer,15/12/2006,ADVENTUR E,
+425,"Undetermin
+ed",HAWLEY J,WILD,WILD,Female,Birth/Hatch,"Undetermin
+ed",Bolivia / ~,
+,,,,,,Wild Capture,Undetermin ed,Bolivia,
+,,,,,,Transfer,09/01/1986,"WILD
+WRLD",
+,,,,,,Transfer,24/11/1992,HAWLEY J,
+426,09/07/1998,MENG T,185,186,Undetermin ed,Birth/Hatch,09/07/1998,SANFORD,
+,,,,,,Transfer,01/10/1998,MENG T,
+427,30/07/1997,UNKN0WN,185,186,Undetermin ed,Birth/Hatch,30/07/1997,SANFORD,
+,,,,,,Transfer,07/08/1997,UNKN0WN,
+428,11/05/1991,PRIVATE,UND,UND,"Undetermin
+ed",Birth/Hatch,11/05/1991,"BUSCH
+TAM",
+,,,,,,Transfer,23/06/1993,PRIVATE,
+429,06/05/1998,MENG T,185,186,Undetermin ed,Birth/Hatch,06/05/1998,SANFORD,
+,,,,,,Transfer,20/12/1998,MENG T,
+430,08/07/1996,MANN J,185,186,"Undetermin
+ed",Birth/Hatch,08/07/1996,SANFORD,
+,,,,,,Transfer,14/08/1996,MANN J,
+431,25/07/2003,MENG T,185,186,Undetermin ed,Birth/Hatch,25/07/2003,SANFORD,
+,,,,,,Transfer,03/09/2003,MENG T,
+432,05/07/1996,MANN J,185,186,Undetermin ed,Birth/Hatch,05/07/1996,SANFORD,
+,,,,,,Transfer,14/08/1996,MANN J,
+433,29/06/2000,PRIVATE,185,186,Undetermin ed,Birth/Hatch,29/06/2000,SANFORD,
+,,,,,,Transfer,20/07/2000,PRIVATE,
+434,17/05/1992,BUSCH TAM,UND,UND,Undetermin ed,Birth/Hatch,17/05/1992,BUSCH TAM,
+,,,,,,Death,22/05/1992,BUSCH TAM,
+435,11/07/1998,MENG T,185,186,Undetermin ed,Birth/Hatch,11/07/1998,SANFORD,
+,,,,,,Transfer,01/10/1998,MENG T,

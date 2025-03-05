@@ -1,0 +1,891 @@
+---
+title: "Population Data Management Lab"
+author: "Alicia Rich"
+output:
+  html_document:
+    theme:
+      bootswatch: litera
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    code_folding: "show"
+    fig_caption: true
+    df_print: paged
+params:
+  course: "zoobio"
+  semester: "spring25"
+  studbook_current: "Studbooks/Demo/Studbook_Living.csv"
+  studbook_historic: "Studbooks/Demo/Studbook_Historic.csv"
+  
+---
+
+```{r, include = FALSE}
+library(devtools)
+library(knitr)
+library(conflicted)
+library(downloadthis)
+library(DT)
+library(fontawesome)
+library(glue)
+library(ggplot2)
+library(ggtext)
+library(heatmaply)
+library(here)
+library(htmltools)
+library(kableExtra)
+library(kinship2)
+library(paletteer)
+library(pedigree)
+library(pedtools)
+library(pedsuite)
+library(plotly)
+library(png)
+library(rcompanion)
+library(reactable)
+library(reactablefmtr)
+library(rmarkdown)
+library(scales)
+library(shiny)
+library(shinyjs)
+library(shinyMatrix)
+library(showtext)
+library(thematic)
+library(tidyverse)
+library(tippy)
+library(webshot2)
+library(usethis)
+
+conflicts_prefer(dplyr::filter)
+conflicts_prefer(dplyr::select)
+conflicts_prefer(dplyr::left_join)
+conflicts_prefer(dplyr::inner_join)
+conflicts_prefer(dplyr::full_join)
+conflicts_prefer(dplyr::semi_join)
+conflicts_prefer(dplyr::rename)
+conflicts_prefer(ggplot2::margin)
+conflicts_prefer(ggplot2::theme_classic)
+conflicts_prefer(ggplot2::ggplot)
+conflicts_prefer(ggplot2::theme_minimal)
+conflicts_prefer(ggplot2::aes)
+conflicts_prefer(dplyr::lag)
+conflicts_prefer(RefManageR::cite)
+conflicts_prefer(purrr::set_names)
+conflicts_prefer(purrr::flatten)
+conflicts_prefer(purrr::discard_at)
+conflicts_prefer(base::which.max)
+conflicts_prefer(lubridate::month)
+conflicts_prefer(lubridate::year)
+conflicts_prefer(lubridate::day)
+conflicts_prefer(base::as.data.frame)
+conflicts_prefer(htmltools::p)
+conflicts_prefer(purrr::discard)
+conflicts_prefer(kinship2::kinship)
+```
+
+
+```{r, include = FALSE}
+here::i_am("PopulationData.Rmd")
+
+
+theme_set(theme_classic())
+thematic_rmd()
+thematic_on(accent = "#8785B2FF", fg = "black")
+
+opts_chunk$set(message = FALSE,
+               warning = FALSE,
+               echo    = TRUE,
+               include = TRUE,
+               eval    = TRUE,
+               comment = "")
+
+source(here("PedigreeFunctions.R"))
+```
+
+# Format Studbook Data
+
+## Inspect Spreadsheets in Excel
+
+First, we need to read in our studbook data and clean it up to create a *tidy* format of one master table.
+
+1.  Open the file `Studbook_Living.csv` and make sure it has the following columns with the exact names listed.
+
+- It is fine if you have extra columns, and all the columns may be in any order, but your spreadsheet must include at least these columns with the exact name syntax:
+  - `ID`
+    - *This is the studbook ID (not the LocalID, if your spreadsheet has one)*
+  - `Sex`
+  - `Sire`
+  - `Dam`
+  - `Event_Type`
+    - *This column will have values like `Birth/Hatch` or `Transfer`*
+  - `Date`
+    - *This will be the date for the event on each row. If you have another column for something like birth date, just make sure this general date column is the only one with this name.*
+  - `Location`
+    - *The same comments from Date apply here. This should be the location corresponding to the event of each row.*
+- Rename any columns as necessary, re-save as a `.csv`, and proceed.
+
+2.  Repeat the same for the file `Studbook_Historic.csv` using the same list of columns.
+
+## Read and Format Data in R
+
+```{r}
+studbook.living <- read.csv(here("Studbooks/Demo/Studbook_Living.csv"), header = T) %>%
+  filter(str_detect(Location, "\\w+")) %>%
+  select(ID, Sex, Sire, Dam, Event_Type, Date, Location)  %>%
+  mutate(Date  = str_squish(str_extract(Date, ".{1,3}[/-].{1,3}[/-]\\d{1,4}"))) %>%
+  mutate(Date  = str_remove_all(Date, "\\s")) %>%
+  mutate(Date  = str_replace(Date, "-(?=0\\d$)", "-20"),
+         Date  = str_replace(Date, "-(?=[5-9]\\d$)", "-19")) %>%
+  mutate(Date  = if_else(str_detect(Date, "^\\d{1,}"), dmy(Date), mdy(Date))) %>%
+  mutate(across(where(is.character), ~ na_if(., "")),
+         across(where(is.character), ~ str_trim(.)),
+         across(where(is.character), ~ str_remove_all(., "\n")),
+         Location = str_remove_all(Location, "[^\\w]"),
+         across(where(is.character), ~ str_remove_all(., "\\s")),
+         ID   = as.integer(str_remove_all(ID  , "[^\\d+]"))) %>%
+  fill(ID, Sex, Sire, Dam) %>%
+  group_by(ID) %>%
+  mutate(Event_order = row_number()) %>% 
+  fill(Date, .direction = "up") %>%
+  ungroup() %>%
+  select(Event_order, ID, Sex, Sire, Dam, Event_Type, Date, Location)
+
+studbook.historic <- read.csv(here("Studbooks/Demo/Studbook_Historic.csv"), header = T) %>%
+  filter(str_detect(Location, "\\w+")) %>%
+  select(ID, Sex, Sire, Dam, Event_Type, Date, Location)  %>%
+  mutate(Date  = str_squish(str_extract(Date, ".{1,3}[/-].{1,3}[/-]\\d{1,4}"))) %>%
+  mutate(Date  = str_remove_all(Date, "\\s")) %>%
+  mutate(Date  = str_replace(Date, "-(?=0\\d$)", "-20"),
+         Date  = str_replace(Date, "-(?=[5-9]\\d$)", "-19")) %>%
+  mutate(Date  = if_else(str_detect(Date, "^\\d{1,}"), dmy(Date), mdy(Date))) %>%
+  mutate(across(where(is.character), ~ na_if(., "")),
+         across(where(is.character), ~ str_trim(.)),
+         across(where(is.character), ~ str_remove_all(., "\n")),
+         Location = str_remove_all(Location, "[^\\w]"),
+         across(where(is.character), ~ str_remove_all(., "\\s")),
+         ID   = as.integer(str_remove_all(ID  , "[^\\d+]"))) %>%
+  fill(ID, Sex, Sire, Dam) %>%
+  group_by(ID) %>%
+  mutate(Event_order = row_number()) %>% 
+  fill(Date, .direction = "updown") %>%
+  ungroup() %>%
+  select(Event_order, ID, Sex, Sire, Dam, Event_Type, Date, Location) %>%
+  filter(!(ID %in% studbook.living$ID))
+```
+
+
+```{r}
+births <-  studbook.living %>%
+  bind_rows(studbook.historic) %>% distinct() %>%
+  filter(str_detect(Event_Type, "Birth|Hatch|Capture")) %>%
+  arrange(ID, Event_order) %>%
+  group_by(ID) %>% 
+  arrange(Date, .by_group = TRUE) %>%
+  fill(Date, .direction = "downup") %>% 
+  ungroup() %>%
+  arrange(ID) %>%
+  fill(Date, .direction = "downup") %>%
+  group_by(ID) %>% slice_min(Event_order) %>%
+  ungroup() %>% arrange(Location, ID, Dam) %>%
+  mutate(Sire = case_when(
+    Sire == "UND" & Dam != "UND" & Location == lag(Location) & lag(Sire) != "UND" ~ lag(Sire),
+    Sire == "UND" & Dam != "UND" & Location != lag(Location) & Location == lead(Location) & lead(Sire) != "UND" ~ lead(Sire),
+    .default = Sire
+  )) %>%
+  arrange(Dam) %>%
+  mutate(Sire = case_when(
+    Sire == "UND" & Dam != "UND" & Location == lag(Location) & lag(Sire) != "UND" ~ lag(Sire),
+    Sire == "UND" & Dam != "UND" & Location != lag(Location) & Location == lead(Location) & lead(Sire) != "UND" ~ lead(Sire),
+    .default = Sire
+  )) %>%
+  arrange(Location, ID) %>%
+  mutate(Sire = as.integer(str_extract(Sire, "\\d+")),
+         Dam  = as.integer(str_extract(Dam, "\\d+"))) %>%
+  select(ID, Sex, Sire, Dam, Birth_Date = Date, Birth_Location = Location)
+```
+
+```{r}
+transfers.deaths  <-  studbook.living %>%
+  bind_rows(studbook.historic) %>% distinct() %>%
+  filter(str_detect(Event_Type, "Transfer|LTF|Death")) %>%
+  arrange(ID, Event_order) %>%
+  group_by(ID) %>% fill(Date, .direction = "downup") %>%
+  slice_max(Event_order) %>% ungroup() %>%
+  mutate(Status = if_else(Event_Type == "Transfer", "Alive", "Deceased")) %>%
+  select(ID, Last_Date = Date, Last_Location = Location, Status)
+```
+
+```{r}
+studbook <- births %>%
+  left_join(transfers.deaths) %>%
+  distinct() %>%
+  mutate(Status        = replace_na(Status, "Alive"),
+         Last_Date     = if_else(is.na(Last_Date), Birth_Date, Last_Date),
+         Last_Location = if_else(is.na(Last_Location), Birth_Location, Last_Location)) %>%
+  mutate(Age = if_else(Status == "Alive", 
+                       year(today())   - year(Birth_Date), 
+                       year(Last_Date) - year(Birth_Date))) %>%
+  arrange(ID) %>%
+  mutate(sex_num = case_when(Sex == "Male"   ~ 1,
+                             Sex == "Female" ~ 2,
+                             .default = 0))
+```
+
+
+## View Formatted File
+
+Let's take a glimpse of our formatted studbook now.
+
+```{r}
+studbook.tbl <- studbook %>%
+  select(
+    Status, 
+    ID,      
+    Sex,
+    Age,
+    Sire  ,     
+    Dam   ,
+    Birth_Date,
+    Birth_Location,
+    Last_Date,
+    Last_Location
+  ) %>%
+  reactable(
+    theme               = espn(),
+    sortable            = TRUE,
+    resizable           = TRUE,
+    filterable          = TRUE,
+    searchable          = TRUE,
+    defaultPageSize     = 20,
+    showPageSizeOptions = TRUE,
+    highlight           = TRUE,
+    groupBy             = "Status",
+  columns = list(
+       Status           = colDef(name = "Living/Deceased"),   
+       ID               = colDef(name = "Studbook ID"),
+       Sex              = colDef(name = "Sex"),
+       Age              = colDef(name = "Age Now or at Death"),    
+       Sire             = colDef(name = "Father") ,     
+       Dam              = colDef(name = "Mother") ,
+       Birth_Date       = colDef(name = "Date of Birth or Capture", format = colFormat(date = TRUE)),
+       Birth_Location   = colDef(name = "Location of Birth or Capture"),
+       Last_Location    = colDef(name = "Current/Last Location"),
+       Last_Date        = colDef(name = "Date of Last Transfer or Death", format = colFormat(date = TRUE))
+   )
+)
+
+studbook.tbl
+```
+
+# Population Viability Analysis
+
+## Demographic Trends
+
+Let's look at the basic population size over time to begin quantifying growth rate and assessing overall population viability.
+
+```{r}
+max_month <- floor_date(today(), "month")
+max_year  <- floor_date(today(), "year")
+
+alive_months <- pmap(
+  list(Birth_Date = studbook$Birth_Date, Status = studbook$Status, Last_Date = studbook$Last_Date),
+  function(Birth_Date, Last_Date, Status) {
+    
+    if (is.na(Birth_Date)) return(NULL)
+    
+    start_month <- floor_date(Birth_Date, "month")
+
+        if (Status == "Alive") {
+          
+      end_month <- max_month
+      
+    } else if (is.na(Last_Date) & Status == "Deceased") {
+      return(NULL)
+    } else {
+      
+      end_month <- floor_date(Last_Date, "month")
+    }
+    # Return the sequence of years from birth to death (inclusive)
+    as.list(seq(start_month, end_month, by = "months"))
+    
+  }
+)
+
+monthly_counts <- list_flatten(alive_months) %>%
+  list_c() %>%
+  tibble(Date = .)  %>%
+  group_by(Date) %>%
+  summarize(Population = n()) %>% ungroup()
+
+plot.population <- plot_ly(monthly_counts, type = 'scatter', mode = 'lines')%>%
+  add_trace(x = ~Date, y = ~Population)%>%
+  plotly::layout(showlegend = F, title='Population Growth over Time',
+         xaxis = list(rangeslider = list(visible = T)))
+plot.population <- plot.population %>%
+  plotly::layout(
+         xaxis = list(zerolinecolor = '#ffff',
+                      zerolinewidth = 2,
+                      gridcolor = 'ffff'),
+         yaxis = list(zerolinecolor = '#ffff',
+                      zerolinewidth = 2,
+                      gridcolor = 'ffff'),
+         plot_bgcolor='#e5ecf6', width = 900)
+
+
+plot.population
+```
+
+Now we will zoom out to annual population counts to follow the standard method for computing a normalized rate of growth over the past 5 years compared to all years.
+
+```{r}
+alive_years <- pmap(
+  list(Birth_Date = studbook$Birth_Date, Status = studbook$Status, Last_Date = studbook$Last_Date),
+  function(Birth_Date, Last_Date, Status) {
+    
+    if (is.na(Birth_Date)) return(NULL)
+    
+    start_year <- floor_date(Birth_Date, "year")
+
+        if (Status == "Alive") {
+          
+      end_year <- max_year
+      
+    } else if (is.na(Last_Date) & Status == "Deceased") {
+      return(NULL)
+    } else {
+      
+      end_year <- floor_date(Last_Date, "year")
+    }
+    # Return the sequence of years from birth to death (inclusive)
+    as.list(seq(start_year, end_year, by = "years"))
+    
+  }
+)
+
+annual_counts <- list_flatten(alive_years) %>%
+  list_c() %>%
+  tibble(Year = .)  %>%
+  group_by(Year) %>%
+  summarize(Count = n()) %>% ungroup()
+
+
+growth_rates <- annual_counts$Count[-1] / annual_counts$Count[-length(annual_counts$Count)]
+
+last_5_growth <- tail(growth_rates, 5)
+
+lambda  <- prod(last_5_growth)^(1/length(last_5_growth))
+
+lambda2 <- exp(mean(log(last_5_growth)))
+```
+
+
+## Construct Pedigree
+
+Now we will use a package called `pedtools` to create our pedigree objects. If the chunk below runs without any errors, then you should see `pedig` appear as an object listed in your environment.
+
+```{r}
+pedig <- ped(
+  id     = studbook$ID,
+  fid    = studbook$Sire,
+  mid    = studbook$Dam,
+  sex    = studbook$sex_num
+)
+```
+
+The object `pedig` most likely contains a list of multiple pedigree objects, as any founders or lineages not represented in the current living population will form discrete, disconnected trees. There also will probably be several "singletons" which are founders without any connections to the living population.\n
+\n
+The code below will prepare some formatting variables to assign color-coding. Then it will filter out any singletons in the pedigree list and produce a series of images for you to inspect the visual version(s) and choose the most informative image.
+
+```{r}
+living   <- filter(studbook, Status == "Alive")    %>% pull(ID) %>% as.character()
+deceased <- filter(studbook, Status == "Deceased") %>% pull(ID) %>% as.character() %>% setdiff(founders(pedig))
+
+founders    <- founders(pedig)
+nonfounders <- nonfounders(pedig)
+
+female   <- living %>% intersect(nonfounders(pedig)) %>% intersect(females(pedig))
+male     <- living %>% intersect(nonfounders(pedig)) %>% intersect(males(pedig))
+undet    <- living %>% intersect(nonfounders(pedig)) %>% setdiff(males(pedig)) %>% setdiff(females(pedig))
+
+pedig.main <- discard(pedig, \(x) pedsize(x) <= 1)
+```
+
+```{r}
+plot_pedigrees <- function(pedigree, name) {
+  
+  fills     <- list(
+  "#A5AA99FF" = c(deceased),
+  "#DAA51BFF" = c(founders),
+  "#CC61B0FF" = c(female),
+  "#2F8AC4FF" = c(male),
+  "#99C945FF" = c(undet)
+)
+  
+  plot(pedigree, 
+       title    = paste0(name),
+       cex      = 0.5,
+       labs     = NULL,
+       deceased = deceased,
+       fill     = fills,
+       col      = "black")
+}
+
+plots <- imap(pedig.main, \(x, idx) plot_pedigrees(x, idx))
+```
+
+Inspect these and add the title text for only those pedigree plots including living individuals to the chunk below. Then run the chunk below that to create your main working pedigree object.
+
+```{r}
+includes_living <- c("_comp1")
+```
+
+```{r}
+ped.living  <- keep_at(pedig.main, includes_living)
+
+plot_pedigrees(ped.living, "Pedigree of Living Population")
+```
+
+## Generate Detailed Pedigree Statistics
+
+Next, we will generate some of the descriptive statistics that we can use to assess the long-term viability of our populations and make some breeding recommendations.
+
+### Founders Represented
+
+We will need information about founders still represented in the living population, so run the code below.
+
+```{r}
+founder.descendants <- map(as.list(founders(pedig)), \(x) as.list(descendants(pedig, x, inclusive = TRUE))) %>%
+  compact()
+names(founder.descendants) <- map(founder.descendants, \(x) x[[1]])
+
+founderReps <- keep(founder.descendants, function(sublist) {
+  flat <- unlist(sublist)
+  any(flat %in% living)
+}) %>% list_flatten(name_spec = "") %>% unique() %>%
+  intersect(founders)
+
+n_founder_reps <- length(founderReps)
+
+founderRepsIDs <- founderReps %>% list_c()
+
+dp <- descentPaths(ped.living[[1]])
+
+founderContribution <- map_dbl(founders, function(f) {
+  paths_list <- dp[[f]]
+  valid_paths <- keep(paths_list, ~ tail(.x, 1) %in% living)
+  sum(map_dbl(valid_paths, ~ 0.5^(length(.x) - 1)))
+})
+names(founderContribution) <- founders
+
+p <- founderContribution / sum(founderContribution)
+
+p.tbl <- enframe(p, name = "ID", value = "Rel_Contribution") %>% mutate(ID = as.integer(ID))
+```
+
+
+```{r}
+founder.summary <- enframe(founderContribution, name = "ID", value = "Contribution") %>%
+  mutate(ID = as.integer(ID)) %>%
+  left_join(p.tbl) %>%
+  left_join(studbook) %>%
+  select(ID, 
+         Sex, 
+         Contribution, 
+         Rel_Contribution,
+         Birth_Location, 
+         Birth_Date, 
+         Age_Death = Age, 
+         Death = Last_Date, 
+         Last_Location) %>%
+  arrange(desc(Contribution))
+
+founder.vis <- founder.summary %>%
+  reactable(
+    theme           = fivethirtyeight(),
+    defaultPageSize = 20,
+    columns         = list(
+      Contribution          = colDef(show = FALSE),
+      Rel_Contribution      = colDef(header = tippy("Relative Contribution", 
+                                                tooltip = "Individual's contribution to living population relative to total founder representation in current population"),
+                                 cell = data_bars(
+                                   data = .,
+                                   text_position = "outside-base",
+                                   fill_color = paletteer_d("RColorBrewer::BuPu"),
+                                   number_fmt = label_percent(),
+                                   background = "white",
+                                   box_shadow = TRUE
+                                 )), 
+      Birth_Location    = colDef(name = "Location of Birth or Capture"), 
+      Birth_Date        = colDef(name = "Date of Birth or Capture"), 
+      Age_Death         = colDef(name = "Age at Death"), 
+      Death             = colDef(name = "Date of Death"), 
+      Last_Location     = colDef(name = "Location of Death")
+    )
+  )
+
+founder.vis
+```
+
+### Summary of Living Population
+
+Let's take a quick look at some basic stats for each individual in our living population before we proceed with the overall summary stats.
+
+```{r}
+kinship.ped <- ribd::kinship(ped.living[[1]])
+living.ped  <- intersect(living, rownames(kinship.ped))
+living.kinship <- kinship_all[living.ped, living.ped]
+
+gen_numbers <- generations(ped.living[[1]], what = "indiv")
+
+living_gen  <- gen_numbers[names(gen_numbers) %in% living]
+
+ancestors <- as.list(rownames(living.kinship)) %>%
+  set_names(map(., \(x) x)) %>%
+  map(., \(x) as.list(ancestors(ped.living[[1]], x))) %>%
+  enframe(name = "ID", value = "Ancestors")
+
+children <- as.list(rownames(living.kinship)) %>%
+  set_names(map(., \(x) x)) %>%
+  map(., \(x) as.list(children(ped.living[[1]], x))) %>%
+  enframe(name = "ID", value = "Children")
+
+descendants <- as.list(rownames(living.kinship)) %>%
+  set_names(map(., \(x) x)) %>%
+  map(., \(x) as.list(descendants(ped.living[[1]], x))) %>%
+  enframe(name = "ID", value = "Descendants")
+
+siblings <- as.list(rownames(living.kinship)) %>%
+  set_names(map(., \(x) x)) %>%
+  map(., \(x) as.list(siblings(ped.living[[1]], x))) %>%
+  enframe(name = "ID", value = "Siblings")
+
+family.basics <- ancestors %>% 
+  left_join(descendants) %>% 
+  left_join(children) %>% 
+  left_join(siblings) %>%
+  rowwise() %>%
+  mutate(N_Ancestors   = length(Ancestors),
+         N_Children = length(Children),
+         N_Descendants = length(Descendants),
+         N_Siblings    = length(Siblings)) %>%
+  select(ID, starts_with("N_")) %>%
+  mutate(ID = as.integer(ID)) %>%
+  left_join(studbook.data) %>%
+  select(ID, 
+         Current_Location = Last_Location,
+         Sex,
+         Age,
+         starts_with("N_"),
+         Sire,
+         Dam,
+         Birth_Date,
+         Birth_Location) %>%
+  arrange(Current_Location, Birth_Date)
+
+family.basics
+```
+
+```{r}
+studbook.data <- studbook %>%
+  mutate(Founder     = if_else(ID %in% founders, "Yes", "No")) %>%
+  left_join(founder.summary) %>%
+  arrange(ID) %>%
+  select( 
+    Status      ,
+    Founder   ,
+    ID          ,  
+    Sex         ,  
+    Sire        ,  
+    Dam         ,  
+    Birth_Date  ,  
+    Birth_Location,
+    Last_Date     ,
+    Last_Location   , 
+    Contribution  ,
+    Age           ,
+    Age_Death     ,
+    Death 
+    )
+
+```
+
+## View Summary by Subject
+
+Now we will look at our studbook again with more information added.
+
+```{r}
+studbook.data <- studbook %>%
+  mutate(Founder     = if_else(ID %in% founders, "Yes", "No")) %>%
+  left_join(founder.summary) %>%
+  arrange(ID) %>%
+  select( 
+    Status      ,
+    Founder   ,
+    ID          ,  
+    Sex         ,  
+    Sire        ,  
+    Dam         ,  
+    Birth_Date  ,  
+    Birth_Location,
+    Last_Date     ,
+    Last_Location   , 
+    Contribution  ,
+    Age           ,
+    Age_Death     ,
+    Death 
+    )
+
+
+studbook.tbl.3 <- studbook.data %>%
+  reactable(
+    theme               = fivethirtyeight(),
+    sortable            = TRUE,
+    resizable           = TRUE,
+    filterable          = TRUE,
+    searchable          = TRUE,
+    defaultPageSize     = 20,
+    showPageSizeOptions = TRUE,
+    highlight           = TRUE,
+    groupBy             = c("Status", "Founder"),
+  columns = list(
+       Founder          = colDef(name = "Founder?") ,
+       Status           = colDef(name = "Living/Deceased"),   
+       ID               = colDef(name = "Studbook ID"),
+       Sex              = colDef(name = "Sex"),
+       Age              = colDef(name = "Age Now or at Death"),    
+       Sire             = colDef(name = "Father") ,     
+       Dam              = colDef(name = "Mother") ,
+       Birth_Date       = colDef(name = "Date of Birth or Capture", format = colFormat(date = TRUE)),
+       Birth_Location   = colDef(name = "Location of Birth or Capture"),
+       Last_Location    = colDef(name = "Current/Last Location"),
+       Last_Date        = colDef(name = "Date of Last Transfer or Death", format = colFormat(date = TRUE)),
+      Contribution      = colDef(header = tippy("Contribution", 
+                                                tooltip = "Est. contribution to living population"),
+                                 cell = data_bars(
+                                   data = .,
+                                   text_position = "outside-base",
+                                   fill_color = paletteer_d("RColorBrewer::BuPu"),
+                                   number_fmt = label_number(accuracy = 0.01),
+                                   background = "white",
+                                   box_shadow = TRUE
+                                 )
+      )
+
+   )
+)
+
+studbook.tbl.3
+```
+
+
+
+
+
+### Overall Relatedness and Kinship
+
+Now we will use some of the demographic stats we already computed to begin modeling our expected patterns in relatedness and inbreeding across the living population. First, we need to create a matrix representing every living pair's kinship coefficient. We will return to these pairwise relationships soon, but for now we will use it to compute our population-level statistics.
+
+```{r}
+mean_gen    <- mean(living_gen, na.rm = TRUE)
+
+kin_mat <- living.kinship
+
+delta_F <- 1 - (1 - F_mean)^(1/mean_gen)
+
+Ne <- 1 / (2 * delta_F)
+
+N <- length(living)
+Ne_over_N <- Ne / N
+
+FGE <- 1 / sum(p^2)
+
+GD <- 1 - sum(p^2)
+
+MK <- mean(living.kinship[upper.tri(living.kinship)])
+
+F_vec <- 2 * diag(living.kinship) - 1
+
+F_mean <- mean(F_vec)
+```
+
+#### Visualize Summary Table
+
+Now you can view a summary of the statistics we just calculated and compare them to the summaries provided in the Pygmy Loris BTP. Use this table and the figures compiled so far to write your own version of a summary (1-2 paragraphs max) like the example.
+
+```{r}
+pva.summary <- tibble(N, 
+                      n_founder_reps, 
+                      FGE, 
+                      delta_F, 
+                      Ne, 
+                      Ne_over_N, 
+                      mean_gen, 
+                      lambda2, 
+                      F_mean, 
+                      MK, 
+                      GD) %>%
+  mutate(across(where(is.numeric), ~round(., digits = 3))) %>%
+  reactable(
+    columns = list(
+      N                = colDef(header = tippy("N"          , tooltip = "Demographic Population size: Number of currently living individuals in the population"                          )), 
+      Ne               = colDef(header = tippy("Ne"         , tooltip = "Effective population size (estimated from the rate of inbreeding per generation)"                            ),
+                                format = colFormat(digits = 0)), 
+      Ne_over_N        = colDef(header = tippy("Ne/N"       , tooltip = "Effective population size relative to population size"),
+                                format = colFormat(digits = 1)), 
+      n_founder_reps   = colDef(header = tippy("Founders"   , tooltip = "Number of founders represented in the current population"                                 )), 
+      FGE              = colDef(header = tippy("FGE"        , tooltip = "Founder genome equivalents: expressed in units of the number of wild-caught, unrelated individuals (“founders”) that would produce the same gene diversity as the current population"                           ),
+                                format = colFormat(digits = 1)), 
+      F_mean           = colDef(header = tippy("F"          , tooltip = "Mean inbreeding level"                                      )), 
+      mean_gen         = colDef(header = tippy("Generations", tooltip = "Mean generation for living individuals"               ),
+                                format = colFormat(digits = 1)), 
+      delta_F          = colDef(header = tippy("ΔF"         , tooltip = "ΔF is the per–generation increase in inbreeding"                    )), 
+      GD               = colDef(header = tippy("GD %"       , tooltip = "Gene diversity: current percentage of founding gene diversity retained"                                       ),
+                                format = colFormat(percent = TRUE)), 
+      MK               = colDef(header = tippy("MK"         , tooltip = "Population mean kinship"                              )), 
+      lambda2          = colDef(header = tippy("lambda"     , tooltip = "Growth rate: Finite rate of population growth calculated as the geometric mean of changes in total population size over the past 5 years"                                          ))
+    )
+  )
+
+pva.summary
+```
+
+## Pairwise Relationships
+
+### All Living Individuals
+
+Now let's look more closely at pairwise patterns in relatedness across our living population. The code below will generate a table with one row for every potential living pair in our population. Keep in mind that these are not necessarily potential breeding pairs, as we are mixing and matching male-male, male-female, and female-female pairs to get an over all impression of the living population's kinship patterns.
+
+```{r}
+coeff_living <- coeffTable(ped.living[[1]], coeff = c("f", "phi", "deg", "kappa")) %>%
+  filter(id1 %in% living & id2 %in% living) %>%
+  select(id1, id2, degree = deg, inbred = f2, phi, kappa0 = k0, kappa1 = k1, kappa2 = k2)
+
+coeff_living
+```
+
+We can also generate a demo table with expected values for typical patterns of kinship to help us interpret our results.
+
+```{r}
+example <- basicRelationships %>%
+  select(label, relationship, phi, starts_with("kappa"))
+
+example
+```
+
+It is much easier to visualize pairwise relationships as matrices or multidimensional plots. Let's create some graphical visualizations to interpret these stats. The plot below will give you a basic visualization of the overall patterns in relatedness between all living individuals in the current population, starting with the kinship coefficients that we computed before.
+
+```{r}
+kin.plot <- heatmaply(
+        living.kinship,
+        dendrogram     = "none",
+        xlab           = "", ylab = "",
+        main           = "",
+        scale          = "none",
+        colors         = paletteer_d("wesanderson::Zissou1Continuous"),
+        margins        = c(60,100,40,20),
+        grid_color     = "white",
+        grid_width     = 0.00001,
+        titleX         = FALSE,
+        hide_colorbar  = FALSE,
+        key.title      = "Kinship Coefficients",
+        branches_lwd   = 0.1,
+        fontsize_row   = 5, fontsize_col = 5,
+        labCol         = colnames(living.kinship),
+        labRow         = rownames(living.kinship),
+        heatmap_layers = theme(axis.line = element_blank())
+        )
+
+kin.plot
+```
+
+### Matched Pairs
+
+Finally, we want to look closer at potential breeding pairs to do some match-making, so let's generate some more pedigree statistics per individual and then visualize a plot of breeding pairs.
+
+
+
+```{r}
+living.m       <- filter(studbook, status == "alive" & Sex == 1) %>% 
+  mutate(ID = as.character(ID)) %>% 
+  pull(ID)
+living.f       <- filter(studbook, status == "alive" & Sex == 2) %>% 
+  mutate(ID = as.character(ID)) %>% 
+  pull(ID)
+
+annotate <- select(family.basics, c(ID, starts_with("N_"))) %>%
+  left_join(enframe(F_vec, name = "ID", value = "F_vec")) %>%
+  left_join(enframe(gen_numbers, name = "ID", value = "gen_numbers")) %>%
+  mutate(ID = as.integer(ID)) %>%
+  left_join((studbook.data)) %>%
+  mutate(ID = as.character(ID),
+    hoverText = str_glue(
+    "{Current_Location}", "<br>", 
+    "{Age}", " yrs (Born ", "{Birth_Date}", ")<br>",
+    "Gen Number: ", "{gen_numbers}", 
+    ", Mother: ", "{Dam}", ", Father: ", "{Sire}", "<br>",
+    "N Ancestors: ", "{N_Ancestors}", 
+    ", N Siblings: ", "{N_Siblings}",
+    ", N Children: ", "{N_Children}", 
+    ", N Descendants: ", "{N_Descendants}"
+    )
+  ) %>% arrange(ID)
+
+
+living_males   <- intersect(living.m, rownames(kinship_living))
+living_females <- intersect(living.f, rownames(kinship_living))
+
+kinship_btp    <- kinship_living[living_males, living_females]
+
+text_males   <- intersect(living.m, rownames(kinship_btp))
+text_females <- intersect(living.f, colnames(kinship_btp))
+
+annotate.m   <- filter(annotate, status == "alive" & Sex == "Male") %>% 
+  select(ID, hoverText) %>%
+  filter(ID %in% text_males) %>% 
+  arrange(match(ID, text_males))
+
+annotate.f   <- filter(annotate, status == "alive" & Sex == "Female") %>% 
+  select(ID, hoverText) %>%
+  filter(ID %in% text_females) %>% 
+  arrange(match(ID, text_females))
+
+hover_matrix <- outer(
+  annotate.m$hoverText, 
+  annotate.f$hoverText, 
+  FUN = function(m_text, f_text) {
+    I(paste0("<br>Male:<br>", m_text, "<br><br>",
+           "Female:<br>", f_text))
+  }
+)
+
+rownames(hover_matrix) <- annotate.m$ID
+colnames(hover_matrix) <- annotate.f$ID
+
+btp.plot <- heatmaply(
+        kinship_btp,
+        dendrogram       = "none", 
+        xlab             = "Females", 
+        ylab             = "Males",
+        main             = "Kinship Values for Potential Mate Pairs",
+        scale            = "none",
+        colors           = paletteer_d("wesanderson::Zissou1Continuous"),
+        margins          = c(60, 100, 40, 20),
+        grid_color       = "white",
+        grid_width       = 0.00001,
+        label_format_fun = function(value) round(value, digits = 3),
+        titleX           = TRUE,
+        hide_colorbar    = FALSE,
+        key.title        = "Kinship Vals",
+        branches_lwd     = 0.1,
+        fontsize_row     = 10, 
+        fontsize_col     = 10,
+        custom_hovertext = I(hover_matrix),
+        heatmap_layers   = theme(axis.line = element_blank())
+        )
+
+btp.plot
+```
+
+# Make your Plan and Report
+
+Return to the report you began writing for the overall population statistics. Use all the information provided to match at least one breeding pair for your new exhibit and add a paragraph in which you explain this choice and plan.

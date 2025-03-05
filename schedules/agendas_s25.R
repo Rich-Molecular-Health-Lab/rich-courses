@@ -38,18 +38,18 @@ readings <- list(
     ),
     "8" = list(
       "8a" = list(
-        herrick2019 = "Assisted reproductive technologies for endangered species conservation: developing sophisticated protocols with limited access to animals with unique reproductive mechanisms"
-        ),
+        beheerder2017 = "Visual body condition scoring in zoo animals – composite, algorithm and overview approaches"
+      ),
       "8c" = list(
-        asa2016 = "Weighing the Options for Limiting Surplus Animals"
-        )
+        ramont2024 = "The Provision of Browse and Its Impacts on the Health and Welfare of Animals at the Zoo: A Review"
+      )
     ),
     "10" = list(
       "10a" = list(
-        beheerder2017 = "Visual body condition scoring in zoo animals – composite, algorithm and overview approaches"
+        herrick2019 = "Assisted reproductive technologies for endangered species conservation: developing sophisticated protocols with limited access to animals with unique reproductive mechanisms"
       ),
       "10c" = list(
-        ramont2024 = "The Provision of Browse and Its Impacts on the Health and Welfare of Animals at the Zoo: A Review"
+        asa2016 = "Weighing the Options for Limiting Surplus Animals"
       )
     ),
   "11" = list(
@@ -210,13 +210,13 @@ agenda <- list(
                  "6c"  = "Demography and Genetics"),
      "7"  = list("7a"  = "Demography and Genetics",
                  "7b"  = "Demography and Genetics",
-                 "7c"  = "Demography and Genetics"),
-     "8"  = list("8a"  = "Reproduction",
-                 "8b"  = "Reproduction",
-                 "8c"  = "Reproduction"),
-     "10"  = list("10a" = "Nutrition",
-                  "10b" = "Nutrition",
-                  "10c" = "Nutrition"),
+                 "7c"  = "Nutrition"),
+     "8"  = list("8a"  = "Nutrition",
+                 "8b"  = "Nutrition",
+                 "8c"  = "Nutrition"),
+     "10"  = list("10a" = "Reproduction",
+                  "10b" = "Reproduction",
+                  "10c" = "Reproduction"),
      "11" = list("11a" = "Medicine",
                  "11b" = "Medicine"),
      "12" = list("12a" = "Monitoring and Assessment",
@@ -340,6 +340,10 @@ slides <- list(
     "6" = list(
       "6a" = "https://www.canva.com/design/DAGgCJiox1M/Z7_zU4n_OdQ1Bvvwegledw/view?utm_content=DAGgCJiox1M&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hcd1a0c76e4",
       "6c" = "https://www.canva.com/design/DAGgOeZ3JSI/wPpzQX4cNhECskSsjpdPqg/view?utm_content=DAGgOeZ3JSI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h154cce3cdf"
+    ),
+    "7" = list(
+      "7a" = "https://www.canva.com/design/DAGgsez7wHg/rCdtUcra1w89VmWlBN_-GA/view?utm_content=DAGgsez7wHg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h87473817fa",
+      "7c" = "https://www.canva.com/design/DAGg4juK6S0/Q_TrSRMY-gunpA2uKo77kQ/view?utm_content=DAGg4juK6S0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h9348825482"
     )
   ),
   conbio = list(
@@ -359,6 +363,9 @@ slides <- list(
     "6" = list(
       "6a" = "https://www.pbs.org/video/top-predator-lv0cff",
       "6b" = "https://www.canva.com/design/DAGgDC21tSE/UfVsK1y_fXRk8qg-HAp9OQ/view?utm_content=DAGgDC21tSE&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h8cd8acc0d7"
+    ),
+    "7" = list(
+      "7a" = "https://www.canva.com/design/DAGgtEbN5Ow/L0UTOTJk4FD3kjZZ9OMeXw/view?utm_content=DAGgtEbN5Ow&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=he167018c43"
     )
   )
 )
