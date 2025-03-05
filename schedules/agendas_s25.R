@@ -334,6 +334,9 @@ slides <- list(
     "3" = list(
       "3a" = "https://www.canva.com/design/DAGeEG2-Ob0/rXRuDs5QKEEUxkLD5N40xQ/view?utm_content=DAGeEG2-Ob0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h205bd7b45a"
     ),
+    "4" = list(
+      "4a" = "https://www.canva.com/design/DAGeuZvv_fY/sg_kJ9SN6OuXdWiY0Gtezg/view?utm_content=DAGeuZvv_fY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=ha1ca60f363"
+    ),
     "5" = list(
       "5c" = "https://www.pbs.org/wnet/nature/the-loneliest-animals-introduction/4898/"
     ),
