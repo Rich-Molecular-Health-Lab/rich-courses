@@ -80,7 +80,7 @@ conflicts_prefer(lubridate::day)
 conflicts_prefer(base::as.data.frame)
 conflicts_prefer(htmltools::p)
 conflicts_prefer(purrr::discard)
-conflicts_prefer(kinship2::kinship)
+conflicts_prefer(pedtools::kinship)
 ```
 
 
@@ -238,20 +238,30 @@ Let's take a glimpse of our formatted studbook now.
 
 ```{r}
 studbook.tbl <- studbook %>%
+  mutate(
+  sex_num = if_else(sex_num == 0, 3, sex_num),
+  color = case_when(
+    Sex == "Female"         ~ "#AA4499FF",
+    Sex == "Male"           ~ "#332288FF",
+    Sex == "Undetermined"   ~ "#117733FF"
+  )) %>%
   select(
     Status, 
     ID,      
     Sex,
-    Age,
+    color,
+    sex_num,
     Sire  ,     
     Dam   ,
     Birth_Date,
     Birth_Location,
+    Age,
     Last_Date,
     Last_Location
   ) %>%
   reactable(
-    theme               = espn(),
+    theme               = flatly(),
+    height              = 700,
     sortable            = TRUE,
     resizable           = TRUE,
     filterable          = TRUE,
@@ -260,22 +270,77 @@ studbook.tbl <- studbook %>%
     showPageSizeOptions = TRUE,
     highlight           = TRUE,
     groupBy             = "Status",
-  columns = list(
-       Status           = colDef(name = "Living/Deceased"),   
-       ID               = colDef(name = "Studbook ID"),
-       Sex              = colDef(name = "Sex"),
-       Age              = colDef(name = "Age Now or at Death"),    
-       Sire             = colDef(name = "Father") ,     
-       Dam              = colDef(name = "Mother") ,
-       Birth_Date       = colDef(name = "Date of Birth or Capture", format = colFormat(date = TRUE)),
-       Birth_Location   = colDef(name = "Location of Birth or Capture"),
+    columns         = list(
+       Status           = colDef(name = "Living/Deceased", 
+                              style    = JS("function(rowInfo, column, state) {
+                        const firstSorted = state.sorted[0]
+                        if (!firstSorted || firstSorted.id === 'Status') {
+                          const prevRow = state.pageRows[rowInfo.viewIndex - 1]
+                          if (prevRow && rowInfo.values['Status'] === prevRow['Status']) {
+                            return { visibility: 'hidden' }
+                          }
+                        }
+                      }")
+                      ),
+      Birth_Location    = colDef(name = "Location of Birth or Capture", maxWidth = 200),
+      Birth_Date        = colDef(name = "Date of Birth or Capture", 
+                                 cell = color_tiles(
+                                   data       = .,
+                                   colors     =  paletteer_d("RColorBrewer::BuPu"),
+                                   box_shadow = TRUE,
+                                   number_fmt = label_date_short()
+                                 ), maxWidth = 200), 
+      Age               = colDef(name = "Age Now or at Death", maxWidth = 50), 
+      Last_Date        = colDef(name = "Date of Last Transfer or Death", 
+                                 cell = color_tiles(
+                                   data       = .,
+                                   colors     =  paletteer_d("RColorBrewer::BuPu"),
+                                   box_shadow = TRUE,
+                                   number_fmt = label_date_short()
+                                 ), maxWidth = 200),
        Last_Location    = colDef(name = "Current/Last Location"),
-       Last_Date        = colDef(name = "Date of Last Transfer or Death", format = colFormat(date = TRUE))
-   )
-)
+       ID               = colDef(maxWidth = 80, 
+                              cell = color_tiles(
+                                data       = .,
+                                color_ref  = "color",
+                                box_shadow = TRUE,
+                                bold_text  = TRUE
+                                )
+                              ),
+      Last_Location    = colDef(name = "Location of Death", maxWidth = 150),
+      sex_num          = colDef(name = "Sex",
+                                align = "left",
+                                cell = icon_sets(
+                                data           = .,
+                                icons          = c("m", "f", "question"),
+                                icon_position  = "over",
+                                icon_size      = 13,
+                                icon_color_ref = "color"
+      )),
+      Sex   = colDef(show = FALSE),
+      color = colDef(show = FALSE),
+      Sire             = colDef(name = "Father",
+                                 maxWidth = 80,
+                              cell = color_tiles(
+                                data       = .,
+                                colors      = "#332288FF",
+                                box_shadow = TRUE
+                                )
+                              ),
+      Dam             = colDef(name = "Mother",
+                                 maxWidth = 80,
+                              cell = color_tiles(
+                                data       = .,
+                                colors      = "#AA4499FF",
+                                box_shadow = TRUE
+                                )
+                              )
+    )
+  )
 
 studbook.tbl
 ```
+
 
 # Population Viability Analysis
 
@@ -488,25 +553,78 @@ founder.summary <- enframe(founderContribution, name = "ID", value = "Contributi
   mutate(ID = as.integer(ID)) %>%
   left_join(p.tbl) %>%
   left_join(studbook) %>%
-  select(ID, 
-         Sex, 
-         Contribution, 
-         Rel_Contribution,
+  mutate(
+  sex_num = if_else(sex_num == 0, 3, sex_num),
+  color = case_when(
+    Sex == "Female"         ~ "#AA4499FF",
+    Sex == "Male"           ~ "#332288FF",
+    Sex == "Undetermined"   ~ "#117733FF"
+  )) %>%
+  select(
          Birth_Location, 
+         ID, 
+         Sex, 
          Birth_Date, 
          Age_Death = Age, 
-         Death = Last_Date, 
-         Last_Location) %>%
-  arrange(desc(Contribution))
+         Death     = Last_Date, 
+         Last_Location,
+         Rel_Contribution,
+         Contribution,
+         color)  %>%
+  arrange(Birth_Location, desc(Contribution))
+```
 
+```{r}
 founder.vis <- founder.summary %>%
   reactable(
-    theme           = fivethirtyeight(),
-    defaultPageSize = 20,
+    theme               = flatly(),
+    height              = 700,
+    sortable            = TRUE,
+    resizable           = TRUE,
+    filterable          = TRUE,
+    searchable          = TRUE,
+    defaultPageSize     = 20,
+    showPageSizeOptions = TRUE,
+    highlight           = TRUE,
     columns         = list(
-      Contribution          = colDef(show = FALSE),
+      Birth_Location = colDef(name     = "Location of Birth or Capture", 
+                              style    = JS("function(rowInfo, column, state) {
+                        const firstSorted = state.sorted[0]
+                        if (!firstSorted || firstSorted.id === 'Birth_Location') {
+                          const prevRow = state.pageRows[rowInfo.viewIndex - 1]
+                          if (prevRow && rowInfo.values['Birth_Location'] === prevRow['Birth_Location']) {
+                            return { visibility: 'hidden' }
+                          }
+                        }
+                      }"), maxWidth = 200
+                      ),
+       ID               = colDef(maxWidth = 80, 
+                              cell = color_tiles(
+                                data       = .,
+                                color_ref  = "color",
+                                box_shadow = TRUE,
+                                bold_text  = TRUE
+                                )
+                              ),
+      Sex   = colDef(show = FALSE),
+      Birth_Date        = colDef(name = "Date of Birth or Capture", 
+                                 cell = color_tiles(
+                                   data       = .,
+                                   colors     =  paletteer_d("RColorBrewer::BuPu"),
+                                   box_shadow = TRUE,
+                                   number_fmt = label_date_short()
+                                 ), maxWidth = 200), 
+      Age_Death          = colDef(name = "Age at Death", maxWidth = 50), 
+      Death        = colDef(name = "Date of Death", 
+                                 cell = color_tiles(
+                                   data       = .,
+                                   colors     =  paletteer_d("RColorBrewer::BuPu"),
+                                   box_shadow = TRUE,
+                                   number_fmt = label_date_short()
+                                 ), maxWidth = 200),
+      Last_Location    = colDef(name = "Location of Death", maxWidth = 150),
       Rel_Contribution      = colDef(header = tippy("Relative Contribution", 
-                                                tooltip = "Individual's contribution to living population relative to total founder representation in current population"),
+              tooltip = "Individual's contribution to living population relative to total founder representation in current population"),
                                  cell = data_bars(
                                    data = .,
                                    text_position = "outside-base",
@@ -514,15 +632,12 @@ founder.vis <- founder.summary %>%
                                    number_fmt = label_percent(),
                                    background = "white",
                                    box_shadow = TRUE
-                                 )), 
-      Birth_Location    = colDef(name = "Location of Birth or Capture"), 
-      Birth_Date        = colDef(name = "Date of Birth or Capture"), 
-      Age_Death         = colDef(name = "Age at Death"), 
-      Death             = colDef(name = "Date of Death"), 
-      Last_Location     = colDef(name = "Location of Death")
+                                 ), maxWidth = 200), 
+      color = colDef(show = FALSE),
+      Contribution     = colDef(show = FALSE)
     )
   )
-
+      
 founder.vis
 ```
 
@@ -531,9 +646,26 @@ founder.vis
 Let's take a quick look at some basic stats for each individual in our living population before we proceed with the overall summary stats.
 
 ```{r}
+# Get individual generation numbers for all individuals in the pedigree
+gen_numbers <- generations(pedig, what = "indiv")
+
+# Subset to living individuals: 
+# Assuming livingIDs are character IDs matching the names in gen_numbers.
+living_gen <- gen_numbers[names(gen_numbers) %in% livingIDs]
+
+# Compute the mean generation for living individuals
+mean_gen <- mean(living_gen, na.rm = TRUE)
+print(mean_gen)
+
+# Now, using the previously computed kinship matrix and F (mean inbreeding)
+library(kinship2)
+kin_mat <- ribd::kinship(ped.living[[1]], ids = living)
+```
+
+```{r}
 kinship.ped <- ribd::kinship(ped.living[[1]])
 living.ped  <- intersect(living, rownames(kinship.ped))
-living.kinship <- kinship_all[living.ped, living.ped]
+living.kinship <- kinship.ped[living.ped, living.ped]
 
 gen_numbers <- generations(ped.living[[1]], what = "indiv")
 
@@ -559,127 +691,145 @@ siblings <- as.list(rownames(living.kinship)) %>%
   map(., \(x) as.list(siblings(ped.living[[1]], x))) %>%
   enframe(name = "ID", value = "Siblings")
 
-family.basics <- ancestors %>% 
+generations <- enframe(gen_numbers, name = "ID", value = "Generations")
+
+living.data <- ancestors %>% 
   left_join(descendants) %>% 
   left_join(children) %>% 
   left_join(siblings) %>%
+  left_join(generations) %>%
   rowwise() %>%
-  mutate(N_Ancestors   = length(Ancestors),
-         N_Children = length(Children),
+  mutate(N_Children    = length(Children),
          N_Descendants = length(Descendants),
-         N_Siblings    = length(Siblings)) %>%
+         N_Siblings    = length(Siblings),
+         N_Ancestors   = length(Ancestors),
+         N_Generations = length(Generations)) %>%
   select(ID, starts_with("N_")) %>%
   mutate(ID = as.integer(ID)) %>%
-  left_join(studbook.data) %>%
-  select(ID, 
-         Current_Location = Last_Location,
+  left_join(studbook) %>%
+  select(Current_Location = Last_Location,
          Sex,
+         ID, 
          Age,
-         starts_with("N_"),
          Sire,
          Dam,
          Birth_Date,
-         Birth_Location) %>%
-  arrange(Current_Location, Birth_Date)
-
-family.basics
+         Birth_Location,
+         starts_with("N_")) %>%
+  arrange(Current_Location, Sex, Age)
 ```
 
-```{r}
-studbook.data <- studbook %>%
-  mutate(Founder     = if_else(ID %in% founders, "Yes", "No")) %>%
-  left_join(founder.summary) %>%
-  arrange(ID) %>%
-  select( 
-    Status      ,
-    Founder   ,
-    ID          ,  
-    Sex         ,  
-    Sire        ,  
-    Dam         ,  
-    Birth_Date  ,  
-    Birth_Location,
-    Last_Date     ,
-    Last_Location   , 
-    Contribution  ,
-    Age           ,
-    Age_Death     ,
-    Death 
-    )
-
-```
-
-## View Summary by Subject
-
-Now we will look at our studbook again with more information added.
 
 ```{r}
-studbook.data <- studbook %>%
-  mutate(Founder     = if_else(ID %in% founders, "Yes", "No")) %>%
-  left_join(founder.summary) %>%
-  arrange(ID) %>%
-  select( 
-    Status      ,
-    Founder   ,
-    ID          ,  
-    Sex         ,  
-    Sire        ,  
-    Dam         ,  
-    Birth_Date  ,  
-    Birth_Location,
-    Last_Date     ,
-    Last_Location   , 
-    Contribution  ,
-    Age           ,
-    Age_Death     ,
-    Death 
-    )
-
-
-studbook.tbl.3 <- studbook.data %>%
+living.summary <- living.data %>%
+  mutate(
+  color = case_when(
+    Sex == "Male"           ~ "#332288FF",
+    Sex == "Female"         ~ "#AA4499FF",
+    Sex == "Undetermined"   ~ "#117733FF"
+  )) %>%
   reactable(
-    theme               = fivethirtyeight(),
+    theme   = flatly(),
+    defaultPageSize     = 25,
+    height              = 700,
     sortable            = TRUE,
     resizable           = TRUE,
-    filterable          = TRUE,
-    searchable          = TRUE,
-    defaultPageSize     = 20,
     showPageSizeOptions = TRUE,
-    highlight           = TRUE,
-    groupBy             = c("Status", "Founder"),
-  columns = list(
-       Founder          = colDef(name = "Founder?") ,
-       Status           = colDef(name = "Living/Deceased"),   
-       ID               = colDef(name = "Studbook ID"),
-       Sex              = colDef(name = "Sex"),
-       Age              = colDef(name = "Age Now or at Death"),    
-       Sire             = colDef(name = "Father") ,     
-       Dam              = colDef(name = "Mother") ,
-       Birth_Date       = colDef(name = "Date of Birth or Capture", format = colFormat(date = TRUE)),
-       Birth_Location   = colDef(name = "Location of Birth or Capture"),
-       Last_Location    = colDef(name = "Current/Last Location"),
-       Last_Date        = colDef(name = "Date of Last Transfer or Death", format = colFormat(date = TRUE)),
-      Contribution      = colDef(header = tippy("Contribution", 
-                                                tooltip = "Est. contribution to living population"),
-                                 cell = data_bars(
-                                   data = .,
-                                   text_position = "outside-base",
-                                   fill_color = paletteer_d("RColorBrewer::BuPu"),
-                                   number_fmt = label_number(accuracy = 0.01),
-                                   background = "white",
-                                   box_shadow = TRUE
-                                 )
-      )
+    columnGroups        = list(
+      colGroup(name = "Cummulative Counts", columns = c(
+        "N_Ancestors", "N_Children", "N_Siblings"
+      ))
+    ),
+    columns             = list(
+      Current_Location = colDef(maxWidth = 100,  name = "Current Location",
+                      style = JS("function(rowInfo, column, state) {
+                        const firstSorted = state.sorted[0]
+                        if (!firstSorted || firstSorted.id === 'Current_Location') {
+                          const prevRow = state.pageRows[rowInfo.viewIndex - 1]
+                          if (prevRow && rowInfo.values['Current_Location'] === prevRow['Current_Location']) {
+                            return { visibility: 'hidden' }
+                          }
+                        }
+                      }")
+                      ),
+       ID               = colDef(maxWidth = 80, 
+                              cell = color_tiles(
+                                data       = .,
+                                color_ref  = "color",
+                                box_shadow = TRUE,
+                                bold_text  = TRUE
+                                )
+                              ),
+      Sex   = colDef(show = FALSE),
+      N_Generations = colDef(show = FALSE),
+      N_Ancestors   = colDef(name  = "Ancestors", 
+                             maxWidth = 250,
+                             align    = "center", 
+                             cell     = bubble_grid(
+                               data   = .,
+                               opacity = 0.8,
+                               colors = paletteer_d("wesanderson::Zissou1Continuous")
+                               )
+                             ),
+      N_Descendants = colDef(name  = "Descendants", 
+                             maxWidth = 250,
+                             align = "center", 
+                             cell  = bubble_grid(
+                               data   = .,
+                               opacity = 0.8,
+                               colors = paletteer_d("wesanderson::Zissou1Continuous")
+                               )),
+      N_Children    = colDef(name = "Offspring", 
+                             maxWidth = 250,
+                             align = "center", 
+                             cell  = bubble_grid(
+                               data    = .,
+                               opacity = 0.8,
+                               colors  = paletteer_d("wesanderson::Zissou1Continuous")
+                               )),
+      N_Siblings    = colDef(name = "Siblings", 
+                             maxWidth = 250,
+                             align = "center", 
+                             cell  = bubble_grid(
+                               data   = .,
+                               opacity = 0.8,
+                               colors = paletteer_d("wesanderson::Zissou1Continuous")
+                               )),
+      
+       Age              = colDef(maxWidth = 50),  
+      Sire             = colDef(name = "Father",
+                                 maxWidth = 80,
+                              cell = color_tiles(
+                                data       = .,
+                                colors      = "#332288FF",
+                                opacity     = 0.6,
+                                box_shadow = TRUE
+                                )
+                              ),
+      Dam             = colDef(name = "Mother",
+                                 maxWidth = 80,
+                              cell = color_tiles(
+                                data       = .,
+                                colors      = "#AA4499FF",
+                                opacity     = 0.6,
+                                box_shadow = TRUE
+                                )
+                              ),
+      Birth_Date        = colDef(name = "Date of Birth", 
+                                 cell = color_tiles(
+                                   data       = .,
+                                   colors     =  paletteer_d("RColorBrewer::BuPu"),
+                                   box_shadow = TRUE,
+                                   number_fmt = label_date_short()
+                                 ), maxWidth = 200), 
+       Birth_Location   = colDef(name = "Location of Birth"),
+      color = colDef(show = FALSE)
+    )
+    
+  )
 
-   )
-)
-
-studbook.tbl.3
+living.summary
 ```
-
-
-
-
 
 ### Overall Relatedness and Kinship
 
@@ -688,7 +838,8 @@ Now we will use some of the demographic stats we already computed to begin model
 ```{r}
 mean_gen    <- mean(living_gen, na.rm = TRUE)
 
-kin_mat <- living.kinship
+F_vec <- 2 * diag(kinship.ped) - 1
+F_mean <- mean(F_vec)
 
 delta_F <- 1 - (1 - F_mean)^(1/mean_gen)
 
@@ -726,6 +877,7 @@ pva.summary <- tibble(N,
                       GD) %>%
   mutate(across(where(is.numeric), ~round(., digits = 3))) %>%
   reactable(
+    theme = espn(),
     columns = list(
       N                = colDef(header = tippy("N"          , tooltip = "Demographic Population size: Number of currently living individuals in the population"                          )), 
       Ne               = colDef(header = tippy("Ne"         , tooltip = "Effective population size (estimated from the rate of inbreeding per generation)"                            ),
@@ -775,76 +927,118 @@ example
 It is much easier to visualize pairwise relationships as matrices or multidimensional plots. Let's create some graphical visualizations to interpret these stats. The plot below will give you a basic visualization of the overall patterns in relatedness between all living individuals in the current population, starting with the kinship coefficients that we computed before.
 
 ```{r}
+kinship.ped    <- ribd::kinship(ped.living[[1]])
+living.ped     <- intersect(living, rownames(kinship.ped))
+living.kinship <- kinship.ped[living.ped, living.ped]
+
 kin.plot <- heatmaply(
         living.kinship,
         dendrogram     = "none",
-        xlab           = "", ylab = "",
-        main           = "",
-        scale          = "none",
-        colors         = paletteer_d("wesanderson::Zissou1Continuous"),
-        margins        = c(60,100,40,20),
-        grid_color     = "white",
-        grid_width     = 0.00001,
-        titleX         = FALSE,
-        hide_colorbar  = FALSE,
-        key.title      = "Kinship Coefficients",
-        branches_lwd   = 0.1,
-        fontsize_row   = 5, fontsize_col = 5,
-        labCol         = colnames(living.kinship),
-        labRow         = rownames(living.kinship),
-        heatmap_layers = theme(axis.line = element_blank())
+        main           = "Kinship Across Living Population",
+        scale            = "none",
+        colors           = paletteer_d("wesanderson::Zissou1Continuous"),
+        margins          = c(60, 100, 40, 20),
+        grid_color       = "white",
+        grid_width       = 0.00001,
+        label_format_fun = function(value) round(value, digits = 3),
+        titleX           = TRUE,
+        hide_colorbar    = FALSE,
+        key.title        = "Kinship Coefficients",
+        branches_lwd     = 0.1,
+        fontsize_row     = 10, 
+        fontsize_col     = 10,
+        labCol           = colnames(living.kinship),
+        labRow           = rownames(living.kinship),
+        heatmap_layers   = theme(axis.line = element_blank())
         )
 
 kin.plot
+```
+
+
+Now we can create similar visuals for the other pairwise coefficients that we calculated.
+
+#### Inbreeding Coefficients
+
+```{r}
+inbred.w <- coeff_living %>%
+  pivot_wider(id_cols     = "id1",
+              names_from  = "id2",
+              values_from = "inbred")
+
+inbred.mat <- as.matrix(inbred.w[,-1])
+rownames(inbred.mat) <- inbred.w$id1
+
+inbred.mat[lower.tri(inbred.mat)] <- t(inbred.mat)[lower.tri(inbred.mat)]
+
+inbred.plot <- heatmaply(
+        inbred.mat,
+        dendrogram     = "none",
+        main           = "Inbreeding Across Living Population",
+        scale            = "none",
+        colors           = paletteer_d("wesanderson::Zissou1Continuous"),
+        margins          = c(60, 100, 40, 20),
+        grid_color       = "white",
+        grid_width       = 0.00001,
+        label_format_fun = function(value) round(value, digits = 3),
+        titleX           = TRUE,
+        hide_colorbar    = FALSE,
+        key.title        = "Inbreeding Coefficients",
+        branches_lwd     = 0.1,
+        fontsize_row     = 10, 
+        fontsize_col     = 10,
+        labCol           = colnames(inbred.mat),
+        labRow           = rownames(inbred.mat),
+        heatmap_layers   = theme(axis.line = element_blank())
+        )
+
+inbred.plot
 ```
 
 ### Matched Pairs
 
 Finally, we want to look closer at potential breeding pairs to do some match-making, so let's generate some more pedigree statistics per individual and then visualize a plot of breeding pairs.
 
-
+#### Kinship Coefficients
 
 ```{r}
-living.m       <- filter(studbook, status == "alive" & Sex == 1) %>% 
-  mutate(ID = as.character(ID)) %>% 
-  pull(ID)
-living.f       <- filter(studbook, status == "alive" & Sex == 2) %>% 
+living.m       <- filter(studbook, Status == "Alive" & Sex == "Male") %>% 
   mutate(ID = as.character(ID)) %>% 
   pull(ID)
 
-annotate <- select(family.basics, c(ID, starts_with("N_"))) %>%
+living.f       <- filter(studbook, Status == "Alive" & Sex == "Female") %>% 
+  mutate(ID = as.character(ID)) %>% 
+  pull(ID)
+
+annotate <- select(living.data, c(ID, starts_with("N_"))) %>%
+  mutate(ID = as.character(ID)) %>%
   left_join(enframe(F_vec, name = "ID", value = "F_vec")) %>%
-  left_join(enframe(gen_numbers, name = "ID", value = "gen_numbers")) %>%
   mutate(ID = as.integer(ID)) %>%
-  left_join((studbook.data)) %>%
+  left_join(studbook) %>%
   mutate(ID = as.character(ID),
     hoverText = str_glue(
-    "{Current_Location}", "<br>", 
+    "{Last_Location}", "<br>", 
     "{Age}", " yrs (Born ", "{Birth_Date}", ")<br>",
-    "Gen Number: ", "{gen_numbers}", 
-    ", Mother: ", "{Dam}", ", Father: ", "{Sire}", "<br>",
-    "N Ancestors: ", "{N_Ancestors}", 
-    ", N Siblings: ", "{N_Siblings}",
-    ", N Children: ", "{N_Children}", 
-    ", N Descendants: ", "{N_Descendants}"
+    "Mother: ", "{Dam}", ", Father: ", "{Sire}", "<br>",
+    "{N_Siblings}"," Siblings, ", "{N_Children}", " Offspring, ", "{N_Descendants}", " Descendants"
     )
   ) %>% arrange(ID)
 
 
-living_males   <- intersect(living.m, rownames(kinship_living))
-living_females <- intersect(living.f, rownames(kinship_living))
+living_males   <- intersect(living.m, rownames(living.kinship))
+living_females <- intersect(living.f, rownames(living.kinship))
 
-kinship_btp    <- kinship_living[living_males, living_females]
+kinship_btp    <- living.kinship[living_males, living_females]
 
 text_males   <- intersect(living.m, rownames(kinship_btp))
 text_females <- intersect(living.f, colnames(kinship_btp))
 
-annotate.m   <- filter(annotate, status == "alive" & Sex == "Male") %>% 
+annotate.m   <- filter(annotate, Status == "Alive" & Sex == "Male") %>% 
   select(ID, hoverText) %>%
   filter(ID %in% text_males) %>% 
   arrange(match(ID, text_males))
 
-annotate.f   <- filter(annotate, status == "alive" & Sex == "Female") %>% 
+annotate.f   <- filter(annotate, Status == "Alive" & Sex == "Female") %>% 
   select(ID, hoverText) %>%
   filter(ID %in% text_females) %>% 
   arrange(match(ID, text_females))
@@ -885,6 +1079,185 @@ btp.plot <- heatmaply(
 
 btp.plot
 ```
+
+#### Inbreeding Coefficients
+
+```{r}
+living_males   <- intersect(living.m, rownames(inbred.mat))
+living_females <- intersect(living.f, rownames(inbred.mat))
+
+inbred_btp    <- inbred.mat[living_males, living_females]
+
+text_males   <- intersect(living.m, rownames(inbred_btp))
+text_females <- intersect(living.f, colnames(inbred_btp))
+
+annotate.m   <- filter(annotate, Status == "Alive" & Sex == "Male") %>% 
+  select(ID, hoverText) %>%
+  filter(ID %in% text_males) %>% 
+  arrange(match(ID, text_males))
+
+annotate.f   <- filter(annotate, Status == "Alive" & Sex == "Female") %>% 
+  select(ID, hoverText) %>%
+  filter(ID %in% text_females) %>% 
+  arrange(match(ID, text_females))
+
+hover_matrix <- outer(
+  annotate.m$hoverText, 
+  annotate.f$hoverText, 
+  FUN = function(m_text, f_text) {
+    I(paste0("<br>Male:<br>", m_text, "<br><br>",
+           "Female:<br>", f_text))
+  }
+)
+
+rownames(hover_matrix) <- annotate.m$ID
+colnames(hover_matrix) <- annotate.f$ID
+
+
+inbred.plot <- heatmaply(
+        inbred_btp,
+        dendrogram       = "none", 
+        xlab             = "Females", 
+        ylab             = "Males",
+        main             = "Inbreeding Coefficients for Potential Mate Pairs",
+        scale            = "none",
+        colors           = paletteer_d("wesanderson::Zissou1Continuous"),
+        margins          = c(60, 100, 40, 20),
+        grid_color       = "white",
+        grid_width       = 0.00001,
+        label_format_fun = function(value) round(value, digits = 3),
+        titleX           = TRUE,
+        hide_colorbar    = FALSE,
+        key.title        = "Inbreeding Vals",
+        branches_lwd     = 0.1,
+        fontsize_row     = 10, 
+        fontsize_col     = 10,
+        custom_hovertext = I(hover_matrix),
+        heatmap_layers   = theme(axis.line = element_blank())
+        )
+
+inbred.plot
+```
+
+# Inspect Matches
+
+Once you choose some potential pairs, you should plug their ID's into the code chunks below. This will give you a few more graphics to inspect their relationship. You can easily swap out different IDs and re-run the code chunks to see those revised results until you find the pairs you are happy with.
+
+```{r}
+male   <- c("2652") # Replace the number here with the ID number of your male of interest.
+female <- c("2677") # Replace the number here with the ID number of your female of interest.
+
+pair <- c(male, female)
+
+cat("Your pair's relationship:\n")
+verbalise(ped.living, ids = pair)
+```
+
+## Kinship Coefficients
+
+```{r}
+celltext <- matrix("", nrow = nrow(kinship_btp), ncol = ncol(kinship_btp))
+rownames(celltext) <- rownames(kinship_btp)
+colnames(celltext) <- colnames(kinship_btp)
+
+celltext[paste0(male), paste0(female)] <- "&#9733;"
+
+btp.plot <- heatmaply(
+        kinship_btp,
+        dendrogram            = "none", 
+        xlab                  = "Females", 
+        ylab                  = "Males",
+        main                  = "Kinship Values for Potential Mate Pairs",
+        scale                 = "none",
+        colors                = paletteer_d("wesanderson::Zissou1Continuous"),
+        margins               = c(60, 100, 40, 20),
+        grid_color            = "white",
+        grid_width            = 0.00001,
+        label_format_fun      = function(value) round(value, digits = 3),
+        cellnote              = celltext,
+        cellnote_textposition = "middle center",
+        cellnote_size         = 16,
+        titleX                = TRUE,
+        hide_colorbar         = FALSE,
+        key.title             = "Kinship Vals",
+        branches_lwd          = 0.1,
+        fontsize_row          = 10, 
+        fontsize_col          = 10,
+        heatmap_layers        = theme(axis.line = element_blank())
+        )
+
+btp.plot
+```
+
+## Pedigree Plot
+
+```{r}
+pair.ped  <- relabel(ped.living[[1]], 
+                     new = c("MATE-A", "MATE-B"),
+                     old = pair,
+                     reorder = TRUE,
+                     returnLabs = TRUE)
+
+ fills     <- list(
+  "#A5AA99FF" = c(deceased),
+  "#DAA51BFF" = c(founders),
+  "#CC61B0FF" = c(female, "MATE-B"),
+  "#2F8AC4FF" = c(male, "MATE-A"),
+  "#99C945FF" = c(undet)
+)
+
+plot(pair.ped,
+     cex      = 0.5,
+     deceased = deceased,
+     fill     = fills,
+     labs     = c("MATE-A", "MATE-B"),
+     starred  = c("MATE-A", "MATE-B"),
+     col      = "black")
+```
+
+```{r}
+test <- subnucs(pair.ped)
+
+test2 <- peelingOrder(pair.ped)
+```
+
+```{r}
+unrelated.a <- unrelated(ped.living[[1]], female)
+```
+
+
+```{r}
+remove <- setdiff()
+
+pair.ped2 <- removeIndividuals(
+  pair.ped,
+  
+)
+```
+
+
+## IBD and Kappa Coefficients
+
+Now we are going to print something called a Kappa Triangle. This is a way to visualize the most probable identity by descent (IBD) for this pair in a 2-dimensional space.
+
+```{r}
+kappa.pair <- coeff_living %>%
+  filter(xor((id1 == male   & id2 == female), (id1 == female & id2 == male))) %>%
+  select(id1, id2, kappa0, kappa1, kappa2)
+
+kappa.tri <- showInTriangle(kappa.pair, plotType = "plotly")
+
+print(kappa.pair)
+kappa.tri
+```
+
+The red X mark represents the relationship between your hypothetical pair, while the letters in the graphic above are reference points for where different relationships would fall in that space. The summary table below contains a key for those abbreviations (and their associated values plotted here).
+
+```{r}
+print(example)
+```
+
+
 
 # Make your Plan and Report
 
