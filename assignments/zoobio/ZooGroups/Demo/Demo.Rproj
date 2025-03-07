@@ -1,0 +1,18 @@
+Version: 1.0
+ProjectId: 19220e48-9b68-4548-9a62-5f88be85971b
+
+RestoreWorkspace: No
+SaveWorkspace: No
+AlwaysSaveHistory: No
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 2
+Encoding: UTF-8
+
+RnwWeave: Sweave
+LaTeX: pdfLaTeX
+
+StripTrailingWhitespace: Yes
+
+ProjectName: PopulationManagement
