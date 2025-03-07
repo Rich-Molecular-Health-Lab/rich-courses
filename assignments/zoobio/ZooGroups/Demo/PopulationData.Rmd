@@ -42,6 +42,7 @@ library(reactablefmtr)
 library(rmarkdown)
 library(scales)
 library(shiny)
+library(showtext)
 library(thematic)
 library(tidyverse)
 library(tippy)
@@ -89,19 +90,28 @@ opts_chunk$set(message = FALSE,
                eval    = TRUE,
                comment = "")
 
+palette <- c("#D53288FF", "#DC8045FF", "#21B14BFF", "#008AC2FF", "#3F459BFF")
+
 colors <- list(
-  f = "#882255FF",
-  m = "#332288FF",
-  u = "#117733FF",
-  sire = "#33228833",
-  dam  = "#88225533",
-  seq = "rcartocolor::Sunset",
-  div = "rcartocolor::Temps"
+  f = "#D53288FF",
+  m = "#3F459BFF",
+  u = "#21B14BFF",
+  sire = "#3F459B33",
+  dam  = "#D5328833",
+  seq  = "rcartocolor::Sunset",
+  div  = "rcartocolor::Temps",
+  rand = "Redmonder::qPBI"
 )
 
 deceased.col <- function(color) {
   gsub("FF", "33", color)
 }
+
+
+font_add_google("Noto Sans Symbols", family = "NotoSym")
+showtext_auto()
+
+
 
 ```
 
@@ -273,105 +283,16 @@ studbook.tbl <- studbook %>%
     Birth_Date,
     yr_birth,
     Birth_Location,
+    birth_loc_num,
     Sire  ,     
     Dam   ,
     Age,
     Last_Date,
     yr_last,
-    Last_Location
-  ) %>%
-  reactable(
-    theme               = flatly(),
-    height              = 700,
-    sortable            = TRUE,
-    resizable           = TRUE,
-    filterable          = TRUE,
-    defaultExpanded     = TRUE,
-    defaultPageSize     = 20,
-    showPageSizeOptions = TRUE,
-    highlight           = TRUE,
-    groupBy             = "Status",
-    columns         = list(
-       Status           = colDef(header = tippy("Status", tooltip = "Alive or Deceased"),
-                                 maxWidth = 100,
-                              style    = JS("function(rowInfo, column, state) {
-                        const firstSorted = state.sorted[0]
-                        if (!firstSorted || firstSorted.id === 'Status') {
-                          const prevRow = state.pageRows[rowInfo.viewIndex - 1]
-                          if (prevRow && rowInfo.values['Status'] === prevRow['Status']) {
-                            return { visibility: 'hidden' }
-                          }
-                        }
-                      }")
-                      ),
-      Birth_Location    = colDef(header = tippy("Born", tooltip = "Location of birth (captive-born) or capture (wild-born)"),
-                                 maxWidth = 200),
-      Birth_Date        = colDef(header = tippy("Birthdate", tooltip = "Date of birth (captive-born) or capture (wild-born)"),
-                                 cell = color_tiles(
-                                   data       = .,
-                                   colors     = paletteer_d(colors$seq),
-                                   opacity    = 0.4,
-                                   color_by   = "yr_birth",
-                                brighten_text_color = "black",
-                                   box_shadow = TRUE,
-                                   number_fmt = label_date_short()), maxWidth = 200), 
-      Age               = colDef(header = tippy("Age", tooltip = "Now (Alive) or at time of death (Deceased)"),
-                                 maxWidth = 50, 
-                                 cell = color_tiles(
-                                   data       = .,
-                                   colors     =  paletteer_d(colors$seq),
-                                   opacity    = 0.4,
-                                brighten_text_color = "black",
-                                   box_shadow = TRUE
-                                 )), 
-      Last_Date        = colDef(header = tippy("Last Date", tooltip = "Last transfer date (Alive) or date of death (Deceased)"),
-                                 cell = color_tiles(
-                                   data       = .,
-                                   colors     =  paletteer_d(colors$seq),
-                                   opacity    = 0.4,
-                                   color_by   = "yr_last",
-                                brighten_text_color = "black",
-                                   box_shadow = TRUE,
-                                   number_fmt = label_date_short()
-                                 ), maxWidth = 200),
-       Last_Location    = colDef(header = tippy("Last Location", tooltip = "Current institution (Alive) or institution at time of death (Deceased)"), maxWidth = 150),
-       ID               = colDef(
-                              header = tippy("ID", tooltip = "Studbook ID color-coded by sex (maroon = F, blue = M, green = Undetermined)"),
-                              maxWidth = 80, 
-                              cell = color_tiles(
-                                data       = .,
-                                color_ref  = "color",
-                                box_shadow = TRUE,
-                                bold_text  = TRUE
-                                )
-                              ),
-      Sire             = colDef(header = tippy("Father", tooltip = "Studbook ID of Sire (0 if wildborn or unknown)"),
-                                 maxWidth = 80,
-                              cell = color_tiles(
-                                data       = .,
-                                colors     = colors$sire,
-                                opacity    = 0.2,
-                                brighten_text_color = "black",
-                                box_shadow = TRUE
-                                )
-                              ),
-      Dam             = colDef(header = tippy("Mother", tooltip = "Studbook ID of Dam (0 if wildborn or unknown)"),
-                                 maxWidth = 80,
-                              cell = color_tiles(
-                                data       = .,
-                                colors     = colors$dam,
-                                opacity    = 0.2,
-                                brighten_text_color = "black",
-                                box_shadow = TRUE
-                                )
-                              ),
-      Sex   = colDef(show = FALSE),
-      color = colDef(show = FALSE),
-      yr_birth = colDef(show = FALSE),
-      yr_last  = colDef(show = FALSE)
-    )
-  )
-
+    Last_Location,
+    last_loc_num
+  ) %>% 
+  studbook.react(., studbook.cols(.), groupBy = "Status")
 studbook.tbl
 ```
 
@@ -497,51 +418,69 @@ The code below will prepare some formatting variables to assign color-coding. Th
 
 ```{r}
 living   <- filter(studbook, Status == "Alive")    %>% pull(ID) %>% as.character()
-deceased <- filter(studbook, Status == "Deceased") %>% pull(ID) %>% as.character() %>% setdiff(founders(pedig))
+deceased <- filter(studbook, Status == "Deceased") %>% pull(ID) %>% as.character()
 
 founders    <- founders(pedig)
 nonfounders <- nonfounders(pedig)
 
-female   <- living %>% intersect(nonfounders(pedig)) %>% intersect(females(pedig))
-male     <- living %>% intersect(nonfounders(pedig)) %>% intersect(males(pedig))
-undet    <- living %>% intersect(nonfounders(pedig)) %>% setdiff(males(pedig)) %>% setdiff(females(pedig))
+female   <- living %>% intersect(females(pedig))
+male     <- living %>% intersect(males(pedig))
+undet    <- living %>% setdiff(males(pedig)) %>% setdiff(females(pedig))
+
+female.d   <- deceased %>% intersect(females(pedig))
+male.d     <- deceased %>% intersect(males(pedig))
+undet.d    <- deceased %>% setdiff(males(pedig)) %>% setdiff(females(pedig))
 
 pedig.main <- discard(pedig, \(x) pedsize(x) <= 1)
 ```
 
 ```{r}
-plot_pedigrees <- function(pedigree, name) {
-  
-  fills     <- list(
-  "#A5AA99FF" = c(deceased),
-  "#DAA51BFF" = c(founders),
-  "#CC61B0FF" = c(female),
-  "#2F8AC4FF" = c(male),
-  "#99C945FF" = c(undet)
+annot <- as.list(rep("\u24BB", times = length(founders)))
+names(annot) <- founders
+
+fills <- list(
+  c(female),
+  c(male),
+  c(undet)
 )
-  
-  plot(pedigree, 
-       title    = paste0(name),
-       cex      = 0.5,
-       labs     = NULL,
-       deceased = deceased,
-       fill     = fills,
-       col      = "black")
+
+names(fills) <- keep_at(colors, c("f", "m", "u"))
+
+ped.fills <- list(
+  "#D5328870" = c(female.d),
+  "#3F459B70" = c(male.d),
+  "#21B14B70" = c(undet.d)
+)
+
+fills <- list_assign(fills, !!!ped.fills)
+
+plot_pedigrees <- function(pedigree, name) {
+plot(pedigree,
+     title        = paste0(name),
+     cex          = 0.4,
+     deceased     = deceased,
+     labs         = NULL,
+     fill         = fills, 
+     lwd          = 0.3,
+     col          = "black",
+     pty          = "m",
+     textAnnot    = list(top = list(c(annot), cex = 0.5, family = "NotoSym")))
 }
 
 plots <- imap(pedig.main, \(x, idx) plot_pedigrees(x, idx))
+
 ```
+
 
 Inspect these and add the title text for only those pedigree plots including living individuals to the chunk below. Then run the chunk below that to create your main working pedigree object.
 
 ```{r}
 includes_living <- c("_comp1")
-```
 
-```{r}
 ped.living  <- keep_at(pedig.main, includes_living)
 
 plot_pedigrees(ped.living, "Pedigree of Living Population")
+
 ```
 
 ## Generate Detailed Pedigree Statistics
@@ -583,118 +522,38 @@ p.tbl <- enframe(p, name = "ID", value = "Rel_Contribution") %>% mutate(ID = as.
 
 
 ```{r}
-founder.summary <- enframe(founderContribution, name = "ID", value = "Contribution") %>%
+founder.summary <- enframe(founderContribution, 
+                           name = "ID", 
+                           value = "Contribution") %>%
   mutate(ID = as.integer(ID)) %>%
   left_join(p.tbl) %>%
   left_join(studbook) %>%
-  mutate(
-  sex_num = if_else(sex_num == 0, 3, sex_num),
-  color = case_when(
-    Sex == "Female"         ~ "#AA4499FF",
-    Sex == "Male"           ~ "#332288FF",
-    Sex == "Undetermined"   ~ "#117733FF"
-  )) %>%
   select(
-         Birth_Location, 
          ID, 
+         Birth_Location, 
          Sex, 
          Birth_Date, 
          Age_Death = Age, 
          Death     = Last_Date, 
          Last_Location,
          Rel_Contribution,
-         Contribution,
-         color)  %>%
-  arrange(Birth_Location, desc(Contribution))
-```
+         color         ,
+         yr_birth      ,
+         yr_last       ,
+         birth_loc_num ,
+         last_loc_num  
+         )  %>%
+  arrange(birth_loc_num, desc(Rel_Contribution))
 
-```{r}
 founder.vis <- founder.summary %>%
-  reactable(
-    theme               = flatly(),
-    height              = 700,
-    sortable            = TRUE,
-    resizable           = TRUE,
-    filterable          = TRUE,
-    searchable          = TRUE,
-    defaultPageSize     = 20,
-    showPageSizeOptions = TRUE,
-    highlight           = TRUE,
-    columns         = list(
-      Birth_Location = colDef(name     = "Location of Birth or Capture", 
-                              style    = JS("function(rowInfo, column, state) {
-                        const firstSorted = state.sorted[0]
-                        if (!firstSorted || firstSorted.id === 'Birth_Location') {
-                          const prevRow = state.pageRows[rowInfo.viewIndex - 1]
-                          if (prevRow && rowInfo.values['Birth_Location'] === prevRow['Birth_Location']) {
-                            return { visibility: 'hidden' }
-                          }
-                        }
-                      }"), maxWidth = 200
-                      ),
-       ID               = colDef(maxWidth = 80, 
-                              cell = color_tiles(
-                                data       = .,
-                                color_ref  = "color",
-                                box_shadow = TRUE,
-                                bold_text  = TRUE
-                                )
-                              ),
-      Sex   = colDef(show = FALSE),
-      Birth_Date        = colDef(name = "Date of Birth or Capture", 
-                                 cell = color_tiles(
-                                   data       = .,
-                                   colors     =  paletteer_d("RColorBrewer::BuPu"),
-                                   box_shadow = TRUE,
-                                   number_fmt = label_date_short()
-                                 ), maxWidth = 200), 
-      Age_Death          = colDef(name = "Age at Death", maxWidth = 50), 
-      Death        = colDef(name = "Date of Death", 
-                                 cell = color_tiles(
-                                   data       = .,
-                                   colors     =  paletteer_d("RColorBrewer::BuPu"),
-                                   box_shadow = TRUE,
-                                   number_fmt = label_date_short()
-                                 ), maxWidth = 200),
-      Last_Location    = colDef(name = "Location of Death", maxWidth = 150),
-      Rel_Contribution      = colDef(header = tippy("Relative Contribution", 
-              tooltip = "Individual's contribution to living population relative to total founder representation in current population"),
-                                 cell = data_bars(
-                                   data = .,
-                                   text_position = "outside-base",
-                                   fill_color = paletteer_d("RColorBrewer::BuPu"),
-                                   number_fmt = label_percent(),
-                                   background = "white",
-                                   box_shadow = TRUE
-                                 ), maxWidth = 200), 
-      color = colDef(show = FALSE),
-      Contribution     = colDef(show = FALSE)
-    )
-  )
-      
+  studbook.react(., cols = founder.cols(.))
+
 founder.vis
 ```
 
 ### Summary of Living Population
 
 Let's take a quick look at some basic stats for each individual in our living population before we proceed with the overall summary stats.
-
-```{r}
-# Get individual generation numbers for all individuals in the pedigree
-gen_numbers <- generations(pedig, what = "indiv")
-
-# Subset to living individuals: 
-# Assuming livingIDs are character IDs matching the names in gen_numbers.
-living_gen <- gen_numbers[names(gen_numbers) %in% livingIDs]
-
-# Compute the mean generation for living individuals
-mean_gen <- mean(living_gen, na.rm = TRUE)
-print(mean_gen)
-
-# Now, using the previously computed kinship matrix and F (mean inbreeding)
-library(kinship2)
-kin_mat <- ribd::kinship(ped.living[[1]], ids = living)
-```
 
 ```{r}
 kinship.ped <- ribd::kinship(ped.living[[1]])
