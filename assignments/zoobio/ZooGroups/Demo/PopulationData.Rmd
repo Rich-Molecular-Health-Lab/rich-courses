@@ -17,6 +17,7 @@ params:
   semester: "spring25"
   studbook_current: "Studbooks/Demo/Studbook_Living.csv"
   studbook_historic: "Studbooks/Demo/Studbook_Historic.csv"
+  group: "Demo"
   
 ---
 
@@ -31,6 +32,8 @@ library(ggtext)
 library(heatmaply)
 library(here)
 library(htmltools)
+library(htmlwidgets)
+library(igraph)
 library(kableExtra)
 library(kinship2)
 library(paletteer)
@@ -47,6 +50,8 @@ library(thematic)
 library(tidyverse)
 library(tippy)
 library(usethis)
+library(visNetwork)
+
 
 conflicts_prefer(here::here)
 conflicts_prefer(dplyr::filter)
@@ -78,6 +83,7 @@ conflicts_prefer(purrr::discard)
 ```{r, include = FALSE}
 here::i_am("PopulationData.Rmd")
 
+source("reactables.R")
 
 theme_set(theme_classic())
 thematic_rmd()
@@ -261,7 +267,9 @@ studbook <- births %>%
   left_join(locations, by = join_by(Last_Location == Location)) %>%
   rename(last_loc_num = loc_num) %>%
   left_join(locations, by = join_by(Birth_Location == Location)) %>%
-  rename(birth_loc_num = loc_num)
+  rename(birth_loc_num = loc_num) %>%
+  mutate(Sire = replace_na(Sire, 0),
+         Dam  = replace_na(Dam, 0))
 
 
 ```
@@ -271,10 +279,8 @@ studbook <- births %>%
 
 Let's take a glimpse of our formatted studbook now.
 
-```{r}
+```{r, out.width="100%"}
 studbook.tbl <- studbook %>%
-  mutate(Sire = replace_na(Sire, 0),
-         Dam  = replace_na(Dam, 0)) %>%
   select(
     Status, 
     ID,      
@@ -293,6 +299,8 @@ studbook.tbl <- studbook %>%
     last_loc_num
   ) %>% 
   studbook.react(., studbook.cols(.), groupBy = "Status")
+
+save_reactable_test(studbook.tbl, paste0("StudbookA_", params$group, ".html"))
 studbook.tbl
 ```
 
@@ -303,7 +311,7 @@ studbook.tbl
 
 Let's look at the basic population size over time to begin quantifying growth rate and assessing overall population viability.
 
-```{r}
+```{r, out.width="100%"}
 max_month <- floor_date(today(), "month")
 max_year  <- floor_date(today(), "year")
 
@@ -352,6 +360,7 @@ plot.population <- plot.population %>%
          plot_bgcolor='#e5ecf6', width = 900)
 
 
+saveWidget(plot.population, paste0("PopulationGrowth_", params$group, ".html"))
 plot.population
 ```
 
@@ -412,6 +421,7 @@ pedig <- ped(
 )
 ```
 
+
 The object `pedig` most likely contains a list of multiple pedigree objects, as any founders or lineages not represented in the current living population will form discrete, disconnected trees. There also will probably be several "singletons" which are founders without any connections to the living population.\n
 \n
 The code below will prepare some formatting variables to assign color-coding. Then it will filter out any singletons in the pedigree list and produce a series of images for you to inspect the visual version(s) and choose the most informative image.
@@ -434,7 +444,7 @@ undet.d    <- deceased %>% setdiff(males(pedig)) %>% setdiff(females(pedig))
 pedig.main <- discard(pedig, \(x) pedsize(x) <= 1)
 ```
 
-```{r}
+```{r, out.width="100%", dev='svg'}
 annot <- as.list(rep("\u24BB", times = length(founders)))
 names(annot) <- founders
 
@@ -474,14 +484,157 @@ plots <- imap(pedig.main, \(x, idx) plot_pedigrees(x, idx))
 
 Inspect these and add the title text for only those pedigree plots including living individuals to the chunk below. Then run the chunk below that to create your main working pedigree object.
 
-```{r}
+```{r, out.width="100%", dev='svg'}
 includes_living <- c("_comp1")
 
 ped.living  <- keep_at(pedig.main, includes_living)
 
+ped.living <- ped.living[[1]]
+
+famid(ped.living) <- "Current"
+
 plot_pedigrees(ped.living, "Pedigree of Living Population")
 
 ```
+
+### Better Pedigree Graphics
+
+```{r}
+ped.df <- as.data.frame(ped.living) %>% mutate()
+```
+
+
+```{r}
+pedtodot(ped.df)
+```
+
+
+I don't love the pedtools graphics system and lack of customization/interactivity, so if we want to look more closely at the details of relationships and clustering across a complex pedigree, we can transfer the data produced by pedtools into some better visualization packages. Let's first create a network plot to look at our population.  
+  
+*Note that loading the image below may take a few moments, as this code creates a fairly complex javascript library for interactive visualization. Just wait a few moments for your image to appear after you run the chunk.*
+
+```{r}
+founders.f.nodes  <-  intersect(females(ped.living), founders(ped.living))
+founders.m.nodes  <-  intersect(males(ped.living), founders(ped.living))
+female.nodes      <-  intersect(living, females(ped.living))
+male.nodes        <-  intersect(living, males(ped.living))
+undet.nodes       <-  setdiff(living, female.nodes) %>% setdiff(male.nodes)
+female.d.nodes    <-  intersect(deceased, females(ped.living))
+male.d.nodes      <-  intersect(deceased, males(ped.living))
+undet.d.nodes     <-  setdiff(deceased, female.d.nodes) %>% setdiff(male.d.nodes)
+```
+
+```{r}
+founders.f.ndf  <- create_node_df(n = length(founders.f.nodes)  , label = c(founders.f.nodes), style = "filled", color = colors$dam                , shape = "circle"   )
+founders.m.ndf  <- create_node_df(n = length(founders.m.nodes)  , label = c(founders.m.nodes), style = "filled", color = colors$sire               , shape = "square"   )
+female.ndf      <- create_node_df(n = length(female.nodes    )  , label = c(female.nodes    ), style = "filled", color = colors$f                  , shape = "circle"   )
+male.ndf        <- create_node_df(n = length(male.nodes      )  , label = c(male.nodes      ), style = "filled", color = colors$m                  , shape = "square"   )
+undet.ndf       <- create_node_df(n = length(undet.nodes     )  , label = c(undet.nodes     ), style = "filled", color = colors$u                  , shape = "diamond"  )
+female.d.ndf    <- create_node_df(n = length(female.d.nodes  )  , label = c(female.d.nodes  ), style = "filled", color = colors$dam                , shape = "circle"   )
+male.d.ndf      <- create_node_df(n = length(male.d.nodes    )  , label = c(male.d.nodes    ), style = "filled", color = colors$sire               , shape = "square"   )
+undet.d.ndf     <- create_node_df(n = length(undet.d.nodes   )  , label = c(undet.d.nodes   ), style = "filled", color = gsub("FF", "70", colors$u), shape = "diamond"  )
+
+nodes <- combine_ndfs(
+  founders.f.ndf,
+  founders.m.ndf,
+  female.ndf    ,
+  male.ndf      ,
+  undet.ndf     ,
+  female.d.ndf  ,
+  male.d.ndf    ,
+  undet.d.ndf  
+  )
+```
+
+
+```{r}
+father_idx   <- which(ped.living$FIDX != 0)
+mother_idx   <- which(ped.living$MIDX != 0)
+
+father.edf <- create_edge_df(from = ids[ped.living$FIDX[father_idx]], to = ids[father_idx], rel = "paternity")
+mother.edf <- create_edge_df(from = ids[ped.living$MIDX[mother_idx]], to = ids[mother_idx], rel = "maternity")
+
+edges      <- combine_edfs(father.edf, mother.edf)
+```
+
+```{r}
+ped.tree <- create_graph(nodes = nodes, edges = edges, directed = TRUE, graph_name = "Living Population")
+```
+
+```{r}
+render_graph(ped.tree)
+```
+
+
+
+
+```{r}
+ids          <- ped.living$ID     
+father_idx   <- which(ped.living$FIDX != 0)
+mother_idx   <- which(ped.living$MIDX != 0)
+father_edges <- data.frame(from = ids[fidx[father_idx]], to = ids[father_idx])
+mother_edges <- data.frame(from = ids[midx[mother_idx]], to = ids[mother_idx])
+edges        <- rbind(father_edges, mother_edges)
+```
+
+```{r}
+parent_edges              <- rbind(father_edges, mother_edges)
+parent_edges$relationship <- "parent"
+
+
+offsp_with_both  <- which(ped.living$FIDX != 0 & ped.living$MIDX != 0)
+mate_edges       <- data.frame(father = ids[ped.living$FIDX[offsp_with_both]], 
+                               mother = ids[ped.living$MIDX[offsp_with_both]])
+mate_edges       <- unique(mate_edges)
+
+spouse_edges <- data.frame(
+  from             = mate_edges$father,
+  to               = mate_edges$mother,
+  relationship     = "mate"
+)
+
+edges        <- rbind(parent_edges, spouse_edges)
+```
+
+```{r}
+color.map <- function(color) {
+  list(background = color,
+       border     = "black",
+       highlight  = "#DC8045FF")
+}
+
+fams <- studbook %>% mutate(ID = as.character(ID)) %>%
+  filter(ID %in% nonfounders(ped.living) | ID %in% founders(ped.living)) %>%
+  mutate(pair = str_glue("{Sire}", "{Dam}")) %>%
+  mutate(pair = as.integer(pair), ID = as.integer(ID)) %>%
+  select(ID, Sire, Dam, pair) %>% distinct()
+
+mat_edges       <- fams %>% filter(Sire != 0 & Dam != 0 & pair != 0) %>% select(from = Dam, to = pair) %>% filter(!is.na(from) & !is.na(to)) %>% distinct()
+pat_edges       <- fams %>% filter(Sire != 0 & Dam != 0 & pair != 0) %>% select(from = Sire, to = pair) %>% filter(!is.na(from) & !is.na(to)) %>% distinct()
+offspring_edges <- fams %>% filter(pair != 0) %>% select(from = pair, to = ID) %>% filter(!is.na(from) & !is.na(to)) %>% distinct()
+
+pair_nodes      <- offspring_edges %>% select(id = from) %>% filter(id != 0)  %>% distinct() %>% mutate(hidden = TRUE, shape = "circle", color = map("white", \(x) color.map(x)))
+mat_nodes       <- mat_edges       %>% select(id = from) %>% filter(id != 0)  %>% distinct() %>% mutate(color = map(colors$f, \(x) color.map(x)), shape = "circle", hidden = FALSE)
+pat_nodes       <- pat_edges       %>% select(id = from) %>% filter(id != 0)  %>% distinct() %>% mutate(color = map(colors$m, \(x) color.map(x)), shape = "square", hidden = FALSE)
+offspring_nodes <- offspring_edges %>% select(id = to)   %>% filter(id != 0)  %>% distinct() %>% 
+  left_join(select(studbook, id = ID, color, Sex)) %>%
+  mutate(color  = map(color, \(x) color.map(x)), 
+         shape  = case_when(Sex == "Male" ~ "square", Sex == "Female" ~ "circle", .default = "diamond"), 
+         hidden = FALSE) %>% select(id, color, shape, hidden)
+
+edges <- bind_rows(mat_edges, pat_edges, offspring_edges) %>% distinct() %>% filter(from != 0 & to != 0)
+nodes <- bind_rows(pair_nodes, mat_nodes, pat_nodes, offspring_nodes) %>% distinct() %>% filter(id != 0)
+```
+
+```{r}
+ped.net <- visNetwork(nodes, edges, height = "1000px", width = "100%") %>% 
+  visHierarchicalLayout(direction = "UD", sortMethod = "directed") %>%
+  visNodes(shadow = TRUE, fixed = FALSE)   %>%
+  visEdges(color = "black", width = 0.8, smooth = list(enabled = TRUE, forceDirection = TRUE)) %>%
+  visInteraction(dragNodes = list(enabled = TRUE))
+```
+
+
 
 ## Generate Detailed Pedigree Statistics
 
