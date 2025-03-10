@@ -108,32 +108,30 @@ readings <- list(
       "6b" = list("215:248" = "Extinction")
     ),
     "7"  = list(
-      "7a"  = list("249:276" = "Habitat Loss and Fragmentation"),
-      "7b"  = list("277:284" = "Habitat Degradation")
+      "7a"  = list("249:276" = "Habitat Loss and Fragmentation")
     ),
     "8"  = list(
-      "8a"  = list("285:292" = "Metapopulations and Landscape Mosaics"),
-      "8b"  = list("293:328" = "Overexploitation")
+      "8b"  = list("277:284" = "Habitat Degradation")
     ),
     "10"  = list(
-      "10a"  = list("329:368" = "Invasive Alien Species"),
-      "8b"  = list("369:402" = "Climate Change")
+      "10a"  = list("285:292" = "Metapopulations and Landscape Mosaics"),
+      "10b"  = list("293:328" = "Overexploitation"                     )
     ),
     "12"  = list(
-      "12a"  = list("405:414" = "Species-Level Conservation: Goals and Challenges"),
-      "12b"  = list("415:444" = "Species-Level Conservation: Statistics and Probability")
+      "12a"  = list("329:368" = "Invasive Alien Species"),
+      "12b"  = list("369:402" = "Climate Change"        )
     ),
     "13"  = list(
-      "13a"  = list("445:476" = "Community and Ecosystem Conservation"),
-      "13b"  = list("477:505" = "Landscape-Scale Conservation: PA Networks")
+      "13a"  = list("405:414" = "Species-Level Conservation: Goals and Challenges"      ),
+      "13b"  = list("415:444" = "Species-Level Conservation: Statistics and Probability")
     ),
     "14"  = list(
-      "14a"  = list("506:520" = "Landscape-Scale Conservation: Monitoring and Modeling"),
-      "14b"  = list("521:537" = "Ex Situ Conservation: Facilities")
+      "14a"  = list("445:476" = "Community and Ecosystem Conservation"     ),
+      "14b"  = list("477:505" = "Landscape-Scale Conservation: PA Networks")
     ),
     "15"  = list(
-      "15a"  = list("538:554" = "Ex Situ Conservation: In Situ Contributions"),
-      "15b"  = list("573:582" = "Sustainable Development: Case Studies")
+      "15a"  = list("506:520" = "Landscape-Scale Conservation: Monitoring and Modeling"),
+      "15b"  = list("521:554" = "Ex Situ Conservation")
     )
   )
 )
@@ -212,7 +210,7 @@ agenda <- list(
                  "7b"  = "Demography and Genetics",
                  "7c"  = "Nutrition"),
      "8"  = list("8a"  = "Nutrition",
-                 "8b"  = "Nutrition",
+                 "8b"  = "Demography and Genetics",
                  "8c"  = "Nutrition"),
      "10"  = list("10a" = "Reproduction",
                   "10b" = "Reproduction",
@@ -270,7 +268,14 @@ agenda <- list(
         "Ex Situ Conservation: In Situ Contributions",
         "Sustainable Development: Case Studies"
 
-      )
+      ),
+      "Other" =
+        list(
+          "No Class",
+          "Film Day",
+          "Schedule Buffer",
+          "Exam"
+        )
     ),
     topics = list(
       "1" = list(
@@ -283,9 +288,9 @@ agenda <- list(
         "3b" = "Biodiversity and Ecosystem Services"),
       "4"  = list(
         "4a" = "Biodiversity and Ecosystem Services",
-        "4b" = "Snow Day - Study for Exam"),
+        "4b" = "No Class"),
       "5"  = list(
-        "5a" = "Snow Day - Study for Exam"
+        "5a" = "No Class"
         ),
       "6"  = list(
         "6a" = "Film Day",
@@ -293,27 +298,27 @@ agenda <- list(
       ),
       "7"  = list(
         "7a" = "Habitat Loss and Fragmentation",
-        "7b" = "Habitat Degradation"),
+        "7b" = "No Class"),
       "8"  = list(
-        "8a" = "Metapopulations and Landscape Mosaics",
-        "8b" = "Overexploitation"),
+        "8a" = "Habitat Loss and Fragmentation",
+        "8b" = "Habitat Degradation"),
       "10"  = list(
-        "10a" = "Invasive Alien Species",
-        "10b" = "Climate Change"),
+        "10a" = "Metapopulations and Landscape Mosaics",
+        "10b" = "Overexploitation"                     ),
       "11" = list(
         "11b" = "Film Day"),
       "12" = list(
-        "12a" = "Species-Level Conservation: Goals and Challenges",
-        "12b" = "Species-Level Conservation: Statistics and Probability"),
+        "12a" = "Invasive Alien Species" ,
+        "12b" = "Climate Change"        ),
       "13" = list(
-        "13a" = "Community and Ecosystem Conservation",
-        "13b" = "Landscape-Scale Conservation: PA Networks"),
+        "13a" = "Species-Level Conservation: Goals and Challenges"      ,
+        "13b" = "Species-Level Conservation: Statistics and Probability"),
       "14" = list(
-        "14a" = "Landscape-Scale Conservation: Monitoring and Modeling",
-        "14b" = "Ex Situ Conservation: Facilities"),
+        "14a" = "Community and Ecosystem Conservation",
+        "14b" = "Landscape-Scale Conservation: PA Networks"),
       "15" = list(
-        "15a" = "Ex Situ Conservation: In Situ Contributions",
-        "15b" = "Sustainable Development: Case Studies"),
+        "15a" = "Landscape-Scale Conservation: Monitoring and Modeling",
+        "15b" = "Ex Situ Conservation"),
       "16" = list(
         "16a" = "Film Day",
         "16b" = "Film Day")
@@ -347,6 +352,9 @@ slides <- list(
     "7" = list(
       "7a" = "https://www.canva.com/design/DAGgsez7wHg/rCdtUcra1w89VmWlBN_-GA/view?utm_content=DAGgsez7wHg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h87473817fa",
       "7c" = "https://www.canva.com/design/DAGg4juK6S0/Q_TrSRMY-gunpA2uKo77kQ/view?utm_content=DAGg4juK6S0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h9348825482"
+    ),
+    "8" = list(
+      "8a" = "https://docs.google.com/document/d/151rEWzudAYADLTq8VCKzJ5miTW5ie-AM3ZCWkVt3WNY/edit?usp=sharing"
     )
   ),
   conbio = list(
@@ -369,6 +377,9 @@ slides <- list(
     ),
     "7" = list(
       "7a" = "https://www.canva.com/design/DAGgtEbN5Ow/L0UTOTJk4FD3kjZZ9OMeXw/view?utm_content=DAGgtEbN5Ow&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=he167018c43"
+    ),
+    "8" = list(
+      "8a" = "https://www.canva.com/design/DAGhW2YMqkQ/VyHZKcZyZSZ4yskDACZnww/view?utm_content=DAGhW2YMqkQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd9d543af38"
     )
   )
 )
