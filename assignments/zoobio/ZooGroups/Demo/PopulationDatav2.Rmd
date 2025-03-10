@@ -17,7 +17,7 @@ params:
   semester: "spring25"
   studbook_current: "Studbooks/Demo/Studbook_Living.csv"
   studbook_historic: "Studbooks/Demo/Studbook_Historic.csv"
-  group: "MajecaZoo"
+  group: "NiteLifeConservation"
   
 ---
 
@@ -145,7 +145,7 @@ First, we need to read in our studbook data and clean it up to create a *tidy* f
 ## Read and Format Data in R
 
 ```{r}
-studbook.living <- read.csv(here("Studbooks/Demo/Studbook_Living.csv"), header = T) %>%
+studbook.living <- read.csv(here(paste0("Studbooks/", params$group,"/Studbook_Living.csv")), header = T) %>%
   filter(str_detect(Location, "\\w+")) %>%
   select(ID, Sex, Sire, Dam, Event_Type, Date, Location)  %>%
   mutate(Date  = str_squish(str_extract(Date, ".{1,3}[/-].{1,3}[/-]\\d{1,4}"))) %>%
@@ -166,7 +166,7 @@ studbook.living <- read.csv(here("Studbooks/Demo/Studbook_Living.csv"), header =
   ungroup() %>%
   select(Event_order, ID, Sex, Sire, Dam, Event_Type, Date, Location)
 
-studbook.historic <- read.csv(here("Studbooks/Demo/Studbook_Historic.csv"), header = T) %>%
+studbook.historic <- read.csv(here(paste0("Studbooks/", params$group,"/Studbook_Historic.csv")), header = T) %>%
   filter(str_detect(Location, "\\w+")) %>%
   select(ID, Sex, Sire, Dam, Event_Type, Date, Location)  %>%
   mutate(Date  = str_squish(str_extract(Date, ".{1,3}[/-].{1,3}[/-]\\d{1,4}"))) %>%
