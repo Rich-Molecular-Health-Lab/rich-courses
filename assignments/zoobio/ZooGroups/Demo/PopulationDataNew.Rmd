@@ -331,67 +331,9 @@ studbook <- bind_rows(sires, dams) %>%
          Birth_loc_color = as.character(loc_color)) %>%
   select(-c(label, loc_color)) %>%
   mutate(Sire = if_else(is.na(Sire) | Sire == "", "0", Sire),
-         Dam  = if_else(is.na(Dam)  | Dam == "" , "0", Dam)) %>%
-  mutate(ID = as.character(ID))
-
-living   <- filter(studbook, Status == "Alive")    %>% pull(ID) %>% as.character()
-deceased <- filter(studbook, Status == "Deceased") %>% pull(ID) %>% as.character()
-```
-
-
-```{r}
-locations <- c(pull(studbook.historic, Location), 
-               pull(studbook.living  , Location),
-               pull(births           , Birth_Location),
-               pull(transfers.deaths , Last_Location)) %>%
-  unique() %>%
-  enframe(name = NULL, value = "Location") %>%
-  arrange(Location) %>%
-  mutate(label   = str_sub(Location, 1L, 3L),
-         str_end = str_sub(Location, -1L, -1L)) %>%
-  mutate(label = if_else(row_number(.) > 1 & str_equal(label, lag(label)), str_replace(label, "\\w$", str_end), label)) %>%
-  select(label, Location)
-
-location.key <- sample(palettes_d$palettesForR$Cranes, size = length(unique(locations$label)), replace = FALSE) %>%
-  as.list() %>%
-  set_names(., map(as.list(unique(locations$label)), \(x) paste0(x))) %>%
-  enframe(name = "label", value = "loc_color") %>%
-  right_join(locations, by = join_by(label))
-```
-
-
-```{r}
-studbook <- births %>%
-  left_join(transfers.deaths) %>%
-  distinct() %>%
-  mutate(Status        = replace_na(Status, "Alive"),
-         Last_Date     = if_else(is.na(Last_Date)    , Birth_Date    , Last_Date),
-         Last_Location = if_else(is.na(Last_Location), Birth_Location, Last_Location)) %>%
-  mutate(Age = if_else(Status == "Alive", 
-                       year(today())   - year(Birth_Date), 
-                       year(Last_Date) - year(Birth_Date))) %>%
+         Dam  = if_else(is.na(Dam)  | Dam == "" , "0", Dam))  %>% 
   arrange(ID) %>%
-  mutate(sex_num = case_when(Sex == "Male"   ~ 1,
-                             Sex == "Female" ~ 2,
-                             .default = 0),
-         color = case_when(Sex == "Female"          ~ colors$f,
-                           Sex == "Male"            ~ colors$m,
-                           Sex == "Undetermined"    ~ colors$u
-                           ),
-         yr_birth = year(Birth_Date),
-         yr_last  = year(Last_Date)
-         ) %>%
-  left_join(location.key, by = join_by(Last_Location == Location)) %>%
-  mutate(Last_Location = as.character(label), Last_loc_color = as.character(loc_color)) %>%
-  select(-c(label, loc_color)) %>%
-  left_join(location.key, by = join_by(Birth_Location == Location)) %>%
-  mutate(Birth_Location = as.character(label), Birth_loc_color = as.character(loc_color)) %>%
-  select(-c(label, loc_color)) %>%
-  mutate(Sire = replace_na(Sire, 0),
-         Dam  = replace_na(Dam, 0)) %>%
-  mutate(ID   = as.character(ID),
-         Sire = as.character(Sire),
-         Dam  = as.character(Dam))
+  mutate(ID = as.character(ID)) %>% distinct()
 
 living   <- filter(studbook, Status == "Alive")    %>% pull(ID) %>% as.character()
 deceased <- filter(studbook, Status == "Deceased") %>% pull(ID) %>% as.character()
@@ -454,41 +396,58 @@ UndetCounts <- list(
                     Status     = pull(filter(studbook, sex_num == 0), Status), 
                     Last_Date  = pull(filter(studbook, sex_num == 0), Last_Date))
 
-monthly_counts.f <- pmap(FemaleCounts, function(Birth_Date, Last_Date, Status)  {
-    if (is.na(Birth_Date)) return(NULL)
-    start_month <- floor_date(Birth_Date, "month")
-        if (Status == "Alive") {
-      end_month <- max_month
-    } else if (is.na(Last_Date) & Status == "Deceased") {
-      return(NULL)
-    } else {
-      end_month <- floor_date(Last_Date, "month")
-    }
-    return(as.list(seq(start_month, end_month, by = "months")))
+monthly_counts.f <- pmap(FemaleCounts, function(Birth_Date, Last_Date, Status) {
+  if (is.na(Birth_Date)) return(NULL)
+  
+  start_month <- floor_date(Birth_Date, "month")
+  
+  if (Status == "Alive") {
+    end_month <- max_month
+  } else if (is.na(Last_Date) & Status == "Deceased") {
+    return(NULL)
+  } else {
+    end_month <- floor_date(Last_Date, "month")
+  }
+  
+  # Check if start_month is after end_month; if so, return NULL
+  if (start_month > end_month) return(NULL)
+  
+  # Otherwise, return the sequence as a list
+  as.list(seq(start_month, end_month, by = "months"))
 }) %>%
   list_flatten() %>%
   list_c() %>%
-  tibble(Date = .)  %>%
+  tibble(Date = .) %>%
   group_by(Date) %>%
-  summarize(Females = n()) %>% ungroup()
+  summarize(Females = n()) %>%
+  ungroup()
 
-monthly_counts.m <- pmap(MaleCounts, function(Birth_Date, Last_Date, Status)  {
-    if (is.na(Birth_Date)) return(NULL)
-    start_month <- floor_date(Birth_Date, "month")
-        if (Status == "Alive") {
-      end_month <- max_month
-    } else if (is.na(Last_Date) & Status == "Deceased") {
-      return(NULL)
-    } else {
-      end_month <- floor_date(Last_Date, "month")
-    }
-    return(as.list(seq(start_month, end_month, by = "months")))
+monthly_counts.m <- pmap(MaleCounts, function(Birth_Date, Last_Date, Status) {
+  if (is.na(Birth_Date)) return(NULL)
+  
+  start_month <- floor_date(Birth_Date, "month")
+  
+  if (Status == "Alive") {
+    end_month <- max_month
+  } else if (is.na(Last_Date) & Status == "Deceased") {
+    return(NULL)
+  } else {
+    end_month <- floor_date(Last_Date, "month")
+  }
+  
+  # Check if start_month is after end_month; if so, return NULL
+  if (start_month > end_month) return(NULL)
+  
+  # Otherwise, return the sequence as a list
+  as.list(seq(start_month, end_month, by = "months"))
 }) %>%
   list_flatten() %>%
   list_c() %>%
-  tibble(Date = .)  %>%
+  tibble(Date = .) %>%
   group_by(Date) %>%
-  summarize(Males = n()) %>% ungroup()
+  summarize(Males = n()) %>%
+  ungroup()
+
 
 monthly_counts.u <- pmap(UndetCounts, function(Birth_Date, Last_Date, Status)  {
     if (is.na(Birth_Date)) return(NULL)
@@ -507,21 +466,25 @@ monthly_counts.u <- pmap(UndetCounts, function(Birth_Date, Last_Date, Status)  {
   tibble(Date = .)  %>%
   group_by(Date) %>%
   summarize(Undetermined = n()) %>% ungroup()
-```
 
-
-```{r}
-monthly_counts <- pmap(MonthCounts, function(Birth_Date, Last_Date, Status)  {
-    if (is.na(Birth_Date)) return(NULL)
-    start_month <- floor_date(Birth_Date, "month")
-        if (Status == "Alive") {
-      end_month <- max_month
-    } else if (is.na(Last_Date) & Status == "Deceased") {
-      return(NULL)
-    } else {
-      end_month <- floor_date(Last_Date, "month")
-    }
-    return(as.list(seq(start_month, end_month, by = "months")))
+monthly_counts <- pmap(MonthCounts, function(Birth_Date, Last_Date, Status) {
+  if (is.na(Birth_Date)) return(NULL)
+  
+  start_month <- floor_date(Birth_Date, "month")
+  
+  if (Status == "Alive") {
+    end_month <- max_month
+  } else if (is.na(Last_Date) & Status == "Deceased") {
+    return(NULL)
+  } else {
+    end_month <- floor_date(Last_Date, "month")
+  }
+  
+  # Check if start_month is after end_month; if so, return NULL
+  if (start_month > end_month) return(NULL)
+  
+  # Otherwise, return the sequence as a list
+  as.list(seq(start_month, end_month, by = "months"))
 }) %>%
   list_flatten() %>%
   list_c() %>%
@@ -603,29 +566,30 @@ plot.population
 Now we will zoom out to annual population counts to follow the standard method for computing a normalized rate of growth over the past 5 years compared to all years.
 
 ```{r}
-alive_years <- pmap(
-  list(Birth_Date = studbook$Birth_Date, Status = studbook$Status, Last_Date = studbook$Last_Date),
-  function(Birth_Date, Last_Date, Status) {
-    
-    if (is.na(Birth_Date)) return(NULL)
-    
-    start_year <- floor_date(Birth_Date, "year")
+YearCounts  <- list(Birth_Date = pull(studbook, Birth_Date), 
+                    Status     = pull(studbook, Status), 
+                    Last_Date  = pull(studbook, Last_Date))
 
-        if (Status == "Alive") {
-          
-      end_year <- max_year
-      
-    } else if (is.na(Last_Date) & Status == "Deceased") {
-      return(NULL)
-    } else {
-      
-      end_year <- floor_date(Last_Date, "year")
-    }
-    # Return the sequence of years from birth to death (inclusive)
-    as.list(seq(start_year, end_year, by = "years"))
-    
+alive_years <- pmap(YearCounts, function(Birth_Date, Last_Date, Status) {
+  if (is.na(Birth_Date)) return(NULL)
+  
+  start_year <- floor_date(Birth_Date, "year")
+  
+  if (Status == "Alive") {
+    end_year <- max_year
+  } else if (is.na(Last_Date) & Status == "Deceased") {
+    return(NULL)
+  } else {
+    end_year <- floor_date(Last_Date, "year")
   }
-)
+  
+  # Check if start_month is after end_month; if so, return NULL
+  if (start_year > end_year) return(NULL)
+  
+  # Otherwise, return the sequence as a list
+  as.list(seq(start_year, end_year, by = "years"))
+})
+
 
 annual_counts <- list_flatten(alive_years) %>%
   list_c() %>%
@@ -654,7 +618,7 @@ pedig <- ped(
   fid    = studbook$Sire,
   mid    = studbook$Dam,
   sex    = studbook$sex_num
-)
+) 
 ```
 
 
@@ -725,13 +689,33 @@ plot_pedigrees(ped.living, "Pedigree of Living Population")
 I don't love the pedtools graphics system and lack of customization/interactivity, so if we want to look more closely at the details of relationships and clustering across a complex pedigree, we can transfer the data produced by pedtools into some other visualization packages. In this case, we will use `visNetwork` Run the chunk below to generate the new, properly-formatted dataframes that this package requires to build the graphics.
 
 ```{r}
-levels <- as.list(generations(ped.living, what = "indiv")) %>%
-  set_names(ped.living$ID) %>%
+# Try to get generation numbers with "indiv" first
+gen_numbers <- generations(ped.living, what = "indiv")
+
+# If no generation numbers were returned, try an alternative method:
+if (length(gen_numbers) == 0) {
+  warning("No generation numbers returned using what = 'indiv'. Trying what = 'depth' instead.")
+  gen_numbers <- generations(ped.living, what = "depth")
+}
+
+# If still empty, then assign NA for all individuals (or handle appropriately)
+if (length(gen_numbers) == 0) {
+  warning("No generation numbers found using either method; assigning NA to all individuals.")
+  gen_numbers <- rep(NA_integer_, nrow(ped.living))
+}
+
+# Now, create the levels tibble using the computed generation numbers.
+levels <- as.list(gen_numbers) %>%
+  set_names(ped.living$ID) %>%     # ped.living$ID must have the same length as gen_numbers
   enframe(name = "id", value = "level") %>%
   mutate(level = as.integer(level)) %>%
   mutate(level = if_else(id %in% founders(ped.living), level, level + 2)) %>%
   mutate(level = if_else(id %in% leaves(ped.living), level + 1, level))
 
+```
+
+
+```{r}
 pairs <- map(as.list(nonfounders(ped.living)), \(x) as.list(parents(ped.living, id = x))) %>%
   enframe(name = NULL) %>%
   unnest_wider(value, names_sep = "_") %>%
@@ -739,7 +723,10 @@ pairs <- map(as.list(nonfounders(ped.living)), \(x) as.list(parents(ped.living, 
   mutate(pid = paste0("0", as.character(row_number()))) %>%
   left_join(studbook, by = join_by(value_1 == Sire, value_2 == Dam)) %>%
   select(pid, fid = value_1, mid = value_2, color = Birth_loc_color, label = Birth_Location) %>% 
-  distinct()
+  distinct() %>% 
+  group_by(pid) %>% 
+  summarize(across(everything(), ~ dplyr::first(.x)), .groups = "drop") %>% 
+  ungroup()
 
 sire <- pull(pairs, fid, pid) %>% as.list()
 dam  <- pull(pairs, mid, pid) %>% as.list()
@@ -752,8 +739,17 @@ pairs.edf <- pairs  %>%
          width  = 0.5,
          arrows = "to")
 
-offspring.edf <- list_merge(sire, !!!dam) %>%
-  imap(\(x, idx) list(idx, as.list(commonDescendants(ped.living, ids = x, maxGen = 2)))) %>%
+combined <- c(sire, dam)
+
+# Group by names and merge the values into a single vector for each unique name.
+combined_grouped <- split(combined, names(combined)) %>% 
+  map(unlist)
+
+# Now use combined_grouped in place of list_merge(sire, !!!dam)
+offspring.edf <- combined_grouped %>%
+  imap(function(x, idx) {
+    list(idx, as.list(commonDescendants(ped.living, ids = x, maxGen = 2)))
+  }) %>%
   enframe(name = NULL, value = "id") %>%
   unnest_wider(id, names_sep = "_") %>%
   unnest_longer(id_2, values_to = "id") %>%
@@ -764,8 +760,8 @@ offspring.edf <- list_merge(sire, !!!dam) %>%
   mutate(dashes = FALSE, 
          shadow = TRUE,
          width  = 0.7,
-         arrows = NULL
-         )
+         arrows = NULL)
+
 
 edges <- bind_rows(pairs.edf, offspring.edf)
 
@@ -773,7 +769,10 @@ pairs.ndf <- pairs  %>%
   pivot_longer(cols = c("fid", "mid"), values_to = "mateID", names_to = NULL) %>%
   left_join(levels, by = join_by(mateID == id)) %>%
   group_by(pid, color, label) %>%
-  mutate(level = sum(max(level), 1)) %>% ungroup() %>%
+  mutate(level = sum(max(level), 1)) %>% ungroup() %>% 
+  group_by(pid) %>% 
+  summarize(across(everything(), ~ dplyr::first(.x)), .groups = "drop") %>% 
+  ungroup() %>%
   mutate(
     group = "pair",
     shape = "icon",
@@ -782,28 +781,46 @@ pairs.ndf <- pairs  %>%
   ) %>%
   select(id = pid, level, group, shape, icon, label, font) %>%
   distinct()
+```
 
+
+```{r}
 nodes <- as.data.frame(ped.living) %>% 
   mutate(id    = as.character(id),
-         group = as.character(sex)) %>%
+         group = as.character(sex)) %>% 
   select(id, group) %>% 
-  left_join(levels, by = join_by(id)) %>%
+  group_by(id) %>% 
+  summarize(across(everything(), ~ dplyr::first(.x)), .groups = "drop") %>% 
+  ungroup() %>% 
+  left_join(levels, by = join_by(id)) %>% 
+  group_by(id) %>% 
+  summarize(across(everything(), ~ dplyr::first(.x)), .groups = "drop") %>% 
+  ungroup() %>% 
   mutate(color = case_when(
-                           group == "0" ~ colors$u,
-                           group == "1" ~ colors$m,
-                           group == "2" ~ colors$f),
+           group == "0" ~ colors$u,
+           group == "1" ~ colors$m,
+           group == "2" ~ colors$f),
          code = case_when(
-                           group == "0" ~ "\uf04b",
-                           group == "1" ~ "\uf0c8",
-                           group == "2" ~ "\uf111"),
+           group == "0" ~ "\uf04b",
+           group == "1" ~ "\uf0c8",
+           group == "2" ~ "\uf111"),
          shape = "icon",
          label = id
-         ) %>%
-  mutate(icon = map2(color, code, \(x, y) list(code = y, color = x, face = "'Font Awesome 5 Free'", weight = 700, size = 30)),
-         font = map(color, \(x) list(size = 12, color = x, strokeColor = "#FFFFFF", strokeWidth = 3))
-         ) %>%
-  select(id, level, group, shape, icon, label, font) %>%
-  bind_rows(pairs.ndf) %>% distinct()
+         ) %>% 
+  mutate(icon = map2(color, code, \(x, y) list(code = y, 
+                                               color = x, 
+                                               face = "'Font Awesome 5 Free'",
+                                               weight = 700, 
+                                               size = 30)),
+         font = map(color, \(x) list(size = 12, 
+                                     color = x, 
+                                     strokeColor = "#FFFFFF", 
+                                     strokeWidth = 3))
+         ) %>% 
+  select(id, level, group, shape, icon, label, font) %>% 
+  bind_rows(pairs.ndf) %>% 
+  distinct(id, .keep_all = TRUE) %>% 
+  ungroup()
 ```
 
 Now we are ready to build the actual graphics below. The code below will render two different visualizations for you.
@@ -969,9 +986,9 @@ living.kinship <- kinship.ped[living.ped, living.ped]
 We can also extract some basic counts from our pedigree for each individual before we create some visual summaries below.
 
 ```{r, out.width="100%"}
-gen_numbers <- generations(ped.living, what = "indiv")
 living_gen  <- gen_numbers[names(gen_numbers) %in% living]
-generations <- enframe(gen_numbers, name = "ID", value = "Generations")
+generations <- enframe(gen_numbers, name = "ID", value = "Generations") %>%
+  mutate(ID = as.character(ID))
 
 ancestors <- as.list(rownames(living.kinship)) %>%
   set_names(map(., \(x) x)) %>%
@@ -1236,8 +1253,8 @@ btp.plot
 Once you choose some potential pairs, you should plug their ID's into the code chunks below. This will give you a few more graphics to inspect their relationship. You can easily swap out different IDs and re-run the code chunks to see those revised results until you find the pairs you are happy with.
 
 ```{r}
-male   <- c("2652") # Replace the number here with the ID number of your male of interest.
-female <- c("2677") # Replace the number here with the ID number of your female of interest.
+male   <- c("2003") # Replace the number here with the ID number of your male of interest.
+female <- c("1069") # Replace the number here with the ID number of your female of interest.
 
 pair <- c(male, female)
 ```

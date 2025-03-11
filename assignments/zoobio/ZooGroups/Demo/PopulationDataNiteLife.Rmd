@@ -146,15 +146,6 @@ First, we need to read in our studbook data and clean it up to create a *tidy* f
 ## Read and Format Data in R
 
 ```{r}
-fill.missing <- tibble(
-  ID     = as.character(missing.fids),
-  Sex    = "Male",
-  Status = "Deceased"
-)
-```
-
-
-```{r}
 studbook.living <- read.csv(here(paste0("Studbooks/", params$group,"/Studbook_Living.csv")), header = T) %>%
   filter(str_detect(Location, "\\w+")) %>%
   select(ID, Sex, Sire, Dam, Event_Type, Date, Location)  %>%
@@ -243,9 +234,10 @@ transfers.deaths  <-  studbook.living %>%
 locations <- c(pull(studbook.historic, Location), 
                pull(studbook.living  , Location),
                pull(births           , Birth_Location),
-               pull(transfers.deaths , Last_Location)) %>%
+               pull(transfers.deaths , Last_Location), "UNDETERMINED") %>%
   unique() %>%
   enframe(name = NULL, value = "Location") %>%
+  mutate(Location = str_to_upper(Location)) %>%
   arrange(Location) %>%
   mutate(label   = str_sub(Location, 1L, 3L),
          str_end = str_sub(Location, -1L, -1L)) %>%
@@ -256,109 +248,95 @@ location.key <- sample(palettes_d$palettesForR$Cranes, size = length(unique(loca
   as.list() %>%
   set_names(., map(as.list(unique(locations$label)), \(x) paste0(x))) %>%
   enframe(name = "label", value = "loc_color") %>%
-  right_join(locations, by = join_by(label))
+  right_join(locations, by = join_by(label)) %>%
+  mutate(loc_color = as.character(loc_color))
 ```
 
-
 ```{r}
-studbook <- births %>%
+stud <- births %>%
   left_join(transfers.deaths) %>%
   distinct() %>%
   mutate(Status        = replace_na(Status, "Alive"),
          Last_Date     = if_else(is.na(Last_Date)    , Birth_Date    , Last_Date),
          Last_Location = if_else(is.na(Last_Location), Birth_Location, Last_Location)) %>%
-  mutate(Age = if_else(Status == "Alive", 
-                       year(today())   - year(Birth_Date), 
-                       year(Last_Date) - year(Birth_Date))) %>%
   arrange(ID) %>%
   mutate(sex_num = case_when(Sex == "Male"   ~ 1,
                              Sex == "Female" ~ 2,
-                             .default = 0),
-         color = case_when(Sex == "Female"          ~ colors$f,
-                           Sex == "Male"            ~ colors$m,
-                           Sex == "Undetermined"    ~ colors$u
-                           ),
-         yr_birth = year(Birth_Date),
-         yr_last  = year(Last_Date)
-         ) %>%
-  left_join(location.key, by = join_by(Last_Location == Location)) %>%
-  mutate(Last_Location = as.character(label), Last_loc_color = as.character(loc_color)) %>%
-  select(-c(label, loc_color)) %>%
-  left_join(location.key, by = join_by(Birth_Location == Location)) %>%
-  mutate(Birth_Location = as.character(label), Birth_loc_color = as.character(loc_color)) %>%
-  select(-c(label, loc_color)) %>%
-  mutate(Sire = replace_na(Sire, 0),
-         Dam  = replace_na(Dam, 0)) %>%
-  mutate(ID   = as.character(ID),
-         Sire = as.character(Sire),
-         Dam  = as.character(Dam))
+                             .default = 3),
+         across(c("ID", "Sire", "Dam"), ~ as.character(.)))
+
+missing <- fixed %>% fixParents(
+  id       = stud$ID,
+  dadid    = stud$Sire,
+  momid    = stud$Dam,
+  sex      = stud$sex_num
+) %>%
+  select(ID      = id,
+         Sire    = dadid,
+         Dam     = momid,
+         sex_num = sex) %>%
+  anti_join(stud, by = join_by(ID, Sire, Dam, sex_num)) %>%
+  filter(ID != "0") %>% distinct()
+
+sires <- missing %>% filter(sex_num == 1) %>%
+  left_join(select(stud, 
+                   offspring     = ID, 
+                   ID            = Sire, 
+                   mateID        = Dam,
+                   Last_Date     = Birth_Date,
+                   Last_Location = Birth_Location), 
+            by = join_by(ID))
+
+dams <- missing %>% filter(sex_num == 2) %>%
+  left_join(select(stud, 
+                   offspring     = ID, 
+                   ID            = Dam, 
+                   mateID        = Sire,
+                   Last_Date     = Birth_Date,
+                   Last_Location = Birth_Location), 
+            by = join_by(ID))
 ```
 
-### Fill in Missing Parent IDs
 
 ```{r}
-missing_sire_ids <- setdiff(
-  unique(studbook$Sire[!is.na(studbook$Sire) & studbook$Sire != "0"]),
-  studbook$ID
-)
-
-missing_dam_ids <- setdiff(
-  unique(studbook$Dam[!is.na(studbook$Dam) & studbook$Dam != "0"]),
-  studbook$ID
-)
-
-new_sire_rows <- studbook %>%
-  filter(Sire %in% missing_sire_ids) %>%
-  group_by(Sire) %>%
-  slice_head(n = 1) %>%
-  ungroup() %>%
-  mutate(
-    ID            = Sire,
-    Sex           = "Male",
-    Last_Date     = Birth_Date,
-    Last_Location = Birth_Location
-  ) %>%
-  mutate(
-    Sire           = "0",
-    Dam            = "0",
-    Status         = "Deceased",
-    Age            = params$first_birth,
-    Birth_Date     = Last_Date - years(params$first_birth),
-    Birth_Location = NA,
-    yr_birth       = year(Last_Date) - params$first_birth,
-    yr_last        = year(Last_Date)
-  ) %>%
-  select(names(studbook))
-
-new_dam_rows <- studbook %>%
-  filter(Dam %in% missing_dam_ids) %>%
-  group_by(Dam) %>%
-  slice_head(n = 1) %>%
-  ungroup() %>%
-  mutate(
-    ID            = Dam,
-    Sex           = "Female",
-    Last_Date     = Birth_Date,
-    Last_Location = Birth_Location
-  ) %>%
-  mutate(
-    Sire           = "0",
-    Dam            = "0",
-    Status         = "Deceased",
-    Age            = params$first_birth,
-    Birth_Date     = Last_Date - years(params$first_birth),
-    Birth_Location = NA,
-    yr_birth       = year(Last_Date) - params$first_birth,
-    yr_last        = year(Last_Date)
-  ) %>%
-  select(names(studbook))
+studbook <- bind_rows(sires, dams) %>%
+  arrange(ID, offspring, mateID) %>%
+  distinct() %>%
+  group_by(ID) %>%
+  mutate(Birth_Date = (min(Last_Date)) - years(2)) %>%
+  slice_max(order_by = Last_Date, n = 1, with_ties = FALSE) %>%
+  select(-c(offspring, mateID)) %>%
+  mutate(Status         = "Deceased", 
+         Birth_Location = "UNKNOWN",
+         Sex            = case_when(
+           sex_num == 3 ~ "Undetermined",
+           sex_num == 2 ~ "Female",
+           sex_num == 1 ~ "Male"
+         ),
+         sex_num = if_else(sex_num == 3, 0, sex_num)) %>%
+  bind_rows(stud) %>% distinct()  %>%
+  mutate(Age = if_else(Status == "Alive", 
+                       year(today())   - year(Birth_Date), 
+                       year(Last_Date) - year(Birth_Date)),
+         color = case_when(Sex == "Female"          ~ colors$f,
+                           Sex == "Male"            ~ colors$m,
+                           Sex == "Undetermined"    ~ colors$u),
+         yr_birth = year(Birth_Date),
+         yr_last  = year(Last_Date)) %>%
+  left_join(location.key, by = join_by(Last_Location == Location)) %>%
+  mutate(Last_Location  = as.character(label), 
+         Last_loc_color = as.character(loc_color)) %>%
+  select(-c(label, loc_color)) %>%
+  left_join(location.key, by = join_by(Birth_Location == Location)) %>%
+  mutate(Birth_Location  = as.character(label), 
+         Birth_loc_color = as.character(loc_color)) %>%
+  select(-c(label, loc_color)) %>%
+  mutate(Sire = replace_na(Sire, "0"),
+         Dam  = replace_na(Dam , "0")) 
+```
 
 
-studbook_filled <- bind_rows(studbook, new_sire_rows, new_dam_rows)
-
-studbook_filled <- studbook_filled %>% arrange(ID)
-
-studbook <- studbook_filled
+```{r}
 living   <- filter(studbook, Status == "Alive")    %>% pull(ID) %>% as.character()
 deceased <- filter(studbook, Status == "Deceased") %>% pull(ID) %>% as.character()
 ```
@@ -683,9 +661,28 @@ You should inspect the plots about and decide which one to carry forward for you
 *Note: you can come back and run the code chunk again any time with a different name inserted, and all future steps will update based on that selection.*
 
 ```{r}
-includes_living <- c("_comp1")
+includes_living <- c("_comp2", 
+                     "_comp10", 
+                     "_comp9", 
+                     "_comp8", 
+                     "_comp7", 
+                     "_comp6", 
+                     "_comp5", 
+                     "_comp4", 
+                     "_comp3")
 ```
 
+
+```{r}
+biggest <- c("_comp2")
+```
+
+```{r}
+ped.main    <- keep_at(pedig, biggest)
+ped.main    <- ped.main[[1]]
+famid(ped.main) <- "Main"
+ped.living  <- keep_at(pedig, includes_living)
+```
 
 ```{r, out.width="100%", dev='svg'}
 ped.living  <- keep_at(pedig, includes_living)
@@ -693,7 +690,13 @@ ped.living  <- keep_at(pedig, includes_living)
 ped.living <- ped.living[[1]]
 
 famid(ped.living) <- "Current"
+```
 
+```{r, out.width="100%", dev='svg'}
+plot_pedigrees(ped.main, "Pedigree of Largest Population")
+```
+
+```{r, out.width="100%", dev='svg'}
 plot_pedigrees(ped.living, "Pedigree of Living Population")
 ```
 
@@ -702,13 +705,26 @@ plot_pedigrees(ped.living, "Pedigree of Living Population")
 I don't love the pedtools graphics system and lack of customization/interactivity, so if we want to look more closely at the details of relationships and clustering across a complex pedigree, we can transfer the data produced by pedtools into some other visualization packages. In this case, we will use `visNetwork` Run the chunk below to generate the new, properly-formatted dataframes that this package requires to build the graphics.
 
 ```{r}
+levels <- as.list(generations(ped.main, what = "indiv")) %>%
+  set_names(ped.main$ID) %>%
+  enframe(name = "id", value = "level") %>%
+  mutate(level = as.integer(level)) %>%
+  mutate(level = if_else(id %in% founders(ped.main), level, level + 2)) %>%
+  mutate(level = if_else(id %in% leaves(  ped.main), level + 1, level))
+```
+
+
+```{r}
 levels <- as.list(generations(ped.living, what = "indiv")) %>%
   set_names(ped.living$ID) %>%
   enframe(name = "id", value = "level") %>%
   mutate(level = as.integer(level)) %>%
   mutate(level = if_else(id %in% founders(ped.living), level, level + 2)) %>%
   mutate(level = if_else(id %in% leaves(ped.living), level + 1, level))
+```
 
+
+```{r}
 pairs <- map(as.list(nonfounders(ped.living)), \(x) as.list(parents(ped.living, id = x))) %>%
   enframe(name = NULL) %>%
   unnest_wider(value, names_sep = "_") %>%

@@ -17,7 +17,7 @@ params:
   semester: "spring25"
   studbook_current: "Studbooks/Demo/Studbook_Living.csv"
   studbook_historic: "Studbooks/Demo/Studbook_Historic.csv"
-  group: "NoAnimalDeserted"
+  group: "AmazonianAviary"
   
 ---
 
@@ -79,7 +79,7 @@ conflicts_prefer(purrr::discard)
 conflicts_prefer(ribd::kinship)
 conflicts_prefer(plotly::layout)
 
-here::i_am("PopulationData.Rmd")
+here::i_am("PopulationDataAmazonianAviary.Rmd")
 
 source("reactables.R")
 
@@ -147,12 +147,14 @@ First, we need to read in our studbook data and clean it up to create a *tidy* f
 ```{r}
 studbook.living <- read.csv(here(paste0("Studbooks/", params$group,"/Studbook_Living.csv")), header = T) %>%
   filter(str_detect(Location, "\\w+")) %>%
-  select(ID, Sex, Sire, Dam, Event_Type, Date, Location)  %>%
-  mutate(Date  = str_squish(str_extract(Date, ".{1,3}[/-].{1,3}[/-]\\d{1,4}"))) %>%
-  mutate(Date  = str_remove_all(Date, "\\s")) %>%
-  mutate(Date  = str_replace(Date, "-(?=0\\d$)", "-20"),
-         Date  = str_replace(Date, "-(?=[5-9]\\d$)", "-19")) %>%
-  mutate(Date  = if_else(str_detect(Date, "^\\d{1,}"), dmy(Date), mdy(Date))) %>%
+  select(ID, Sex, Sire, Dam, Birth_Date, Location)  %>%
+  mutate(Birth_Date  = str_squish(str_extract(Birth_Date, "(.{1,3}[/-]){2}\\d{1,4}"))) %>%
+  mutate(Birth_Date  = str_remove_all(Birth_Date, "\\s")) %>%
+  mutate(Birth_Date  = str_replace(Birth_Date, "-(?=0\\d$)", "-20"),
+         Birth_Date  = str_replace(Birth_Date, "-(?=[5-9]\\d$)", "-19")) %>%
+  mutate(Birth_Date  = if_else(str_detect(Birth_Date, "^\\d{1,}"), 
+                                      dmy(Birth_Date), 
+                                      mdy(Birth_Date))) %>%
   mutate(across(where(is.character), ~ na_if(., "")),
          across(where(is.character), ~ str_trim(.)),
          across(where(is.character), ~ str_remove_all(., "\n")),
@@ -160,16 +162,17 @@ studbook.living <- read.csv(here(paste0("Studbooks/", params$group,"/Studbook_Li
          across(where(is.character), ~ str_remove_all(., "\\s")),
          ID   = as.integer(str_remove_all(ID  , "[^\\d+]"))) %>%
   fill(ID, Sex, Sire, Dam) %>%
-  group_by(ID) %>%
-  mutate(Event_order = row_number(), Location = str_to_upper(Location)) %>% 
-  fill(Date, .direction = "up") %>%
-  ungroup() %>%
-  select(Event_order, ID, Sex, Sire, Dam, Event_Type, Date, Location)
+  group_by(Sire, Dam, Location) %>%
+  arrange(Sire, Dam, Location, ID) %>%
+  fill(Birth_Date)
+```
 
+
+```{r}
 studbook.historic <- read.csv(here(paste0("Studbooks/", params$group,"/Studbook_Historic.csv")), header = T) %>%
   filter(str_detect(Location, "\\w+")) %>%
   select(ID, Sex, Sire, Dam, Event_Type, Date, Location)  %>%
-  mutate(Date  = str_squish(str_extract(Date, ".{1,3}[/-].{1,3}[/-]\\d{1,4}"))) %>%
+  mutate(Date  = str_squish(str_extract(Date, "(.{1,3}[/-]){2}\\d{1,4}"))) %>%
   mutate(Date  = str_remove_all(Date, "\\s")) %>%
   mutate(Date  = str_replace(Date, "-(?=0\\d$)", "-20"),
          Date  = str_replace(Date, "-(?=[5-9]\\d$)", "-19")) %>%
@@ -179,6 +182,7 @@ studbook.historic <- read.csv(here(paste0("Studbooks/", params$group,"/Studbook_
          across(where(is.character), ~ str_remove_all(., "\n")),
          Location = str_remove_all(Location, "[^\\w]"),
          across(where(is.character), ~ str_remove_all(., "\\s")),
+         across(c("Sire", "Dam"), ~ str_remove_all(., "(<=?WILD).+")),
          ID   = as.integer(str_remove_all(ID  , "[^\\d+]"))) %>%
   fill(ID, Sex, Sire, Dam) %>%
   group_by(ID) %>%
@@ -202,7 +206,7 @@ births <-  studbook.living %>%
   arrange(ID) %>%
   fill(Date, .direction = "downup") %>%
   group_by(ID) %>% slice_min(Event_order) %>%
-  ungroup() %>% arrange(Location, ID, Dam) %>%
+  ungroup() %>%
   arrange(Location, ID) %>%
   mutate(Sire = as.integer(str_extract(Sire, "\\d+")),
          Dam  = as.integer(str_extract(Dam, "\\d+"))) %>%
@@ -216,7 +220,10 @@ transfers.deaths  <-  studbook.living %>%
   slice_max(Event_order) %>% ungroup() %>%
   mutate(Status = if_else(Event_Type == "Transfer", "Alive", "Deceased")) %>%
   select(ID, Last_Date = Date, Last_Location = Location, Status)
+```
 
+
+```{r}
 stud <- births %>%
   left_join(transfers.deaths) %>%
   distinct() %>%
@@ -235,109 +242,8 @@ stud <- births %>%
                         as.character(str_glue("999", "{Sire}")), 
                         Dam )) %>%
   mutate(across(c("Sire", "Dam"), ~ replace_na(., "")))
+
 ```
-
-
-```{r}
-missing <- fixParents(
-  id       = stud$ID,
-  dadid    = stud$Sire,
-  momid    = stud$Dam,
-  sex      = stud$sex_num
-) %>%
-  select(ID      = id,
-         Sire    = dadid,
-         Dam     = momid,
-         sex_num = sex) %>%
-  filter(ID != "0") %>%
-  anti_join(stud, by = join_by(ID, Sire, Dam, sex_num)) %>% 
-  distinct()
-
-sires <- missing %>% filter(sex_num == 1) %>%
-  left_join(select(stud, 
-                   offspring     = ID, 
-                   ID            = Sire, 
-                   mateID        = Dam,
-                   Last_Date     = Birth_Date,
-                   Last_Location = Birth_Location), 
-            by = join_by(ID))
-
-dams <- missing %>% filter(sex_num == 2) %>%
-  left_join(select(stud, 
-                   offspring     = ID, 
-                   ID            = Dam, 
-                   mateID        = Sire,
-                   Last_Date     = Birth_Date,
-                   Last_Location = Birth_Location), 
-            by = join_by(ID))
-```
-
-```{r}
-locations <- c(pull(studbook.historic, Location), 
-               pull(studbook.living  , Location),
-               pull(births           , Birth_Location),
-               pull(transfers.deaths , Last_Location)) %>%
-  unique() %>%
-  enframe(name = NULL, value = "Location") %>%
-  arrange(Location) %>%
-  mutate(label   = str_sub(Location, 1L, 3L),
-         str_end = str_sub(Location, -1L, -1L)) %>%
-  mutate(label   = if_else(row_number(.) > 1 & str_equal(label, lag(label)), 
-                           str_replace(label, "\\w$", str_end), 
-                           label)) %>%
-  select(label, Location)
-
-location.key <- sample(palettes_d$palettesForR$Cranes, 
-                       size = length(unique(locations$label)), 
-                       replace = FALSE) %>%
-  as.list() %>%
-  set_names(., map(as.list(unique(locations$label)), \(x) paste0(x))) %>%
-  enframe(name = "label", value = "loc_color") %>%
-  right_join(locations, by = join_by(label))
-```
-
-```{r}
-studbook <- bind_rows(sires, dams) %>%
-  arrange(ID, offspring, mateID) %>%
-  distinct() %>%
-  group_by(ID) %>%
-  mutate(Birth_Date = (min(Last_Date)) - years(2)) %>%
-  slice_max(order_by = Last_Date, n = 1, with_ties = FALSE) %>%
-  ungroup() %>%
-  select(-c(offspring, mateID)) %>%
-  mutate(Status         = "Deceased", 
-         Birth_Location = "UNDETERMINED",
-         Sex            = case_when(
-           sex_num == 3 ~ "Undetermined",
-           sex_num == 2 ~ "Female",
-           sex_num == 1 ~ "Male"
-         )) %>%
-  bind_rows(stud) %>% distinct()  %>%
-  mutate(Age = if_else(Status == "Alive", 
-                       year(today())   - year(Birth_Date), 
-                       year(Last_Date) - year(Birth_Date)),
-         color = case_when(Sex == "Female"          ~ colors$f,
-                           Sex == "Male"            ~ colors$m,
-                           Sex == "Undetermined"    ~ colors$u),
-         yr_birth = year(Birth_Date),
-         yr_last  = year(Last_Date),
-         sex_num = if_else(sex_num == 3, 0, sex_num)) %>%
-  left_join(location.key, by = join_by(Last_Location == Location)) %>%
-  mutate(Last_Location  = as.character(label), 
-         Last_loc_color = as.character(loc_color)) %>%
-  select(-c(label, loc_color)) %>%
-  left_join(location.key, by = join_by(Birth_Location == Location)) %>%
-  mutate(Birth_Location  = as.character(label), 
-         Birth_loc_color = as.character(loc_color)) %>%
-  select(-c(label, loc_color)) %>%
-  mutate(Sire = if_else(is.na(Sire) | Sire == "", "0", Sire),
-         Dam  = if_else(is.na(Dam)  | Dam == "" , "0", Dam)) %>%
-  mutate(ID = as.character(ID))
-
-living   <- filter(studbook, Status == "Alive")    %>% pull(ID) %>% as.character()
-deceased <- filter(studbook, Status == "Deceased") %>% pull(ID) %>% as.character()
-```
-
 
 ```{r}
 locations <- c(pull(studbook.historic, Location), 

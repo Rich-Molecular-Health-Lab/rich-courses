@@ -55,8 +55,8 @@ new_dam_rows <- studbook %>%
   select(names(studbook))
 
 
-studbook_filled <- bind_rows(studbook, new_sire_rows)
+studbook_filled <- bind_rows(studbook, new_sire_rows, new_dam_rows)
 
 studbook_filled <- studbook_filled %>% arrange(ID)
 
-studbook_filled
+studbook <- studbook_filled
