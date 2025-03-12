@@ -379,7 +379,8 @@ slides <- list(
       "7a" = "https://www.canva.com/design/DAGgtEbN5Ow/L0UTOTJk4FD3kjZZ9OMeXw/view?utm_content=DAGgtEbN5Ow&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=he167018c43"
     ),
     "8" = list(
-      "8a" = "https://www.canva.com/design/DAGhW2YMqkQ/VyHZKcZyZSZ4yskDACZnww/view?utm_content=DAGhW2YMqkQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd9d543af38"
+      "8a" = "https://www.canva.com/design/DAGhW2YMqkQ/VyHZKcZyZSZ4yskDACZnww/view?utm_content=DAGhW2YMqkQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd9d543af38",
+      "8b" = "https://www.canva.com/design/DAGhjIxyQoc/_2E7nhKsnEgtYuhfBHsu4w/view?utm_content=DAGhjIxyQoc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0c288c0575"
     )
   )
 )
