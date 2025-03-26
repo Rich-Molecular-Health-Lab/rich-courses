@@ -111,11 +111,13 @@ readings <- list(
       "7a"  = list("249:276" = "Habitat Loss and Fragmentation")
     ),
     "8"  = list(
-      "8b"  = list("277:284" = "Habitat Degradation")
+      "8b"  = list("285:292" = "Metapopulations and Landscape Mosaics")
     ),
     "10"  = list(
-      "10a"  = list("285:292" = "Metapopulations and Landscape Mosaics"),
-      "10b"  = list("293:328" = "Overexploitation"                     )
+      "10a"  = list("277:284" = "Habitat Degradation")
+    ),
+    "11"  = list(
+      "11b"  = list("293:328" = "Overexploitation"                     )
     ),
     "12"  = list(
       "12a"  = list("329:368" = "Invasive Alien Species"),
@@ -301,12 +303,12 @@ agenda <- list(
         "7b" = "No Class"),
       "8"  = list(
         "8a" = "Habitat Loss and Fragmentation",
-        "8b" = "Habitat Degradation"),
+        "8b" = "Metapopulations and Landscape Mosaics"),
       "10"  = list(
-        "10a" = "Metapopulations and Landscape Mosaics",
-        "10b" = "Overexploitation"                     ),
+        "10a" = "Habitat Degradation",
+        "10b" = "Film Day"                     ),
       "11" = list(
-        "11b" = "Film Day"),
+        "11b" = "Overexploitation"),
       "12" = list(
         "12a" = "Invasive Alien Species" ,
         "12b" = "Climate Change"        ),
@@ -354,7 +356,13 @@ slides <- list(
       "7c" = "https://www.canva.com/design/DAGg4juK6S0/Q_TrSRMY-gunpA2uKo77kQ/view?utm_content=DAGg4juK6S0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h9348825482"
     ),
     "8" = list(
-      "8a" = "https://docs.google.com/document/d/151rEWzudAYADLTq8VCKzJ5miTW5ie-AM3ZCWkVt3WNY/edit?usp=sharing"
+      "8a" = "https://docs.google.com/document/d/151rEWzudAYADLTq8VCKzJ5miTW5ie-AM3ZCWkVt3WNY/edit?usp=sharing",
+      "8c" = "https://www.canva.com/design/DAGgsV_BZAM/oAV51enXZhGb40OO6Or-8g/view?utm_content=DAGgsV_BZAM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=haa263c8a2a"
+    ),
+    "10" = list(
+      "10a" = "https://www.canva.com/design/DAGiqJmrxIQ/0yn7Ia4iLvbuQHFXQMawuA/view?utm_content=DAGiqJmrxIQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hbbb7f23698",
+      "10b" = "https://www.canva.com/design/DAGiwJzhAPk/3tKjRkSatxVM6PyZRNItSA/view?utm_content=DAGiwJzhAPk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=ha5603b9fa2",
+      "10c" = "https://www.canva.com/design/DAGi1poexWs/4rOg2UOs1hCBMmNHXH7qmQ/view?utm_content=DAGi1poexWs&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h7fbc152aa9"
     )
   ),
   conbio = list(
@@ -381,6 +389,13 @@ slides <- list(
     "8" = list(
       "8a" = "https://www.canva.com/design/DAGhW2YMqkQ/VyHZKcZyZSZ4yskDACZnww/view?utm_content=DAGhW2YMqkQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd9d543af38",
       "8b" = "https://www.canva.com/design/DAGhjIxyQoc/_2E7nhKsnEgtYuhfBHsu4w/view?utm_content=DAGhjIxyQoc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0c288c0575"
+    ),
+    "10" = list(
+      "10a" = "https://www.canva.com/design/DAGiq4dsFKQ/5g6GfQjGtPyXzOwMSh9taw/view?utm_content=DAGiq4dsFKQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3a754abab5",
+      "10b" = "https://www.canva.com/design/DAGi2xC_ZnQ/etOqj53VDhlSz8ig8TFPZg/view?utm_content=DAGi2xC_ZnQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hf4735674c4"
+    ),
+    "11" = list(
+      "11b" = "https://www.canva.com/design/DAGi3uCn3xA/N_27CHCUwP1vaKdE2AKWbg/view?utm_content=DAGi3uCn3xA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h4b819952d6"
     )
   )
 )
