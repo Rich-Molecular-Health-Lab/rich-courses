@@ -1,0 +1,5 @@
+name: PMData Lab
+description: >
+  A complete R Markdown lab for analyzing Pygmy Slow Loris demographic and pedigree data.
+create_dir: false
+document: default

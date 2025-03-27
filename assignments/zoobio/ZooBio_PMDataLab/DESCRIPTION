@@ -1,0 +1,17 @@
+Package: zooBioTools
+Title: Zoo Biology Teaching Tools
+Version: 0.1.0
+Authors@R: 
+    person("Alicia", "Rich", email = "aliciarich@unomaha.edu", role = c("aut", "cre"))
+Description: Tools and templates for teaching population management and pedigree analysis in Zoo Biology.
+Depends: R (>= 4.2)
+Imports: 
+    knitr, conflicted, downloadthis, fontawesome, glue, ggplot2, ggtext, 
+    heatmaply, here, htmltools, htmlwidgets, kableExtra, kinship2, paletteer, 
+    pedtools, pedsuite, plotly, reactable, reactablefmtr, rmarkdown, 
+    scales, shiny, showtext, thematic, tidyverse, tippy, usethis, visNetwork
+Suggests: 
+    testthat, roxygen2
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
