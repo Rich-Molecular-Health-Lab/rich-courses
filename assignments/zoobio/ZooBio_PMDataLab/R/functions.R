@@ -438,14 +438,12 @@ census <- function(timeline, studbook, period) {
 }
 
 nest_timeline <- function(timeline, groupBy = NULL) {
-
   if (is.null(groupBy)) {
   nested <-  timeline %>%
       group_by(Date) %>%
       summarise(Individuals = list(tibble(ID, Sex, BirthYear, Age)),
                 .groups = "drop") %>%
       split(.$Date)
-
   } else if (groupBy == "Location") {
   nested <-  timeline %>%
       group_by(Date, Location) %>%
@@ -479,15 +477,12 @@ nest_timeline <- function(timeline, groupBy = NULL) {
       split(.$Date) %>%
       map(~ .x$Classes)
   }
-
   return(nested)
-
 }
 
 studbook_visual <- function(timeline, studbook, location.key) {
   end.records <- filter(timeline, TypeEvent == "End") %>%
     select(ID, LocLast = Location)
-
   locations <- location.key %>%
     mutate(Label = str_glue("{NameLoc}", ", ", "{Country}")) %>%
     select(LocAbbrev,
@@ -807,7 +802,6 @@ build_leslie <- function(df, BirthYrStart, BirthYrEnd, sex) {
 
 make_cohorts <- function(df, minYear, maxYear, span, maxAge, include_sex = TRUE) {
   N_letters <- (maxYear - minYear + 1)/span
-
   cohorts <- expand_grid(
     Age       = 0:maxAge,
     Sex       = c("M", "F"),
@@ -1004,7 +998,7 @@ lifeTab_static <- function(df) {
 }
 
 
-founder_reps <- function(pedigree, pedigree.living, studbook) {
+founder_reps              <- function(pedigree, pedigree.living, studbook) {
   founder.descendants <- map(as.list(founders(pedigree)), \(x) as.list(descendants(pedigree, x, inclusive = TRUE))) %>%
     compact()
   names(founder.descendants) <- map(founder.descendants, \(x) x[[1]])
@@ -1016,8 +1010,7 @@ founder_reps <- function(pedigree, pedigree.living, studbook) {
     intersect(founders(pedigree.living))
   return(founderReps)
 }
-
-founder_contributions <- function(studbook, pedigree.living) {
+founder_contributions     <- function(studbook, pedigree.living) {
   living         <- living(studbook)
   dp             <- descentPaths(pedigree.living)
 
@@ -1030,15 +1023,13 @@ founder_contributions <- function(studbook, pedigree.living) {
 
   return(founderContribution)
 }
-
 rel_founder_contributions <- function(studbook, pedigree.living) {
   founderContribution <- founder_contributions(studbook, pedigree.living)
   result              <- founderContribution / sum(founderContribution)
 
   return(result)
 }
-
-founder_summary <- function(pedigree, pedigree.living, studbook) {
+founder_summary    <- function(pedigree, pedigree.living, studbook) {
   founderContribution <- founder_contributions(studbook, pedigree.living)
   living              <- living(studbook)
   founderReps         <- founder_reps(pedigree, pedigree.living, studbook)
@@ -1090,8 +1081,7 @@ founder_summary <- function(pedigree, pedigree.living, studbook) {
 
   return(founder.summary)
 }
-
-gen_numbers <- function(pedigree.living) {
+gen_numbers        <- function(pedigree.living) {
   gen_numbers <- generations(pedigree.living, what = "indiv")
   if (length(gen_numbers) == 0) {
     warning("No generation numbers returned using what = 'indiv'. Trying what = 'depth' instead.")
@@ -1100,24 +1090,19 @@ gen_numbers <- function(pedigree.living) {
 
   return(gen_numbers)
 }
-
-
 gen_numbers_living <- function(pedigree.living, studbook) {
   living      <- living(studbook)
   gens        <- gen_numbers(pedigree.living)
   living_gen  <- gens[names(gens) %in% living]
   return(living_gen)
 }
-
-
-kin_matrix_living <- function(pedigree.living, studbook) {
+kin_matrix_living  <- function(pedigree.living, studbook) {
   living         <- living(studbook)
   kinship.ped    <- kinship(pedigree.living)
   living.ped     <- intersect(living, rownames(kinship.ped))
   living.kinship <- kinship.ped[living.ped, living.ped]
 }
-
-family_history <- function(pedigree.living, studbook) {
+family_history     <- function(pedigree.living, studbook) {
   generations <- enframe(gen_numbers(pedigree.living),
                          name  = "ID",
                          value = "Generations") %>%
@@ -1196,15 +1181,13 @@ family_history <- function(pedigree.living, studbook) {
   return(df)
 
 }
-
-F_vector <- function(pedigree.living, studbook) {
+F_vector           <- function(pedigree.living, studbook) {
   kin.matrix     <- kin_matrix_living(pedigree.living, studbook)
   F_vec          <- 2 * diag(kin.matrix) - 1
 
   return(F_vec)
 }
-
-kinship_summary <- function(pedigree, pedigree.living, studbook) {
+kinship_summary    <- function(pedigree, pedigree.living, studbook) {
   p              <- rel_founder_contributions(studbook, pedigree.living)
   living         <- living(studbook)
   n_founder_reps <- length(founder_reps(pedigree, pedigree.living, studbook))

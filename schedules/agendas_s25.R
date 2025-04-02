@@ -117,15 +117,14 @@ readings <- list(
       "10a"  = list("277:284" = "Habitat Degradation")
     ),
     "11"  = list(
-      "11b"  = list("293:328" = "Overexploitation"                     )
+      "11b"  = list("293:328" = "Overexploitation"   )
     ),
     "12"  = list(
-      "12a"  = list("329:368" = "Invasive Alien Species"),
-      "12b"  = list("369:402" = "Climate Change"        )
+      "12b"  = list("329:368" = "Invasive Alien Species")
     ),
     "13"  = list(
-      "13a"  = list("405:414" = "Species-Level Conservation: Goals and Challenges"      ),
-      "13b"  = list("415:444" = "Species-Level Conservation: Statistics and Probability")
+      "13a"  = list("369:402" = "Climate Change"            ),
+      "13b"  = list("405:444" = "Species-Level Conservation")
     ),
     "14"  = list(
       "14a"  = list("445:476" = "Community and Ecosystem Conservation"     ),
@@ -261,15 +260,11 @@ agenda <- list(
         "Climate Change"
       ),
       "Approaches to Conservation" = list(
-        "Species-Level Conservation: Goals and Challenges",
-        "Species-Level Conservation: Statistics and Probability",
+        "Species-Level Conservation",
         "Community and Ecosystem Conservation",
         "Landscape-Scale Conservation: PA Networks",
         "Landscape-Scale Conservation: Monitoring and Modeling",
-        "Ex Situ Conservation: Facilities",
-        "Ex Situ Conservation: In Situ Contributions",
-        "Sustainable Development: Case Studies"
-
+        "Ex Situ Conservation"
       ),
       "Other" =
         list(
@@ -310,11 +305,11 @@ agenda <- list(
       "11" = list(
         "11b" = "Overexploitation"),
       "12" = list(
-        "12a" = "Invasive Alien Species" ,
-        "12b" = "Climate Change"        ),
+        "12a" = "Overexploitation",
+        "12b" = "Invasive Alien Species" ),
       "13" = list(
-        "13a" = "Species-Level Conservation: Goals and Challenges"      ,
-        "13b" = "Species-Level Conservation: Statistics and Probability"),
+        "13a" =  "Climate Change"             ,
+        "13b" = "Species-Level Conservation"),
       "14" = list(
         "14a" = "Community and Ecosystem Conservation",
         "14b" = "Landscape-Scale Conservation: PA Networks"),
@@ -420,13 +415,6 @@ labs <- list(
   ),
   conbio = NULL
 )
-
-graded_work <- list(
-  zoobio = list(
-    "2a" = ""
-  )
-)
-
 
 readings  <- readings[[paste0(params$course)]]
 slides    <- slides[[paste0(params$course)]]
