@@ -1,0 +1,414 @@
+\documentclass[]{tufte-handout}
+
+% ams
+\usepackage{amssymb,amsmath}
+
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \makeatletter
+  \@ifpackageloaded{fontspec}{}{\usepackage{fontspec}}
+  \makeatother
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \makeatletter
+  \@ifpackageloaded{soul}{
+     \renewcommand\allcapsspacing[1]{{\addfontfeature{LetterSpace=15}#1}}
+     \renewcommand\smallcapsspacing[1]{{\addfontfeature{LetterSpace=10}#1}}
+   }{}
+  \makeatother
+
+\fi
+
+% graphix
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+
+% booktabs
+\usepackage{booktabs}
+
+% url
+\usepackage{url}
+
+% hyperref
+\usepackage{hyperref}
+
+% units.
+\usepackage{units}
+
+
+\setcounter{secnumdepth}{-1}
+
+% citations
+
+
+% pandoc syntax highlighting
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+
+% table with pandoc
+
+% multiplecol
+\usepackage{multicol}
+
+% strikeout
+\usepackage[normalem]{ulem}
+
+% morefloats
+\usepackage{morefloats}
+
+
+% tightlist macro required by pandoc >= 1.14
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% title / author / date
+\title[Sustainable Yield Activity]{Fishing for Sustainability}
+\date{Spring 2025}
+
+
+\begin{document}
+
+\maketitle
+
+
+
+
+\subsection{The Ultimate Goal}\label{the-ultimate-goal}
+
+Maximize your fishing yields by the end of the game.
+
+\subsection{Setup}\label{setup}
+
+\subsubsection{Groups}\label{groups}
+
+\begin{itemize}
+\tightlist
+\item
+  Form groups of 4-6 students each for the game.
+\item
+  Each group will receive:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    1 bowl (your \emph{reservoir})
+  \item
+    30 fish placed in that reservoir
+  \end{itemize}
+\item
+  Each person will recieve:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    1 cup (your \emph{boat})
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Important Biological
+Rule}\label{important-biological-rule}
+
+\begin{itemize}
+\tightlist
+\item
+  After each fishing round in this game, any fish left in the reservoir
+  double in number, but only up to a maximum of 30 fish (\emph{carrying
+  capacity}).
+\end{itemize}
+
+\subsection{Round 1: Open Access
+Fishing}\label{round-1-open-access-fishing}
+
+\subsubsection{Scenario}\label{scenario}
+
+\begin{itemize}
+\tightlist
+\item
+  Each of you represents a fisher in a shared fishery aiming to catch as
+  many fish as possible.
+\item
+  You will have no means of communication or coordination with other
+  fishers in your fishery.
+\item
+  After this fishing season (the end of the round), the fish will enter
+  a reproductive phase, and any that are not harvested will produce one
+  offspring each.
+\end{itemize}
+
+\subsubsection{Instructions}\label{instructions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Privately record how many fish you will catch this round (up to 6
+  allowed).
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\emph{Remember, no communicating ahead of time during this
+  round!}}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Simultaneously reveal everyone's card with their number.
+\item
+  Distribute each person's catch into their boat.
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\emph{If the cumulative group catch exceeds the number of fish
+  available, distribute the fish until the reservoir is empty
+  (first-come, first-served)}}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Give the fish a reproductive season.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Count the remaining fish.
+\item
+  Add new fish so that the remaining number has doubled in size.
+\item
+  Record these data (\emph{fish caught, fish remaining})
+\end{enumerate}
+
+\begin{quote}
+Pause and record a prediction: \emph{How long could the fishery sustain
+with this type of open-access fishing?} Write your response (1-2
+sentences) on the back of the notecard with your name and today's date.
+\end{quote}
+
+\subsubsection{Context and Theory}\label{context-and-theory}
+
+Did you notice how quickly the shared resource (your fishery) can become
+depleted when everyone acts in their own self-interest? This situation
+is an example of a social dilemma---a scenario where individuals benefit
+most by acting selfishly, but if everyone does this, the group as a
+whole suffers (\emph{The Prisoner's Dilemma}).
+
+This dynamic is often called the Tragedy of the Commons---a term used in
+conservation biology to describe what happens when shared resources
+(like fisheries, forests, or wildlife populations) are overused and
+degraded because no one has a personal incentive to conserve them.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{\textquotesingle{}assignments/conbio/tragedycommons\_video.png\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{marginfigure}
+\includegraphics{assignments/conbio/tragedycommons_video} \caption[Before continuing to the next round, watch this [short video explaining the Tragedy of the Commons](https://youtu.be/CxC161GvMPc?si=_yymh2vwvF0kxoQc)]{Before continuing to the next round, watch this [short video explaining the Tragedy of the Commons](https://youtu.be/CxC161GvMPc?si=_yymh2vwvF0kxoQc)}\label{fig:qr-video-tragedy}
+\end{marginfigure}
+
+\subsubsection{Modifying our Approach}\label{modifying-our-approach}
+
+Now we will adjust our rules so that you can act more strategically to
+balance your short-term choices with the population's sustainability in
+mind. Pause for a moment and try to predict the \textbf{maximum number
+of fish} each member of your group could afford to harvest in one season
+without reducing the overall population in the long term. This concept
+is known as the \textbf{\emph{Maximum Sustainable Yield (MSY)}}, and it
+relies on the assumption that your fish will maintain a consistent
+reproductive rate from one season to the next. In our case, the
+population doubles each round, and so the MSY is reached when enough
+fish are left behind to fully replenish the stock.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{\textquotesingle{}assignments/conbio/msy\_video.png\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{marginfigure}
+\includegraphics{assignments/conbio/msy_video} \caption[Pause to watch [this youtube video](https://youtu.be/hw5wso1lcfs?si=XhFW8bZ1O6EK1qLu) before proceeding]{Pause to watch [this youtube video](https://youtu.be/hw5wso1lcfs?si=XhFW8bZ1O6EK1qLu) before proceeding.}\label{fig:qr-video-msy}
+\end{marginfigure}
+
+In the next round we will use a strategy called \textbf{Fixed Quota
+Harvesting} to improve the sustainability of our yield. This is a
+management strategy where the \textbf{total amount harvested is limited}
+to a set number (e.g., 15 fish per round). The quota must be shared
+among users, and exceeding it can lead to collapse or penalties.
+
+\subsection{Round 2: Fixed-Quota
+Harvesting}\label{round-2-fixed-quota-harvesting}
+
+\subsubsection{Scenario}\label{scenario-1}
+
+\begin{itemize}
+\tightlist
+\item
+  You may now work together to set a \textbf{total fixed quota} (i.e.,
+  one total for the group) to sustainably harvest each round
+  (recommended quota around the MSY, e.g., 15 fish).
+\item
+  You still may not discuss how many fish each individual plans to catch
+  to contribute to this quota, and your goal is still to maximize your
+  long-term yields as an individual.
+\end{itemize}
+
+\subsubsection{Instructions}\label{instructions-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Discuss openly for 1--2 minutes and agree on a fixed quota (e.g.,
+  ``Our total catch limit is exactly 15 fish per round.'').
+\item
+  Privately record how many fish you will catch this round (up to 6
+  allowed).
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\emph{Remember, still no communicating this part}}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Simultaneously reveal everyone's card with their number.
+\item
+  This time, if the \textbf{total catch exceeds the quota}, the fishery
+  immediately ``collapses'', and no fish can reproduce.
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  If your group's total catch is equal or less than quota, you
+  distribute each person's catch again, and reproduction proceeds
+  normally (fish left double, up to 30).
+\item
+  Record these results (\emph{fish caught, fish remaining})
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Pause and record a reflection: \emph{Was it challenging or easy to
+  respect quotas?}
+\end{enumerate}
+
+\subsubsection{Context and Theory}\label{context-and-theory-1}
+
+How else could you manage your group's collective harvesting to maximize
+your long-term yields? One option is known as \textbf{\emph{Fixed Effort
+Harvesting}}. In this approach, the game manager specifies the level of
+effort (for example the number of fishers/hunters or length of a
+fishing/hunting season), rather than the number of animals to be
+harvested. This strategy relies on the assumption that harvest rate
+increases with the amount of effort, so for our purposes, we can simply
+target the quota of fish per person.
+
+\subsection{Round 3: Fixed-Effort
+Harvesting}\label{round-3-fixed-effort-harvesting}
+
+\subsubsection{Scenario}\label{scenario-2}
+
+\begin{itemize}
+\tightlist
+\item
+  You may now work together to set a \textbf{fixed effort quota} (i.e.,
+  a per-person fishing limit) to sustainably harvest each round
+  (recommended quota around the MSY, e.g., 2 fish).
+\end{itemize}
+
+\subsubsection{Instructions}\label{instructions-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  No need for any secrecy this time. Instead, you need to collaborate as
+  a group to collectively decide on how many fish to distribute to each
+  person and then pass them out.
+\item
+  Give the remaining fish a reproductive season.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Count the remaining fish.
+\item
+  Add new fish so that the remaining number has doubled in size.
+\item
+  Record these data (\emph{fish caught, fish remaining})
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Pause and record a reflection: \emph{Did fixed-effort make
+  sustainability easier or harder to maintain?}
+\end{enumerate}
+
+
+
+\end{document}

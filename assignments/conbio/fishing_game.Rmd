@@ -1,11 +1,18 @@
 ---
 title: "Fishing for Sustainability"
-output: pdf_document
+runningheader: "Sustainable Yield Activity"
+subtitle: "Conservation Biology - Dr. Rich"
+date: "Spring 2025"
+output:
+  tufte::tufte_handout: default
 ---
 
-```{r include=FALSE}
+```{r setup, include=FALSE}
 here::i_am("assignments/conbio/fishing_game.Rmd")
+library(tufte)
 library(knitr)
+knitr::opts_chunk$set(cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
 ```
 
 
@@ -56,20 +63,16 @@ Did you notice how quickly the shared resource (your fishery) can become deplete
 
 This dynamic is often called the Tragedy of the Commons—a term used in conservation biology to describe what happens when shared resources (like fisheries, forests, or wildlife populations) are overused and degraded because no one has a personal incentive to conserve them.
 
->Before continuing to the next round, watch this [short video explaining the Tragedy of the Commons](https://youtu.be/CxC161GvMPc?si=_yymh2vwvF0kxoQc).
-
-```{r, echo=FALSE, out.width="1.5in", fig.align='left'}
-knitr::include_graphics(here::here("assignments/conbio/tragedycommons_video.png"))
+```{r qr-video-tragedy, fig.margin = TRUE, fig.cap = "Before continuing to the next round, watch this [short video explaining the Tragedy of the Commons](https://youtu.be/CxC161GvMPc?si=_yymh2vwvF0kxoQc)", fig.width=2, fig.height=2, cache=TRUE, message=FALSE}
+knitr::include_graphics('assignments/conbio/tragedycommons_video.png')
 ```
 
 ### Modifying our Approach
 
-Now we will adjust our rules so that you can act more strategically to balance your short-term choices with the population's sustainability in mind. Pause for a moment and try to predict the **maximum number of fish**  each member of your group could afford to harvest in one season without reducing the overall population in the long term. This concept is known as the ***Maximum Sustainable Yield (MSY)***, and it relies on the assumption that your fish will maintain a consistent reproductive rate from one season to the next. In our case, the population doubles each round, and so the MSY is reached when enough fish are left behind to fully replenish the stock.\
-\
->Pause to watch [this youtube video](https://youtu.be/hw5wso1lcfs?si=XhFW8bZ1O6EK1qLu) before proceeding.
+Now we will adjust our rules so that you can act more strategically to balance your short-term choices with the population's sustainability in mind. Pause for a moment and try to predict the **maximum number of fish**  each member of your group could afford to harvest in one season without reducing the overall population in the long term. This concept is known as the ***Maximum Sustainable Yield (MSY)***, and it relies on the assumption that your fish will maintain a consistent reproductive rate from one season to the next. In our case, the population doubles each round, and so the MSY is reached when enough fish are left behind to fully replenish the stock.
 
-```{r, echo=FALSE, out.width="1.5in", fig.align='left'}
-knitr::include_graphics(here::here("assignments/conbio/msy_video.png"))
+```{r qr-video-msy, fig.margin = TRUE, fig.cap = "Pause to watch [this youtube video](https://youtu.be/hw5wso1lcfs?si=XhFW8bZ1O6EK1qLu) before proceeding.", fig.width=2, fig.height=2, cache=TRUE, message=FALSE}
+knitr::include_graphics('assignments/conbio/msy_video.png')
 ```
 
 In the next round we will use a strategy called **Fixed Quota Harvesting** to improve the sustainability of our yield. This is a management strategy where the **total amount harvested is limited** to a set number (e.g., 15 fish per round). The quota must be shared among users, and exceeding it can lead to collapse or penalties.
