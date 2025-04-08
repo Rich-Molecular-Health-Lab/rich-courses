@@ -1,0 +1,62 @@
+---
+title: "Background & Theory"
+subtitle: "Positive Reinforcement & Target Training Lab for Zoo Biology"
+author: "Dr. Rich"
+date: "Spring 2025"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+
+# Technical Background and Theory of Animal Training
+
+## What is Animal Training?
+
+Animal training is the systematic process of teaching animals specific behaviors or tasks by providing clear communication and consistent feedback. Effective animal training is essential in zoo biology, improving animal welfare by reducing stress, enriching daily life, facilitating veterinary care, and enhancing safe interactions between animals and their caretakers.
+
+## Operant Conditioning and Learning
+
+Modern animal training primarily relies on the principles of **operant conditioning**, a form of learning in which animals associate their actions with consequences. In operant conditioning, an animal learns that performing certain behaviors results in predictable outcomes—reinforcements (rewards) or punishments. Over time, this association increases or decreases the likelihood of a behavior happening again.
+
+- **Positive Reinforcement (reward)**: Giving an animal something desirable (like food, praise, or playtime) immediately after a behavior, increasing the chance of that behavior repeating.
+- **Negative Reinforcement (relief)**: Removing something unpleasant when the animal performs the desired behavior, also increasing the chance of recurrence.
+- **Punishment**: Applying a consequence (like a loud noise or removing privileges) to decrease unwanted behaviors. It is less frequently used in zoos due to welfare and ethical considerations.
+
+In zoo animal training, **positive reinforcement** is strongly preferred because it promotes trust, reduces fear and aggression, and enhances cooperation.
+
+## Conditioned Reinforcers (Clickers)
+
+A key tool in animal training is the **conditioned reinforcer**, such as a clicker or whistle. Initially, this sound has no inherent meaning to the animal. However, when consistently paired with rewards (usually food), animals quickly learn to associate the sound with a reward. The clicker then becomes a precise signal—often called a “bridge”—marking exactly which behavior is correct and indicating that a reward is coming shortly. Using clickers significantly improves training clarity and efficiency by ensuring precise timing of reinforcement.
+
+##  Shaping Behaviors Through Successive Approximations
+
+Training often involves complex behaviors that animals can’t immediately perform. Trainers break down complicated behaviors into smaller, manageable steps—a process known as **shaping**. Each step, or **successive approximation**, is reinforced until the animal reliably performs it. Trainers then gradually increase complexity until reaching the desired final behavior. For example, to train an animal to enter a transport crate, trainers first reinforce approaching the crate, then stepping closer, placing one foot inside, and eventually entering fully.
+
+##  Target Training
+
+A highly practical method used in zoo environments is **target training**, teaching animals to touch or follow a specific object called a **target** (often a stick, ball, or similar object). Target training is valuable because it helps guide animal movements without physical force. Animals trained to follow targets can be calmly moved between enclosures, guided onto scales for weighing, or positioned safely for veterinary procedures without sedation or restraint. This method significantly improves animal welfare by reducing stress associated with handling.
+
+# Quick Outline
+
+- **Animal Training Definition**
+  - Systematic teaching of specific behaviors
+  - Communication and welfare emphasis
+  
+- **Operant Conditioning Basics**
+  - Positive reinforcement as primary method
+  - Negative reinforcement and punishment (less common/ethical concerns)
+  
+- **Conditioned Reinforcers**
+  - Clickers and whistles as bridging signals
+  - Timing and consistency essential
+  
+- **Shaping**
+  - Breaking behaviors into smaller steps
+  - Reinforcing progressively closer approximations
+  
+- **Target Training**
+  - Using physical targets to guide movement
+  - Benefits for husbandry, medical care, and stress reduction

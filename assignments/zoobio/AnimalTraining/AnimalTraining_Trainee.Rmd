@@ -1,0 +1,39 @@
+---
+title: "Trainee Instructions"
+subtitle: "Positive Reinforcement & Target Training Lab for Zoo Biology"
+author: "Dr. Rich"
+date: "Spring 2025"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+
+# Overview (Trainee Role)
+
+You are the animal in today’s activity. Your partner (the “trainer”) will attempt to teach you behaviors using clicks and candy rewards.
+
+Rules for the “Animal” (Important!)
+	•	NO talking to your trainer.
+	•	You have NO information about what behavior the trainer wants from you.
+	•	Your only clues are:
+	•	Clicks from a clicker (meaning you did something right)
+	•	Receiving candy (reward for correct behavior)
+
+Your Goal
+	•	Try to figure out what your trainer wants from you by paying close attention to when you hear clicks.
+	•	Behaviors may start simple and become more complex over time. Stay patient and attentive!
+	
+Activity Steps (Trainee)
+	•	Phase 1: You will receive candy after a “click.” Just wait and see what happens.
+	•	Phase 2: Your trainer will begin clicking only when you do certain behaviors or movements. Experiment gently if unsure—observe carefully to see what earns clicks.
+	•	Phase 3: Your trainer might introduce an object (stick, pointer). Explore interactions carefully to see what behaviors receive rewards.
+	
+Trainee Reflection Questions
+
+Please answer briefly (1–3 sentences) and submit responses for grading:
+	1.	Understanding the Task: How did you initially feel when you didn’t understand exactly what your trainer wanted?
+	2.	Learning Process: What helped you understand what behaviors were rewarded?
+	3.	Animal Perspective: How does this exercise help you understand the challenges animals might face when trainers are unclear or inconsistent?

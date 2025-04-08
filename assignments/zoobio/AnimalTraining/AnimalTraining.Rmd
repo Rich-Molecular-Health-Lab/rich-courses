@@ -1,0 +1,205 @@
+---
+title: "Trainer Instructions"
+subtitle: "Positive Reinforcement & Target Training Lab for Zoo Biology"
+author: "Dr. Rich"
+date: "Spring 2025"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+# Technical Background and Theory of Animal Training
+
+## What is Animal Training?
+
+Animal training is the systematic process of teaching animals specific behaviors or tasks by providing clear communication and consistent feedback. Effective animal training is essential in zoo biology, improving animal welfare by reducing stress, enriching daily life, facilitating veterinary care, and enhancing safe interactions between animals and their caretakers.
+
+## Operant Conditioning and Learning
+
+Modern animal training primarily relies on the principles of **operant conditioning**, a form of learning in which animals associate their actions with consequences. In operant conditioning, an animal learns that performing certain behaviors results in predictable outcomes—reinforcements (rewards) or punishments. Over time, this association increases or decreases the likelihood of a behavior happening again.
+
+- **Positive Reinforcement (reward)**: Giving an animal something desirable (like food, praise, or playtime) immediately after a behavior, increasing the chance of that behavior repeating.
+- **Negative Reinforcement (relief)**: Removing something unpleasant when the animal performs the desired behavior, also increasing the chance of recurrence.
+- **Punishment**: Applying a consequence (like a loud noise or removing privileges) to decrease unwanted behaviors. It is less frequently used in zoos due to welfare and ethical considerations.
+
+In zoo animal training, **positive reinforcement** is strongly preferred because it promotes trust, reduces fear and aggression, and enhances cooperation.
+
+## Conditioned Reinforcers (Clickers)
+
+A key tool in animal training is the **conditioned reinforcer**, such as a clicker or whistle. Initially, this sound has no inherent meaning to the animal. However, when consistently paired with rewards (usually food), animals quickly learn to associate the sound with a reward. The clicker then becomes a precise signal—often called a “bridge”—marking exactly which behavior is correct and indicating that a reward is coming shortly. Using clickers significantly improves training clarity and efficiency by ensuring precise timing of reinforcement.
+
+##  Shaping Behaviors Through Successive Approximations
+
+Training often involves complex behaviors that animals can’t immediately perform. Trainers break down complicated behaviors into smaller, manageable steps—a process known as **shaping**. Each step, or **successive approximation**, is reinforced until the animal reliably performs it. Trainers then gradually increase complexity until reaching the desired final behavior. For example, to train an animal to enter a transport crate, trainers first reinforce approaching the crate, then stepping closer, placing one foot inside, and eventually entering fully.
+
+##  Target Training
+
+A highly practical method used in zoo environments is **target training**, teaching animals to touch or follow a specific object called a **target** (often a stick, ball, or similar object). Target training is valuable because it helps guide animal movements without physical force. Animals trained to follow targets can be calmly moved between enclosures, guided onto scales for weighing, or positioned safely for veterinary procedures without sedation or restraint. This method significantly improves animal welfare by reducing stress associated with handling.
+
+# Overview (Trainer Role)
+
+Today you are the **trainer**, and your classmate is your “animal.” You will teach them behaviors using only a **clicker** and **small candies** as rewards. The purpose of this exercise is to help you understand and practice the fundamentals of **positive reinforcement training** and **target training**.
+
+## Your Role as Trainer
+
+**You may not rely on any human-specific forms of communication when training your "animal".**
+
+- This is because we are attempting to replicate the communication barriers between a zoo trainer and their subject as closely as possible.
+- Therefore, you must clearly communicate using only the clicker and rewards—*no verbal or physical prompts allowed!*
+
+**Timing is crucial.**
+
+- Click **exactly** when your “animal” performs or closely approximates the behavior you want.
+
+# Key Terms for Trainers
+
+- **Positive Reinforcement:** Rewarding a behavior immediately after it occurs, making it more likely to occur again.
+- **Conditioned Reinforcer (Clicker):** The sound that signals “Correct! Reward incoming.”
+- **Shaping:** Rewarding small steps toward a final desired behavior.
+- **Target Training:** Using a visual cue (a “target,” like a stick or pointer) to guide an animal’s behavior.
+
+\newpage
+
+**Your Name**:       _____________________________________________________
+
+\vspace{0.5cm}
+
+**Your Group Name**:  _____________________________________________________
+
+
+# Activity Instructions (Trainer)
+
+## Creating a Plan
+
+### Select a Target Behavior
+
+1.  Select one behavior that you will teach to your classmates. Describe the behavior below **before you start**.
+
+\vspace{0.3cm}
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{0.3cm}
+\noindent\rule{\textwidth}{0.4pt}
+
+### Outline the Shaping Process
+
+1.  Jot down your plan below for how you will shape this behavior in stages.
+
+\vspace{0.3cm}
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{0.3cm}
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{0.3cm}
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{0.3cm}
+\noindent\rule{\textwidth}{0.4pt}
+
+
+
+### Identify your Tools
+
+\vspace{0.5cm}
+ \textbf{Target} \hrulefill
+\vspace{0.5cm}
+\textbf{Reward} \hrulefill
+\vspace{0.5cm}
+\textbf{Bridge} \hrulefill
+
+
+## Begin the Training Process
+
+Bring in **two** of your naive subjects and *remember to avoid using any human communication from the moment you begin!*
+
+  - You should also start the timer as soon as your subject enters the training arena.
+  - Your goal in this round will be to train only **one of the two naive subjects.**
+    - The other subject will simply observe the entire process without any guidance or explanation.
+
+Start following your training plan using the **tools you outlined above** and **following the detailed steps below.**
+
+## Condition the Clicker
+
+1.	Click your clicker, and immediately reward your partner with candy.
+2.	Repeat at least 5 times. This pairs the clicker sound with receiving a reward.
+
+## Shape the Behavior in Stages
+
+1.	Click and reward behaviors that come close to your chosen behavior.
+2.	Gradually require closer approximations to reward with each click.
+3.	Observe your partner’s behavior carefully and adjust timing and criteria accordingly.
+
+## Use your Target
+
+1.	Hold out your target stick or pointer visibly.
+2.	Click and reward your partner each time they move toward or touch the target.
+3.	Gradually increase complexity (move the target around, require sustained touching).
+
+## Record the Results of your Experiment
+
+Stop the timer as soon as everyone agrees that your subject has demonstrated the behavior you described at the beginning.
+
+\vspace{0.5cm}
+
+**Record Subject #1's total training time:** \hrulefill
+
+## Repeat the Training Process with a Modification
+
+Now try to repeat the same training process with the other subject that has been able to observe the first subject's process.
+
+\vspace{0.5cm}
+
+**Record Subject #2's total training time:**  \hrulefill
+
+
+\newpage
+
+# Reflection and Concepts
+
+How did the training process differ for Subject #1 and Subject #2?
+
+\vspace{0.3cm}
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{0.3cm}
+\noindent\rule{\textwidth}{0.4pt}
+
+## Key Training Terms
+
+**Put each of these key terms into the context of your training plan/outcome.** 
+
+1.  Find each term in the AZA guide attached to this exercise and read the definition.
+2.  Think about how something you did or used in this activity illustrates the concept or relates to it and record your response in the second column.
+
+  - If you did not directly use or apply one of these concepts, then say a bit about how including it would change your approach and how you predict it might change the outcome.
+
+\vspace{0.5cm}
+
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Term} & \textbf{Application/Description for this Exercise} \\ 
+\hline
+ \textbf{Positive Reinforcement} & \\[1.5cm] 
+\hline
+ \textbf{Discrete Trial Procedure} & \\[1.5cm] 
+\hline
+ \textbf{Bridging Stimulus} & \\[1.5cm] 
+\hline
+ \textbf{Conditioned Stimulus} & \\[1.5cm] 
+\hline
+ \textbf{Shaping by Successive Approximations} & \\[1.5cm] 
+\hline
+ \textbf{Observational Learning} & \\[1.5cm] 
+\hline
+ \textbf{Positive Punishment} & \\[1.5cm] 
+\hline
+ \textbf{Superstitious Behavior} & \\[1.5cm] 
+\hline
+ \textbf{Target} & \\[1.5cm] 
+\hline
+ \textbf{Reinforcer} & \\[1.5cm] 
+\hline
+ \textbf{Unconditioned Stimulus} & \\[1.5cm] 
+\hline
+\end{tabular}
+
+
+
