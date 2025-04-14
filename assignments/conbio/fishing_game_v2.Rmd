@@ -20,19 +20,19 @@ knitr::opts_chunk$set(
 
 # Learning Objectives
 
-`r newthought(By the end of this activity)`, you should be able to:
+By the end of this activity, you should be able to:
 
-1.  `r newthought(Explain)` the concepts of carrying **capacity and maximum sustainable yield (MSY)**.
+1.  Explain the concepts of carrying **capacity and maximum sustainable yield (MSY)**.
 
-2.  `r newthought(Compare)` different management strategies—Open Access, Fixed Quota, and Fixed Effort—and their outcomes for resource sustainability.
+2.  Compare different management strategies—Open Access, Fixed Quota, and Fixed Effort—and their outcomes for resource sustainability.
 
-3.  `r newthought(Analyze)` how cooperative vs. individual incentives influence resource use decisions (the *Tragedy of the Commons*).
+3.  Analyze how cooperative vs. individual incentives influence resource use decisions (the *Tragedy of the Commons*).
 
-4.  `r newthought(Reflect)` on real-world implications of fisheries management strategies and how they might be adapted to other renewable resources.
+4.  Reflect on real-world implications of fisheries management strategies and how they might be adapted to other renewable resources.
 
 # Background & Context
 
-`r newthought(In natural resource management)`, fisheries provide a classic example of how unregulated harvesting can lead to **resource depletion**—sometimes rapidly and unexpectedly. This phenomenon is known as the **Tragedy of the Commons**, where individuals, acting in their own self-interest, collectively over-exploit a shared resource.
+In natural resource management, fisheries provide a classic example of how unregulated harvesting can lead to **resource depletion**—sometimes rapidly and unexpectedly. This phenomenon is known as the **Tragedy of the Commons**, where individuals, acting in their own self-interest, collectively over-exploit a shared resource.
 
 In fisheries, managers often propose strategies to avoid over harvesting. **Fixed Quota** (limiting total catch) and **Fixed Effort** (limiting how many fishers or how long they can fish) are two common ways to stay near a targeted **Maximum Sustainable Yield (MSY)**. However, each strategy has benefits and drawbacks. This game will illustrate those concepts firsthand.
 
@@ -78,7 +78,7 @@ knitr::include_graphics(here::here("assignments/conbio/tragedycommons_video.png"
 
 - Each of you is an independent fisher aiming to catch as many fish as possible.
 - **No communication** or coordination is allowed.
-- After harvesting, the remaining fish reproduce: if `( x )` fish remain, the population becomes `( \min(2x, 30) )`.
+- After harvesting, the remaining fish reproduce: if `( x )` fish remain, the population becomes `(\min(2x, 30) )`.
 
 ## Instructions
 
@@ -108,7 +108,7 @@ Discuss with your group and respond on a separate paper **before you proceed**.
 knitr::include_graphics(here::here("assignments/conbio/msy_video.png"))
 ```
 
-`r newthought(Before moving on)`, think about the **maximum number of fish** the population can yield each round without declining over time. This is the **Maximum Sustainable Yield (MSY)**. Because our population doubles each round (with a cap at 30), the MSY will be near the midpoint of carrying capacity. If you remove too many, you risk dropping below the replenishment threshold; if you remove too few, you might not maximize yields.
+Before moving on, think about the **maximum number of fish** the population can yield each round without declining over time. This is the **Maximum Sustainable Yield (MSY)**. Because our population doubles each round (with a cap at 30), the MSY will be near the midpoint of carrying capacity. If you remove too many, you risk dropping below the replenishment threshold; if you remove too few, you might not maximize yields.
 
 # Round 2: Fixed-Quota Harvesting
 
