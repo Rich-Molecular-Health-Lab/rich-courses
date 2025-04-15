@@ -358,7 +358,14 @@ slides <- list(
       "10a" = "https://www.canva.com/design/DAGiqJmrxIQ/0yn7Ia4iLvbuQHFXQMawuA/view?utm_content=DAGiqJmrxIQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hbbb7f23698",
       "10b" = "https://www.canva.com/design/DAGiwJzhAPk/3tKjRkSatxVM6PyZRNItSA/view?utm_content=DAGiwJzhAPk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=ha5603b9fa2",
       "10c" = "https://www.canva.com/design/DAGi1poexWs/4rOg2UOs1hCBMmNHXH7qmQ/view?utm_content=DAGi1poexWs&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h7fbc152aa9"
+    ),
+    "12" = list(
+      "12c" = "https://www.canva.com/design/DAGkJ8A_MVw/07uuu_6F4aSFf2ccmTApHQ/view?utm_content=DAGkJ8A_MVw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6d965b6c32"
+    ),
+    "13" = list(
+      "13a" = "https://www.canva.com/design/DAGkKeluebY/RhuPoxA8wRe9Ij_oF4QUXg/view?utm_content=DAGkKeluebY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h630f309bd6"
     )
+
   ),
   conbio = list(
     "1" = list(
