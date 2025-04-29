@@ -1,0 +1,46 @@
+---
+title: "protected_areas_matching_key"
+output: pdf_document
+---
+
+1. Ia – Strict Nature Reserve
+   Definition: Areas strictly protected to preserve biodiversity and geological features; human visitation and use limited to scientific research, monitoring, and education.
+   Examples:
+     • Mount Nimba Strict Nature Reserve (Guinea/Côte d’Ivoire)
+     • Aldabra Special Reserve (Seychelles)
+   Objective: Scientific research & monitoring only
+
+2. II – National Park
+   Definition: Large natural or near-natural areas set aside to protect ecological processes, species and ecosystems; also provide for education, recreation and visitor opportunities.
+   Examples:
+     • Yellowstone National Park (USA)
+     • Banff National Park (Canada)
+   Objective: Ecological process & recreation
+
+3. III – Natural Monument or Feature
+   Definition: Areas set aside to protect a specific natural monument (landform, sea mount, geological or living feature); generally small with high visitor value.
+   Examples:
+     • Devils Tower National Monument (USA)
+     • Rio São Francisco Natural Monument (Brazil)
+   Objective: Protect a specific feature / Feature protection & interpretation
+
+4. IV – Habitat/Species Management Area
+   Definition: Areas managed primarily through active intervention (e.g., habitat restoration, invasive-species control, species monitoring) to protect particular species or habitats.
+   Examples:
+     • Don Edwards San Francisco Bay National Wildlife Refuge (USA)
+     • CSKT Bison Range (USA)
+   Objective: Active habitat/species management
+
+5. V – Protected Landscape/Seascape
+   Definition: Areas where people–nature interaction over time has created a landscape of distinct ecological, biological, cultural and scenic value, and where safeguarding that interaction is vital.
+   Examples:
+     • Lake District National Park (UK)
+     • Tsugaru Quasi-National Park (Japan)
+   Objective: Maintain cultural–ecological interaction / Cultural–ecological stewardship
+
+6. VI – Protected Area with Sustainable Use
+   Definition: Generally large areas, mostly in a natural condition, where a proportion is under sustainable natural-resource management and low-level non-industrial use compatible with conservation.
+   Examples:
+     • Ngorongoro Conservation Area (Tanzania)
+     • Chico Mendes Extractive Reserve (Brazil)
+   Objective: Sustainable resource use
