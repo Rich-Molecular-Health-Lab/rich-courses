@@ -1,0 +1,335 @@
+---
+title: "Zoo Pop Demo Makeup"
+author: ""
+output:
+  html_document:
+    theme:
+      bootswatch: litera
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    code_folding: "show"
+    fig_caption: true
+    df_print: paged
+                     
+---
+
+```{r setup}
+library(htmlwidgets)
+library(tidyverse)
+library(visNetwork)
+library(zoopop)
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  message  = FALSE,
+  warning  = FALSE,
+  echo     = TRUE,
+  include  = TRUE,
+  eval     = TRUE,
+  comment  = ""
+)
+conflicted::conflicts_prefer(lubridate::interval)
+conflicted::conflicts_prefer(dplyr::filter)
+conflicted::conflicts_prefer(purrr::set_names)
+studbook <- read_csv("studbook.csv")
+```
+
+# Instructions
+
+You may choose any of the code chunks in this document to include/exclude from your portfolio.
+
+# Studbook Overview
+
+Let's take a quick glance at our studbook data loaded in the setup chunk.
+
+```{r studbook-view}
+print(studbook)
+```
+
+## Summarize Demographic Trends
+
+Let's look at the basic population size over time to begin quantifying growth rate and assessing overall population viability.
+
+```{r census}
+population.plot <- plot_census(studbook)
+population.plot
+```
+
+## Demographic Summary
+
+Now we will use annual birth counts to follow the standard method for computing a normalized rate of growth over the past 5 years compared to all years (\u03BB), along with a series of other common life history variables.
+
+>**Note:** You can play around with the values for the `cohort_params` list in this chunk to change the cohort bins and the overall scale of your analysis.
+>>**Values available in this list:** `Year_min` (the earliest year to include for analysis), `Year_max` (the latest year to include), `span` (the interval in years to use for lumping individuals into generational cohorts, based on their birth year), `age_max` (the maximum age in years to include when forming cohort bins)
+>>**Default values** - if you leave any/all values blank, the following defaults will be used: `Year_min =` *minimum birth year found in studbook*, `Year_min =` *current year*, `span = 10` (*individuals lumped into cohorts based on the decade of their birth*), `age_max =` *maximum age in years observed in studbook records*.
+
+```{r cohort_demog}
+demog <- cohort_demog(studbook, cohort_params = list(span = 5))
+print(demog)
+```
+
+### Summary Table
+
+```{r demog_summary}
+demog_summary <- rct_demog(studbook, cohort_params = list(span = 5))
+demog_summary
+```
+
+The code below will also save a local, html version of this table. If you would rather save a png version, change the file extension. *Note that saving as `png` will disable the html feature where you can hover over the headings or cells for more information.*
+
+
+```{r save_demog_summary"demog_summary"}
+reactablefmtr::save_reactable_test(demog_summary, "demographic_summary.html")
+```
+
+### Lifetime Stats
+
+Some of the stats in this table are broken down by age (dynamic values), while others are averaged across each cohort's lifetime (static values). Let's first summarize the static values that are averaged across the lifetime and compared between birth year cohorts.
+
+#### \u03BB
+
+**\u03BB** is the finite rate of increase calculated as \u03BB = `R0^(1/T)`, representing the population growth rate.
+
+```{r lambda}
+lambda_plot  <- plot_demog(studbook, list(span = 5), "lambda")
+lambda_plot
+```
+
+Run the chunk below to save a local copy.
+
+```{r save_lambda"lambda"}
+saveWidget(lambda_plot, "lambda_plot.html")
+```
+
+#### r
+
+***r*** is the intrinsic rate of increase: the **continuous growth rate of the population**, computed as r = log(\u03BB), where \u03BB is the finite rate of increase.
+
+```{r r_plot}
+r_plot <- plot_demog(studbook, list(span = 5), "r")
+r_plot
+```
+
+Run the chunk below to save a local copy.
+
+```{r save_r_plot"r_plot"}
+saveWidget(r_plot, "r_plot.html")
+```
+
+
+#### N1
+
+***N1*** is the total number of individuals at age 1 (i.e. total surviving first year).
+
+```{r N1_plot}
+N1_plot <- plot_demog(studbook, list(span = 5), "N1")
+N1_plot
+```
+
+Run the chunk below to save a local copy.
+
+```{r save_N1_plot}
+saveWidget(N1_plot, "N1_plot.html")
+```
+
+#### R0
+
+***R0*** is the **net reproductive rate**, the sum of reproductive outputs (*Fx*) across all ages for the cohort.
+
+```{r R0_plot}
+R0_plot <- plot_demog(studbook, list(span = 5), "R0")
+R0_plot
+```
+
+Run the chunk below to save a local copy.
+
+```{r save_R0_plot}
+saveWidget(R0_plot, "R0_plot.html")
+```
+
+#### MLE
+
+***MLE*** - **Maximum Likelihood Estimate** of the **age at 50% survivorship**; the interpolated age where survival drops to 50%.
+
+```{r MLE_plot}
+MLE_plot <- plot_demog(studbook, list(span = 5), "MLE")
+MLE_plot
+```
+
+Run the chunk below to save a local copy.
+
+```{r save_MLE_plot}
+saveWidget(MLE_plot, "MLE_plot.html")
+```
+
+#### T
+
+***T*** - *Mean generation time* **(average age of reproduction)**, computed as `T = Tnum/R0` where `Tnum` is the age‐weighted reproductive output.
+
+```{r T_plot}
+T_plot <- plot_demog(studbook, list(span = 5), "T")
+T_plot
+```
+
+Run the chunk below to save a local copy.
+
+```{r save_T_plot}
+saveWidget(T_plot, "T_plot.html")
+```
+#### Array Plots
+
+Now we can also put each of the most informative plots into a single graphic as subplots for ease of comparison.
+
+```{r lifetime_plots}
+lifetime_plots <- subplot(
+  r_plot,
+  style(R0_plot , showlegend = FALSE),
+  style(MLE_plot, showlegend = FALSE),
+  style(T_plot  , showlegend = FALSE),
+  nrows  = 2,
+  shareX = TRUE,
+  titleY = TRUE
+)
+lifetime_plots
+```
+
+Run the chunk below to save a local copy.
+
+```{r save_lifetime_plots}
+saveWidget(lifetime_plots, "lifetime_plots.html")
+```
+
+
+### Age-Specific Variables
+
+#### Lx1
+
+***Lx1*** is the proportion of individuals surviving past the initial age interval (relative to *N1*), used to assess survival beyond infancy.
+
+```{r Lx1_plot}
+Lx1_plot <- demog_age_bysex(studbook, list(span = 5), "Lx1")
+Lx1_plot
+```
+
+Run the chunk below to save a local copy.
+
+```{r save_Lx1_plot}
+saveWidget(Lx1_plot, "Lx1_plot.html")
+```
+
+#### Qx
+
+***Qx*** is age-specific mortality rate, calculated as the number of deaths in the age interval divided by the risk population (in this case, *Nx*).
+
+```{r Qx_plot}
+Qx_plot <- demog_age_bysex(studbook, list(span = 5), "Qx")
+Qx_plot
+```
+
+Run the chunk below to save a local copy.
+
+```{r save_Qx_plot}
+saveWidget(Qx_plot, "Qx_plot.html")
+```
+
+#### ex
+
+***ex*** is the life expectancy at age x: the average number of additional years an individual is expected to live if they survive to age x. Calculated as `ex = Tx/Lx`.
+
+```{r ex_plot}
+ex_plot <- demog_age_bysex(studbook, list(span = 5), "ex")
+ex_plot
+```
+
+Run the chunk below to save a local copy.
+
+```{r save_ex_plot}
+saveWidget(ex_plot, "ex_plot.html")
+```
+
+#### Fx
+
+***Fx*** is the age-specific reproductive output, computed as *Mx* multiplied by *Lx.* It represents the expected number of offspring produced by an individual at age x.
+
+```{r Fx_plot}
+Fx_plot <- demog_age_bysex(studbook, list(span = 5), "Fx")
+Fx_plot
+```
+
+Run the chunk below to save a local copy.
+
+```{r save_Fx_plot}
+saveWidget(Fx_plot, "Fx_plot.html")
+```
+
+## Construct Pedigree 
+
+Now we will use `pedtools` to create our pedigree objects based on the studbook data. We will use the pedigree object to generate all genetic stats and projections.
+
+```{r pedigree}
+ped_series <- build_ped_series(studbook)
+```
+
+When working with studbook data, this usually produces a list of multiple pedigree objects, as any founders or lineages not represented in the current living population will form discrete, disconnected trees. There also will probably be several "singletons" which are founders without any connections to the living population. That is why the code above also included a line to thin out your dataset by ignoring the founders that never reproduced.
+
+### Pedigree Plot
+
+Now we will take a look at the data in the form of the traditional pedigree structures produced by `pedtools`. The code below also prepares some formatting variables to assign color-coding that matches the other graphics in this workflow before plotting the pedigree(s).
+
+```{r pedplots}
+ped_series_plots <- plot_ped_series(ped_series, 
+                                    studbook, 
+                                    labs_spec = TRUE)
+ped_series_plots
+```
+
+For many of our operations, it will be easier to work with one pedigree object of interest and ignore the pedigrees not currently represented in the breeding population. The function below helps you extract the pedigree of interest as its own object with a new name.
+
+```{r}
+pedigree <- extract_pedigree(ped_series, "_comp1", "Contemporary")
+```
+
+You could also take out the guesswork and cut some of the steps above by using the function below. This function starts with your studbook, builds a pedigree series, and then automatically extracts the pedigree with the deepest multi-generational representation. This is convenient for creating a single pedigree object without leaving unnecessary objects lingering in your environment.
+
+```{r}
+pedigree <- featured_pedigree(studbook)
+```
+
+
+Now we can plot just this pedigree on its own.
+
+```{r}
+ped_plot <- plot_pedigree(pedigree, studbook, labs_spec = TRUE)
+ped_plot
+```
+
+And to download this as a single html file we can use the function below.
+
+```{r}
+pedsave(pedigree, studbook, labs_spec = TRUE)
+```
+
+#### Interactive Pedigree Graphics
+
+We can also adapt `visNetwork` functions to render javascript-based graphics to represent the pedigree relationships built by `pedtools.`
+
+```{r}
+vis_pedigree <- visPed_tree(studbook, pedigree)
+vis_pedigree
+```
+
+You can use the optional parameter `variable` in that function to change the filtering options in the dropdown menu to highlight a subset of the nodes.
+
+```{r}
+vis_pedigree_year <- visPed_tree(studbook, pedigree, variable = "Year_birth")
+vis_pedigree_year
+```
+
+The best way to save interactive graphics like this is as an html file. `visNetwork` already has a function to make this easy.
+
+```{r}
+visSave(vis_pedigree,
+        "visPed_tree_tutorial.html", 
+        selfcontained = TRUE)
+```

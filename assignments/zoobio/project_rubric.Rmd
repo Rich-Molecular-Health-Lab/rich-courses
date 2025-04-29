@@ -1,0 +1,38 @@
+---
+title: "project_rubric"
+output: html_document
+---
+
+# Aesthetic Quality
+
+- Cohesive Design
+- Use of pictures
+
+# Written Quality
+
+- Digestible
+- Accurate
+- Polished
+
+# Overall Plan
+
+- Mission/Vision
+  - Justification of broader impacts
+  - Conservation Impact
+
+- Animal welfare plan
+  - Does it meet minimum AZA standards? Will it be feasible to maintain welfare standards with this collection?
+  
+- Institutional Collection Plan
+  - Feasibility
+  - Use of graphics/stats
+  - Incorporates AZA programs/terminology
+  
+- Enrichment Project
+
+- Nutrition/Health Plan
+
+
+
+
+
