@@ -33,80 +33,101 @@ output: pdf_document
 - Nutrition/Health Plan
 
 
-Zoo Online Portfolio Peer-Review Rubric
+---
+title: "Zoo Online Portfolio Project - Peer Review Rubric"
+output: pdf_document
+---
 
-Total: 50 points
-This rubric is for peer-review of the Zoo Online Portfolio project. It is organized into three major categories: Aesthetic Quality, Written Quality, and Overall Plan. Each category contains subcomponents with assigned point values. For each subcomponent, use the following performance levels to determine points: Not Done, Unsatisfactory, Satisfactory, and Excellent.
+# Zoo Online Portfolio Peer-Review Rubric
 
-Aesthetic Quality (10 points)
+**Total: 50 points**  
+This rubric is for peer-review of the Zoo Online Portfolio project. It is organized into three major categories: **Aesthetic Quality**, **Written Quality**, and **Overall Plan**. Each category contains subcomponents with assigned point values. For each subcomponent, use the following performance levels to determine points: **Not Done**, **Unsatisfactory**, **Satisfactory**, **Beyond Satisfactory**, and **Excellent**.
 
-Focuses on the visual and design aspects of the portfolio, including layout cohesion and effective use of imagery.
+Each subcomponent is worth 5 points. Use the guide below to assign a specific score based on the quality indicators described.
 
-Cohesive Design (5 points)
-	•	Not Done (0 pts): No clear design or layout is present. Pages appear disorganized or incomplete, with no consistent style.
-	•	Unsatisfactory (1–2 pts): Design lacks cohesion or professionalism. There may be a basic layout, but it feels haphazard or inconsistent (e.g., mismatched styles, poor color/font choices).
-	•	Satisfactory (3–4 pts): Design is generally cohesive and usable. A consistent style and layout are applied throughout most of the portfolio, though minor inconsistencies or aesthetic issues may exist. Overall presentation is acceptable but could be more polished.
-	•	Excellent (5 pts): Design is visually appealing and completely cohesive. All pages follow a unified theme with appropriate colors, fonts, and styling. The layout enhances readability and user experience, giving a professional and engaging look.
+## Aesthetic Quality (10 points)
 
-Use of Pictures (5 points)
-	•	Not Done (0 pts): No images or pictures are included where they are expected, leaving the portfolio text-only when visuals are needed.
-	•	Unsatisfactory (1–2 pts): Includes very few images or uses images poorly. Images may be low quality, irrelevant, or improperly placed, adding little value to the portfolio. Visual content does not clearly support the text.
-	•	Satisfactory (3–4 pts): Uses appropriate pictures that generally enhance the portfolio. Most images are relevant (e.g., of animals, exhibits, plans) and of decent quality. Placement and captions (if any) are adequate, though there may be opportunities to use visuals more effectively or consistently.
-	•	Excellent (5 pts): Integrates high-quality, relevant images seamlessly into the portfolio. Every image serves a clear purpose (illustrating animals, exhibits, or concepts) and complements the text. Visuals are well-placed with proper context or captions, greatly enriching the viewer’s understanding and engagement.
+**Focuses on the visual and design aspects of the portfolio, including layout cohesion and effective use of imagery.**
 
-Written Quality (15 points)
+### Cohesive Design (5 points)
+- **Not Done (0 pts)**: No clear design or layout is present. Pages appear disorganized or incomplete.
+- **Unsatisfactory (1–2 pts)**: Design lacks cohesion or professionalism.
+- **Satisfactory (3 pts)**: Generally cohesive and usable layout with minor issues.
+- **Beyond Satisfactory (4 pts)**: Well-organized with attention to visual consistency and theme.
+- **Excellent (5 pts)**: Visually appealing and completely cohesive. Enhances readability and user experience.
 
-Evaluates the clarity, accuracy, and polish of the written content in the portfolio.
+### Use of Pictures (5 points)
+- **Not Done (0 pts)**: No images are included where they are expected.
+- **Unsatisfactory (1–2 pts)**: Few or poorly chosen images.
+- **Satisfactory (3 pts)**: Images generally enhance the portfolio.
+- **Beyond Satisfactory (4 pts)**: Strong use of relevant and well-placed visuals.
+- **Excellent (5 pts)**: Seamless integration of high-quality, purposeful images that enrich content.
 
-Digestible (Clear Organization & Readability) (5 points)
-	•	Not Done (0 pts): Writing is missing or entirely incoherent. There is no discernible structure or clarity, making the content essentially unreadable.
-	•	Unsatisfactory (1–2 pts): Writing is poorly organized or hard to follow. The text may be overly verbose or confusing, lacking clear section headings or logical flow. Jargon or complex terms might be used without explanation, impeding understanding.
-	•	Satisfactory (3–4 pts): Writing is generally clear and organized. Information is presented in a logical order with appropriate headings or sections. The content is understandable to the intended audience, though a few passages might be slightly unclear or overly detailed.
-	•	Excellent (5 pts): Writing is exceptionally clear, concise, and well-organized. The portfolio flows logically from section to section with excellent use of headings, bullet points, or other structuring devices. The language is accessible and engaging, making the content easy to digest for any reader.
+## Written Quality (15 points)
 
-Accurate (Factual and Correct Content) (5 points)
-	•	Not Done (0 pts): Little to no factual information is provided, or the section is missing entirely. Any presented content cannot be evaluated for accuracy because it is absent.
-	•	Unsatisfactory (1–2 pts): Contains significant factual errors or misinformation. Important details about animals, plans, or policies are incorrect or unsupported, undermining the credibility of the portfolio.
-	•	Satisfactory (3–4 pts): Information presented is mostly accurate and based on appropriate sources or knowledge. There might be minor errors or omissions, but no major falsehoods. The content demonstrates a reasonable level of research and correctness regarding zoo practices and animal facts.
-	•	Excellent (5 pts): All information is accurate, thorough, and well-researched. The portfolio demonstrates expertise or careful study, with correct facts and data throughout (e.g., accurate animal facts, proper use of zoo terminology, and alignment with industry standards). Any claims are supported by credible references or logical reasoning.
+**Evaluates the clarity, accuracy, and polish of the written content in the portfolio.**
 
-Polished (Grammar, Spelling, and Formatting) (5 points)
-	•	Not Done (0 pts): The writing is essentially unedited or incomplete, with pervasive grammatical errors, spelling mistakes, or missing text making it hard to comprehend.
-	•	Unsatisfactory (1–2 pts): Numerous grammar or spelling errors detract from the content. The text may have frequent typos, improper punctuation, or poor sentence structure. Formatting might be inconsistent (e.g., fonts, spacing) or not reader-friendly.
-	•	Satisfactory (3–4 pts): Writing is mostly free of grammatical and spelling errors. Only a few minor mistakes are present, not significantly affecting readability. The portfolio is formatted consistently for the most part, looking neat and professional with only slight issues (if any).
-	•	Excellent (5 pts): The document is polished to a high standard. Virtually no spelling or grammatical errors are present. Sentences are well-constructed and concise. The formatting is clean and consistent (fonts, spacing, alignment), giving the portfolio a professional appearance. It’s evident that the text has been thoroughly proofread and edited.
+### Digestible (Clear Organization & Readability) (5 points)
+- **Not Done (0 pts)**: Writing is incoherent or absent.
+- **Unsatisfactory (1–2 pts)**: Poor organization; difficult to follow.
+- **Satisfactory (3 pts)**: Clear and logical organization.
+- **Beyond Satisfactory (4 pts)**: Thoughtfully structured with good flow.
+- **Excellent (5 pts)**: Exceptionally clear, concise, and engaging writing.
 
-Overall Plan (25 points)
+### Accurate (Factual and Correct Content) (5 points)
+- **Not Done (0 pts)**: Lacks evaluable or factual content.
+- **Unsatisfactory (1–2 pts)**: Major inaccuracies or unsupported claims.
+- **Satisfactory (3 pts)**: Mostly accurate with minor errors.
+- **Beyond Satisfactory (4 pts)**: Strong factual grounding with few if any inaccuracies.
+- **Excellent (5 pts)**: Thorough, well-researched, and correct in every detail.
 
-Assesses the completeness and quality of the zoo’s strategic content, including its mission and various plans for operation and animal care.
+### Polished (Grammar, Spelling, and Formatting) (5 points)
+- **Not Done (0 pts)**: Text is largely unreadable.
+- **Unsatisfactory (1–2 pts)**: Multiple distracting grammar/spelling issues.
+- **Satisfactory (3 pts)**: Generally clean with minor issues.
+- **Beyond Satisfactory (4 pts)**: Careful attention to proofreading and formatting.
+- **Excellent (5 pts)**: Flawlessly polished and professional.
 
-Mission/Vision (5 points)
-	•	Not Done (0 pts): No mission or vision statement is provided for the zoo. The portfolio lacks any clear statement of purpose or goals.
-	•	Unsatisfactory (1–2 pts): A mission and/or vision is present but is very unclear or generic. It may be poorly written, not reflective of the zoo’s unique identity, or only one of the two (mission or vision) is given. The statement does not seem connected to the rest of the portfolio.
-	•	Satisfactory (3–4 pts): The mission and vision of the zoo are stated and are reasonably clear. They convey the general purpose and goals of the institution and align somewhat with the portfolio’s content. The statements could be more inspiring or specific, but they do provide direction.
-	•	Excellent (5 pts): Provides a clear, compelling mission and vision for the zoo. These statements are specific to the institution, reflecting its unique goals (e.g. conservation, education, animal welfare) and guiding principles. They strongly align with and set the stage for all the content that follows in the portfolio.
+## Overall Plan (25 points)
 
-Animal Welfare Plan (5 points)
-	•	Not Done (0 pts): No animal welfare plan is included. The portfolio fails to address how the zoo will ensure the well-being of its animals.
-	•	Unsatisfactory (1–2 pts): The animal welfare plan is very minimal or incomplete. It shows little understanding of animal care needs or standards. Key welfare issues (habitat, veterinary care, enrichment, etc.) are missing or barely mentioned.
-	•	Satisfactory (3–4 pts): A basic animal welfare plan is provided, covering main points of animal care. It addresses primary welfare considerations like proper habitats, nutrition, health check-ups, and enrichment in a reasonable way, though details or specific policies might be limited. The plan meets standard expectations but may not go beyond the basics.
-	•	Excellent (5 pts): Presents a thorough and well-thought-out animal welfare plan. It covers all essential aspects of animal care (e.g., habitat design, veterinary care protocols, enrichment schedules, safety measures) with detail and clarity. The plan aligns with best practices and ethical standards (such as AZA guidelines) and demonstrates a strong commitment to the animals’ well-being.
+**Assesses the completeness and quality of the zoo’s strategic content, including its mission and various plans.**
 
-Institutional Collection Plan (5 points)
-	•	Not Done (0 pts): No plan for the zoo’s animal collection is provided. The portfolio does not describe which animals will be housed or why.
-	•	Unsatisfactory (1–2 pts): The collection plan lacks depth or rationale. It may list some animals but without justification or connection to the zoo’s mission. The plan might ignore practical constraints (space, resources) or conservation value when choosing species.
-	•	Satisfactory (3–4 pts): The institutional collection plan outlines the species (or types of animals) the zoo will have and gives some reasoning for these choices. It generally aligns with the zoo’s mission and resources. For example, it might mention focusing on certain categories of animals (such as endangered species or regional wildlife) with a basic justification. The plan is workable but could include more strategic detail.
-	•	Excellent (5 pts): Provides a comprehensive collection plan with clear, strategic rationale. It identifies which species will be included and explains how these choices support the zoo’s mission and vision (e.g., conservation goals, educational themes). The plan considers factors like habitat requirements, conservation status, and the zoo’s capacity. It shows foresight in collection management, possibly including future expansion or breeding programs aligned with global conservation efforts.
+### Mission/Vision (5 points)
+- **Not Done (0 pts)**: Missing statement(s).
+- **Unsatisfactory (1–2 pts)**: Generic or unclear.
+- **Satisfactory (3 pts)**: Clear mission/vision that mostly aligns with the project.
+- **Beyond Satisfactory (4 pts)**: Thoughtful and project-specific.
+- **Excellent (5 pts)**: Compelling, well-integrated, and guiding.
 
-Enrichment Project (5 points)
-	•	Not Done (0 pts): No animal enrichment project or examples are included. The portfolio does not demonstrate any plan to enrich the animals’ lives.
-	•	Unsatisfactory (1–2 pts): An enrichment idea is mentioned but is very poorly developed or unrealistic. It may not suit the animals’ needs or is described in a vague, cursory manner. The project, as presented, would likely fail to engage or benefit the animals significantly.
-	•	Satisfactory (3–4 pts): An animal enrichment project is described and is reasonably appropriate. The idea would provide some stimulation or benefit to the animals. The description covers the basics (what the enrichment is and how it helps the animal), though details on implementation or creativity might be limited. The project seems practical and shows care for the animal, even if it’s not highly innovative.
-	•	Excellent (5 pts): Features a well-designed, creative enrichment project with thorough details. The project is clearly tailored to the specific animal’s behaviors and needs, offering significant stimulation or problem-solving opportunities. The portfolio explains how the enrichment will be implemented and why it will improve the animal’s welfare. It demonstrates innovation and a deep understanding of animal behavior, indicating a strong commitment to enriching the animals’ daily lives.
+### Animal Welfare Plan (5 points)
+- **Not Done (0 pts)**: Absent plan.
+- **Unsatisfactory (1–2 pts)**: Lacks depth or accuracy.
+- **Satisfactory (3 pts)**: Addresses basic welfare needs.
+- **Beyond Satisfactory (4 pts)**: Strong structure and attention to detail.
+- **Excellent (5 pts)**: Comprehensive and aligns with AZA best practices.
 
-Nutrition/Health Plan (5 points)
-	•	Not Done (0 pts): No nutrition or health care plan is provided. The portfolio omits how the zoo will feed its animals or maintain their health.
-	•	Unsatisfactory (1–2 pts): The nutrition/health plan is very incomplete or inadequate. It might briefly mention feeding or vet care but lacks specifics (e.g., what diets, schedules, or health protocols). It does not instill confidence that animal health needs are understood or will be met.
-	•	Satisfactory (3–4 pts): A solid basic plan for animal nutrition and health is included. It outlines general feeding regimens (for example, identifying appropriate diets for different species) and basic health care measures (such as regular veterinary check-ups and vaccinations). The plan covers fundamental needs and suggests the zoo will take care of its animals, though it may not go into advanced detail like specialized diets or preventive health programs.
-	•	Excellent (5 pts): Presents a comprehensive nutrition and health plan for the animals. It details species-specific diets (including portions, nutritional requirements, and feeding frequency) and describes health care protocols (preventative medicine, routine check-ups, quarantine procedures, emergency care plans). The plan demonstrates expert knowledge of animal dietary needs and veterinary care. It shows proactive measures to ensure each animal’s long-term health and well-being, exceeding basic standards.
+### Institutional Collection Plan (5 points)
+- **Not Done (0 pts)**: No plan present.
+- **Unsatisfactory (1–2 pts)**: Minimal rationale or misaligned species choices.
+- **Satisfactory (3 pts)**: Clear choices with basic reasoning.
+- **Beyond Satisfactory (4 pts)**: Strategic alignment with mission and feasibility.
+- **Excellent (5 pts)**: Detailed, strategic, and demonstrates future planning.
+
+### Enrichment Project (5 points)
+- **Not Done (0 pts)**: No project outlined.
+- **Unsatisfactory (1–2 pts)**: Lacks realism or detail.
+- **Satisfactory (3 pts)**: Basic and functional enrichment idea.
+- **Beyond Satisfactory (4 pts)**: Thoughtful and well-adapted for the animal.
+- **Excellent (5 pts)**: Innovative, species-appropriate, and well-explained.
+
+### Nutrition/Health Plan (5 points)
+- **Not Done (0 pts)**: Absent plan.
+- **Unsatisfactory (1–2 pts)**: Incomplete or not credible.
+- **Satisfactory (3 pts)**: Covers general care.
+- **Beyond Satisfactory (4 pts)**: Good use of species-specific examples and protocols.
+- **Excellent (5 pts)**: Thorough, expert-level plan with integrated care strategies.
+
+---
+
+**Instructions for Reviewers**: Please assess each category carefully and circle or highlight the point value that best reflects the quality of work presented. Feel free to include brief comments or suggestions on the back of this sheet.
 
