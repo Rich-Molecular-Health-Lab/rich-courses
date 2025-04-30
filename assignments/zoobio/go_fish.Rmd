@@ -1,0 +1,261 @@
+---
+title: "go_fish"
+output: html_document
+---
+
+## Gameplay Rules
+
+### Taking Turns
+
+- Players take turns asking a specific player for a particular card category they need to complete a set.
+- The asking player must have at least one card from the set they are trying to complete.
+	
+### Responding to Requests:
+
+- If the asked player has the requested card, they must hand it over.
+- If not, they say “Go Fish,” and the asking player draws a card from the draw pile.
+	
+### Forming Sets:
+
+- When a player collects all five cards of a set, they lay it down in front of them.
+- The player must briefly explain how the cards interrelate to address the zoo management scenario.
+	
+### Winning the Game:
+
+- The game continues until all sets are completed or the draw pile is exhausted.
+- The player with the most complete sets at the end of the game wins.
+
+## Cards
+
+### Problem
+
+A mammal habitually licks and mouths stationary, non-food objects, especially metal bars/pipes in their exhibit.
+
+### Animal
+
+Giraffe
+
+### Diet 
+
+Browser
+
+### Category
+
+Oral Stereotypy
+
+### Causes
+
+Frustration of natural foraging patterns, gastrointestinal issues
+
+### Solution
+
+Provide animal with plentiful browse and enrichment objects to stimulate natural feeding methods. Increase dietary fiber.
+
+### Location
+
+Scott African Grasslands at Omaha's Henry Doorly Zoo
+
+### AZA TAG
+
+Antelope, Cattle, Giraffid, and Camelid
+
+
+### Problem
+
+Two brothers were born in the same family group, but as they approach adulthood they begin engaging in aggressive behaviors with each other and their father. The aggressive bouts keep building in freqency, intensity, and duration, and will likely cause severe injury if not interrupted.
+
+### Animal
+
+Gorilla
+
+### Diet 
+
+Herbivorous
+
+### Category
+
+Social Organization
+
+### Causes
+
+This animal's reproductive/social system revolves around single-male/multi-female groups, but we still have an equal sex ratio at birth in zoos.
+
+### Solution
+
+Transfer males to a bachelor troop once they reach sexual maturity or coordinate with the SSP director to find a troop in need of a silverback male.
+
+### Location
+
+Hubbard Gorilla Valley at Omaha's Henry Doorly Zoo
+
+### AZA TAG
+
+Ape
+
+### Problem
+
+A large-bodied, terrestrial mammal keeps exhibiting repetative swaying behavior for hours on-end.
+
+### Animal
+
+Elephant
+
+### Diet 
+
+Grazer
+
+### Category
+
+Locomotory Stereotypy
+
+### Causes
+
+This animal is adapted to long and frequent range-use and deep cognitive complexity and will resort to movement-based coping behaviors when they cannot express that instinct in captivity.
+
+### Solution
+
+Provide enrichment items that encourage physical movement and complex problem solving. Offer opportunities for more travel and exercise.
+
+### Location
+
+Scott African Grasslands at Omaha's Henry Doorly Zoo
+
+### AZA TAG
+
+Elephant
+
+### Problem
+
+A large-bodied carnivore spends hours on-end traveling a circular path in their enclosure. This has become so habitual that a path was worn away all grass and a deep depression in the ground, and the animal has begun forming callouses in particular locations on their paws.
+
+### Animal
+
+Tiger
+
+### Diet 
+
+Carnivore
+
+### Category
+
+Locomotory Stereotypy
+
+### Causes
+
+This animal is adapted to traveling long distances to locate and stalk prey and engage in complex hunting strategies.
+
+### Solution
+
+Provide enrichment items that allow the animal to mimic natural hunting behaviors or motions. Introduce other novel stimuli that utilize prey-detection adaptations (e.g., scent).
+
+### Location
+
+Asian Highlands at Omaha's Henry Doorly Zoo
+
+### AZA TAG
+
+Felid
+
+
+### Problem
+
+An animal keeps pulling out its own feathers and forming bald spots on its wings.
+
+### Animal
+
+Macaw
+
+### Diet 
+
+Nuts/Seeds
+
+### Category
+
+Self-directed Stereotypy
+
+### Causes
+
+This animal is adapted to constant and complex social interactions and extractive foraging in the wild. If it cannot express those instincts, it will find other outlets for similar behaviors.
+
+### Solution
+
+Introduce social companions and design enrichment items that encourage deep problem solving and extractive foraging. Design a training routine that also provides novel stimuli and complex cognition.
+
+### Location
+
+Dick and Mary Holland Meadowlark Theater at Omaha's Henry Doorly Zoo
+
+### AZA TAG
+
+Parrot
+
+### Problem
+
+An animal keeps throwing up swallowed food and then eating it again, sometimes for as long as an hour. They also engage in a rhythmic swaying and repetative hand motion each time.
+
+### Animal
+
+Chimpanzee
+
+### Diet 
+
+Omnivore/Frugivore
+
+### Category
+
+Regurgitation \& Regingestion
+
+### Causes
+
+This animal is adapted to constant and complex social interactions and creative problem solving and is at a high risk of boredom in captivity.
+
+### Solution
+
+Introduce social companions and design enrichment items that encourage deep problem solving. Consider sensory-based cognitive challenges that change routinely, like touchscreen activities or puzzles.
+
+### Location
+
+Regenstein Center for African Apes at Lincoln Park Zoo
+
+### AZA TAG
+
+Ape
+
+### Problem
+
+An ectothermic animal has become completely stationary for most hours of the day, showing no interest in opportunities to engage in species-specific behaviors like hunting or exploration.
+
+### Animal
+
+Eastern indigo snake
+
+### Diet 
+
+Carnivore
+
+### Category
+
+Apathy
+
+### Causes
+
+Improper temperature gradients, lack of hiding spots, and absence of feeding stimulation.
+
+### Solution
+
+Adjust thermal environment to optimize metabolic/energetic levels, add shelters, and implement enrichment programs that encourage natural behaviors like careful prey detection, 3-dimensional locomotion.
+
+### Location
+
+Desert Dome at Omaha's Henry Doorly Zoo
+
+### AZA TAG
+
+Snake
+
+
+
+
+
+
+
