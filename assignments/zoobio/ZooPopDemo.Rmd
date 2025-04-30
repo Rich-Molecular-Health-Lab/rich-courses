@@ -17,6 +17,7 @@ output:
 
 ```{r setup}
 library(htmlwidgets)
+library(plotly)
 library(tidyverse)
 library(visNetwork)
 library(zoopop)
@@ -37,7 +38,7 @@ studbook <- read_csv("studbook.csv")
 
 # Instructions
 
-You may choose any of the code chunks in this document to include/exclude from your portfolio.
+You may choose any of the code chunks in this document to include/exclude from your portfolio. After you are finished, select any three graphics/statistics that tell you something useful for planning an institutional collection or breeding pair. Write a few sentences about why that information is relevant and what pattern you see in the data. Add that to your online submission, along with this file.
 
 # Studbook Overview
 
@@ -79,7 +80,7 @@ demog_summary
 The code below will also save a local, html version of this table. If you would rather save a png version, change the file extension. *Note that saving as `png` will disable the html feature where you can hover over the headings or cells for more information.*
 
 
-```{r save_demog_summary"demog_summary"}
+```{r save_demog_summary"demog_summary", eval = FALSE}
 reactablefmtr::save_reactable_test(demog_summary, "demographic_summary.html")
 ```
 
@@ -98,7 +99,7 @@ lambda_plot
 
 Run the chunk below to save a local copy.
 
-```{r save_lambda"lambda"}
+```{r save_lambda"lambda", eval = FALSE}
 saveWidget(lambda_plot, "lambda_plot.html")
 ```
 
@@ -113,7 +114,7 @@ r_plot
 
 Run the chunk below to save a local copy.
 
-```{r save_r_plot"r_plot"}
+```{r save_r_plot"r_plot", eval = FALSE}
 saveWidget(r_plot, "r_plot.html")
 ```
 
@@ -144,7 +145,7 @@ R0_plot
 
 Run the chunk below to save a local copy.
 
-```{r save_R0_plot}
+```{r save_R0_plot, eval = FALSE}
 saveWidget(R0_plot, "R0_plot.html")
 ```
 
@@ -159,7 +160,7 @@ MLE_plot
 
 Run the chunk below to save a local copy.
 
-```{r save_MLE_plot}
+```{r save_MLE_plot, eval = FALSE}
 saveWidget(MLE_plot, "MLE_plot.html")
 ```
 
@@ -174,7 +175,7 @@ T_plot
 
 Run the chunk below to save a local copy.
 
-```{r save_T_plot}
+```{r save_T_plot, eval = FALSE}
 saveWidget(T_plot, "T_plot.html")
 ```
 #### Array Plots
@@ -196,7 +197,7 @@ lifetime_plots
 
 Run the chunk below to save a local copy.
 
-```{r save_lifetime_plots}
+```{r save_lifetime_plots, eval = FALSE}
 saveWidget(lifetime_plots, "lifetime_plots.html")
 ```
 
@@ -214,7 +215,7 @@ Lx1_plot
 
 Run the chunk below to save a local copy.
 
-```{r save_Lx1_plot}
+```{r save_Lx1_plot, eval = FALSE}
 saveWidget(Lx1_plot, "Lx1_plot.html")
 ```
 
@@ -229,7 +230,7 @@ Qx_plot
 
 Run the chunk below to save a local copy.
 
-```{r save_Qx_plot}
+```{r save_Qx_plot, eval = FALSE}
 saveWidget(Qx_plot, "Qx_plot.html")
 ```
 
@@ -244,7 +245,7 @@ ex_plot
 
 Run the chunk below to save a local copy.
 
-```{r save_ex_plot}
+```{r save_ex_plot,  eval = FALSE}
 saveWidget(ex_plot, "ex_plot.html")
 ```
 
@@ -259,7 +260,7 @@ Fx_plot
 
 Run the chunk below to save a local copy.
 
-```{r save_Fx_plot}
+```{r save_Fx_plot, eval = FALSE}
 saveWidget(Fx_plot, "Fx_plot.html")
 ```
 
@@ -306,7 +307,7 @@ ped_plot
 
 And to download this as a single html file we can use the function below.
 
-```{r}
+```{r eval = FALSE}
 pedsave(pedigree, studbook, labs_spec = TRUE)
 ```
 
@@ -328,7 +329,7 @@ vis_pedigree_year
 
 The best way to save interactive graphics like this is as an html file. `visNetwork` already has a function to make this easy.
 
-```{r}
+```{r eval = FALSE}
 visSave(vis_pedigree,
         "visPed_tree_tutorial.html", 
         selfcontained = TRUE)
