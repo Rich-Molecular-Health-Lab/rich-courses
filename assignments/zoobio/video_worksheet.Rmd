@@ -1,0 +1,62 @@
+---
+title: "Video Worksheet"
+author: "Dr. Rich"
+date: "Spring 2025"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+## Instructions
+
+While watching today's video, you should record three management problems presented at the San Diego Zoo. Attach a sheet of paper with each of your three selected problems following the example below. The prompts are as follows:
+
+  - Problem: Describe the problem in no more than 1-2 sentences.
+  - Animal: Which animal is exhibiting this problem?
+  - Diet: What type of diet/feeding ecology characterizes this animal?
+  - Location: In what special area/exhibit of this zoo or any other zoo would you find this animal?
+  - AZA TAG: To which TAG (Taxon Advisory Group) does this animal belong?
+  - Category: What technical term/label from class would you use to categorize this problem? *Hint: This may not be explicitely stated in the film, but you should have enough knowledge to label it with a specialized term.*
+  - Causes: In no more than 1-2 sentences, explain the cause/causes provided or implied for this problem?
+  - Solution: What solution is offered for this problem, or what solution would you propose?
+
+### Assessment
+
+You will be assessed on effort/completion, so do not worry too much about overly detailed descriptions/analyses. Just use this as a guide to think critically about the problems and solutions you observe.
+
+## Example
+
+### Problem
+
+A mammal habitually licks and mouths stationary, non-food objects, especially metal bars/pipes in their exhibit.
+
+### Animal
+
+Giraffe
+
+### Diet 
+
+Browser
+
+### Location
+
+Scott African Grasslands at Omaha's Henry Doorly Zoo
+
+### AZA TAG
+
+Antelope, Cattle, Giraffid, and Camelid
+
+### Category
+
+Oral Stereotypy
+
+### Causes
+
+Frustration of natural foraging patterns, gastrointestinal issues
+
+### Solution
+
+Provide animal with plentiful browse and enrichment objects to stimulate natural feeding methods. Increase dietary fiber.
+

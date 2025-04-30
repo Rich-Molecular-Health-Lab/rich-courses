@@ -1,0 +1,81 @@
+---
+title: "IUCN Category Card-Sorting Game"
+subtitle: "Conservation Biology"
+author: "Dr. Rich"
+date: "Spring 2025"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+
+## Why We’re Playing
+
+This game helps you learn the six IUCN protected-area categories (Ia–VI) by matching:
+
+- **Definitions** (what each category means)  
+- **Real-world examples** (actual parks or reserves)  
+- **Management objectives** (how each area is run)
+
+By the end, you’ll be able to:
+
+- Recognize each category’s purpose  
+- Link a definition to a famous site  
+- Understand the management goals behind each protected area
+
+---
+
+### What You’ll Do
+
+1. **Get a Card**  
+
+- You’ll receive **one card**: a definition, an example site, or an objective.  
+   
+2. **Mingle**  
+
+- Stand up and talk to classmates—describe only what’s on your card (no category numbers!).  
+- Find the **two people** whose cards match yours (one definition + one example + one objective).  
+   
+3. **Race to the Board** 
+
+- Once you form a trio, run to the board and post all three cards under the header that fits your category.  
+   
+4. **Score Points**  
+
+- The first trio to place all three cards correctly wins **1 point** for that category.  
+
+---
+
+### Rules
+
+- **No naming numbers**: Describe only the text on your card or the text on the card you are looking for.  
+
+- **No swapping cards** once you’ve committed to a group.  
+
+- **Challenge**: If you think a trio is under the wrong header, call over the instructor for a quick check.  
+
+---
+
+### Winning & Reflection
+
+- **Winning**: Fastest correct group per category earns the point. We’ll play multiple rounds—try different roles!  
+
+- **Quick Debrief**: After each round, one trio per category will share in 30 seconds:
+
+  1. How you recognized your category  
+  2. Any surprises or tricky distinctions  
+
+
+\newpage
+
+| Cat | Name                          | Primary Objective                                                                                  | Typical Examples/Activities                                 |
+|:--------:|-------------------------------|-----------------------------------------------------------------------------------------------------|-------------------------------------------------------------|
+| **Ia**   | Strict Nature Reserve         | Preserve biodiversity & geological/geomorphological features; human use limited to research & monitoring. | Scientific research; undisturbed baseline monitoring        |
+| **Ib**   | Wilderness Area               | Protect large-scale natural areas where ecosystems can evolve freely; minimal human infrastructure. | Remote trekking; low-impact wilderness experience           |
+| **II**   | National Park                 | Safeguard functioning ecosystems; allow education, recreation & visitor facilities compatible with conservation. | Hiking, wildlife viewing, environmental education programs  |
+| **III**  | Natural Monument or Feature   | Protect a specific natural monument (e.g. landform, sea mount, cave) and its immediate surroundings. | Guided tours; interpretation of unique geological/cultural sites |
+| **IV**   | Habitat/Species Management    | Active interventions (e.g. habitat restoration, species reintroduction) to maintain or recover particular species/habitats. | Controlled burns; invasive species removal; nest protection |
+| **V**    | Protected Landscape/Seascape  | Conserve areas shaped by human–nature interactions, preserving cultural values and scenic character. | Traditional agriculture; cultural tourism; sustainable forestry |
+| **VI**   | Sustainable Resource Use      | Combine conservation with sustainable, low-level natural resource use by local communities.         | Community forestry; small-scale grazing; traditional fisheries |
