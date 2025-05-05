@@ -1,0 +1,35 @@
+---
+title: "Behavioral Observation Sheets"
+subtitle: "Zoo Biology"
+author: "Dr. Rich"
+date: "Spring 2025"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+Category	Code	Behavior	Definition
+Inactive	LNG	Lying	Animal is lying with weight supported on  side, back, or stomach and not performing another behavior listed.
+	FLT	Floating	Animal is stationary and suspended in water.
+	OTI	Other Inactive	Animal is stationary and not engaged in an active behavior listed.
+Feed/ Forage/ Drink	FDG	Feeding	Animal is chewing and ingesting food items or manipulating a food item for the purpose of feeding.
+Locomotion	TLO	Terrestrial Locomotion	Animal is moving at least one body’s length in non-stereotypical manner on land.
+	DVF	Diving (Surface)	Animal is leaping off of ledge into water to travel a distance greater than one body's length.
+	DVB	Diving (Submerged)	Animal is fully submerged and swimming a distance greater than one body's length at a steep downward angle.
+	SWI	Swimming	Animal is propelling itself through water at least a distance greater than one body's length.
+Undesirable	UND	Undesirable	Animal is performing an undesirable behavior, including stereotypic and self-injurious behaviors.
+Other Solitary	KIN	Keeper Interaction	Animal is directly interacting with keepers, either performing trained behaviors in the context of a training session or engaged in an informal manner, including handing feeding, playing, handling, or inspecting.
+	KIT	Keeper Interaction - Training Session	Animal performs trained behaviors during interaction with a keeper, in the context of a training session.
+	VOC	Vocalization	Animal is producing sounds through intentional vibration of air for the purpose of communication (may involve vocal cords, stridulation of body parts, vibration of air sacs, or other taxa-specific adaptations).
+	SOL	Other Solitary	Animal is performing a solitary behavior not previously listed, including exploratory behavior, self-maintenance, scent marking, solitary play, elimination, human interaction.
+Social	AFL	Affiliative Behavior	Animal performs any non-sexual affiliative behavior, including grooming a social partner, playing, or social greetings.
+	CAG	Contact Aggression	Animal physically attacks another individual, including biting, batting, or kicking.
+	NAG	Non-contact Aggression	Animal performs non-contact aggressive behavior towards another individual, including threat displays or chasing.
+	OAG	Other Agonistic Behavior	Animal performs any aggressive behavior, either with or without contact, or any dominance related behavior.
+Other	OTH	Other	Animal is performing any behavior not listed [Note: please specify the behavior category and make a comment to describe behavior].
+Not Visible	BOB	Behavior Obscured	The behavior of the animal cannot be determined but the location of the animal is known.
+	ANV	Animal Not Visible	The animal is completely not visible and its location is unknown.

@@ -75,7 +75,7 @@ Antelope, Cattle, Giraffid, and Camelid
 
 ### Problem
 
-Two brothers were born in the same family group, but as they approach adulthood they begin engaging in aggressive behaviors with each other and their father. The aggressive bouts keep building in freqency, intensity, and duration, and will likely cause severe injury if not interrupted.
+Two brothers were born in the same family group, but as they approach adulthood they begin engaging in aggressive behaviors with each other and their father. 
 
 ### Animal
 
@@ -95,7 +95,7 @@ This animal's reproductive/social system revolves around single-male/multi-femal
 
 ### Solution
 
-Transfer males to a bachelor troop once they reach sexual maturity or coordinate with the SSP director to find a troop in need of a silverback male.
+Transfer males to a bachelor troop once they reach sexual maturity or coordinate with the SSP director to find a troop in need of a male.
 
 ### Location
 
@@ -107,7 +107,7 @@ Ape
 
 ### Problem
 
-A large-bodied, terrestrial mammal keeps exhibiting repetative swaying behavior for hours on-end.
+A large-bodied, terrestrial mammal keeps exhibiting repetitive swaying behavior for hours on-end.
 
 ### Animal
 
