@@ -5,6 +5,17 @@ output: html_document
 
 ## Gameplay Rules
 
+### Card Categories
+
+- Every matching set will include one of each of the following cards:
+  - **Problem**
+  - **Animal**
+  - **AZA TAG**
+  - **Diet**
+  - **Category**
+  - **Causes**
+  - **Solution**
+
 ### Taking Turns
 
 - Players take turns asking a specific player for a particular card category they need to complete a set.
@@ -17,6 +28,8 @@ output: html_document
 	
 ### Forming Sets:
 
+- Players can verify whether they correctly matched a set using the symbols in the corner of each card.
+  - *But you may not describe these symbols during play!*
 - When a player collects all five cards of a set, they lay it down in front of them.
 - The player must briefly explain how the cards interrelate to address the zoo management scenario.
 	
