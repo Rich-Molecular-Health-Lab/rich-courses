@@ -3,33 +3,571 @@ title: "Behavioral Observation Sheets"
 subtitle: "Zoo Biology"
 author: "Dr. Rich"
 date: "Spring 2025"
-output: pdf_document
+output: html_document
+    
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(knitr)
+library(gt)
+library(webshot2)
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  message  = FALSE,
+  warning  = FALSE,
+  echo     = TRUE,
+  include  = TRUE,
+  eval     = TRUE,
+  comment  = ""
+)
+
 ```
 
 
+# Ethograms
 
-Category	Code	Behavior	Definition
-Inactive	LNG	Lying	Animal is lying with weight supported on  side, back, or stomach and not performing another behavior listed.
-	FLT	Floating	Animal is stationary and suspended in water.
-	OTI	Other Inactive	Animal is stationary and not engaged in an active behavior listed.
-Feed/ Forage/ Drink	FDG	Feeding	Animal is chewing and ingesting food items or manipulating a food item for the purpose of feeding.
-Locomotion	TLO	Terrestrial Locomotion	Animal is moving at least one body’s length in non-stereotypical manner on land.
-	DVF	Diving (Surface)	Animal is leaping off of ledge into water to travel a distance greater than one body's length.
-	DVB	Diving (Submerged)	Animal is fully submerged and swimming a distance greater than one body's length at a steep downward angle.
-	SWI	Swimming	Animal is propelling itself through water at least a distance greater than one body's length.
-Undesirable	UND	Undesirable	Animal is performing an undesirable behavior, including stereotypic and self-injurious behaviors.
-Other Solitary	KIN	Keeper Interaction	Animal is directly interacting with keepers, either performing trained behaviors in the context of a training session or engaged in an informal manner, including handing feeding, playing, handling, or inspecting.
-	KIT	Keeper Interaction - Training Session	Animal performs trained behaviors during interaction with a keeper, in the context of a training session.
-	VOC	Vocalization	Animal is producing sounds through intentional vibration of air for the purpose of communication (may involve vocal cords, stridulation of body parts, vibration of air sacs, or other taxa-specific adaptations).
-	SOL	Other Solitary	Animal is performing a solitary behavior not previously listed, including exploratory behavior, self-maintenance, scent marking, solitary play, elimination, human interaction.
-Social	AFL	Affiliative Behavior	Animal performs any non-sexual affiliative behavior, including grooming a social partner, playing, or social greetings.
-	CAG	Contact Aggression	Animal physically attacks another individual, including biting, batting, or kicking.
-	NAG	Non-contact Aggression	Animal performs non-contact aggressive behavior towards another individual, including threat displays or chasing.
-	OAG	Other Agonistic Behavior	Animal performs any aggressive behavior, either with or without contact, or any dominance related behavior.
-Other	OTH	Other	Animal is performing any behavior not listed [Note: please specify the behavior category and make a comment to describe behavior].
-Not Visible	BOB	Behavior Obscured	The behavior of the animal cannot be determined but the location of the animal is known.
-	ANV	Animal Not Visible	The animal is completely not visible and its location is unknown.
+```{r include=FALSE}
+gorilla <- tribble(
+  ~Category,               ~Behavior,                         ~Definition,
+  "Inactive",              "Standing",                        "Animal is upright with weight supported by legs and not performing another behavior listed.",
+  "Inactive",              "Sitting",                         "Animal is seated with weight supported on buttocks and not performing another behavior listed.",
+  "Inactive",              "Lying",                           "Animal is lying with weight supported on side, back, or stomach and not performing another behavior listed.",
+  "Inactive",              "Vertical clinging",               "Animal is stationary and holding onto a vertical support with weight supported by hands and/or feet.",
+  "Inactive",              "Hanging",                         "Animal is stationary and holding onto a horizontal support with weight supported by hands and/or feet with body suspended below support.",
+  "Inactive",              "Other Inactive",                  "Animal is stationary and not engaged in an active behavior listed.",
+  "Feed /Forage /Drink",   "Foraging",                        "Animal is working to acquire a food item.",
+  "Feed /Forage /Drink",   "Browsing",                        "Animal is stripping or plucking leaves from a branch, either using their mouth or hands.",
+  "Feed /Forage /Drink",   "Extractive Foraging",             "Animal is manipulating an object to extract a food item (e.g., puzzle feeder, ice block).",
+  "Feed /Forage /Drink",   "Substrate Foraging",              "Animal is visually scanning or manipulating loose substrate to search for food items or moving ≥1 body’s length to acquire food.",
+  "Feed /Forage /Drink",   "Feeding",                         "Animal is chewing and ingesting food items or manipulating a food item for the purpose of feeding.",
+  "Feed /Forage /Drink",   "Drinking",                        "Animal is ingesting water.",
+  "Feed /Forage /Drink",   "Food Share",                      "Animal provisions another with food, through direct contact or placement nearby.",
+  "Feed /Forage /Drink",   "Food Begging",                    "Animal is gesturing to another to solicit food.",
+  "Feed /Forage /Drink",   "Food Steal",                      "Animal grabs food from another against their will.",
+  "Feed /Forage /Drink",   "Nursing",                         "Female’s offspring suckling on nipples for milk.",
+  "Feed /Forage /Drink",   "Other Feeding/Foraging/Drinking", "Animal is feeding, drinking, or searching for food in any form.",
+  "Locomotion",            "Walking",                         "Animal is walking ≥1 body’s length through exhibit.",
+  "Locomotion",            "Running",                         "Animal is running ≥1 body’s length through exhibit.",
+  "Locomotion",            "Climbing",                        "Animal is propelling up or down a vertical surface ≥1 body’s length.",
+  "Locomotion",            "Leaping",                         "Animal is leaping ≥1 body’s length through exhibit.",
+  "Locomotion",            "Brachiating/Swinging",            "Animal is swinging through air to travel ≥1 body’s length.",
+  "Locomotion",            "Other Locomotion",                "Animal is moving ≥1 body’s length in non-stereotypical manner.",
+  "Undesirable",           "Undesirable",                     "Animal is performing an undesirable behavior, including stereotypic or self-injurious behaviors.",
+  "Other Solitary",        "Exploratory Behavior",            "Animal inspecting/manipulating items or performing vigilance behaviors.",
+  "Other Solitary",        "General Exploration",             "Animal visually inspecting or sniffing the substrate non-focused.",
+  "Other Solitary",        "Sniffing Air",                    "Animal visually inspecting or sniffing the air non-focused.",
+  "Other Solitary",        "Alert Stare",                     "Animal fixated on an object in an alert posture ≥3 seconds.",
+  "Other Solitary",        "Focused Investigation",           "Animal actively sniffing/pawing at a specific area within ½ body’s length.",
+  "Other Solitary",        "Object Manipulation",             "Animal moving a non-fixed object using mouth or paws.",
+  "Other Solitary",        "Nest Gathering",                  "Animal collecting materials for nest building.",
+  "Other Solitary",        "Nest Building",                   "Animal constructing a nest.",
+  "Other Solitary",        "Self-maintenance/Comfort",        "Comfort behaviors: stretching, yawning, rolling, wallowing, rubbing.",
+  "Other Solitary",        "Scratching",                      "Animal interacting with body using hands/feet in rapid, repetitive movements.",
+  "Other Solitary",        "Self-grooming/Preening",          "Animal interacting with body using hands/mouth in slow, deliberate movements.",
+  "Other Solitary",        "Chewing",                         "Directed chewing movements (if excessive, score as self-biting).",
+  "Other Solitary",        "Rolling",                         "Animal rolling on substrate.",
+  "Other Solitary",        "Stretching/Wing-flapping",        "Stationary extension/flexion of body, limbs, or head non-goal-directed.",
+  "Other Solitary",        "Yawning",                         "Animal opens mouth widely while inhaling air.",
+  "Other Solitary",        "Object Rubbing (non-marking)",    "Animal rubbing body against an object.",
+  "Other Solitary",        "Solitary Play",                   "Repetitive, voluntary play without clear functional benefit.",
+  "Other Solitary",        "Object Play",                     "Animal interacting with an object playfully.",
+  "Other Solitary",        "Motor Play",                      "Animal moving around playfully.",
+  "Other Solitary",        "Elimination",                     "Excretion of waste non-scent marking.",
+  "Other Solitary",        "Urinating",                       "Elimination of urine non-scent marking.",
+  "Other Solitary",        "Defecating",                      "Elimination of feces non-scent marking.",
+  "Other Solitary",        "Vomiting/Regurgitating",          "Animal ejecting stomach contents then possibly reingesting.",
+  "Other Solitary",        "Keeper Interaction",              "Interacting with keepers: feeding, playing, handling, inspecting.",
+  "Other Solitary",        "Keeper Interaction - Training",   "Performing trained behaviors during keeper session.",
+  "Other Solitary",        "Public Interaction",              "Soliciting/responding to public behaviors.",
+  "Other Solitary",        "Vocalization",                    "Producing sounds for communication.",
+  "Other Solitary",        "Startle",                         "Initial vocalize/freeze → rapid flight → freeze/scan.",
+  "Other Solitary",        "Other Solitary",                  "Any other solitary behavior not listed.",
+  "Social",                "Social Grooming/Allopreening",    "Licking/manipulating another’s fur/feathers affiliatively.",
+  "Social",                "Social Playing",                  "Playful interactions with another individual.",
+  "Social",                "Greeting",                        "Reuniting greeting behaviors (sniffing/rubbing).",
+  "Social",                "Huddling",                        "Body contact with another individual.",
+  "Social",                "Other Affiliative Behavior",      "Any non-sexual affiliative behavior.",
+  "Social",                "Courtship",                       "Species-specific courtship behaviors.",
+  "Social",                "Mounting",                        "Mounting or attempting to mount another.",
+  "Social",                "Ano-genital Investigation",       "Sniffing another’s ano-genital region.",
+  "Social",                "Urine/Feces Investigation",       "Sniffing/tasting another’s urine or feces.",
+  "Social",                "Other Reproductive",              "Any other reproductive behavior.",
+  "Social",                "Contact Aggression",              "Physically attacking another: biting, batting, kicking.",
+  "Social",                "Non-contact Aggression",          "Threat displays or chasing without contact.",
+  "Social",                "Threat Display",                  "Teeth baring, lunging, snarling threat behavior.",
+  "Social",                "Chasing",                         "Aggressively pursuing another.",
+  "Social",                "Displacement",                    "Approach causing recipient to move away.",
+  "Social",                "Food Steal",                      "Forceful food grab (dominance-related).",
+  "Social",                "Submission",                      "Non-aggressive fear behaviors: crouch, flee, tremble.",
+  "Social",                "Other Agonistic Behavior",        "Any other dominance-related or aggressive behavior.",
+  "Other",                 "Other",                           "Any behavior not listed (add comment).",
+  "Not Visible",           "Behavior Obscured",               "Behavior cannot be determined but location known.",
+  "Not Visible",           "Animal Not Visible",              "Animal completely not visible; location unknown."
+)
+```
+
+```{r include=FALSE}
+feline <- tribble(
+  ~Category,               ~Behavior,                           ~Definition,
+  "Inactive",              "Standing",                          "Animal is upright with weight supported by legs and not performing another behavior listed.",
+  "Inactive",              "Sitting",                           "Animal is seated with weight supported on buttocks and not performing another behavior listed.",
+  "Inactive",              "Lying",                             "Animal is lying with weight supported on side, back, or stomach and not performing another behavior listed.",
+  "Inactive",              "Other Inactive",                    "Animal is stationary and not engaged in an active behavior listed.",
+  "Feed /Forage /Drink",   "Foraging",                          "Animal is working to acquire a food item.",
+  "Feed /Forage /Drink",   "Hunting",                           "Species-specific hunting behaviors; if play-like, score as Hunting Play.",
+  "Feed /Forage /Drink",   "Browsing",                          "Animal is stripping/plucking leaves from a branch.",
+  "Feed /Forage /Drink",   "Feeding",                           "Animal is chewing and ingesting food items.",
+  "Feed /Forage /Drink",   "Drinking",                          "Animal is ingesting water.",
+  "Feed /Forage /Drink",   "Other Feeding/Foraging/Drinking",   "Chewing food, drinking, manipulating food, or searching for food.",
+  "Locomotion",            "Walking",                           "Animal is walking ≥1 body’s length through exhibit.",
+  "Locomotion",            "Running",                           "Animal is running ≥1 body’s length through exhibit.",
+  "Locomotion",            "Other Locomotion",                  "Animal is moving ≥1 body’s length in non-stereotypical manner.",
+  "Undesirable",           "Undesirable",                       "Animal is performing an undesirable behavior, including stereotypic or self-injurious behaviors.",
+  "Other Solitary",        "Exploratory Behavior",              "Inspecting/manipulating environment or vigilance.",
+  "Other Solitary",        "General Exploration",               "Visually inspecting or sniffing substrate non-focused.",
+  "Other Solitary",        "Sniffing Air",                      "Inspecting or sniffing air non-focused.",
+  "Other Solitary",        "Alert Stare",                       "Fixated on an object in alert posture ≥3 seconds.",
+  "Other Solitary",        "Focused Investigation",             "Actively sniffing/pawing at a specific area within ½ body’s length.",
+  "Other Solitary",        "Object Manipulation",               "Moving a non-fixed object (if food, count as Feed).",
+  "Other Solitary",        "Digging",                           "Repeated excavating substrate with body/limbs.",
+  "Other Solitary",        "Self-maintenance/Comfort",          "Comfort behaviors: stretching, yawning, rolling, wallowing, rubbing.",
+  "Other Solitary",        "Scratching",                        "Rapid, repetitive self-scratching.",
+  "Other Solitary",        "Self-grooming/Preening",            "Slow, deliberate self-grooming.",
+  "Other Solitary",        "Rolling",                           "Animal rolling on substrate.",
+  "Other Solitary",        "Stretching/Wing-flapping",          "Non-goal-directed extension/flexion of body.",
+  "Other Solitary",        "Scent marking",                     "Marking area using urine, feces, glandular secretions.",
+  "Other Solitary",        "Feet Scraping",                     "Repeatedly kicking substrate behind animal following scent mark.",
+  "Other Solitary",        "Object Clawing",                    "Clawing object, often precedes scent marking.",
+  "Other Solitary",        "Object Rubbing (marking)",          "Rubbing scent glands on substrate.",
+  "Other Solitary",        "Solitary Play",                     "Repetitive play without clear functional benefit.",
+  "Other Solitary",        "Hunting Play",                      "Playful stalking, pouncing on objects.",
+  "Other Solitary",        "Object Play",                       "Interacting with object playfully.",
+  "Other Solitary",        "Motor Play",                        "Playful movement around exhibit.",
+  "Other Solitary",        "Elimination",                       "Excretion of waste non-scent marking.",
+  "Other Solitary",        "Urinating",                         "Urination non-scent marking.",
+  "Other Solitary",        "Defecating",                        "Defecation non-scent marking.",
+  "Other Solitary",        "Vomiting/Regurgitating",            "Ejecting stomach contents then possibly reingesting.",
+  "Other Solitary",        "Keeper Interaction",                "Interacting with keepers: feeding, play, handling.",
+  "Other Solitary",        "Keeper Interaction - Training",     "Performing trained behaviors in session.",
+  "Other Solitary",        "Keeper Interaction - Casual",       "Informal keeper interaction: hand-feeding, play, inspection.",
+  "Other Solitary",        "Public Interaction",                "Soliciting/responding to public behaviors.",
+  "Other Solitary",        "Vocalization",                      "Producing sounds for communication.",
+  "Other Solitary",        "Startle",                           "Vocalize/freeze→flight→freeze/scan.",
+  "Other Solitary",        "Other Solitary",                    "Any other solitary behavior not listed.",
+  "Social",                "Social Grooming/Allopreening",      "Affiliative grooming of another.",
+  "Social",                "Social Playing",                    "Play interactions with another.",
+  "Social",                "Greeting",                          "Species-typical greeting behavior.",
+  "Social",                "Huddling",                          "Body contact with another.",
+  "Social",                "Other Affiliative Behavior",        "Any non-sexual affiliative behavior.",
+  "Social",                "Courtship",                         "Species-specific courtship.",
+  "Social",                "Mounting",                          "Mounting another (intromission optional).",
+  "Social",                "Ano-genital Investigation",         "Sniffing ano-genital region of another.",
+  "Social",                "Urine/Feces Investigation",         "Sniffing/tasting another’s excreta.",
+  "Social",                "Other Reproductive",                "Other sexual behaviors (note initiator/recipient).",
+  "Social",                "Contact Aggression",                "Physical attacks: biting, batting, kicking.",
+  "Social",                "Non-contact Aggression",            "Threat displays or chasing without contact.",
+  "Social",                "Threat Display",                    "Teeth baring, lunging, snarling threats.",
+  "Social",                "Chasing",                           "Aggressively pursuing another.",
+  "Social",                "Displacement",                      "Approach causing recipient to move away.",
+  "Social",                "Food Steal",                        "Forceful food grab dominance style.",
+  "Social",                "Submission",                        "Crouching, fleeing, trembling in response to another.",
+  "Social",                "Other Agonistic Behavior",          "Any other dominance/aggressive behavior.",
+  "Other",                 "Other",                             "Any behavior not listed (add comment).",
+  "Not Visible",           "Behavior Obscured",                 "Behavior cannot be determined but location known.",
+  "Not Visible",           "Animal Not Visible",                "Animal completely not visible; location unknown."
+)
+```
+
+```{r include=FALSE}
+ungulate <- tribble(
+  ~Category,               ~Behavior,                         ~Definition,
+  "Inactive",              "Standing",                        "Animal is upright with weight supported by legs and not performing another behavior listed.",
+  "Inactive",              "Sitting",                         "Animal is seated with weight supported on buttocks and not performing another behavior listed.",
+  "Inactive",              "Lying",                           "Animal is lying with weight supported on side, back, or stomach and not performing another behavior listed.",
+  "Inactive",              "Other Inactive",                  "Animal is stationary and not engaged in an active behavior listed.",
+  "Feed /Forage /Drink",   "Other Feeding/Foraging/Drinking", "Chewing, drinking, manipulating food, or searching for food.",
+  "Feed /Forage /Drink",   "Foraging",                        "Animal is working to acquire a food item.",
+  "Feed /Forage /Drink",   "Browsing",                        "Animal is stripping or plucking leaves from a branch.",
+  "Feed /Forage /Drink",   "Grazing",                         "Pulling small portions of ground-level food; includes fixed enrichment.",
+  "Feed /Forage /Drink",   "Feeding",                         "Animal is chewing and ingesting food items.",
+  "Feed /Forage /Drink",   "Ruminating",                      "Regurgitation and chewing cud of previously eaten food.",
+  "Feed /Forage /Drink",   "Drinking",                        "Animal is ingesting water.",
+  "Locomotion",            "Walking",                         "Animal is walking ≥1 body’s length through exhibit.",
+  "Locomotion",            "Running",                         "Animal is running ≥1 body’s length through exhibit.",
+  "Locomotion",            "Other Locomotion",                "Animal is moving ≥1 body’s length in non-stereotypical manner.",
+  "Undesirable",           "Undesirable",                     "Animal is performing an undesirable behavior, including stereotypic or self-injurious behaviors.",
+  "Other Solitary",        "Exploratory Behavior",            "Inspecting/manipulating environment or vigilance.",
+  "Other Solitary",        "General Exploration",             "Visually inspecting or sniffing substrate non-focused.",
+  "Other Solitary",        "Sniffing Air",                    "Visually inspecting or sniffing the air non-focused.",
+  "Other Solitary",        "Alert Stare",                     "Fixated on an object in alert posture ≥3 seconds.",
+  "Other Solitary",        "Focused Investigation",           "Actively sniffing/pawing at a specific area within ½ body’s length.",
+  "Other Solitary",        "Object Manipulation",             "Moving a non-fixed object using mouth or paws.",
+  "Other Solitary",        "Digging",                         "Repetitive excavation of substrate.",
+  "Other Solitary",        "Self-maintenance/Comfort",        "Comfort behaviors: stretching, yawning, rolling, wallowing, rubbing.",
+  "Other Solitary",        "Scratching",                      "Rapid, repetitive self-scratching.",
+  "Other Solitary",        "Self-grooming/Preening",          "Slow, deliberate self-grooming.",
+  "Other Solitary",        "Chewing",                         "Directed chewing movements (if excessive, score as self-biting).",
+  "Other Solitary",        "Rolling",                         "Animal rolling on substrate.",
+  "Other Solitary",        "Stretching/Wing-flapping",        "Non-goal-directed extension/flexion of body.",
+  "Other Solitary",        "Wallowing",                       "Laying or rolling in wet mud or water.",
+  "Other Solitary",        "Dustbathing",                     "Rolling in dry, loose dirt or sand.",
+  "Other Solitary",        "Yawning",                         "Animal opens mouth widely while inhaling air.",
+  "Other Solitary",        "Object Rubbing (non-marking)",    "Rubbing body against an object.",
+  "Other Solitary",        "Scent marking",                   "Marking area using bodily fluids or glandular secretions.",
+  "Other Solitary",        "Urine Scent Marking",             "Spraying or depositing small amounts of urine in scent-marking style.",
+  "Other Solitary",        "Feces Scent Marking",             "Defecating on a target object.",
+  "Other Solitary",        "Feet Scraping",                   "Kicking substrate behind animal after marking.",
+  "Other Solitary",        "Object Rubbing (marking)",        "Rubbing scent glands on substrate.",
+  "Other Solitary",        "Solitary Play",                   "Play without clear functional benefit.",
+  "Other Solitary",        "Object Play",                     "Interacting with an object playfully.",
+  "Other Solitary",        "Motor Play",                      "Playful movement around exhibit.",
+  "Other Solitary",        "Elimination",                     "Excretion of waste non-scent marking.",
+  "Other Solitary",        "Urinating",                       "Urination non-scent marking.",
+  "Other Solitary",        "Defecating",                      "Defecation non-scent marking.",
+  "Other Solitary",        "Vomiting/Regurgitating",          "Ejecting stomach contents then possibly reingesting.",
+  "Other Solitary",        "Keeper Interaction",              "Interacting with keepers: feeding, play, handling.",
+  "Other Solitary",        "Keeper Interaction - Training",   "Performing trained behaviors in session.",
+  "Other Solitary",        "Public Interaction",              "Soliciting/responding to public behaviors.",
+  "Other Solitary",        "Vocalization",                    "Producing sounds for communication.",
+  "Other Solitary",        "Startle",                         "Vocalize/freeze→flight→freeze/scan.",
+  "Other Solitary",        "Other Solitary",                  "Any other solitary behavior not listed.",
+  "Social",                "Social Grooming/Allopreening",    "Affiliative grooming of another.",
+  "Social",                "Social Playing",                  "Play interactions with another.",
+  "Social",                "Greeting",                        "Species-typical greeting behavior.",
+  "Social",                "Huddling",                        "Body contact with another individual.",
+  "Social",                "Other Affiliative Behavior",      "Non-sexual affiliative behaviors.",
+  "Social",                "Courtship",                       "Species-specific courtship behaviors.",
+  "Social",                "Mounting",                        "Mounting another (intromission optional).",
+  "Social",                "Ano-genital Investigation",       "Sniffing another’s ano-genital region.",
+  "Social",                "Urine/Feces Investigation",       "Sniffing/tasting another’s excreta.",
+  "Social",                "Other Reproductive",              "Other sexual behaviors (note initiator/recipient).",
+  "Social",                "Contact Aggression",              "Physical attacks: biting, batting, kicking.",
+  "Social",                "Non-contact Aggression",          "Threat displays or chasing without contact.",
+  "Social",                "Threat Display",                  "Teeth baring, lunging, snarling threats.",
+  "Social",                "Chasing",                         "Aggressively pursuing another.",
+  "Social",                "Displacement",                    "Approach causing recipient to move away.",
+  "Social",                "Food Steal",                      "Forceful food grab dominance style.",
+  "Social",                "Submission",                      "Fear behaviors: crouch, flee, tremble.",
+  "Social",                "Other Agonistic Behavior",        "Any other dominance/aggressive behavior.",
+  "Other",                 "Other",                           "Any behavior not listed (add comment).",
+  "Not Visible",           "Behavior Obscured",               "Behavior cannot be determined but location known.",
+  "Not Visible",           "Animal Not Visible",              "Animal completely not visible; location unknown."
+)
+```
+
+```{r include=FALSE}
+undesirable <- tribble(
+  ~Behavior,                  ~Definition,
+  "Pacing",                   "Animal is walking in a repetitive manner along a fixed path without an apparent goal or function (≥3 loops).",
+  "Stereotypic swimming",     "Animal is swimming in a repetitive fixed-path manner without an apparent goal or function (≥3 loops).",
+  "Repetitive Licking/Gnawling","Animal repeatedly licking or gnawing a non-food object (wood, metal, concrete).",
+  "Regurgitation/Reingestion","Animal voluntarily regurgitating and then consuming that material.",
+  "Coprophagy",               "Animal is ingesting feces.",
+  "Urophagy",                 "Animal is ingesting urine.",
+  "Hair/Feather plucking",    "Repetitive over-grooming resulting in hair or feather loss.",
+  "Body/Hair Pulling",        "Pulling on body parts or hair in a non-goal-directed manner.",
+  "Swaying/rocking",          "Stationary but moving body or head in repetitive sideways/forward motion.",
+  "Self-biting",              "Chewing on a body part repetitively, often causing wounds.",
+  "Tongue Play",              "Tongue moving repeatedly in/out (e.g., “firehose” flopping) not for feeding.",
+  "Food Play",                "Moving food around mouth non-feeding directed.",
+  "Wall Swimming",            "Swimming repetitively against an exhibit barrier.",
+  "Head Rolling/Tossing",     "Moving and rolling head in fixed stereotyped manner.",
+  "Other Undesirable",        "Any other stereotypic or self-injurious behavior."
+)
+```
+
+```{r include=FALSE}
+sealion <- tribble(
+  ~Category,             ~Code, ~Behavior,                         ~Definition,
+  "Inactive",            "LNG",  "Lying",                           "Animal is lying with weight supported on side, back, or stomach and not performing another behavior listed.",
+  "Inactive",            "FLT",  "Floating",                        "Animal is stationary and suspended in water.",
+  "Inactive",            "OTI",  "Other Inactive",                  "Animal is stationary and not engaged in an active behavior listed.",
+  "Feed /Forage /Drink", "FDG",  "Feeding",                         "Animal is chewing and ingesting food items or manipulating a food item for the purpose of feeding.",
+  "Locomotion",          "TLO",  "Terrestrial Locomotion",          "Animal is moving at least one body’s length in non-stereotypical manner on land.",
+  "Locomotion",          "DVF",  "Diving (Surface)",                "Animal is leaping off of ledge into water to travel a distance greater than one body's length.",
+  "Locomotion",          "DVB",  "Diving (Submerged)",              "Animal is fully submerged and swimming a distance greater than one body's length at a steep downward angle.",
+  "Locomotion",          "SWI",  "Swimming",                        "Animal is propelling itself through water at least a distance greater than one body's length.",
+  "Undesirable",         "UND",  "Undesirable",                     "Animal is performing an undesirable behavior, including stereotypic and self-injurious behaviors.",
+  "Other Solitary",      "KIN",  "Keeper Interaction",              "Animal is directly interacting with keepers, either performing trained behaviors in the context of a training session or engaged in an informal manner, including handling, playing, or inspecting.",
+  "Other Solitary",      "KIT",  "Keeper Interaction (Training Sesh)", "Animal performs trained behaviors during interaction with a keeper, in the context of a training session.",
+  "Other Solitary",      "VOC",  "Vocalization",                    "Animal is producing sounds through intentional vibration of air for the purpose of communication (may involve vocal cords, stridulation of body parts, vibration of air sacs, or other taxa-specific adaptations).",
+  "Other Solitary",      "SOL",  "Other Solitary",                  "Animal is performing a solitary behavior not previously listed, including exploratory behavior, self-maintenance, scent marking, solitary play, elimination, human interaction.",
+  "Social",              "AFL",  "Affiliative Behavior",            "Animal performs any non-sexual affiliative behavior, including grooming a social partner, playing, or social greetings.",
+  "Social",              "CAG",  "Contact Aggression",              "Animal physically attacks another individual, including biting, batting, or kicking.",
+  "Social",              "NAG",  "Non-contact Aggression",          "Animal performs non-contact aggressive behavior towards another individual, including threat displays or chasing.",
+  "Social",              "OAG",  "Other Agonistic Behavior",        "Animal performs any aggressive behavior, either with or without contact, or any dominance related behavior.",
+  "Other",               "OTH",  "Other",                           "Animal is performing any behavior not listed [Note: please specify the behavior category and make a comment to describe behavior].",
+  "Not Visible",         "BOB",  "Behavior Obscured",               "The behavior of the animal cannot be determined but the location of the animal is known.",
+  "Not Visible",         "ANV",  "Animal Not Visible",              "The animal is completely not visible and its location is unknown."
+)
+```
+
+```{r sea-lions-ethogram}
+sealion_eth <- sealion %>%
+  gt(groupname_col = "Category", rowname_col = "Code") %>%
+  opt_stylize(style = 1, color = "gray") %>%
+  tab_style(style = list(
+    cell_text(weight    = "bold", 
+              transform = "uppercase", 
+              size      = "small", 
+              style     = "oblique",
+              stretch   = "expanded")
+  ),
+  locations = cells_row_groups()) %>%
+  tab_style(style = list(
+    cell_text(weight    = "bolder", 
+              transform = "uppercase")
+  ),
+  locations = cells_stub()) %>%
+  tab_style(style = list(
+    cell_text(weight    = "bold")
+  ),
+  locations = cells_body(columns = "Behavior")) %>%
+  tab_header("Sea Lion Ethogram") %>%
+  tab_style(style = cell_text(align = "left", style = "oblique", weight = "bold"), 
+            locations = cells_title()) %>%
+  rm_spanners()
+```
+
+```{r gorillas-ethogram}
+gorilla_eth <- gorilla %>%
+  gt(groupname_col = "Category", rowname_col = "Code") %>%
+  opt_stylize(style = 1, color = "gray") %>%
+  tab_style(style = list(
+    cell_text(weight    = "bold", 
+              transform = "uppercase", 
+              size      = "small", 
+              style     = "oblique",
+              stretch   = "expanded")
+  ),
+  locations = cells_row_groups()) %>%
+  tab_style(style = list(
+    cell_text(weight    = "bolder", 
+              transform = "uppercase")
+  ),
+  locations = cells_stub()) %>%
+  tab_style(style = list(
+    cell_text(weight    = "bold")
+  ),
+  locations = cells_body(columns = "Behavior")) %>%
+  tab_header("Gorilla Ethogram") %>%
+  tab_style(style = cell_text(align = "left", style = "oblique", weight = "bold"), 
+            locations = cells_title()) %>%
+  rm_spanners()
+```
+
+```{r feline-ethogram}
+feline_eth <- feline %>%
+  gt(groupname_col = "Category", rowname_col = "Code") %>%
+  opt_stylize(style = 1, color = "gray") %>%
+  tab_style(style = list(
+    cell_text(weight    = "bold", 
+              transform = "uppercase", 
+              size      = "small", 
+              style     = "oblique",
+              stretch   = "expanded")
+  ),
+  locations = cells_row_groups()) %>%
+  tab_style(style = list(
+    cell_text(weight    = "bolder", 
+              transform = "uppercase")
+  ),
+  locations = cells_stub()) %>%
+  tab_style(style = list(
+    cell_text(weight    = "bold")
+  ),
+  locations = cells_body(columns = "Behavior")) %>%
+  tab_header("Feline Ethogram") %>%
+  tab_style(style = cell_text(align = "left", style = "oblique", weight = "bold"), 
+            locations = cells_title()) %>%
+  rm_spanners()
+```
+
+```{r ungulate-ethogram}
+ungulate_eth <- ungulate %>%
+  gt(groupname_col = "Category", rowname_col = "Code") %>%
+  opt_stylize(style = 1, color = "gray") %>%
+  tab_style(style = list(
+    cell_text(weight    = "bold", 
+              transform = "uppercase", 
+              size      = "small", 
+              style     = "oblique",
+              stretch   = "expanded")
+  ),
+  locations = cells_row_groups()) %>%
+  tab_style(style = list(
+    cell_text(weight    = "bolder", 
+              transform = "uppercase")
+  ),
+  locations = cells_stub()) %>%
+  tab_style(style = list(
+    cell_text(weight    = "bold")
+  ),
+  locations = cells_body(columns = "Behavior")) %>%
+  tab_header("Ungulate Ethogram") %>%
+  tab_style(style = cell_text(align = "left", style = "oblique", weight = "bold"), 
+            locations = cells_title()) %>%
+  rm_spanners()
+```
+
+
+```{r undes-ethogram}
+undes_eth <- undesirable %>%
+  gt(groupname_col = "Category", rowname_col = "Code") %>%
+  opt_stylize(style = 1, color = "gray") %>%
+  tab_style(style = list(
+    cell_text(weight    = "bold", 
+              transform = "uppercase", 
+              size      = "small", 
+              style     = "oblique",
+              stretch   = "expanded")
+  ),
+  locations = cells_row_groups()) %>%
+  tab_style(style = list(
+    cell_text(weight    = "bolder", 
+              transform = "uppercase")
+  ),
+  locations = cells_stub()) %>%
+  tab_style(style = list(
+    cell_text(weight    = "bold")
+  ),
+  locations = cells_body(columns = "Behavior")) %>%
+  tab_header("Feline Ethogram") %>%
+  tab_style(style = cell_text(align = "left", style = "oblique", weight = "bold"), 
+            locations = cells_title()) %>%
+  rm_spanners()
+```
+
+
+```{r save-eths}
+sealion_eth
+gtsave(sealion_eth, "ethgm_sealion.png")
+gorilla_eth
+gtsave(gorilla_eth, "ethgm_gorilla.png")
+feline_eth
+gtsave(feline_eth, "ethgm_feline.png")
+ungulate_eth
+gtsave(ungulate_eth, "ethgm_ungulate.png")
+undes_eth
+gtsave(undes_eth, "ethgm_undes.png")
+```
+
+
+```{r}
+scans <- tibble(
+  Time            = sprintf("0:%02d:00", 1:20),
+  `In/Out of Water` = rep("", 20),
+  Behavior        = rep("", 20),
+  Notes           = rep("", 20)
+)
+
+focal <- tibble(
+  `Start Time` = rep("", 16),
+  Behavior      = rep("", 16),
+  Initiator     = rep("", 16),
+  Recipient     = rep("", 16),
+  `End Time`   = rep("", 16),
+  Notes         = rep("", 16)
+)
+
+allocc <- tibble(
+  `Start Time` = rep("", 14),
+  Behavior      = rep("", 14),
+  Species       = rep("", 14),
+  `End Time`   = rep("", 14),
+  Notes         = rep("", 14)
+)
+
+```
+
+```{r}
+scans_out <- scans %>%
+  gt(rowname_col = "Time") %>%
+  opt_stylize(style = 2, color = "gray") %>%
+  tab_style(style = list(
+    cell_text(size = "x-large")
+  ),
+  locations = cells_stub()) %>%
+  tab_header("Sea Lion Observations") %>%
+  tab_style(style = cell_text(align = "left", style = "oblique", weight = "bold"), 
+            locations = cells_title()) %>%
+  cols_width(
+    `In/Out of Water` ~ px(100),
+    Behavior ~ px(200),
+    Notes ~ px(400)
+  ) %>%
+  cols_align("left")
+scans_out
+
+gtsave(scans_out, "data_scans.png")
+```
+
+
+```{r}
+data_gorilla <- focal %>%
+  gt() %>%
+  opt_stylize(style = 2, color = "gray") %>%
+  tab_header("Gorilla Observations") %>%
+  tab_style(style = cell_text(align = "left", style = "oblique", weight = "bold"), 
+            locations = cells_title()) %>%
+  cols_width(
+    `Start Time` ~ px(150),
+    Behavior     ~ px(100),
+    Initiator    ~ px(100),
+    Recipient    ~ px(100),
+    `End Time`   ~ px(150),
+    Notes        ~ px(200)
+  ) %>%
+  cols_align("left") %>%
+  opt_vertical_padding(scale = 3)
+data_gorilla
+
+gtsave(data_gorilla, "data_gorilla.png")
+```
+
+
+```{r}
+data_ungulate <- focal %>%
+  gt() %>%
+  opt_stylize(style = 2, color = "gray") %>%
+  tab_header("Ungulate Observations") %>%
+  tab_style(style = cell_text(align = "left", style = "oblique", weight = "bold"), 
+            locations = cells_title()) %>%
+  cols_width(
+    `Start Time` ~ px(150),
+    Behavior     ~ px(100),
+    Initiator    ~ px(100),
+    Recipient    ~ px(100),
+    `End Time`   ~ px(150),
+    Notes        ~ px(200)
+  ) %>%
+  cols_align("left") %>%
+  opt_vertical_padding(scale = 3)
+data_ungulate
+
+gtsave(data_ungulate, "data_ungulate.png")
+```
+
+
+```{r}
+data_undes <- allocc %>%
+  gt() %>%
+  opt_stylize(style = 2, color = "gray") %>%
+  tab_header("All Occurrence Observations") %>%
+  tab_style(style = cell_text(align = "left", style = "oblique", weight = "bold"), 
+            locations = cells_title()) %>%
+  cols_width(
+    `Start Time` ~ px(150),
+    Behavior     ~ px(100),
+    Species      ~ px(150),
+    `End Time`   ~ px(150),
+    Notes        ~ px(250)
+  ) %>%
+  cols_align("left") %>%
+  opt_vertical_padding(scale = 3)
+data_undes
+
+gtsave(data_undes, "data_undes.png")
+```
+
