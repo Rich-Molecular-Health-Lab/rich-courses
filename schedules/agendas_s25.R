@@ -216,23 +216,23 @@ agenda <- list(
      "10"  = list("10a" = "Reproduction",
                   "10b" = "Reproduction",
                   "10c" = "Reproduction"),
-     "11" = list("11a" = "Medicine",
-                 "11b" = "Medicine"),
+     "11" = list("11a" = "Reproduction",
+                 "11b" = "Reproduction"),
      "12" = list("12a" = "Training and Management",
                  "12b" = "Training and Management",
                  "12c" = "Training and Management"),
-     "13" = list("13a" = "Monitoring and Assessment",
+     "13" = list("13a" = "Training and Management",
                  "13b" = "Monitoring and Assessment",
-                 "13c" = "Monitoring and Assessment"),
-     "14" = list("14a" = "Environmental Enrichment",
+                 "13c" = "Training and Management"),
+     "14" = list("14a" = "Monitoring and Assessment",
                  "14b" = "Environmental Enrichment",
-                 "14c" = "Environmental Enrichment"),
-     "15" = list("15a" = "Community Engagement and Education",
-                 "15b" = "Community Engagement and Education",
-                 "15c" = "Accessibility and Inclusion"),
-     "16" = list("16a" = "Public Policy and Advocacy",
-                 "16b" = "Public Policy and Advocacy",
-                 "16c" = "Public Policy and Advocacy")
+                 "14c" = "Monitoring and Assessment"),
+     "15" = list("15a" = "Monitoring and Assessment",
+                 "15b" = "Environmental Enrichment",
+                 "15c" = "Environmental Enrichment"),
+     "16" = list("16a" = "Review",
+                 "16b" = "Review",
+                 "16c" = "Review")
       )
     ),
   conbio = list(
@@ -270,6 +270,7 @@ agenda <- list(
         list(
           "No Class",
           "Film Day",
+          "Field Trip",
           "Schedule Buffer",
           "Exam"
         )
@@ -303,22 +304,22 @@ agenda <- list(
         "10a" = "Habitat Degradation",
         "10b" = "Film Day"                     ),
       "11" = list(
-        "11b" = "Overexploitation"),
+        "11b" = "Film Day"),
       "12" = list(
         "12a" = "Overexploitation",
-        "12b" = "Invasive Alien Species" ),
+        "12b" = "Overexploitation" ),
       "13" = list(
-        "13a" =  "Climate Change"             ,
-        "13b" = "Species-Level Conservation"),
+        "13a" = "Invasive Alien Species"              ,
+        "13b" = "Climate Change"),
       "14" = list(
-        "14a" = "Community and Ecosystem Conservation",
-        "14b" = "Landscape-Scale Conservation: PA Networks"),
+        "14a" = "Climate Change" ,
+        "14b" = "Climate Change"),
       "15" = list(
-        "15a" = "Landscape-Scale Conservation: Monitoring and Modeling",
-        "15b" = "Ex Situ Conservation"),
+        "15a" = "Community and Ecosystem Conservation",
+        "15b" = "Community and Ecosystem Conservation"),
       "16" = list(
         "16a" = "Film Day",
-        "16b" = "Film Day")
+        "16b" = "Field Trip")
 
     )
   )
@@ -363,9 +364,15 @@ slides <- list(
       "12c" = "https://www.canva.com/design/DAGkJ8A_MVw/07uuu_6F4aSFf2ccmTApHQ/view?utm_content=DAGkJ8A_MVw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6d965b6c32"
     ),
     "13" = list(
-      "13a" = "https://www.canva.com/design/DAGkKeluebY/RhuPoxA8wRe9Ij_oF4QUXg/view?utm_content=DAGkKeluebY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h630f309bd6"
+      "13a" = "https://www.canva.com/design/DAGkKeluebY/RhuPoxA8wRe9Ij_oF4QUXg/view?utm_content=DAGkKeluebY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h630f309bd6",
+      "13c" = "https://www.canva.com/design/DAGkz5Uc38o/UdJfecVNBJvxNqUnG-X-pA/view?utm_content=DAGkz5Uc38o&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h151ce35508"
+    ),
+    "14" = list(
+      "14a" = "https://www.canva.com/design/DAGlSW_QW9Y/xxTy2e4at37IPgR_zPpZEw/view?utm_content=DAGlSW_QW9Y&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5f601eec21"
+    ),
+    "15" = list(
+      "15a" = "https://www.canva.com/design/DAGl8C2mVQg/3enXuNn1T0CMRmUywb3ung/view?utm_content=DAGl8C2mVQg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h9a019246a4"
     )
-
   ),
   conbio = list(
     "1" = list(
@@ -400,7 +407,18 @@ slides <- list(
       "11b" = "https://www.canva.com/design/DAGi3uCn3xA/N_27CHCUwP1vaKdE2AKWbg/view?utm_content=DAGi3uCn3xA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h4b819952d6"
     ),
     "12" = list(
-      "12b" = ""
+      "12b" = "https://www.canva.com/design/DAGkLKDGyIo/cicCmEaoArjkiLSILyiobQ/view?utm_content=DAGkLKDGyIo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hbb1951d919"
+    ),
+    "13" = list(
+      "13a" = "https://www.canva.com/design/DAGko-Tx8Js/0b95SDV8y4AYyeOvaa5D_A/view?utm_content=DAGko-Tx8Js&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h98653fe895",
+      "13b" = "https://www.canva.com/design/DAGk04kWD1I/VWgdEP3ykDm-PU5_Ju3mFA/view?utm_content=DAGk04kWD1I&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h2781eba1fe"
+    ),
+    "14" = list(
+      "14a" = "https://www.canva.com/design/DAGlS_yjjTY/n2BHBGCpOWHzePo4k3ijbA/view?utm_content=DAGlS_yjjTY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h1b7916bc45",
+      "14b" = "https://www.canva.com/design/DAGle4wrag8/uHHyjf7DdwW3Zt04JUC_EA/view?utm_content=DAGle4wrag8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h9229f88263"
+    ),
+    "15" = list(
+      "15a" = "https://www.canva.com/design/DAGl87sad9Y/K26keB32NWu4ufKOLmA97A/view?utm_content=DAGl87sad9Y&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hca308d3d50"
     )
   )
 )
@@ -420,8 +438,8 @@ labs <- list(
   "12" = list("Welfare Assessment Plan"       = NULL),
   "13" = list("Training Workshop"             = NULL),
   "14" = list("Enrichment Workshop"           = NULL),
-  "15" = list("Exhibit Signage and Programs"  = NULL),
-  "16" = list("Enrichment Workshop"           = NULL)
+  "15" = list("Welfare Assessment Plan"       = NULL),
+  "16" = list("Zoo Tour"                      = NULL)
   ),
   conbio = NULL
 )
